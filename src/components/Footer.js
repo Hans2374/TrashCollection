@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { Facebook, YouTube, Instagram, Twitter } from '@mui/icons-material';
+import colors from '../colors';
 
 export const Footer = () => {
     return (
@@ -64,7 +65,7 @@ export const Footer = () => {
                 width: { xs: '100%', md: '500px' },  
                 height: 250,  
                 padding: 0, 
-                border: '5px solid #FCF9F3', 
+                border: `5px solid ${colors.color1}`,
                 borderRadius: '8px', 
                 overflow: 'hidden', 
                 margin: { xs: '20px 0 20px 0', md: '0 100px 0 20px' }, 

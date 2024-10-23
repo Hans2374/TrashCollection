@@ -12,10 +12,13 @@ export const Header2 = () => {
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
 
+        // Determine visibility based on scroll direction
         if (currentScrollY > lastScrollY) {
-            setVisible(false);
-        } else {
-            setVisible(true);
+            setVisible(false); // Scrolling down
+        } else if (currentScrollY < lastScrollY && currentScrollY < 100) {
+            setVisible(true); // Scrolling up near the top
+        } else if (currentScrollY < lastScrollY && currentScrollY >= 100) {
+            setVisible(true); // Scrolling up below top
         }
 
         setLastScrollY(currentScrollY);
@@ -38,15 +41,15 @@ export const Header2 = () => {
         transition: 'font-weight 0.2s, text-shadow 0.2s',
         '&:hover': {
             fontWeight: 'bold',
-            textShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)'
-        }
+            textShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
+        },
     };
 
     return (
         <Box
             sx={{
                 position: 'sticky',
-                top: visible ? '40px' : '0px',
+                top: visible ? (lastScrollY > 0 ? '40px' : '461px') : '-100px', // Adjust top based on scroll position
                 height: '100px',
                 backgroundColor: '#F8F3E7',
                 fontFamily: 'KoHo, sans-serif',
@@ -55,15 +58,14 @@ export const Header2 = () => {
                 alignItems: 'center',
                 padding: '0 16px',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-                transition: 'transform 0.3s ease-in-out',
-                transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+                transition: 'transform 0.3s ease-in-out, top 0.3s ease-in-out', // Include top in transition
             }}
         >
             {/* Logo/Tên */}
-            <Typography 
-                variant="h4" 
+            <Typography
+                variant="h4"
                 sx={{
-                    marginLeft: {md:'100px'},
+                    marginLeft: { md: '100px' },
                     fontWeight: 'bold',
                     color: '#214738',
                 }}
@@ -85,7 +87,7 @@ export const Header2 = () => {
                         onClose={toggleDrawer(false)}
                         PaperProps={{
                             sx: {
-                                backgroundColor: '#FCF9F3', 
+                                backgroundColor: '#FCF9F3',
                             },
                         }}
                     >
@@ -110,7 +112,7 @@ export const Header2 = () => {
                     </Drawer>
                 </>
             ) : (
-                <Box sx={{ display: 'flex', gap: '150px', marginRight: {md:'100px'} }}>
+                <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '100px' } }}>
                     <Typography sx={menuItemStyle}>Sản phẩm</Typography>
                     <Typography sx={menuItemStyle}>Thu mua</Typography>
                     <Typography sx={menuItemStyle}>Tin tức</Typography>
