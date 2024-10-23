@@ -29,9 +29,10 @@ export const Header1 = () => {
     return (
         <Box position='sticky' top={0}
             sx={{
+                zIndex: 10,
                 height: '40px',
                 backgroundColor: '#214738',
-                fontFamily: 'KoHo, sans-serif',
+                fontFamily: 'KoHo',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -43,6 +44,7 @@ export const Header1 = () => {
             {/* Số điện thoại */}
             <Box 
                 sx={{ 
+                    fontFamily: 'KoHo',
                     marginLeft: {md:'100px'},
                     display: 'flex', 
                     alignItems: 'center',
@@ -59,6 +61,7 @@ export const Header1 = () => {
                 />
                 <Typography
                     sx={{
+                        fontFamily: 'KoHo',
                         color: '#FCF9F3',
                         position: 'relative',
                         '&:hover': {

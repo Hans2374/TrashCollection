@@ -36,6 +36,7 @@ export const Header2 = () => {
     };
 
     const menuItemStyle = {
+        fontFamily: 'KoHo',
         color: '#214738',
         fontSize: '20px',
         transition: 'font-weight 0.2s, text-shadow 0.2s',
@@ -48,11 +49,12 @@ export const Header2 = () => {
     return (
         <Box
             sx={{
+                zIndex: 10,
                 position: 'sticky',
                 top: visible ? (lastScrollY > 0 ? '40px' : '461px') : '-100px', // Adjust top based on scroll position
                 height: '100px',
                 backgroundColor: '#F8F3E7',
-                fontFamily: 'KoHo, sans-serif',
+                fontFamily: 'KoHo',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -65,6 +67,7 @@ export const Header2 = () => {
             <Typography
                 variant="h4"
                 sx={{
+                    fontFamily: 'KoHo',
                     marginLeft: { md: '100px' },
                     fontWeight: 'bold',
                     color: '#214738',
@@ -98,7 +101,7 @@ export const Header2 = () => {
                                         sx={{
                                             justifyContent: 'center',
                                             textAlign: 'center',
-                                            fontFamily: 'KoHo, sans-serif',
+                                            fontFamily: 'KoHo',
                                             color: '#214738',
                                             transition: 'font-weight 0.2s, text-shadow 0.2s',
                                             '&:hover': {
@@ -112,7 +115,7 @@ export const Header2 = () => {
                     </Drawer>
                 </>
             ) : (
-                <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '100px' } }}>
+                <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '200px' } }}>
                     <Typography sx={menuItemStyle}>Sản phẩm</Typography>
                     <Typography sx={menuItemStyle}>Thu mua</Typography>
                     <Typography sx={menuItemStyle}>Tin tức</Typography>

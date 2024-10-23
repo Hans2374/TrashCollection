@@ -7,6 +7,7 @@ export const Footer = () => {
     return (
         <Box
             sx={{
+                fontFamily: 'KoHo',
                 height: 'auto',
                 backgroundColor: '#214738',
                 color: '#F8F3E7',
@@ -19,7 +20,7 @@ export const Footer = () => {
             }}
         >
             <Box sx={{ textAlign: 'left', flex: 1 }}>
-                <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '20px', marginTop: '50px', marginLeft: { md: '150px' },}}>
+                <Typography variant="h5" sx={{ fontFamily: 'KoHo', fontWeight: 'bold', marginBottom: '20px', marginTop: '50px', marginLeft: { md: '150px' },}}>
                     LOGO/TÊN
                 </Typography>
 
@@ -27,6 +28,7 @@ export const Footer = () => {
                     <Box key={index} sx={{ display: 'flex', alignItems: 'center', marginBottom: '10px', marginLeft: { md: '150px' }, }}>
                         <Box
                             sx={{
+                                fontFamily: 'KoHo',
                                 width: '8px',
                                 height: '8px',
                                 borderRadius: '50%',
@@ -40,6 +42,7 @@ export const Footer = () => {
 
                 <Typography
                     sx={{
+                        fontFamily: 'KoHo',
                         marginLeft: { md: '150px' },
                         color: '#F8F3E7',
                         textDecoration: 'none',
@@ -49,11 +52,11 @@ export const Footer = () => {
                 >
                     Email: hotro@gmail.com
                 </Typography>
-                <Typography sx={{ marginBottom: '20px', marginLeft: { md: '150px' }, }}>
+                <Typography sx={{ fontFamily: 'KoHo', marginBottom: '20px', marginLeft: { md: '150px' }, }}>
                     Địa chỉ: 256 Bình Thạnh, BHH B, Q. Bình Tân, Tp.HCM
                 </Typography>
 
-                <Box sx={{ display: 'flex', gap: '20px', marginTop: '20px', marginBottom: '50px', marginLeft: { md: '150px' }, }}>
+                <Box sx={{ fontFamily: 'KoHo', display: 'flex', gap: '20px', marginTop: '20px', marginBottom: '50px', marginLeft: { md: '150px' }, }}>
                     <Facebook sx={{ color: '#F8F3E7', '&:hover': { color: '#1877F2' } }} />
                     <YouTube sx={{ color: '#F8F3E7', '&:hover': { color: '#FF0000' } }} />
                     <Instagram sx={{ color: '#F8F3E7', '&:hover': { color: '#E1306C' } }} />
