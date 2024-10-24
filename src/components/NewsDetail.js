@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
@@ -6,16 +6,25 @@ import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
 
-const News = () => {
-    const [selectedMenu, setSelectedMenu] = useState('Môi trường');
+const NewsDetail = () => {
 
-    const menuItems = ['Tin tức', 'Biến đổi khí hậu', 'Khoa học và Công nghệ', 'Chất thải', 'Môi trường'];
     const [visibleRows, setVisibleRows] = useState(2);
-    const articlesPerRow = 4; 
+    const articlesPerRow = 4;
 
-    const handleMenuItemClick = (item) => {
-        setSelectedMenu(item);
-    };
+    const scrollContainerRef = useRef(null);
+    useEffect(() => {
+        const scrollInterval = setInterval(() => {
+            if (scrollContainerRef.current) {
+                scrollContainerRef.current.scrollBy({
+                    top: 2,
+                    behavior: 'smooth',
+                });
+            }
+        }, 50);
+
+        return () => clearInterval(scrollInterval);
+    }, []);
+
 
     const articles = [
         {
@@ -34,24 +43,6 @@ const News = () => {
             title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong bối cảnh chống biến đổi khí hậu",
             image: "images/news3.png",
         },
-    ];
-
-    const articlesList = [
-        {
-            id: 1,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
-        },
-        {
-            id: 2,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
-        },
-        {
-            id: 3,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
-        },
         {
             id: 4,
             title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
@@ -64,8 +55,8 @@ const News = () => {
         },
         {
             id: 6,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
+            image: "images/news2.png",
         },
         {
             id: 7,
@@ -117,15 +108,13 @@ const News = () => {
             title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
             image: "images/news3.png",
         },
-
     ];
 
     const loadMoreArticles = () => {
-        setVisibleRows(visibleRows + 1); 
+        setVisibleRows(visibleRows + 1);
     };
 
-    const visibleArticles = articlesList.slice(0, visibleRows * articlesPerRow);
-
+    const visibleArticles = articles.slice(0, visibleRows * articlesPerRow);
 
     return (
         <>
@@ -205,70 +194,12 @@ const News = () => {
                     paddingBottom: '50px'
                 }}
             >
-                {/* Main title */}
-                <Typography
-                    sx={{
-                        color: `${colors.color2}`,
-                        marginLeft: { xs: '16px', md: '119px' },
-                        fontFamily: 'KoHo',
-                        fontSize: '25px',
-                        fontWeight: '700',
-                        textTransform: 'uppercase',
-                        marginBottom: '15px',
-                    }}
-                >
-                    {selectedMenu}
-                </Typography>
-
-                {/* Menu items container */}
-                <Box
-                    sx={{
-                        alignItems: 'center',
-                        borderTop: '1px solid rgba(33, 71, 56, 0.3)',
-                        borderBottom: '1px solid rgba(33, 71, 56, 0.3)',
-                        display: 'flex',
-                        marginLeft: { xs: '15px', md: '117px' },
-                        marginRight: { xs: '15px', md: '117px' },
-                        gap: '150px',
-                        overflowX: 'hidden',
-                        whiteSpace: 'nowrap',
-                        '&::-webkit-scrollbar': {
-                            display: 'none', 
-                        },
-                        '&': {
-                            overflowX: 'auto', 
-                        },
-                    }}
-                >
-                    {menuItems.map((item) => (
-                        <Button
-                            key={item}
-                            onClick={() => handleMenuItemClick(item)}
-                            disableRipple
-                            variant="text"
-                            sx={{
-                                fontFamily: 'KoHo',
-                                fontSize: { xs: '16px', md: '18px' },
-                                fontWeight: 400,
-                                color: `${colors.color2}`,
-                                textTransform: 'none',
-                                '&:hover': {
-                                    fontWeight: 600,
-                                    backgroundColor: 'transparent'
-                                },
-                            }}
-                        >
-                            {item}
-                        </Button>
-                    ))}
-                </Box>
 
                 <Box
                     sx={{
-                        borderBottom: '1px solid rgba(33, 71, 56, 0.3)',
                         display: 'flex',
-                        marginLeft: { xs: 0, md: '118px' }, 
-                        marginRight: { xs: 0, md: '118px' }, 
+                        marginLeft: { xs: 0, md: '118px' },
+                        marginRight: { xs: 0, md: '118px' },
                         gap: '20px',
                         alignItems: 'stretch',
                     }}
@@ -284,29 +215,15 @@ const News = () => {
                             flexDirection: 'column',
                         }}
                     >
-                        <Box
-                            component="img"
-                            src={articles[0].image}
-                            alt={articles[0].title}
-                            sx={{
-                                width: '100%', height: '100%', borderRadius: '9px', marginTop: '30px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out', // Smooth transition
-                                '&:hover': {
-                                    transform: 'scale(1.02)', 
-                                },
-                            }}
-                        />
                         <Typography
                             sx={{
-                                cursor: 'pointer',
                                 marginLeft: { xs: '4px', md: '0px' },
                                 marginRight: { xs: '15px', md: '0px' },
-                                marginTop: '10px',
                                 marginBottom: '10px',
-                                color: 'black',
+                                color: `${colors.color2}`,
                                 fontFamily: 'KoHo',
-                                fontSize: '20px',
+                                fontSize: '30px',
                                 fontWeight: 600,
-                                '&:hover': { color: `${colors.color2}` },
                             }}
                         >
                             {articles[0].title}
@@ -314,71 +231,190 @@ const News = () => {
                         <Typography
                             sx={{
                                 marginLeft: { xs: '4px', md: '0px' },
+                                marginTop: '10px',
+                                marginBottom: '10px',
+                                color: 'rgba(33, 71, 56, 0.5)',
+                                fontFamily: 'KoHo',
+                                fontSize: '15px',
+                            }}
+                        >
+                            Nguyễn Thịnh     |     24/10/2024
+                        </Typography>
+                        <Typography
+                            sx={{
+                                marginLeft: { xs: '4px', md: '0px' },
                                 marginRight: { xs: '15px', md: '0px' },
+                                marginTop: '10px',
                                 color: `${colors.color2}`,
                                 fontFamily: 'KoHo',
                                 fontSize: '16px',
                                 paddingBottom: '15px',
+                                fontWeight: 600,
                             }}
                         >
                             {articles[0].summary}
                         </Typography>
+                        <Typography
+                            sx={{
+                                marginLeft: { xs: '4px', md: '0px' },
+                                marginRight: { xs: '4px', md: '0px' },
+                                marginBottom: '20px',
+                                color: `${colors.color2}`,
+                                fontFamily: 'KoHo',
+                                fontSize: '16px',
+                            }}
+                        >
+                            Trong khi đó, Trung và Nam Trung Bộ có mưa rào và dông rải rác, riêng phía Nam cục bộ có nơi mưa to, tập trung vào chiều và đêm.
+                            Tây Nguyên và Nam Bộ tiếp tục mưa, mưa vừa và rải rác có dông, cục bộ có nơi mưa to đến rất to; cảnh báo nguy cơ có mưa cục bộ cường
+                            suất lớn. Ở khu vực Nam Trung Bộ và phía Bắc Tây Nguyên có mưa rào và dông rải rác, cục bộ có nơi mưa to với lượng mưa từ 10-30mm,
+                            cục bộ có nơi trên 50mm. Trong mưa dông có khả năng xảy ra lốc, sét và gió giật mạnh.
+                        </Typography>
+                        <Box
+                            component="img"
+                            src={articles[0].image}
+                            alt={articles[0].title}
+                            sx={{
+                                width: '100%', height: '100%', borderRadius: '9px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out',
+                            }}
+                        />
+                        <Typography
+                            sx={{
+                                marginLeft: { xs: '4px', md: '0px' },
+                                marginRight: { xs: '4px', md: '0px' },
+                                marginTop: '20px',
+                                color: `${colors.color2}`,
+                                fontFamily: 'KoHo',
+                                fontSize: '16px',
+                            }}
+                        >
+                            Hà Nội: Có mây, có mưa vài nơi, trưa chiều trời nắng; chiều tối và đêm có mưa, mưa rào rải rác. Gió nhẹ.<br />
+                            Nhiệt độ thấp nhất : 24-26 độ.<br />
+                            Nhiệt độ cao nhất : 31-33 độ.<br /><br />
+
+                            Phía Tây Bắc Bộ: Có mây, ngày nắng, chiều tối và đêm có mưa rào và dông vài nơi. Gió nhẹ.<br />
+                            Nhiệt độ thấp nhất : 22-25 độ, có nơi dưới 21 độ.<br />
+                            Nhiệt độ cao nhất : 29-32 độ, có nơi trên 32 độ.<br /><br />
+
+                            Phía Đông Bắc Bộ: Có mây, ngày nắng, riêng vùng núi nhiều mây, trưa chiều giảm mây trời nắng; chiều tối và đêm có mưa, mưa rào rải rác và có nơi có dông. Gió nhẹ. Trong mưa dông có khả năng xảy ra lốc, sét và gió giật mạnh.<br />
+                            Nhiệt độ thấp nhất: 23-26 độ, vùng núi có nơi dưới 23 độ.<br />
+                            Nhiệt độ cao nhất : 29-32 độ, có nơi trên 32 độ.<br /> <br />
+
+                            Trong khi đó, Trung và Nam Trung Bộ có mưa rào và dông rải rác, riêng phía Nam cục bộ có nơi mưa to, tập trung vào chiều và đêm.
+                            Tây Nguyên và Nam Bộ tiếp tục mưa, mưa vừa và rải rác có dông, cục bộ có nơi mưa to đến rất to; cảnh báo nguy cơ có mưa cục bộ cường
+                            suất lớn. Ở khu vực Nam Trung Bộ và phía Bắc Tây Nguyên có mưa rào và dông rải rác, cục bộ có nơi mưa to với lượng mưa từ 10-30mm,
+                            cục bộ có nơi trên 50mm. Trong mưa dông có khả năng xảy ra lốc, sét và gió giật mạnh.<br />
+                            Trong khi đó, Trung và Nam Trung Bộ có mưa rào và dông rải rác, riêng phía Nam cục bộ có nơi mưa to, tập trung vào chiều và đêm.
+                            Tây Nguyên và Nam Bộ tiếp tục mưa, mưa vừa và rải rác có dông, cục bộ có nơi mưa to đến rất to; cảnh báo nguy cơ có mưa cục bộ cường
+                            suất lớn. Ở khu vực Nam Trung Bộ và phía Bắc Tây Nguyên có mưa rào và dông rải rác, cục bộ có nơi mưa to với lượng mưa từ 10-30mm,
+                            cục bộ có nơi trên 50mm. Trong mưa dông có khả năng xảy ra lốc, sét và gió giật mạnh.<br /> <br />
+
+                            Trong khi đó, Trung và Nam Trung Bộ có mưa rào và dông rải rác, riêng phía Nam cục bộ có nơi mưa to, tập trung vào chiều và đêm.
+                            Tây Nguyên và Nam Bộ tiếp tục mưa, mưa vừa và rải rác có dông, cục bộ có nơi mưa to đến rất to; cảnh báo nguy cơ có mưa cục bộ cường
+                            suất lớn. Ở khu vực Nam Trung Bộ và phía Bắc Tây Nguyên có mưa rào và dông rải rác, cục bộ có nơi mưa to với lượng mưa từ 10-30mm,
+                            cục bộ có nơi trên 50mm. Trong mưa dông có khả năng xảy ra lốc, sét và gió giật mạnh.<br /> <br />
+                        </Typography>
+
                     </Box>
 
-                    {/* Container for the small articles */}
                     <Box
                         sx={{
-                            display: { xs: 'none',sm:'none', md: 'flex' }, 
-                            marginTop: '30px',
+                            display: { xs: 'none', md: 'flex' },
                             flex: 0.4,
                             flexDirection: 'column',
                         }}
                     >
-                        {articles.slice(1).map((article) => (
-                            <Box
-                                key={article.id}
-                                sx={{
-                                    marginBottom: '20px',
-                                    textAlign: 'left',
-                                }}
-                            >
-                                 <Box
-                            component="img"
-                                    src={article.image}
-                                    alt={article.title}
-                                    sx={{ width: '100%', height: '70%', borderRadius: '8px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out', // Smooth transition
-                                        '&:hover': {
-                                            transform: 'scale(1.02)', 
-                                        },
-                                    }}
-                                />
-                                <Typography
+                        {/* Tiêu đề "Tin liên quan" không bị cuộn */}
+                        <Typography
+                            sx={{
+                                textAlign: 'center',
+                                marginBottom: '10px',
+                                color: `${colors.color2}`,
+                                fontFamily: 'KoHo',
+                                fontSize: '25px',
+                                fontWeight: 600,
+                            }}
+                        >
+                            Tin liên quan
+                        </Typography>
+
+                        {/* Container  */}
+                        <Box
+                            ref={scrollContainerRef}
+                            sx={{
+                                height: '1400px',
+                                overflowY: 'auto',
+                                scrollbarWidth: 'none',
+                                '&::-webkit-scrollbar': {
+                                    display: 'none',
+                                },
+                                paddingRight: '10px',
+                            }}
+                        >
+                            {articles.slice(1).map((article) => (
+                                <Box
+                                    key={article.id}
                                     sx={{
-                                        color: 'black',
-                                        fontFamily: 'KoHo',
-                                        fontSize: '16px',
-                                        cursor: 'pointer',
-                                        fontWeight: 600,
-                                        '&:hover': { color: `${colors.color2}` },
+                                        marginTop: '20px',
+                                        marginBottom: '20px',
+                                        textAlign: 'left',
                                     }}
                                 >
-                                    {article.title}
-                                </Typography>
-                            </Box>
-                        ))}
+                                    <Box
+                                        component="img"
+                                        src={article.image}
+                                        alt={article.title}
+                                        sx={{
+                                            width: '100%',
+                                            height: '70%',
+                                            borderRadius: '8px',
+                                            cursor: 'pointer',
+                                            transition: 'transform 0.3s ease-in-out',
+                                            '&:hover': {
+                                                transform: 'scale(1.02)',
+                                            },
+                                        }}
+                                    />
+                                    <Typography
+                                        sx={{
+                                            color: 'black',
+                                            fontFamily: 'KoHo',
+                                            fontSize: '16px',
+                                            cursor: 'pointer',
+                                            fontWeight: 600,
+                                            '&:hover': { color: `${colors.color2}` },
+                                        }}
+                                    >
+                                        {article.title}
+                                    </Typography>
+                                </Box>
+                            ))}
+                        </Box>
                     </Box>
                 </Box>
 
-                {/* orthers articles  */}
+                {/* orthers articles */}
                 <Box
                     sx={{
+                        display: { md: 'none' },
                         marginTop: '50px',
                         textAlign: 'left',
                         marginLeft: { xs: '16px', md: '119px' },
                         marginRight: { xs: '16px', md: '103px' },
                     }}
                 >
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: {sm: '40px', md: '20px'} }}>
+                    <Typography
+                        sx={{
+                            textAlign: 'center',
+                            marginBottom: '20px',
+                            color: `${colors.color2}`,
+                            fontFamily: 'KoHo',
+                            fontSize: '25px',
+                            fontWeight: 600,
+                        }}
+                    >
+                        Tin liên quan
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                         {visibleArticles.map((article) => (
                             <Box
                                 key={article.id}
@@ -396,9 +432,9 @@ const News = () => {
                                         borderRadius: '9px',
                                         height: '180px',
                                         cursor: 'pointer',
-                                        transition: 'transform 0.3s ease-in-out', 
+                                        transition: 'transform 0.3s ease-in-out',
                                         '&:hover': {
-                                            transform: 'scale(1.05)', 
+                                            transform: 'scale(1.05)',
                                         },
                                     }}
                                 />
@@ -419,7 +455,7 @@ const News = () => {
                         ))}
                     </Box>
 
-                    {visibleRows * articlesPerRow < articlesList.length && (
+                    {visibleRows * articlesPerRow < articles.length && (
                         <Button
                             onClick={loadMoreArticles}
                             sx={{
@@ -439,7 +475,6 @@ const News = () => {
                         </Button>
                     )}
                 </Box>
-
             </Box>
 
             <Footer />
@@ -447,4 +482,4 @@ const News = () => {
     );
 };
 
-export default News;
+export default NewsDetail;
