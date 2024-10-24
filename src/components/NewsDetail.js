@@ -30,7 +30,6 @@ const NewsDetail = () => {
         {
             id: 1,
             title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            summary: "Theo Trung tâm Dự báo Khí tượng thủy văn Quốc gia, hôm nay 18/10, Bắc Bộ và Bắc Trung Bộ có mưa rào và dông vài nơi, trưa chiều trời nắng. Riêng chiều tối và đêm ở khu vực Tây Bắc, Việt Bắc có mưa rào rải rác và có nơi có dông.",
             image: "images/news1.png",
         },
         {
@@ -40,73 +39,75 @@ const NewsDetail = () => {
         },
         {
             id: 3,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong bối cảnh chống biến đổi khí hậu",
+            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
             image: "images/news3.png",
         },
         {
             id: 4,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Triều cường kết hợp mưa lớn, Nam Bộ nhiều khả năng ngập úng vùng trũng thấp",
+            image: "images/news4.png",
         },
         {
             id: 5,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Dự báo mùa mưa kết thúc muộn hơn bình thường",
+            image: "images/news5.png",
         },
         {
             id: 6,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
+            image: "images/news6.png",
         },
+        
         {
             id: 7,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
+            image: "images/news2.png",
         },
         {
             id: 8,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
+            image: "images/news3.png",
         },
         {
             id: 9,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Triều cường kết hợp mưa lớn, Nam Bộ nhiều khả năng ngập úng vùng trũng thấp",
+            image: "images/news4.png",
         },
         {
             id: 10,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Dự báo mùa mưa kết thúc muộn hơn bình thường",
+            image: "images/news5.png",
         },
         {
             id: 11,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
+            image: "images/news6.png",
         },
+        
         {
             id: 12,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
+            image: "images/news2.png",
         },
         {
             id: 13,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
+            image: "images/news3.png",
         },
         {
             id: 14,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Triều cường kết hợp mưa lớn, Nam Bộ nhiều khả năng ngập úng vùng trũng thấp",
+            image: "images/news4.png",
         },
         {
             id: 15,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Dự báo mùa mưa kết thúc muộn hơn bình thường",
+            image: "images/news5.png",
         },
         {
             id: 16,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
+            image: "images/news6.png",
         },
     ];
 
@@ -124,7 +125,7 @@ const NewsDetail = () => {
             {/* Background image */}
             <Box
                 sx={{
-                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/news.png)`,
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/newMain.png)`,
                     height: '421px',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -160,7 +161,7 @@ const NewsDetail = () => {
                             fontWeight: 700,
                             lineHeight: { xs: '30px', sm: '46.8px' },
                             color: `${colors.color2}`,
-                            textAlign: 'left',
+                            textAlign: 'center',
                             marginBottom: '8px',
                         }}
                     >
@@ -172,11 +173,10 @@ const NewsDetail = () => {
                         sx={{
                             padding: '10px 20px 5px 20px',
                             fontFamily: 'KoHo',
-                            fontSize: { xs: '14px', sm: '16px' },
+                            fontSize: { xs: '14px', sm: '16px', md: '17px' },
                             fontWeight: 400,
-                            lineHeight: '20.8px',
                             color: `${colors.color2}`,
-                            textAlign: 'left',
+                            textAlign: 'center',
                         }}
                     >
                         Cung cấp những bài viết, cập nhật mới nhất về các chính sách bảo vệ môi trường và những sáng kiến xanh trên toàn thế giới.

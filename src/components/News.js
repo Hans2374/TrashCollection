@@ -8,7 +8,6 @@ import colors from '../colors';
 
 const News = () => {
     const [selectedMenu, setSelectedMenu] = useState('Môi trường');
-
     const menuItems = ['Tin tức', 'Biến đổi khí hậu', 'Khoa học và Công nghệ', 'Chất thải', 'Môi trường'];
     const [visibleRows, setVisibleRows] = useState(2);
     const articlesPerRow = 4; 
@@ -54,68 +53,70 @@ const News = () => {
         },
         {
             id: 4,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Triều cường kết hợp mưa lớn, Nam Bộ nhiều khả năng ngập úng vùng trũng thấp",
+            image: "images/news4.png",
         },
         {
             id: 5,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Dự báo mùa mưa kết thúc muộn hơn bình thường",
+            image: "images/news5.png",
         },
         {
             id: 6,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
+            image: "images/news6.png",
         },
+        
         {
             id: 7,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
+            image: "images/news2.png",
         },
         {
             id: 8,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
+            image: "images/news3.png",
         },
         {
             id: 9,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Triều cường kết hợp mưa lớn, Nam Bộ nhiều khả năng ngập úng vùng trũng thấp",
+            image: "images/news4.png",
         },
         {
             id: 10,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Dự báo mùa mưa kết thúc muộn hơn bình thường",
+            image: "images/news5.png",
         },
         {
             id: 11,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
+            image: "images/news6.png",
         },
+        
         {
             id: 12,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
+            image: "images/news2.png",
         },
         {
             id: 13,
-            title: "Dự báo thời tiết 18/10: Miền Bắc ngày nắng, mưa rào rải rác",
-            image: "images/news1.png",
+            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
+            image: "images/news3.png",
         },
         {
             id: 14,
-            title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
-            image: "images/news2.png",
+            title: "Triều cường kết hợp mưa lớn, Nam Bộ nhiều khả năng ngập úng vùng trũng thấp",
+            image: "images/news4.png",
         },
         {
             id: 15,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Dự báo mùa mưa kết thúc muộn hơn bình thường",
+            image: "images/news5.png",
         },
         {
             id: 16,
-            title: "Nghiên cứu khởi động lại dự án điện hạt nhân trong chống biến đổi khí hậu",
-            image: "images/news3.png",
+            title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
+            image: "images/news6.png",
         },
 
     ];
@@ -135,7 +136,7 @@ const News = () => {
             {/* Background image */}
             <Box
                 sx={{
-                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/news.png)`,
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/newMain.png)`,
                     height: '421px',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -171,7 +172,7 @@ const News = () => {
                             fontWeight: 700,
                             lineHeight: { xs: '30px', sm: '46.8px' },
                             color: `${colors.color2}`,
-                            textAlign: 'left',
+                            textAlign: 'center',
                             marginBottom: '8px',
                         }}
                     >
@@ -183,11 +184,10 @@ const News = () => {
                         sx={{
                             padding: '10px 20px 5px 20px',
                             fontFamily: 'KoHo',
-                            fontSize: { xs: '14px', sm: '16px' },
+                            fontSize: { xs: '14px', sm: '16px', md: '17px' },
                             fontWeight: 400,
-                            lineHeight: '20.8px',
                             color: `${colors.color2}`,
-                            textAlign: 'left',
+                            textAlign: 'center',
                         }}
                     >
                         Cung cấp những bài viết, cập nhật mới nhất về các chính sách bảo vệ môi trường và những sáng kiến xanh trên toàn thế giới.
@@ -263,6 +263,7 @@ const News = () => {
                     ))}
                 </Box>
 
+                {/* articles content */}
                 <Box
                     sx={{
                         borderBottom: '1px solid rgba(33, 71, 56, 0.3)',
