@@ -1,41 +1,9 @@
 /* src/components/Login.css */
-.fade-enter {
-    opacity: 0;
+.custom-input::placeholder {
+    color: var(--color1); /* Use the CSS variable */
+    opacity: 1; /* Ensure the color is fully opaque */
 }
 
-.fade-enter-active {
-    opacity: 1;
-    transition: opacity 300ms;
-}
-
-.fade-exit {
-    opacity: 1;
-}
-
-.fade-exit-active {
-    opacity: 0;
-    transition: opacity 300ms;
-}
-
-.flip-enter {
-    transform: rotateY(90deg);
-}
-
-.flip-enter-active {
-    transform: rotateY(0deg);
-    transition: transform 300ms;
-}
-
-.flip-exit {
-    transform: rotateY(0deg);
-}
-
-.flip-exit-active {
-    transform: rotateY(90deg);
-    transition: transform 300ms;
-}
-
-/* src/components/Login.css */
 .slide-text {
     display: inline-block;
     position: relative;

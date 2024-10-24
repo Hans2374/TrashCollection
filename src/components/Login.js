@@ -1,43 +1,85 @@
-import React, { useState } from 'react';
-import { Box, Typography, TextField, Button, InputAdornment, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, Button, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import colors from '../colors';
-import './Login.css'; // Import the CSS file for animations
+import './Login.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [verificationCode, setVerificationCode] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [errors, setErrors] = useState({ username: '', password: '', confirmPassword: '' });
+    const [errors, setErrors] = useState({ username: '', password: '', confirmPassword: '', email: '', verificationCode: '' });
     const [isRegister, setIsRegister] = useState(false);
+    const [isForgotPassword, setIsForgotPassword] = useState(false);
     const [animate, setAnimate] = useState(false);
+    const [countdown, setCountdown] = useState(0);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isResetPassword, setIsResetPassword] = useState(false);
+
+    useEffect(() => {
+        let timer;
+        if (countdown > 0) {
+            timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+        }
+        return () => clearTimeout(timer);
+    }, [countdown]);
+
+    useEffect(() => {
+        let messageTimer;
+        if (successMessage) {
+            messageTimer = setTimeout(() => setSuccessMessage(''), 10000); // Clear message after 10 seconds
+        }
+        return () => clearTimeout(messageTimer);
+    }, [successMessage]);
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
     const handleMouseDownPassword = (event) => event.preventDefault();
 
     const validate = () => {
-        let tempErrors = { username: '', password: '', confirmPassword: '' };
+        let tempErrors = { username: '', password: '', confirmPassword: '', email: '', verificationCode: '' };
         let isValid = true;
 
-        if (!username) {
-            tempErrors.username = 'Tên username hoặc email không được để trống';
-            isValid = false;
-        } else if (!/\S+@\S+\.\S+/.test(username)) {
-            tempErrors.username = 'Email không đúng định dạng';
-            isValid = false;
-        }
+        if (isForgotPassword) {
+            if (!email) {
+                tempErrors.email = 'Email không được để trống';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                tempErrors.email = 'Email không đúng định dạng';
+                isValid = false;
+            }
 
-        if (!password) {
-            tempErrors.password = 'Mật khẩu không được để trống';
-            isValid = false;
-        }
+            if (!verificationCode) {
+                tempErrors.verificationCode = 'Mã xác minh không được để trống';
+                isValid = false;
+            }
 
-        if (isRegister && password !== confirmPassword) {
-            tempErrors.confirmPassword = 'Mật khẩu xác nhận không khớp';
-            isValid = false;
+            if ((isRegister || isResetPassword) && password !== confirmPassword) {
+                tempErrors.confirmPassword = 'Mật khẩu xác nhận không khớp';
+                isValid = false;
+            }
+        } else {
+            if (!username && !isForgotPassword && !isResetPassword) {
+                tempErrors.username = 'Tên username hoặc email không được để trống';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(username) && !isForgotPassword && !isResetPassword) {
+                tempErrors.username = 'Email không đúng định dạng';
+                isValid = false;
+            }
+
+            if (!password) {
+                tempErrors.password = 'Mật khẩu không được để trống';
+                isValid = false;
+            }
+
+            if ((isRegister || isResetPassword) && password !== confirmPassword) {
+                tempErrors.confirmPassword = 'Mật khẩu xác nhận không khớp';
+                isValid = false;
+            }
         }
 
         setErrors(tempErrors);
@@ -47,7 +89,28 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validate()) {
-            // Handle successful validation
+            if (isForgotPassword) {
+                // Simulate successful verification
+                if (verificationCode === '123456') { // Example verification code
+                    setIsResetPassword(true);
+                    setIsForgotPassword(false);
+                    // Clear the form state
+                    setEmail('');
+                    setVerificationCode('');
+                    setErrors({ email: '', verificationCode: '' });
+                } else {
+                    setErrors({ ...errors, verificationCode: 'Mã xác minh không đúng' });
+                }
+            } else if (isResetPassword) {
+                // Handle password reset logic here
+                setIsResetPassword(false);
+                setUsername('');
+                setPassword('');
+                setConfirmPassword('');
+                setErrors({ username: '', password: '', confirmPassword: '' });
+            } else {
+                // Handle successful validation for login or register
+            }
         }
     };
 
@@ -55,8 +118,58 @@ const Login = () => {
         setAnimate(true);
         setTimeout(() => {
             setIsRegister(!isRegister);
+            setIsForgotPassword(false); // Reset the forgot password state
+            setIsResetPassword(false); // Reset the reset password state
+            setUsername('');
+            setPassword('');
+            setConfirmPassword('');
+            setEmail('');
+            setVerificationCode('');
+            setErrors({ username: '', password: '', confirmPassword: '', email: '', verificationCode: '' });
             setAnimate(false);
         }, 500); // Duration of the animation
+    };
+
+    const handleForgotPassword = () => {
+        setAnimate(true);
+        setTimeout(() => {
+            setIsForgotPassword(true);
+            setUsername('');
+            setPassword('');
+            setConfirmPassword('');
+            setErrors({ username: '', password: '', confirmPassword: '', email: '', verificationCode: '' });
+            setAnimate(false);
+        }, 500); // Duration of the animation
+    };
+
+    const handleCancelForgotPassword = () => {
+        setAnimate(true);
+        setTimeout(() => {
+            setIsForgotPassword(false);
+            setEmail('');
+            setVerificationCode('');
+            setErrors({ email: '', verificationCode: '' });
+            setAnimate(false);
+        }, 500); // Duration of the animation
+    };
+
+    const handleCancelResetPassword = () => {
+        setAnimate(true);
+        setTimeout(() => {
+            setIsResetPassword(false);
+            setIsForgotPassword(false);
+            setUsername('');
+            setPassword('');
+            setConfirmPassword('');
+            setErrors({ username: '', password: '', confirmPassword: '' });
+            setAnimate(false);
+        }, 500); // Duration of the animation
+    };
+
+    const handleSendCode = () => {
+        // Implement the logic to send the verification code here
+        setCountdown(60); // Start the countdown from 60 seconds
+        setSuccessMessage('Mã xác minh đã được gửi thành công!');
     };
 
     return (
@@ -110,121 +223,286 @@ const Login = () => {
                     backgroundPosition: 'center',
                 }}
             >
-                <Box p={3} className={animate ? 'form-slide-up' : 'form-slide-down'} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '450px' }}>
-                    <Typography variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>{isRegister ? 'Đăng ký' : 'Đăng nhập'}</Typography>
-                    <TextField
-                        label={isRegister ? "Tên người dùng" : "Tên username hoặc email"}
-                        variant="filled"
-                        margin="normal"
-                        fullWidth
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        error={!!errors.username}
-                        helperText={errors.username}
-                        InputProps={{
-                            style: {
-                                backgroundColor: colors.color2,
-                                borderRadius: '20px 20px 0px 0px',
-                                opacity: 0.6,
-                                color: colors.color1,
-                                border: 'none',
-                            },
-                        }}
-                        InputLabelProps={{
-                            style: { color: colors.color1 },
-                        }}
-                    />
-                    <TextField
-                        label="Mật khẩu"
-                        type={showPassword ? 'text' : 'password'}
-                        variant="filled"
-                        margin="normal"
-                        fullWidth
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        error={!!errors.password}
-                        helperText={errors.password}
-                        InputProps={{
-                            style: {
-                                backgroundColor: colors.color2,
-                                borderRadius: '20px 20px 0px 0px',
-                                opacity: 0.6,
-                                color: colors.color1,
-                            },
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                        sx={{ mr: 0 }}
-                                    >
-                                        {showPassword ? <VisibilityOff sx={{ color: colors.color1 }} /> : <Visibility sx={{ color: colors.color1 }} />}
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                        InputLabelProps={{
-                            style: { color: colors.color1 },
-                        }}
-                    />
-                    {isRegister && (
-                        <TextField
-                            label="Xác nhận mật khẩu"
-                            type={showConfirmPassword ? 'text' : 'password'}
-                            variant="filled"
-                            margin="normal"
-                            fullWidth
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            error={!!errors.confirmPassword}
-                            helperText={errors.confirmPassword}
-                            InputProps={{
-                                style: {
-                                    backgroundColor: colors.color2,
-                                    borderRadius: '20px 20px 0px 0px',
-                                    opacity: 0.6,
-                                    color: colors.color1,
-                                    marginBottom: '20px',
-                                },
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={handleClickShowConfirmPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                            sx={{ mr: 0 }}
-                                        >
-                                            {showConfirmPassword ? <VisibilityOff sx={{ color: colors.color1 }} /> : <Visibility sx={{ color: colors.color1 }} />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                            InputLabelProps={{
-                                style: { color: colors.color1 },
-                            }}
-                        />
-                    )}
-                    <Button
-                        variant="contained"
-                        style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px' }}
-                        sx={{ marginTop: '30px' }}
-                        onClick={handleSubmit}
-                    >
-                        {isRegister ? 'Đăng ký' : 'Đăng nhập'}
-                    </Button>
-                    {!isRegister && (
-                        <Box display="flex" justifyContent='space-between' mt={3}>
-                            <Button style={{ color: colors.color2 }}>Quên mật khẩu?</Button>
-                            <Box>
-                                <IconButton>
-                                    <img src={`${process.env.PUBLIC_URL}/images/facebook.png`} alt="Facebook" style={{ width: '24px', height: '24px' }} />
-                                </IconButton>
-                                <IconButton>
-                                    <img src={`${process.env.PUBLIC_URL}/images/gmail.png`} alt="Gmail" style={{ width: '24px', height: '24px' }} />
-                                </IconButton>
+                <Box p={3} className={animate ? 'form-slide-up' : 'form-slide-down'} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '410px' }}>
+                    {!isForgotPassword && !isResetPassword && (
+                        <>
+                            {/* Login or Register Form */}
+                            <Typography variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
+                                {isRegister ? 'Đăng ký' : 'Đăng nhập'}
+                            </Typography>
+                            <Box sx={{ position: 'relative', width: '96%' }}>
+                                <input
+                                    type="text"
+                                    placeholder={"Tên username hoặc email"}
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    className="custom-input"
+                                    style={{
+                                        backgroundColor: colors.color2,
+                                        borderRadius: '20px',
+                                        opacity: 0.3,
+                                        color: colors.color1,
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '33px',
+                                        margin: 'normal',
+                                        padding: '10px',
+                                        fontSize: '20px',
+                                    }}
+                                />
+                                {errors.username && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.username}</span>}
                             </Box>
-                        </Box>
+
+                            <Box sx={{ position: 'relative', marginTop: '30px', width: '96%' }}>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder="Mật khẩu"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="custom-input"
+                                    style={{
+                                        backgroundColor: colors.color2,
+                                        borderRadius: '20px',
+                                        opacity: 0.3,
+                                        color: colors.color1,
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '33px',
+                                        margin: 'normal',
+                                        padding: '10px',
+                                        fontSize: '20px',
+                                    }}
+                                />
+                                <IconButton
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    sx={{ position: 'absolute', right: '-10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                                {errors.password && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.password}</span>}
+                            </Box>
+
+                            {isRegister && (
+                                <Box sx={{ position: 'relative', marginTop: '30px', width: '96%' }}>
+                                    <input
+                                        type={showConfirmPassword ? 'text' : 'password'}
+                                        placeholder="Xác nhận mật khẩu"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        className="custom-input"
+                                        style={{
+                                            backgroundColor: colors.color2,
+                                            borderRadius: '20px',
+                                            opacity: 0.3,
+                                            color: colors.color1,
+                                            border: 'none',
+                                            width: '100%',
+                                            height: '33px',
+                                            margin: 'normal',
+                                            padding: '10px',
+                                            fontSize: '20px',
+                                        }}
+                                    />
+                                    <IconButton
+                                        onClick={handleClickShowConfirmPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        sx={{ position: 'absolute', right: '-10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
+                                    >
+                                        {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                    {errors.confirmPassword && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.confirmPassword}</span>}
+                                </Box>
+                            )}
+                            <Button
+                                variant="contained"
+                                style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px' }}
+                                sx={{ marginTop: '60px' }}
+                                onClick={handleSubmit}
+                            >
+                                {isRegister ? 'Đăng ký' : 'Đăng nhập'}
+                            </Button>
+                            {!isRegister && (
+                                <Box display="flex" justifyContent='space-between' mt={3}>
+                                    <Button style={{ color: colors.color2 }} onClick={handleForgotPassword}>Quên mật khẩu?</Button>
+                                    <Box>
+                                        <IconButton>
+                                            <img src={`${process.env.PUBLIC_URL}/images/facebook.png`} alt="Facebook" style={{ width: '24px', height: '24px' }} />
+                                        </IconButton>
+                                        <IconButton>
+                                            <img src={`${process.env.PUBLIC_URL}/images/gmail.png`} alt="Gmail" style={{ width: '24px', height: '24px' }} />
+                                        </IconButton>
+                                    </Box>
+                                </Box>
+                            )}
+                        </>
+                    )}
+
+                    {isForgotPassword && !isResetPassword && (
+                        <>
+                            {/* Forgot Password Form */}
+                            <Typography variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
+                                Quên mật khẩu
+                            </Typography>
+                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="custom-input"
+                                    style={{
+                                        backgroundColor: colors.color2,
+                                        borderRadius: '20px',
+                                        opacity: 0.3,
+                                        color: colors.color1,
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '33px',
+                                        margin: 'normal',
+                                        padding: '10px',
+                                        fontSize: '20px',
+                                    }}
+                                />
+                                {errors.email && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.email}</span>}
+                            </Box>
+
+                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                                <input
+                                    type="text"
+                                    placeholder="Mã xác minh"
+                                    value={verificationCode}
+                                    onChange={(e) => setVerificationCode(e.target.value)}
+                                    className="custom-input"
+                                    style={{
+                                        backgroundColor: colors.color2,
+                                        borderRadius: '20px',
+                                        opacity: 0.3,
+                                        color: colors.color1,
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '33px',
+                                        margin: 'normal',
+                                        padding: '10px',
+                                        fontSize: '20px',
+                                    }}
+                                />
+                                <IconButton
+                                    onClick={handleSendCode}
+                                    disabled={countdown > 0}
+                                    sx={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
+                                >
+                                    {countdown > 0 ? `${countdown}s` : 'Gửi'}
+                                </IconButton>
+                                {errors.verificationCode && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.verificationCode}</span>}
+                            </Box>
+
+                            {successMessage && (
+                                <Typography variant="body2" style={{ color: 'green', position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)', fontSize: '16px' }}>
+                                    {successMessage}
+                                </Typography>
+                            )}
+
+                            <Box display="flex" justifyContent="space-between" mt={10}>
+                                <Button
+                                    variant="contained"
+                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    onClick={handleCancelForgotPassword}
+                                >
+                                    Hủy
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    onClick={handleSubmit}
+                                >
+                                    Xác minh
+                                </Button>
+                            </Box>
+                        </>
+                    )}
+
+                    {isResetPassword && (
+                        <>
+                            {/* Reset Password Form */}
+                            <Typography variant="h4" style={{ color: colors.color2, marginBottom: '50px' }}>
+                                Đặt lại mật khẩu
+                            </Typography>
+                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder="Mật khẩu"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="custom-input"
+                                    style={{
+                                        backgroundColor: colors.color2,
+                                        borderRadius: '20px',
+                                        opacity: 0.3,
+                                        color: colors.color1,
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '33px',
+                                        margin: 'normal',
+                                        padding: '10px',
+                                        fontSize: '20px',
+                                    }}
+                                />
+                                <IconButton
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    sx={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                                {errors.password && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.password}</span>}
+                            </Box>
+                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                                <input
+                                    type={showConfirmPassword ? 'text' : 'password'}
+                                    placeholder="Xác nhận mật khẩu"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    className="custom-input"
+                                    style={{
+                                        backgroundColor: colors.color2,
+                                        borderRadius: '20px',
+                                        opacity: 0.3,
+                                        color: colors.color1,
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '33px',
+                                        margin: 'normal',
+                                        padding: '10px',
+                                        fontSize: '20px',
+                                    }}
+                                />
+                                <IconButton
+                                    onClick={handleClickShowConfirmPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    sx={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
+                                >
+                                    {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                                {errors.confirmPassword && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.confirmPassword}</span>}
+                            </Box>
+                            <Box display="flex" justifyContent="space-between" mt={10}>
+                                <Button
+                                    variant="contained"
+                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    onClick={handleCancelResetPassword}
+                                >
+                                    Hủy
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    onClick={handleSubmit}
+                                >
+                                    Cập nhật
+                                </Button>
+                            </Box>
+                        </>
                     )}
                 </Box>
             </Box>
