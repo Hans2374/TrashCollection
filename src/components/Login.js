@@ -19,6 +19,7 @@ const Login = () => {
     const [countdown, setCountdown] = useState(0);
     const [successMessage, setSuccessMessage] = useState('');
     const [isResetPassword, setIsResetPassword] = useState(false);
+    const [updateSuccessMessage, setUpdateSuccessMessage] = useState('');
 
     useEffect(() => {
         let timer;
@@ -92,22 +93,34 @@ const Login = () => {
             if (isForgotPassword) {
                 // Simulate successful verification
                 if (verificationCode === '123456') { // Example verification code
-                    setIsResetPassword(true);
-                    setIsForgotPassword(false);
-                    // Clear the form state
-                    setEmail('');
-                    setVerificationCode('');
-                    setErrors({ email: '', verificationCode: '' });
+                    setAnimate(true);
+                    setTimeout(() => {
+                        setIsResetPassword(true);
+                        setIsForgotPassword(false);
+                        // Clear the form state
+                        setEmail('');
+                        setVerificationCode('');
+                        setErrors({ email: '', verificationCode: '' });
+                        setAnimate(false);
+                    }, 500); // Duration of the animation
                 } else {
                     setErrors({ ...errors, verificationCode: 'Mã xác minh không đúng' });
                 }
             } else if (isResetPassword) {
                 // Handle password reset logic here
-                setIsResetPassword(false);
-                setUsername('');
-                setPassword('');
-                setConfirmPassword('');
-                setErrors({ username: '', password: '', confirmPassword: '' });
+                setUpdateSuccessMessage('Mật khẩu đã được cập nhật thành công!');
+                setTimeout(() => {
+                    setAnimate(true);
+                    setTimeout(() => {
+                        setIsResetPassword(false);
+                        setUsername('');
+                        setPassword('');
+                        setConfirmPassword('');
+                        setErrors({ username: '', password: '', confirmPassword: '' });
+                        setUpdateSuccessMessage('');
+                        setAnimate(false);
+                    }, 500); // Duration of the animation
+                }, 5000); // Display success message for 5 seconds
             } else {
                 // Handle successful validation for login or register
             }
@@ -167,9 +180,16 @@ const Login = () => {
     };
 
     const handleSendCode = () => {
-        // Implement the logic to send the verification code here
-        setCountdown(60); // Start the countdown from 60 seconds
-        setSuccessMessage('Mã xác minh đã được gửi thành công!');
+        if (!email) {
+            setErrors({ ...errors, email: 'Email không được để trống' });
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            setErrors({ ...errors, email: 'Email không đúng định dạng' });
+        } else {
+            // Implement the logic to send the verification code here
+            setCountdown(60); // Start the countdown from 60 seconds
+            setSuccessMessage('Mã xác minh đã được gửi thành công!');
+            setErrors({ ...errors, email: '' }); // Clear the email error if any
+        }
     };
 
     return (
@@ -183,6 +203,18 @@ const Login = () => {
                 flex={1}
                 sx={{ backgroundColor: colors.color2, width: '30vw', flex: '0 0 30vw' }}
             >
+                {/* Logo */}
+                <img
+                    src={`${process.env.PUBLIC_URL}/images/logo.png`} // Adjust the path to your logo image
+                    alt="Logo"
+                    style={{
+                        position: 'absolute',
+                        top: '20px',
+                        left: '20px',
+                        width: '50px', // Adjust the size as needed
+                        height: '50px', // Adjust the size as needed
+                    }}
+                />
                 {/* Invisible Inner Box */}
                 <Box
                     display="flex"
@@ -193,13 +225,13 @@ const Login = () => {
                 >
                     <Typography variant="h6" style={{ color: colors.color3, fontSize: '32px', fontWeight: 700, marginBottom: '40px' }}>LOGO/TÊN</Typography>
                     <Box className="slide-text">
-                        <Typography variant="h6" className={animate ? 'slide-up' : 'slide-down'} style={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px' }}>
+                        <Typography variant="h6" className={isRegister ? (animate ? 'slide-up' : 'slide-down') : ''} style={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px' }}>
                             {isRegister ? 'Chào mừng gia nhập!' : 'Chào mừng trở lại!'}
                         </Typography>
                     </Box>
                     <Typography variant="h6" style={{ color: colors.color1, fontSize: '20px', fontWeight: 400, marginBottom: '50px' }}>Cùng chung tay bảo vệ môi trường với những sản phẩm tái chế và dịch vụ của chúng tôi. Hãy bắt đầu ngay để biến những điều cũ thành mới!</Typography>
                     <Box className="slide-text">
-                        <Typography variant="h6" className={animate ? 'slide-up' : 'slide-down'} style={{ color: colors.color1, fontSize: '15px', fontWeight: 400 }}>
+                        <Typography variant="h6" className={isRegister ? (animate ? 'slide-up' : 'slide-down') : ''} style={{ color: colors.color1, fontSize: '15px', fontWeight: 400 }}>
                             {isRegister ? 'Đã có tài khoản?' : 'Chưa có tài khoản?'}
                         </Typography>
                     </Box>
@@ -223,7 +255,7 @@ const Login = () => {
                     backgroundPosition: 'center',
                 }}
             >
-                <Box p={3} className={animate ? 'form-slide-up' : 'form-slide-down'} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '410px' }}>
+                <Box p={3} className={animate ? 'form-slide-up' : 'form-slide-down'} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '410px', position: 'relative' }}>
                     {!isForgotPassword && !isResetPassword && (
                         <>
                             {/* Login or Register Form */}
@@ -398,7 +430,7 @@ const Login = () => {
                             </Box>
 
                             {successMessage && (
-                                <Typography variant="body2" style={{ color: 'green', position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)', fontSize: '16px' }}>
+                                <Typography variant="body2" style={{ color: 'green', position: 'absolute', bottom: '150px', left: '50%', transform: 'translateX(-50%)', fontSize: '16px' }}>
                                     {successMessage}
                                 </Typography>
                             )}
@@ -486,6 +518,11 @@ const Login = () => {
                                 </IconButton>
                                 {errors.confirmPassword && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.confirmPassword}</span>}
                             </Box>
+                            {updateSuccessMessage && (
+                                <Typography variant="body2" style={{ color: 'green', marginTop: '20px', fontSize: '16px', position: 'absolute', transform: 'translateY(-50%)', left: '25%' }}>
+                                    {updateSuccessMessage}
+                                </Typography>
+                            )}
                             <Box display="flex" justifyContent="space-between" mt={10}>
                                 <Button
                                     variant="contained"
