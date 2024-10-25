@@ -1,8 +1,15 @@
+:root {
+  --color1: #FCF9F3;
+  --color2: #214738;
+  --color3: #F8F3E7;
+}
+
 body {
   margin: 0;
   font-family: 'KoHo', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* Disable scrolling */
 }
 
 code {

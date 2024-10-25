@@ -1,0 +1,71 @@
+/* src/components/Login.css */
+.custom-input::placeholder {
+    color: var(--color1);
+    /* Use the CSS variable */
+    opacity: 1;
+    /* Ensure the color is fully opaque */
+}
+
+.slide-text {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: '20px';
+    /* Adjust based on the text size */
+}
+
+.slide-up {
+    animation: slideUp 0.5s forwards;
+}
+
+.slide-down {
+    animation: slideDown 0.5s forwards;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.form-slide-up {
+    animation: formSlideUp 0.5s forwards;
+}
+
+.form-slide-down {
+    animation: formSlideDown 0.5s forwards;
+}
+
+@keyframes formSlideUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes formSlideDown {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
