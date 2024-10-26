@@ -15,12 +15,12 @@ const Login = () => {
     const [errors, setErrors] = useState({ username: '', password: '', confirmPassword: '', email: '', verificationCode: '' });
     const [isRegister, setIsRegister] = useState(false);
     const [isForgotPassword, setIsForgotPassword] = useState(false);
-    const [showForgotPasswordForm, setShowForgotPasswordForm] = useState(false);
     const [animate, setAnimate] = useState(false);
     const [countdown, setCountdown] = useState(0);
     const [successMessage, setSuccessMessage] = useState('');
     const [isResetPassword, setIsResetPassword] = useState(false);
     const [updateSuccessMessage, setUpdateSuccessMessage] = useState('');
+    const [isYesNo, setIsYesNo] = useState(false);
 
     useEffect(() => {
         let timer;
@@ -98,7 +98,6 @@ const Login = () => {
                     setTimeout(() => {
                         setIsResetPassword(true);
                         setIsForgotPassword(false);
-                        setShowForgotPasswordForm(false);
                         // Clear the form state
                         setEmail('');
                         setVerificationCode('');
@@ -120,7 +119,6 @@ const Login = () => {
                         setConfirmPassword('');
                         setErrors({ username: '', password: '', confirmPassword: '' });
                         setUpdateSuccessMessage('');
-                        setShowForgotPasswordForm(false);
                         setAnimate(false);
                     }, 300); // Duration of the animation
                 }, 5000); // Display success message for 5 seconds
@@ -131,6 +129,7 @@ const Login = () => {
     };
 
     const handleToggle = () => {
+        setIsYesNo(true);
         setAnimate(true);
         setTimeout(() => {
             setIsRegister(!isRegister);
@@ -147,14 +146,14 @@ const Login = () => {
     };
 
     const handleForgotPassword = () => {
-        setIsForgotPassword(true);
+        setIsYesNo(false);
         setAnimate(true);
         setTimeout(() => {
+            setIsForgotPassword(true);
             setUsername('');
             setPassword('');
             setConfirmPassword('');
             setErrors({ username: '', password: '', confirmPassword: '', email: '', verificationCode: '' });
-            setShowForgotPasswordForm(true);
             setAnimate(false);
         }, 300); // Duration of the animation
     };
@@ -163,7 +162,6 @@ const Login = () => {
         setAnimate(true);
         setTimeout(() => {
             setIsForgotPassword(false);
-            setShowForgotPasswordForm(false);
             setEmail('');
             setVerificationCode('');
             setErrors({ email: '', verificationCode: '' });
@@ -176,7 +174,6 @@ const Login = () => {
         setTimeout(() => {
             setIsResetPassword(false);
             setIsForgotPassword(false);
-            setShowForgotPasswordForm(false);
             setUsername('');
             setPassword('');
             setConfirmPassword('');
@@ -227,13 +224,13 @@ const Login = () => {
                 >
                     <Typography className={styles.companyName} variant="h6" style={{ color: colors.color3, fontSize: '32px', fontWeight: 700, marginBottom: '40px' }}>LOGO/TÊN</Typography>
                     <Box className={styles.slideText}>
-                        <Typography variant="h6" className={`${styles.welcome} ${!isForgotPassword && !isResetPassword && showForgotPasswordForm ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px' }}>
+                        <Typography variant="h6" className={`${styles.welcome} ${isYesNo ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px' }}>
                             {isRegister ? 'Chào mừng gia nhập!' : 'Chào mừng trở lại!'}
                         </Typography>
                     </Box>
                     <Typography className={styles.leftDescription} variant="h6" style={{ color: colors.color1, fontSize: '20px', fontWeight: 400, marginBottom: '50px' }}>Cùng chung tay bảo vệ môi trường với những sản phẩm tái chế và dịch vụ của chúng tôi. Hãy bắt đầu ngay để biến những điều cũ thành mới!</Typography>
                     <Box className={styles.slideText}>
-                        <Typography variant="h6" className={`${!isForgotPassword && !isResetPassword && showForgotPasswordForm ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '15px', fontWeight: 400 }}>
+                        <Typography variant="h6" className={`${isYesNo ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '15px', fontWeight: 400 }}>
                             {isRegister ? 'Đã có tài khoản?' : 'Chưa có tài khoản?'}
                         </Typography>
                     </Box>
@@ -259,7 +256,7 @@ const Login = () => {
                 }}
             >
                 <Box p={3} className={`${styles.formContainer} ${animate ? styles.slideUp : styles.slideDown}`} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '410px', position: 'relative' }}>
-                    {!showForgotPasswordForm && !isResetPassword && (
+                    {!isForgotPassword && !isResetPassword && (
                         <>
                             {/* Login or Register Form */}
                             <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
@@ -374,7 +371,7 @@ const Login = () => {
                         </>
                     )}
 
-                    {isForgotPassword && showForgotPasswordForm && (
+                    {isForgotPassword && (
                         <>
                             {/* Forgot Password Form */}
                             <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
