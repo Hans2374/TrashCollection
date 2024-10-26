@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, IconButton } from '@mui/material';
+import { Box, Typography, Button, IconButton, Icon } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import colors from '../colors';
 import styles from './Login.module.css';
+import PersonIcon from '@mui/icons-material/Person';
+import LockIcon from '@mui/icons-material/Lock';
+import EmailIcon from '@mui/icons-material/Email';
+import PasswordIcon from '@mui/icons-material/Password';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -262,7 +266,11 @@ const Login = () => {
                             <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
                                 {isRegister ? 'Đăng ký' : 'Đăng nhập'}
                             </Typography>
-                            <Box sx={{ position: 'relative', width: '96%' }}>
+                            <Box sx={{
+                                position: 'relative', width: '100%', backgroundColor: colors.color2,
+                                borderRadius: '20px',
+                                opacity: 0.3,
+                            }}>
                                 <input
                                     type="text"
                                     placeholder={"Tên username hoặc email"}
@@ -271,21 +279,28 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
-                                        borderRadius: '20px',
-                                        opacity: 0.3,
                                         color: colors.color1,
                                         border: 'none',
-                                        width: '100%',
+                                        width: '80%',
                                         height: '33px',
                                         margin: 'normal',
                                         padding: '10px',
+                                        pl: '40px',
                                         fontSize: '20px',
+                                        outline: 'none',
                                     }}
                                 />
+                                <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                                    <PersonIcon />
+                                </Icon>
                                 {errors.username && <span className={styles.errorText}>{errors.username}</span>}
                             </Box>
 
-                            <Box sx={{ position: 'relative', marginTop: '30px', width: '96%' }}>
+                            <Box sx={{
+                                position: 'relative', marginTop: '30px', width: '100%', backgroundColor: colors.color2,
+                                borderRadius: '20px',
+                                opacity: 0.3,
+                            }}>
                                 <input
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="Mật khẩu"
@@ -294,21 +309,23 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
-                                        borderRadius: '20px',
-                                        opacity: 0.3,
                                         color: colors.color1,
                                         border: 'none',
-                                        width: '100%',
+                                        width: '80%',
                                         height: '33px',
                                         margin: 'normal',
                                         padding: '10px',
                                         fontSize: '20px',
+                                        outline: 'none',
                                     }}
                                 />
+                                <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                                    <LockIcon />
+                                </Icon>
                                 <IconButton
                                     onClick={handleClickShowPassword}
                                     onMouseDown={handleMouseDownPassword}
-                                    sx={{ position: 'absolute', right: '-10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
+                                    sx={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
                                 >
                                     {showPassword ? <VisibilityOff /> : <Visibility />}
                                 </IconButton>
@@ -316,7 +333,11 @@ const Login = () => {
                             </Box>
 
                             {isRegister && (
-                                <Box sx={{ position: 'relative', marginTop: '30px', width: '96%' }}>
+                                <Box sx={{
+                                    position: 'relative', marginTop: '30px', width: '100%', backgroundColor: colors.color2,
+                                    borderRadius: '20px',
+                                    opacity: 0.3,
+                                }}>
                                     <input
                                         type={showConfirmPassword ? 'text' : 'password'}
                                         placeholder="Xác nhận mật khẩu"
@@ -325,21 +346,23 @@ const Login = () => {
                                         className={styles.customInput}
                                         style={{
                                             backgroundColor: colors.color2,
-                                            borderRadius: '20px',
-                                            opacity: 0.3,
                                             color: colors.color1,
                                             border: 'none',
-                                            width: '100%',
+                                            width: '80%',
                                             height: '33px',
                                             margin: 'normal',
                                             padding: '10px',
                                             fontSize: '20px',
+                                            outline: 'none',
                                         }}
                                     />
+                                    <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                                        <LockIcon />
+                                    </Icon>
                                     <IconButton
                                         onClick={handleClickShowConfirmPassword}
                                         onMouseDown={handleMouseDownPassword}
-                                        sx={{ position: 'absolute', right: '-10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
+                                        sx={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}
                                     >
                                         {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
@@ -377,7 +400,11 @@ const Login = () => {
                             <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
                                 Quên mật khẩu
                             </Typography>
-                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                            <Box sx={{
+                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
+                                borderRadius: '20px',
+                                opacity: 0.3,
+                            }}>
                                 <input
                                     type="email"
                                     placeholder="Email"
@@ -386,21 +413,27 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
-                                        borderRadius: '20px',
-                                        opacity: 0.3,
                                         color: colors.color1,
                                         border: 'none',
-                                        width: '100%',
+                                        width: '80%',
                                         height: '33px',
                                         margin: 'normal',
                                         padding: '10px',
                                         fontSize: '20px',
+                                        outline: 'none',
                                     }}
                                 />
+                                <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                                    <EmailIcon />
+                                </Icon>
                                 {errors.email && <span className={styles.errorText}>{errors.email}</span>}
                             </Box>
 
-                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                            <Box sx={{
+                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
+                                borderRadius: '20px',
+                                opacity: 0.3,
+                            }}>
                                 <input
                                     type="text"
                                     placeholder="Mã xác minh"
@@ -409,17 +442,19 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
-                                        borderRadius: '20px',
-                                        opacity: 0.3,
                                         color: colors.color1,
                                         border: 'none',
-                                        width: '100%',
+                                        width: '80%',
                                         height: '33px',
                                         margin: 'normal',
                                         padding: '10px',
                                         fontSize: '20px',
+                                        outline: 'none',
                                     }}
                                 />
+                                <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                                    <PasswordIcon />
+                                </Icon>
                                 <IconButton
                                     onClick={handleSendCode}
                                     disabled={countdown > 0}
@@ -463,7 +498,11 @@ const Login = () => {
                             <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '50px' }}>
                                 Đặt lại mật khẩu
                             </Typography>
-                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                            <Box sx={{
+                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
+                                borderRadius: '20px',
+                                opacity: 0.3,
+                            }}>
                                 <input
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="Mật khẩu"
@@ -472,17 +511,19 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
-                                        borderRadius: '20px',
-                                        opacity: 0.3,
                                         color: colors.color1,
                                         border: 'none',
-                                        width: '100%',
+                                        width: '80%',
                                         height: '33px',
                                         margin: 'normal',
                                         padding: '10px',
                                         fontSize: '20px',
+                                        outline: 'none',
                                     }}
                                 />
+                                <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                                    <LockIcon />
+                                </Icon>
                                 <IconButton
                                     onClick={handleClickShowPassword}
                                     onMouseDown={handleMouseDownPassword}
@@ -492,7 +533,11 @@ const Login = () => {
                                 </IconButton>
                                 {errors.password && <span className={styles.errorText}>{errors.password}</span>}
                             </Box>
-                            <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
+                            <Box sx={{
+                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
+                                borderRadius: '20px',
+                                opacity: 0.3,
+                            }}>
                                 <input
                                     type={showConfirmPassword ? 'text' : 'password'}
                                     placeholder="Xác nhận mật khẩu"
@@ -501,17 +546,19 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
-                                        borderRadius: '20px',
-                                        opacity: 0.3,
                                         color: colors.color1,
                                         border: 'none',
-                                        width: '100%',
+                                        width: '80%',
                                         height: '33px',
                                         margin: 'normal',
                                         padding: '10px',
                                         fontSize: '20px',
+                                        outline: 'none',
                                     }}
                                 />
+                                <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                                    <LockIcon />
+                                </Icon>
                                 <IconButton
                                     onClick={handleClickShowConfirmPassword}
                                     onMouseDown={handleMouseDownPassword}
