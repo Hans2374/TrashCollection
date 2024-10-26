@@ -1,9 +1,15 @@
 /* src/components/Login.css */
 .customInput::placeholder {
     color: var(--color1);
-    /* Use the CSS variable */
     opacity: 1;
-    /* Ensure the color is fully opaque */
+}
+
+.leftBox {
+    z-index: 2;
+}
+
+.rightBox {
+    z-index: 1;
 }
 
 .errorText {
@@ -17,8 +23,8 @@
     color: green;
     font-size: 20px;
     position: absolute;
-    transform: translateY(-50%);
-    left: 25%;
+    transform: translateY(100%);
+    left: 29%;
 }
 
 .button {
@@ -33,12 +39,10 @@
     position: relative;
     overflow: hidden;
     height: '20px';
-    /* Adjust based on the text size */
 }
 
 .logo {
     display: none;
-    /* Hide logo by default on desktop */
     position: absolute;
     top: 10px;
     left: 10px;
@@ -48,7 +52,6 @@
 
 .companyName {
     display: block;
-    /* Show company name by default on desktop */
 }
 
 .slideUp {
@@ -115,6 +118,8 @@
 
     .successMessage {
         font-size: 12px !important;
+        transform: translateY(100%) !important;
+        left: 19% !important;
     }
 
     .loginContainer {
@@ -125,6 +130,7 @@
         width: 100% !important;
         height: 35vh !important;
         flex: none !important;
+        z-index: 2; 
     }
 
     .rightBox {
@@ -132,6 +138,7 @@
         height: 65vh !important;
         flex: none !important;
         padding: 0 !important;
+        z-index: 1; 
     }
 
     .logo {
@@ -160,7 +167,6 @@
         padding: 15px !important;
     }
 
-    /* Additional responsive styles */
     .customInput {
         font-size: 14px !important;
         padding: 8px !important;
