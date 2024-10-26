@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, IconButton } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import colors from '../colors';
-import './Login.css';
+import styles from './Login.module.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -65,7 +65,7 @@ const Login = () => {
             }
         } else {
             if (!username && !isForgotPassword && !isResetPassword) {
-                tempErrors.username = 'Tên username hoặc email không được để trống';
+                tempErrors.username = 'Tên username/email không được để trống';
                 isValid = false;
             } else if (!/\S+@\S+\.\S+/.test(username) && !isForgotPassword && !isResetPassword) {
                 tempErrors.username = 'Email không đúng định dạng';
@@ -186,56 +186,52 @@ const Login = () => {
             setErrors({ ...errors, email: 'Email không đúng định dạng' });
         } else {
             // Implement the logic to send the verification code here
-            setCountdown(60); // Start the countdown from 60 seconds
+            setCountdown(60);
             setSuccessMessage('Mã xác minh đã được gửi thành công!');
-            setErrors({ ...errors, email: '' }); // Clear the email error if any
+            setErrors({ ...errors, email: '' });
         }
     };
 
     return (
-        <Box display="flex" flexDirection="row" justifyContent="space-between" sx={{ height: '100vh' }}>
+        <Box className={styles.loginContainer} display="flex" flexDirection="row" sx={{ height: '100vh' }}>
             {/* Left Box */}
             <Box
+                className={styles.leftBox}
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
                 alignItems="center"
                 flex={1}
-                sx={{ backgroundColor: colors.color2, width: '30vw', flex: '0 0 30vw' }}
+                sx={{ backgroundColor: colors.color2, width: '30vw', flex: '0 0 30vw', position: 'relative' }}
             >
                 {/* Logo */}
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/logo.png`} // Adjust the path to your logo image
+                    src={`${process.env.PUBLIC_URL}/images/logo.png`}
                     alt="Logo"
-                    style={{
-                        position: 'absolute',
-                        top: '20px',
-                        left: '20px',
-                        width: '50px', // Adjust the size as needed
-                        height: '50px', // Adjust the size as needed
-                    }}
+                    className={styles.logo}
                 />
                 {/* Invisible Inner Box */}
                 <Box
+                    className={styles.leftContent}
                     display="flex"
                     flexDirection="column"
                     justifyContent="center"
                     alignItems="center"
                     sx={{ backgroundColor: 'transparent', width: '70%', height: '80%' }}
                 >
-                    <Typography variant="h6" style={{ color: colors.color3, fontSize: '32px', fontWeight: 700, marginBottom: '40px' }}>LOGO/TÊN</Typography>
-                    <Box className="slide-text">
-                        <Typography variant="h6" className={isRegister ? (animate ? 'slide-up' : 'slide-down') : ''} style={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px' }}>
+                    <Typography className={styles.companyName} variant="h6" style={{ color: colors.color3, fontSize: '32px', fontWeight: 700, marginBottom: '40px' }}>LOGO/TÊN</Typography>
+                    <Box className={styles.slideText}>
+                        <Typography variant="h6" className={`${styles.welcome} ${isRegister ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px' }}>
                             {isRegister ? 'Chào mừng gia nhập!' : 'Chào mừng trở lại!'}
                         </Typography>
                     </Box>
-                    <Typography variant="h6" style={{ color: colors.color1, fontSize: '20px', fontWeight: 400, marginBottom: '50px' }}>Cùng chung tay bảo vệ môi trường với những sản phẩm tái chế và dịch vụ của chúng tôi. Hãy bắt đầu ngay để biến những điều cũ thành mới!</Typography>
-                    <Box className="slide-text">
-                        <Typography variant="h6" className={isRegister ? (animate ? 'slide-up' : 'slide-down') : ''} style={{ color: colors.color1, fontSize: '15px', fontWeight: 400 }}>
+                    <Typography className={styles.leftDescription} variant="h6" style={{ color: colors.color1, fontSize: '20px', fontWeight: 400, marginBottom: '50px' }}>Cùng chung tay bảo vệ môi trường với những sản phẩm tái chế và dịch vụ của chúng tôi. Hãy bắt đầu ngay để biến những điều cũ thành mới!</Typography>
+                    <Box className={styles.slideText}>
+                        <Typography variant="h6" className={`${isRegister ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '15px', fontWeight: 400 }}>
                             {isRegister ? 'Đã có tài khoản?' : 'Chưa có tài khoản?'}
                         </Typography>
                     </Box>
-                    <Button variant="contained" style={{ backgroundColor: colors.color1, color: colors.color2, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px' }} onClick={handleToggle} >
+                    <Button className={styles.button} variant="contained" style={{ backgroundColor: colors.color1, color: colors.color2, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px' }} onClick={handleToggle} >
                         {isRegister ? 'Đăng nhập' : 'Đăng ký'}
                     </Button>
                 </Box>
@@ -243,6 +239,7 @@ const Login = () => {
 
             {/* Right Box */}
             <Box
+                className={styles.rightBox}
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
@@ -255,11 +252,11 @@ const Login = () => {
                     backgroundPosition: 'center',
                 }}
             >
-                <Box p={3} className={animate ? 'form-slide-up' : 'form-slide-down'} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '410px', position: 'relative' }}>
+                <Box p={3} className={`${styles.formContainer} ${animate ? styles.slideUp : styles.slideDown}`} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '410px', position: 'relative' }}>
                     {!isForgotPassword && !isResetPassword && (
                         <>
                             {/* Login or Register Form */}
-                            <Typography variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
+                            <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
                                 {isRegister ? 'Đăng ký' : 'Đăng nhập'}
                             </Typography>
                             <Box sx={{ position: 'relative', width: '96%' }}>
@@ -268,7 +265,7 @@ const Login = () => {
                                     placeholder={"Tên username hoặc email"}
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
-                                    className="custom-input"
+                                    className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
                                         borderRadius: '20px',
@@ -282,7 +279,7 @@ const Login = () => {
                                         fontSize: '20px',
                                     }}
                                 />
-                                {errors.username && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.username}</span>}
+                                {errors.username && <span className={styles.errorText}>{errors.username}</span>}
                             </Box>
 
                             <Box sx={{ position: 'relative', marginTop: '30px', width: '96%' }}>
@@ -291,7 +288,7 @@ const Login = () => {
                                     placeholder="Mật khẩu"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="custom-input"
+                                    className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
                                         borderRadius: '20px',
@@ -312,7 +309,7 @@ const Login = () => {
                                 >
                                     {showPassword ? <VisibilityOff /> : <Visibility />}
                                 </IconButton>
-                                {errors.password && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.password}</span>}
+                                {errors.password && <span className={styles.errorText}>{errors.password}</span>}
                             </Box>
 
                             {isRegister && (
@@ -322,7 +319,7 @@ const Login = () => {
                                         placeholder="Xác nhận mật khẩu"
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
-                                        className="custom-input"
+                                        className={styles.customInput}
                                         style={{
                                             backgroundColor: colors.color2,
                                             borderRadius: '20px',
@@ -343,11 +340,12 @@ const Login = () => {
                                     >
                                         {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
-                                    {errors.confirmPassword && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.confirmPassword}</span>}
+                                    {errors.confirmPassword && <span className={styles.errorText}>{errors.confirmPassword}</span>}
                                 </Box>
                             )}
                             <Button
                                 variant="contained"
+                                className={styles.button}
                                 style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px' }}
                                 sx={{ marginTop: '60px' }}
                                 onClick={handleSubmit}
@@ -373,7 +371,7 @@ const Login = () => {
                     {isForgotPassword && !isResetPassword && (
                         <>
                             {/* Forgot Password Form */}
-                            <Typography variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
+                            <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px' }}>
                                 Quên mật khẩu
                             </Typography>
                             <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
@@ -382,7 +380,7 @@ const Login = () => {
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="custom-input"
+                                    className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
                                         borderRadius: '20px',
@@ -396,7 +394,7 @@ const Login = () => {
                                         fontSize: '20px',
                                     }}
                                 />
-                                {errors.email && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.email}</span>}
+                                {errors.email && <span className={styles.errorText}>{errors.email}</span>}
                             </Box>
 
                             <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
@@ -405,7 +403,7 @@ const Login = () => {
                                     placeholder="Mã xác minh"
                                     value={verificationCode}
                                     onChange={(e) => setVerificationCode(e.target.value)}
-                                    className="custom-input"
+                                    className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
                                         borderRadius: '20px',
@@ -426,11 +424,11 @@ const Login = () => {
                                 >
                                     {countdown > 0 ? `${countdown}s` : 'Gửi'}
                                 </IconButton>
-                                {errors.verificationCode && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.verificationCode}</span>}
+                                {errors.verificationCode && <span className={styles.errorText}>{errors.verificationCode}</span>}
                             </Box>
 
                             {successMessage && (
-                                <Typography variant="body2" style={{ color: 'green', position: 'absolute', bottom: '150px', left: '50%', transform: 'translateX(-50%)', fontSize: '16px' }}>
+                                <Typography variant="body2" className={styles.successMessage}>
                                     {successMessage}
                                 </Typography>
                             )}
@@ -438,6 +436,7 @@ const Login = () => {
                             <Box display="flex" justifyContent="space-between" mt={10}>
                                 <Button
                                     variant="contained"
+                                    className={styles.button}
                                     style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleCancelForgotPassword}
                                 >
@@ -445,6 +444,7 @@ const Login = () => {
                                 </Button>
                                 <Button
                                     variant="contained"
+                                    className={styles.button}
                                     style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleSubmit}
                                 >
@@ -457,7 +457,7 @@ const Login = () => {
                     {isResetPassword && (
                         <>
                             {/* Reset Password Form */}
-                            <Typography variant="h4" style={{ color: colors.color2, marginBottom: '50px' }}>
+                            <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '50px' }}>
                                 Đặt lại mật khẩu
                             </Typography>
                             <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
@@ -466,7 +466,7 @@ const Login = () => {
                                     placeholder="Mật khẩu"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="custom-input"
+                                    className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
                                         borderRadius: '20px',
@@ -487,7 +487,7 @@ const Login = () => {
                                 >
                                     {showPassword ? <VisibilityOff /> : <Visibility />}
                                 </IconButton>
-                                {errors.password && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.password}</span>}
+                                {errors.password && <span className={styles.errorText}>{errors.password}</span>}
                             </Box>
                             <Box sx={{ position: 'relative', marginTop: '50px', width: '96%' }}>
                                 <input
@@ -495,7 +495,7 @@ const Login = () => {
                                     placeholder="Xác nhận mật khẩu"
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="custom-input"
+                                    className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
                                         borderRadius: '20px',
@@ -516,16 +516,17 @@ const Login = () => {
                                 >
                                     {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                                 </IconButton>
-                                {errors.confirmPassword && <span style={{ color: 'red', position: 'absolute', bottom: '-20px', left: '0' }}>{errors.confirmPassword}</span>}
+                                {errors.confirmPassword && <span className={styles.errorText}>{errors.confirmPassword}</span>}
                             </Box>
                             {updateSuccessMessage && (
-                                <Typography variant="body2" style={{ color: 'green', marginTop: '20px', fontSize: '16px', position: 'absolute', transform: 'translateY(-50%)', left: '25%' }}>
+                                <Typography variant="body2" className={styles.successMessage}>
                                     {updateSuccessMessage}
                                 </Typography>
                             )}
                             <Box display="flex" justifyContent="space-between" mt={10}>
                                 <Button
                                     variant="contained"
+                                    className={styles.button}
                                     style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleCancelResetPassword}
                                 >
@@ -533,6 +534,7 @@ const Login = () => {
                                 </Button>
                                 <Button
                                     variant="contained"
+                                    className={styles.button}
                                     style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleSubmit}
                                 >

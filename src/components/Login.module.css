@@ -1,0 +1,190 @@
+/* src/components/Login.css */
+.customInput::placeholder {
+    color: var(--color1);
+    /* Use the CSS variable */
+    opacity: 1;
+    /* Ensure the color is fully opaque */
+}
+
+.errorText {
+    color: red;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+
+.successMessage {
+    color: green;
+    font-size: 20px;
+    position: absolute;
+    transform: translateY(-50%);
+    left: 25%;
+}
+
+.button {
+    font-size: 20px;
+    font-weight: 400;
+    width: 45%;
+    border-radius: 20px;
+}
+
+.slideText {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: '20px';
+    /* Adjust based on the text size */
+}
+
+.logo {
+    display: none;
+    /* Hide logo by default on desktop */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.companyName {
+    display: block;
+    /* Show company name by default on desktop */
+}
+
+.slideUp {
+    animation: slideUp 0.5s forwards;
+}
+
+.slideDown {
+    animation: slideDown 0.5s forwards;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.formSlideUp {
+    animation: formSlideUp 0.5s forwards;
+}
+
+.formSlideDown {
+    animation: formSlideDown 0.5s forwards;
+}
+
+@keyframes formSlideUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes formSlideDown {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .errorText {
+        font-size: 12px !important;
+    }
+
+    .successMessage {
+        font-size: 12px !important;
+    }
+
+    .loginContainer {
+        flex-direction: column !important;
+    }
+
+    .leftBox {
+        width: 100% !important;
+        height: 35vh !important;
+        flex: none !important;
+    }
+
+    .rightBox {
+        width: 100% !important;
+        height: 65vh !important;
+        flex: none !important;
+        padding: 0 !important;
+    }
+
+    .logo {
+        display: block !important;
+    }
+
+    .companyName {
+        display: none !important;
+    }
+
+    .leftContent {
+        width: 80% !important;
+        height: auto !important;
+        padding: 10px !important;
+    }
+
+    .leftDescription {
+        font-size: 11px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .formContainer {
+        width: 80% !important;
+        height: auto !important;
+        min-height: 380px !important;
+        padding: 15px !important;
+    }
+
+    /* Additional responsive styles */
+    .customInput {
+        font-size: 14px !important;
+        padding: 8px !important;
+    }
+
+    .slideText {
+        font-size: 5px !important;
+        height: auto !important;
+    }
+
+    .formSlideUp,
+    .formSlideDown {
+        animation-duration: 0.3s !important;
+    }
+
+    .formTitle {
+        font-size: 25px !important;
+    }
+
+    .welcome {
+        font-size: 20px !important;
+    }
+
+    .button {
+        font-size: 15px !important;
+    }
+}
