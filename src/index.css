@@ -6,10 +6,9 @@
 
 body {
   margin: 0;
-  font-family: 'KoHo', sans-serif;
+  font-family: 'KoHo';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden; /* Disable scrolling */
 }
 
 code {
