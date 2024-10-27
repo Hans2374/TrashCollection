@@ -27,6 +27,16 @@ const Login = () => {
     const [isYesNo, setIsYesNo] = useState(false);
 
     useEffect(() => {
+        // Hide scroll
+        document.body.style.overflow = 'hidden';
+
+        // Cleanup function to reset the overflow style
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, []);
+
+    useEffect(() => {
         let timer;
         if (countdown > 0) {
             timer = setTimeout(() => setCountdown(countdown - 1), 1000);
@@ -348,17 +358,17 @@ const Login = () => {
                                         style={{
                                             fontFamily: 'KoHo',
                                             backgroundColor: colors.color2,
-                                        opacity: 0.3,
-                                        color: colors.color1,
-                                        borderRadius: '20px',
-                                        border: 'none',
-                                        width: '80%',
-                                        height: '33px',
-                                        margin: 'normal',
-                                        padding: '10px 50px',
-                                        pl: '40px',
-                                        fontSize: '20px',
-                                        outline: 'none',
+                                            opacity: 0.3,
+                                            color: colors.color1,
+                                            borderRadius: '20px',
+                                            border: 'none',
+                                            width: '80%',
+                                            height: '33px',
+                                            margin: 'normal',
+                                            padding: '10px 50px',
+                                            pl: '40px',
+                                            fontSize: '20px',
+                                            outline: 'none',
                                         }}
                                     />
                                     <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
