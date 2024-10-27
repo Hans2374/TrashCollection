@@ -267,9 +267,7 @@ const Login = () => {
                                 {isRegister ? 'Đăng ký' : 'Đăng nhập'}
                             </Typography>
                             <Box sx={{
-                                position: 'relative', width: '100%', backgroundColor: colors.color2,
-                                borderRadius: '20px',
-                                opacity: 0.3,
+                                position: 'relative', width: '100%'
                             }}>
                                 <input
                                     type="text"
@@ -279,12 +277,14 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
+                                        opacity: 0.3,
                                         color: colors.color1,
+                                        borderRadius: '20px',
                                         border: 'none',
                                         width: '80%',
                                         height: '33px',
                                         margin: 'normal',
-                                        padding: '10px',
+                                        padding: '10px 50px',
                                         pl: '40px',
                                         fontSize: '20px',
                                         outline: 'none',
@@ -297,9 +297,7 @@ const Login = () => {
                             </Box>
 
                             <Box sx={{
-                                position: 'relative', marginTop: '30px', width: '100%', backgroundColor: colors.color2,
-                                borderRadius: '20px',
-                                opacity: 0.3,
+                                position: 'relative', marginTop: '30px', width: '100%'
                             }}>
                                 <input
                                     type={showPassword ? 'text' : 'password'}
@@ -309,12 +307,15 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
+                                        opacity: 0.3,
                                         color: colors.color1,
+                                        borderRadius: '20px',
                                         border: 'none',
                                         width: '80%',
                                         height: '33px',
                                         margin: 'normal',
-                                        padding: '10px',
+                                        padding: '10px 50px',
+                                        pl: '40px',
                                         fontSize: '20px',
                                         outline: 'none',
                                     }}
@@ -334,9 +335,7 @@ const Login = () => {
 
                             {isRegister && (
                                 <Box sx={{
-                                    position: 'relative', marginTop: '30px', width: '100%', backgroundColor: colors.color2,
-                                    borderRadius: '20px',
-                                    opacity: 0.3,
+                                    position: 'relative', marginTop: '30px', width: '100%'
                                 }}>
                                     <input
                                         type={showConfirmPassword ? 'text' : 'password'}
@@ -346,14 +345,17 @@ const Login = () => {
                                         className={styles.customInput}
                                         style={{
                                             backgroundColor: colors.color2,
-                                            color: colors.color1,
-                                            border: 'none',
-                                            width: '80%',
-                                            height: '33px',
-                                            margin: 'normal',
-                                            padding: '10px',
-                                            fontSize: '20px',
-                                            outline: 'none',
+                                        opacity: 0.3,
+                                        color: colors.color1,
+                                        borderRadius: '20px',
+                                        border: 'none',
+                                        width: '80%',
+                                        height: '33px',
+                                        margin: 'normal',
+                                        padding: '10px 50px',
+                                        pl: '40px',
+                                        fontSize: '20px',
+                                        outline: 'none',
                                         }}
                                     />
                                     <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
@@ -401,9 +403,7 @@ const Login = () => {
                                 Quên mật khẩu
                             </Typography>
                             <Box sx={{
-                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
-                                borderRadius: '20px',
-                                opacity: 0.3,
+                                position: 'relative', marginTop: '50px', width: '100%'
                             }}>
                                 <input
                                     type="email"
@@ -413,12 +413,15 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
+                                        opacity: 0.3,
                                         color: colors.color1,
+                                        borderRadius: '20px',
                                         border: 'none',
                                         width: '80%',
                                         height: '33px',
                                         margin: 'normal',
-                                        padding: '10px',
+                                        padding: '10px 50px',
+                                        pl: '40px',
                                         fontSize: '20px',
                                         outline: 'none',
                                     }}
@@ -430,9 +433,7 @@ const Login = () => {
                             </Box>
 
                             <Box sx={{
-                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
-                                borderRadius: '20px',
-                                opacity: 0.3,
+                                position: 'relative', marginTop: '50px', width: '100%'
                             }}>
                                 <input
                                     type="text"
@@ -442,12 +443,15 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
+                                        opacity: 0.3,
                                         color: colors.color1,
+                                        borderRadius: '20px',
                                         border: 'none',
                                         width: '80%',
                                         height: '33px',
                                         margin: 'normal',
-                                        padding: '10px',
+                                        padding: '10px 50px',
+                                        pl: '40px',
                                         fontSize: '20px',
                                         outline: 'none',
                                     }}
@@ -499,9 +503,7 @@ const Login = () => {
                                 Đặt lại mật khẩu
                             </Typography>
                             <Box sx={{
-                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
-                                borderRadius: '20px',
-                                opacity: 0.3,
+                                position: 'relative', marginTop: '50px', width: '100%'
                             }}>
                                 <input
                                     type={showPassword ? 'text' : 'password'}
@@ -511,12 +513,15 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
+                                        opacity: 0.3,
                                         color: colors.color1,
+                                        borderRadius: '20px',
                                         border: 'none',
                                         width: '80%',
                                         height: '33px',
                                         margin: 'normal',
-                                        padding: '10px',
+                                        padding: '10px 50px',
+                                        pl: '40px',
                                         fontSize: '20px',
                                         outline: 'none',
                                     }}
@@ -534,9 +539,7 @@ const Login = () => {
                                 {errors.password && <span className={styles.errorText}>{errors.password}</span>}
                             </Box>
                             <Box sx={{
-                                position: 'relative', marginTop: '50px', width: '100%', backgroundColor: colors.color2,
-                                borderRadius: '20px',
-                                opacity: 0.3,
+                                position: 'relative', marginTop: '50px', width: '100%'
                             }}>
                                 <input
                                     type={showConfirmPassword ? 'text' : 'password'}
@@ -546,12 +549,15 @@ const Login = () => {
                                     className={styles.customInput}
                                     style={{
                                         backgroundColor: colors.color2,
+                                        opacity: 0.3,
                                         color: colors.color1,
+                                        borderRadius: '20px',
                                         border: 'none',
                                         width: '80%',
                                         height: '33px',
                                         margin: 'normal',
-                                        padding: '10px',
+                                        padding: '10px 50px',
+                                        pl: '40px',
                                         fontSize: '20px',
                                         outline: 'none',
                                     }}
