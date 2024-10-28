@@ -2,6 +2,7 @@ import { Box, Typography, IconButton, Drawer, List, ListItem, ListItemText } fro
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const Header2 = () => {
     const [visible, setVisible] = useState(true);
@@ -64,6 +65,7 @@ export const Header2 = () => {
             }}
         >
             {/* Logo/Tên */}
+            <Link to="/" style={{ textDecoration: 'none' }}>
             <Typography
                 variant="h4"
                 sx={{
@@ -75,6 +77,7 @@ export const Header2 = () => {
             >
                 LOGO/TÊN
             </Typography>
+            </Link>
 
             {isMobile ? (
                 <>
@@ -118,7 +121,7 @@ export const Header2 = () => {
                 <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '200px' } }}>
                     <Typography sx={menuItemStyle}>Sản phẩm</Typography>
                     <Typography sx={menuItemStyle}>Thu mua</Typography>
-                    <Typography sx={menuItemStyle}>Tin tức</Typography>
+                    <Link to="/news" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Tin tức</Typography></Link>
                     <Typography sx={menuItemStyle}>Quy định</Typography>
                 </Box>
             )}

@@ -47,7 +47,8 @@ export const Footer = () => {
                         color: '#F8F3E7',
                         textDecoration: 'none',
                         '&:hover': { textDecoration: 'underline' },
-                        marginBottom: '10px'
+                        marginBottom: '10px',
+                        
                     }}
                 >
                     Email: hotro@gmail.com
