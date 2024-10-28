@@ -15,7 +15,7 @@ const Homepage = () => {
       {/* Background image */}
       <Box
         sx={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/newMain.png)`, // Đặt trong dấu nháy
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/newMain.png)`, 
           height: '421px',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -112,12 +112,12 @@ const Homepage = () => {
       <Header2 />
 
       {/* Main content section */}
-      <Box sx={{ padding: '20px', fontFamily: 'KoHo', mx: '80px' }}>
+      <Box sx={{fontFamily: 'KoHo' }}>
 
         {/* Section 1 */}
-        <Box sx={{ display: 'flex', gap: '20px', padding: '20px', paddingBottom: '50px', backgroundColor: colors.color3, alignItems: 'stretch' }}>
+        <Box sx={{ display: 'flex', gap: '20px',padding: '45px', paddingBottom: '50px', backgroundColor: colors.color3, alignItems: 'stretch' }}>
           {/* Box chứa hình ảnh */}
-          <Box sx={{ width: '50%', height: '435px', backgroundColor: colors.color3, borderRadius: '8px', overflow: 'hidden', border: 'solid' }}>
+          <Box sx={{width: '50%', height: '435px', backgroundColor: colors.color3, borderRadius: '8px', overflow: 'hidden', border: 'solid' }}>
             <img
               src="\images\theartofrecycle.png"
               alt="Art of Recycle"
