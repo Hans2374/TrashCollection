@@ -1,0 +1,15 @@
+.activeButton {
+  font-weight: bold !important;
+  color: #2F4F4F!important;
+  text-transform: none !important; 
+  font-size: 20px !important;
+  font-family: KoHo !important;
+}
+
+.inactiveButton {
+  font-weight: normal !important;
+  color: #2F4F4F !important; 
+  text-transform: none !important; 
+  font-size: 16px !important;
+  font-family: KoHo !important;
+}
