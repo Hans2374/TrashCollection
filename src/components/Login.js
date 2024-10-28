@@ -7,6 +7,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PasswordIcon from '@mui/icons-material/Password';
+import { routes } from '../routes/routes';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -25,6 +27,7 @@ const Login = () => {
     const [isResetPassword, setIsResetPassword] = useState(false);
     const [updateSuccessMessage, setUpdateSuccessMessage] = useState('');
     const [isYesNo, setIsYesNo] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Hide scroll
@@ -138,6 +141,12 @@ const Login = () => {
                 }, 5000); // Display success message for 5 seconds
             } else {
                 // Handle successful validation for login or register
+                if (username === 'customer@gmail.com' && password === 'customer') {
+                    setErrors({ username: '', password: '', confirmPassword: '' });
+                    navigate(routes.homePage); // Add this line to navigate to the homepage
+                } else {
+                    setErrors({ ...errors, username: '', password: 'Email/Username hoặc mật khẩu không đúng!' });
+                }
             }
         }
     };
@@ -384,15 +393,17 @@ const Login = () => {
                                     {errors.confirmPassword && <span className={styles.errorText}>{errors.confirmPassword}</span>}
                                 </Box>
                             )}
-                            <Button
-                                variant="contained"
-                                className={styles.button}
-                                style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px', fontFamily: 'KoHo', }}
-                                sx={{ marginTop: '60px' }}
-                                onClick={handleSubmit}
-                            >
-                                {isRegister ? 'Đăng ký' : 'Đăng nhập'}
-                            </Button>
+                            <RouterLink to={routes.homePage} style={{ textDecoration: 'none', color: 'black' }}>
+                                <Button
+                                    variant="contained"
+                                    className={styles.button}
+                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px', fontFamily: 'KoHo', }}
+                                    sx={{ marginTop: '60px' }}
+                                    onClick={handleSubmit}
+                                >
+                                    {isRegister ? 'Đăng ký' : 'Đăng nhập'}
+                                </Button>
+                            </RouterLink>
                             {!isRegister && (
                                 <Box display="flex" justifyContent='space-between' mt={3}>
                                     <Button style={{ color: colors.color2 }} onClick={handleForgotPassword}>Quên mật khẩu?</Button>
