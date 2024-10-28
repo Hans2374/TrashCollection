@@ -5,12 +5,19 @@ import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
+import { useNavigate } from 'react-router-dom';
 
 const News = () => {
     const [selectedMenu, setSelectedMenu] = useState('Môi trường');
     const menuItems = ['Tin tức', 'Biến đổi khí hậu', 'Khoa học và Công nghệ', 'Chất thải', 'Môi trường'];
     const [visibleRows, setVisibleRows] = useState(2);
-    const articlesPerRow = 4; 
+    const articlesPerRow = 4;
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/news-detail');
+    };
 
     const handleMenuItemClick = (item) => {
         setSelectedMenu(item);
@@ -66,7 +73,7 @@ const News = () => {
             title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
             image: "images/news6.png",
         },
-        
+
         {
             id: 7,
             title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
@@ -92,7 +99,7 @@ const News = () => {
             title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
             image: "images/news6.png",
         },
-        
+
         {
             id: 12,
             title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
@@ -122,7 +129,7 @@ const News = () => {
     ];
 
     const loadMoreArticles = () => {
-        setVisibleRows(visibleRows + 1); 
+        setVisibleRows(visibleRows + 1);
     };
 
     const visibleArticles = articlesList.slice(0, visibleRows * articlesPerRow);
@@ -233,10 +240,10 @@ const News = () => {
                         overflowX: 'hidden',
                         whiteSpace: 'nowrap',
                         '&::-webkit-scrollbar': {
-                            display: 'none', 
+                            display: 'none',
                         },
                         '&': {
-                            overflowX: 'auto', 
+                            overflowX: 'auto',
                         },
                     }}
                 >
@@ -268,8 +275,8 @@ const News = () => {
                     sx={{
                         borderBottom: '1px solid rgba(33, 71, 56, 0.3)',
                         display: 'flex',
-                        marginLeft: { xs: 0, md: '118px' }, 
-                        marginRight: { xs: 0, md: '118px' }, 
+                        marginLeft: { xs: 0, md: '118px' },
+                        marginRight: { xs: 0, md: '118px' },
                         gap: '20px',
                         alignItems: 'stretch',
                     }}
@@ -286,17 +293,19 @@ const News = () => {
                         }}
                     >
                         <Box
+                            onClick={handleClick}
                             component="img"
                             src={articles[0].image}
                             alt={articles[0].title}
                             sx={{
                                 width: '100%', height: '100%', borderRadius: '9px', marginTop: '30px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out', // Smooth transition
                                 '&:hover': {
-                                    transform: 'scale(1.02)', 
+                                    transform: 'scale(1.02)',
                                 },
                             }}
                         />
                         <Typography
+                            onClick={handleClick}
                             sx={{
                                 cursor: 'pointer',
                                 marginLeft: { xs: '4px', md: '0px' },
@@ -329,7 +338,7 @@ const News = () => {
                     {/* Container for the small articles */}
                     <Box
                         sx={{
-                            display: { xs: 'none',sm:'none', md: 'flex' }, 
+                            display: { xs: 'none', sm: 'none', md: 'flex' },
                             marginTop: '30px',
                             flex: 0.4,
                             flexDirection: 'column',
@@ -343,17 +352,20 @@ const News = () => {
                                     textAlign: 'left',
                                 }}
                             >
-                                 <Box
-                            component="img"
+                                <Box
+                                    onClick={handleClick}
+                                    component="img"
                                     src={article.image}
                                     alt={article.title}
-                                    sx={{ width: '100%', height: '70%', borderRadius: '8px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out', // Smooth transition
+                                    sx={{
+                                        width: '100%', height: '70%', borderRadius: '8px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out', // Smooth transition
                                         '&:hover': {
-                                            transform: 'scale(1.02)', 
+                                            transform: 'scale(1.02)',
                                         },
                                     }}
                                 />
                                 <Typography
+                                    onClick={handleClick}
                                     sx={{
                                         color: 'black',
                                         fontFamily: 'KoHo',
@@ -379,7 +391,7 @@ const News = () => {
                         marginRight: { xs: '16px', md: '103px' },
                     }}
                 >
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: {sm: '40px', md: '20px'} }}>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { sm: '40px', md: '20px' } }}>
                         {visibleArticles.map((article) => (
                             <Box
                                 key={article.id}
@@ -389,6 +401,7 @@ const News = () => {
                                 }}
                             >
                                 <Box
+                                    onClick={handleClick}
                                     component="img"
                                     src={article.image}
                                     alt={article.title}
@@ -397,13 +410,14 @@ const News = () => {
                                         borderRadius: '9px',
                                         height: '180px',
                                         cursor: 'pointer',
-                                        transition: 'transform 0.3s ease-in-out', 
+                                        transition: 'transform 0.3s ease-in-out',
                                         '&:hover': {
-                                            transform: 'scale(1.05)', 
+                                            transform: 'scale(1.05)',
                                         },
                                     }}
                                 />
                                 <Typography
+                                    onClick={handleClick}
                                     sx={{
                                         cursor: 'pointer',
                                         color: 'black',
