@@ -6,6 +6,7 @@ import Login from "../pages/login";
 import News from "../pages/news";
 import NewsDetail from "../pages/newsDetail";
 import Classify from "../pages/classify";
+import Regulation from "../components/Regulation";
 
 export default function AppRoute() {
 
@@ -17,38 +18,9 @@ export default function AppRoute() {
         <Route path={routes.news} element={<News />} />
         <Route path={routes.newsDetail} element={<NewsDetail />} />
         <Route path={routes.classify} element={<Classify />} />
+        <Route path={routes.regulation} element={<Regulation />} />
       </Routes>
     </>
   );
 }
 
-// Cách gắn Link: 
-
-// B1: import { routes } from "../routes";
-//     import { Link as RouterLink } from 'react-router-dom';
-
-// B2: 
-{/* <RouterLink to={routes.loginPage} style={{  }}>
-        <Button>
-          Đăng nhập
-        </Button>
-    </RouterLink> */}
-
-
-// Nếu dùng sx:
-{/* <Link
-      component={RouterLink}
-      to={routes.loginPage}
-      sx={{ textDecoration: 'none', color: 'black' }}
-    >
-      <Button
-        sx={{ }}
-      >
-        Đăng nhập
-      </Button>
-    </Link> */}
-
-
-
-
-// nếu thêm id: <Route path={`${routes.customerProfile}}/:id`} element={<CustomerProfile />} />
