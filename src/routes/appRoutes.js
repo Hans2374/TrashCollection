@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { routes } from "./routes";
 import Homepage from "../pages/homePage";
 import Login from "../pages/login";
 import News from "../pages/news";
 import NewsDetail from "../pages/newsDetail";
+import Classify from "../pages/classify";
 
 export default function AppRoute() {
 
@@ -15,6 +16,7 @@ export default function AppRoute() {
         <Route path={routes.homePage} element={<Homepage />} />
         <Route path={routes.news} element={<News />} />
         <Route path={routes.newsDetail} element={<NewsDetail />} />
+        <Route path={routes.classify} element={<Classify />} />
       </Routes>
     </>
   );

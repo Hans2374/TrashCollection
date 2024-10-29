@@ -3,4 +3,5 @@ export const routes = {
   login: "/login",
   news: "/news",
   newsDetail: "/news-detail",
+  classify: "/classify",
 };

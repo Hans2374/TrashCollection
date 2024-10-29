@@ -11,9 +11,9 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import colors from '../colors';
 
 const Header1 = ({ isLogin }) => {
-    console.log('Header1 rendered with isLogin:', isLogin);
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -59,23 +59,23 @@ const Header1 = ({ isLogin }) => {
                     display: 'flex',
                     alignItems: 'center',
                     '&:hover': {
-                        color: '#F8F3E7',
+                        color: colors.color3,
                         '& .MuiSvgIcon-root': {
-                            color: '#F8F3E7',
+                            color: colors.color3,
                         },
                     },
                 }}
             >
                 <PhoneIcon
-                    sx={{ marginRight: '8px', color: '#FCF9F3' }}
+                    sx={{ marginRight: '8px', color: colors.color1 }}
                 />
                 <Typography
                     sx={{
                         fontFamily: 'KoHo',
-                        color: '#FCF9F3',
+                        color: colors.color1,
                         position: 'relative',
                         '&:hover': {
-                            color: '#F8F3E7',
+                            color: colors.color3,
                             '&::after': {
                                 content: '""',
                                 position: 'absolute',
@@ -83,7 +83,7 @@ const Header1 = ({ isLogin }) => {
                                 right: 0,
                                 bottom: 0,
                                 height: '1px',
-                                backgroundColor: '#F8F3E7',
+                                backgroundColor: colors.color3,
                                 transition: '0.3s'
                             }
                         }
@@ -97,7 +97,7 @@ const Header1 = ({ isLogin }) => {
             {isLogin ? (
                 <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '100px' } }}>
                     <IconButton
-                        sx={{ color: '#FCF9F3' }}
+                        sx={{ color: colors.color1 }}
                     >
                         <MeetingRoomIcon
                             sx={{
@@ -108,7 +108,7 @@ const Header1 = ({ isLogin }) => {
                         />
                     </IconButton>
                     <IconButton
-                        sx={{ color: '#FCF9F3' }}
+                        sx={{ color: colors.color1 }}
                     >
                         <Inventory2Icon
                             sx={{
@@ -119,7 +119,7 @@ const Header1 = ({ isLogin }) => {
                         />
                     </IconButton>
                     <IconButton
-                        sx={{ color: '#FCF9F3' }}
+                        sx={{ color: colors.color1 }}
                     >
                         <ShoppingCartIcon
                             sx={{
@@ -130,7 +130,7 @@ const Header1 = ({ isLogin }) => {
                         />
                     </IconButton>
                     <IconButton
-                        sx={{ color: '#FCF9F3' }}
+                        sx={{ color: colors.color1 }}
                     >
                         <AccountCircleIcon
                             sx={{
@@ -142,11 +142,11 @@ const Header1 = ({ isLogin }) => {
                     </IconButton>
                 </Box>
             ) : (
-                <RouterLink to={routes.login} style={{ textDecoration: 'none', color: 'black' }}>
+                <RouterLink to={routes.login} style={{ textDecoration: 'none' }}>
                     <Typography
                         sx={{
                             marginRight: { md: '100px' },
-                            color: '#FCF9F3',
+                            color: colors.color1,
                             position: 'relative',
                             '&::after': {
                                 content: '""',
@@ -155,11 +155,11 @@ const Header1 = ({ isLogin }) => {
                                 right: '50%',
                                 bottom: 0,
                                 height: '1px',
-                                backgroundColor: '#F8F3E7',
+                                backgroundColor: colors.color3,
                                 transition: 'left 0.3s, right 0.3s'
                             },
                             '&:hover': {
-                                color: '#F8F3E7',
+                                color: colors.color3,
                                 '&::after': {
                                     left: 0,
                                     right: 0,
