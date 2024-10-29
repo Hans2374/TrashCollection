@@ -123,7 +123,7 @@ export const Header2 = () => {
                     <Typography sx={menuItemStyle}>Sản phẩm</Typography>
                     <Link to={routes.classify} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Thu mua</Typography></Link>
                     <Link to={routes.news} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Tin tức</Typography></Link>
-                    <Typography sx={menuItemStyle}>Quy định</Typography>
+                    <Link to={routes.regulation} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Quy định</Typography></Link>
                 </Box>
             )}
         </Box>

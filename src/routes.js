@@ -15,7 +15,7 @@ const routes = [
   { path: "/news-detail", element: <NewsDetailPage /> },
   { path: "/admin", element: <AdminPage /> },
   { path: "/product", element: <ProductPage /> },
-  { path: "/regulation", element: <RegulationPage/> },
+  { path: "/regulation", element: <RegulationPage /> },
 ];
 
 export default routes;

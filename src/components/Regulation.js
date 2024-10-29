@@ -1,7 +1,7 @@
 const Regulation = () => {
-    return(
+    return (
         <div>
-            regulation
+            chạy được rồi nè!!!
         </div>
     );
 };

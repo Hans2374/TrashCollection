@@ -1,9 +1,10 @@
-import Regulation from '../components/Regulation'
+import React from 'react';
+import Regulation from '../components/Regulation';
 
 const RegulationPage = () => {
     return (
         <div>
-            <Regulation/>
+            <Regulation />
         </div>
     );
 };

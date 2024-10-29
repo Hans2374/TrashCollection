@@ -4,4 +4,5 @@ export const routes = {
   news: "/news",
   newsDetail: "/news-detail",
   classify: "/classify",
+  regulation: "/regulation",
 };
