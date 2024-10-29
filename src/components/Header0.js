@@ -26,7 +26,7 @@ export const Header0 = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [lastScrollY]);
 
     return (
         <Box position='sticky' top={0}

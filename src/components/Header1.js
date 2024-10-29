@@ -35,7 +35,7 @@ export const Header1 = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [lastScrollY]);
 
     const [hoveredIcon, setHoveredIcon] = useState(null);
 
