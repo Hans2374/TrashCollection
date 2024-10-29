@@ -1,17 +1,11 @@
 import { Box, Typography, IconButton } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import React, { useState, useEffect } from 'react';
-import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
-import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
-import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
-import Inventory2Icon from '@mui/icons-material/Inventory2';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { routes } from "../routes/routes";
+import { Link as RouterLink } from 'react-router-dom';
 import colors from '../colors';
 
-export const Header1 = () => {
+export const Header0 = () => {
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -91,29 +85,35 @@ export const Header1 = () => {
                 </Typography>
             </Box>
 
-            {/* Icon Buttons */}
-            <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '100px' } }}>
-                <IconButton
-                    sx={{ color: colors.color1 }}
+            {/* Đăng nhập */}
+            <RouterLink to={routes.login} style={{ textDecoration: 'none' }}>
+                <Typography
+                    sx={{
+                        marginRight: { md: '100px' },
+                        color: colors.color1,
+                        position: 'relative',
+                        '&::after': {
+                            content: '""',
+                            position: 'absolute',
+                            left: '50%',
+                            right: '50%',
+                            bottom: 0,
+                            height: '1px',
+                            backgroundColor: colors.color3,
+                            transition: 'left 0.3s, right 0.3s'
+                        },
+                        '&:hover': {
+                            color: colors.color3,
+                            '&::after': {
+                                left: 0,
+                                right: 0,
+                            }
+                        }
+                    }}
                 >
-                    <MeetingRoomIcon />
-                </IconButton>
-                <IconButton
-                    sx={{ color: colors.color1 }}
-                >
-                    <Inventory2Icon />
-                </IconButton>
-                <IconButton
-                    sx={{ color: colors.color1 }}
-                >
-                    <ShoppingCartIcon />
-                </IconButton>
-                <IconButton
-                    sx={{ color: colors.color1 }}
-                >
-                    <AccountCircleIcon />
-                </IconButton>
-            </Box>
+                    Đăng nhập
+                </Typography>
+            </RouterLink>
         </Box >
     );
 };

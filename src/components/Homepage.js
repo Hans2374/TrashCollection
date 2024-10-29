@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import Header1 from './Header1';
+import { Header0 } from './Header0';
+import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
@@ -9,13 +10,11 @@ import { useSelector } from 'react-redux';
 
 const Homepage = () => {
   const isLogin = useSelector((state) => state.auth.isLogin);
-  console.log('Homepage rendered with isLogin:', isLogin);
 
   return (
     <>
       <ScrollToTop />
-      <Header1 isLogin={isLogin}/>
-
+      {!isLogin ? <Header0 /> : <Header1 />}
       {/* Background image */}
       <Box
         sx={{

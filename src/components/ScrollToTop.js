@@ -3,7 +3,6 @@ import { Box } from '@mui/material';
 import RecyclingIcon from '@mui/icons-material/Recycling';
 
 export const ScrollToTop = () => {
-    console.log('ScrollToTop rendered');
     const handleScrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };

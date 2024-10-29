@@ -115,7 +115,6 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('handleSubmit called');
 
         if (validate()) {
             if (isForgotPassword) {
@@ -153,14 +152,12 @@ const Login = () => {
                 // Handle successful validation for login or register
                 if (username === 'customer@gmail.com' && password === 'customer') {
                     setErrors({ username: '', password: '' });
-                    console.log('Dispatching login action');
                     dispatch(login());
                 } else {
                     setErrors({ username: '', password: 'Email/Username hoặc mật khẩu không đúng!' });
                 }
             } else {
                 setErrors({ username: '', password: '', confirmPassword: '' });
-                console.log('Dispatching login action');
                 dispatch(login());
             }
         }
