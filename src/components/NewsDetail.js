@@ -5,13 +5,20 @@ import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
+import { useSelector } from 'react-redux';
 
 const NewsDetail = () => {
+    const isLogin = useSelector((state) => state.auth.isLogin);
 
     const [visibleRows, setVisibleRows] = useState(2);
     const articlesPerRow = 4;
 
     const scrollContainerRef = useRef(null);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     useEffect(() => {
         const scrollInterval = setInterval(() => {
             if (scrollContainerRef.current) {
@@ -120,7 +127,7 @@ const NewsDetail = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 />
+            <Header1 isLogin={isLogin}/>
 
             {/* Background image */}
             <Box

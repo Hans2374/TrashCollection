@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from 'react';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
@@ -8,6 +9,10 @@ import colors from '../colors';
 
 const Regulation = () => {
     const isLogin = useSelector((state) => state.auth.isLogin);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>

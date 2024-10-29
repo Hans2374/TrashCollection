@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
@@ -24,6 +24,10 @@ const News = () => {
     const handleMenuItemClick = (item) => {
         setSelectedMenu(item);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const articles = [
         {
