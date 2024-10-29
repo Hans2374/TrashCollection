@@ -12,7 +12,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-export const Header1 = ({ isLogin }) => {
+const Header1 = ({ isLogin }) => {
+    console.log('Header1 rendered with isLogin:', isLogin);
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -173,3 +174,4 @@ export const Header1 = ({ isLogin }) => {
         </Box >
     );
 };
+export default React.memo(Header1);

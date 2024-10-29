@@ -3,6 +3,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { routes } from "../routes/routes";
 
 export const Header2 = () => {
     const [visible, setVisible] = useState(true);
@@ -65,7 +66,7 @@ export const Header2 = () => {
             }}
         >
             {/* Logo/Tên */}
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to={routes.homePage} style={{ textDecoration: 'none' }}>
             <Typography
                 variant="h4"
                 sx={{

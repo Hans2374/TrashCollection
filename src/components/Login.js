@@ -8,7 +8,9 @@ import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PasswordIcon from '@mui/icons-material/Password';
 import { routes } from '../routes/routes';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/authSlice';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -28,6 +30,15 @@ const Login = () => {
     const [updateSuccessMessage, setUpdateSuccessMessage] = useState('');
     const [isYesNo, setIsYesNo] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const isLogin = useSelector((state) => state.auth.isLogin);
+
+    useEffect(() => {
+        if (isLogin) {
+            console.log('Navigating to home page');
+            navigate(routes.homePage);
+        }
+    }, [isLogin, navigate]);
 
     useEffect(() => {
         // Hide scroll
@@ -85,9 +96,6 @@ const Login = () => {
             if (!username && !isForgotPassword && !isResetPassword) {
                 tempErrors.username = 'Tên username/email không được để trống';
                 isValid = false;
-            } else if (!/\S+@\S+\.\S+/.test(username) && !isForgotPassword && !isResetPassword) {
-                tempErrors.username = 'Email không đúng định dạng';
-                isValid = false;
             }
 
             if (!password) {
@@ -107,6 +115,8 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log('handleSubmit called');
+
         if (validate()) {
             if (isForgotPassword) {
                 // Simulate successful verification
@@ -139,14 +149,19 @@ const Login = () => {
                         setAnimate(false);
                     }, 300); // Duration of the animation
                 }, 5000); // Display success message for 5 seconds
-            } else {
+            } else if (!isRegister) {
                 // Handle successful validation for login or register
                 if (username === 'customer@gmail.com' && password === 'customer') {
-                    setErrors({ username: '', password: '', confirmPassword: '' });
-                    navigate(routes.homePage);
+                    setErrors({ username: '', password: '' });
+                    console.log('Dispatching login action');
+                    dispatch(login());
                 } else {
-                    setErrors({ ...errors, username: '', password: 'Email/Username hoặc mật khẩu không đúng!' });
+                    setErrors({ username: '', password: 'Email/Username hoặc mật khẩu không đúng!' });
                 }
+            } else {
+                setErrors({ username: '', password: '', confirmPassword: '' });
+                console.log('Dispatching login action');
+                dispatch(login());
             }
         }
     };

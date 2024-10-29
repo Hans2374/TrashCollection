@@ -4,6 +4,7 @@ import { Facebook, YouTube, Instagram, Twitter } from '@mui/icons-material';
 import colors from '../colors';
 
 export const Footer = () => {
+    console.log('Footer rendered');
     return (
         <Box
             sx={{

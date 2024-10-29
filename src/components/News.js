@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { Header1 } from './Header1';
+import Header1 from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
