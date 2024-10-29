@@ -57,7 +57,7 @@ const NewsDetail = () => {
             title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
             image: "images/news6.png",
         },
-        
+
         {
             id: 7,
             title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
@@ -83,7 +83,7 @@ const NewsDetail = () => {
             title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
             image: "images/news6.png",
         },
-        
+
         {
             id: 12,
             title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",

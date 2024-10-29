@@ -1,12 +1,24 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import colors from '../colors';
+import { useDispatch } from 'react-redux';
+import { logout } from '../store/authSlice';
+import { Link as RouterLink } from 'react-router-dom';
+import { routes } from '../routes/routes';
 
-export const Header1 = () => {
-
+export const Header1 = ({ isLogin }) => {
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const dispatch = useDispatch();
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
@@ -26,6 +38,20 @@ export const Header1 = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [lastScrollY]);
+
+    const [hoveredIcon, setHoveredIcon] = useState(null);
+
+    const handleMouseEnter = (icon) => {
+        setHoveredIcon(icon);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredIcon(null);
+    };
+
+    const handleLogout = () => {
+        dispatch(logout());
+    };
 
     return (
         <Box position='sticky' top={0}
@@ -50,23 +76,23 @@ export const Header1 = () => {
                     display: 'flex',
                     alignItems: 'center',
                     '&:hover': {
-                        color: '#F8F3E7',
+                        color: colors.color3,
                         '& .MuiSvgIcon-root': {
-                            color: '#F8F3E7',
+                            color: colors.color3,
                         },
                     },
                 }}
             >
                 <PhoneIcon
-                    sx={{ marginRight: '8px', color: '#FCF9F3' }}
+                    sx={{ marginRight: '8px', color: colors.color1 }}
                 />
                 <Typography
                     sx={{
                         fontFamily: 'KoHo',
-                        color: '#FCF9F3',
+                        color: colors.color1,
                         position: 'relative',
                         '&:hover': {
-                            color: '#F8F3E7',
+                            color: colors.color3,
                             '&::after': {
                                 content: '""',
                                 position: 'absolute',
@@ -74,7 +100,7 @@ export const Header1 = () => {
                                 right: 0,
                                 bottom: 0,
                                 height: '1px',
-                                backgroundColor: '#F8F3E7',
+                                backgroundColor: colors.color3,
                                 transition: '0.3s'
                             }
                         }
@@ -84,35 +110,72 @@ export const Header1 = () => {
                 </Typography>
             </Box>
 
-            {/* Đăng nhập */}
-            <Link to="/login" style={{ textDecoration: 'none' }}>
-                <Typography
-                    sx={{
-                        marginRight: { md: '100px' },
-                        color: '#FCF9F3',
-                        position: 'relative',
-                        '&::after': {
-                            content: '""',
-                            position: 'absolute',
-                            left: '50%',
-                            right: '50%',
-                            bottom: 0,
-                            height: '1px',
-                            backgroundColor: '#F8F3E7',
-                            transition: 'left 0.3s, right 0.3s' 
-                        },
-                        '&:hover': {
-                            color: '#F8F3E7',
-                            '&::after': {
-                                left: 0,
-                                right: 0,
-                            }
-                        }
-                    }}
-                >
-                    Đăng nhập
-                </Typography>
-            </Link>
+            {isLogin ? (
+                // Icon Buttons
+                <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '80px' } }}>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('meetingRoom')}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={handleLogout}
+                    >
+                        {hoveredIcon === 'meetingRoom' ? <MeetingRoomOutlinedIcon /> : <MeetingRoomIcon />}
+                    </IconButton>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('inventory')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
+                    </IconButton>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('shoppingCart')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
+                    </IconButton>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('accountCircle')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
+                    </IconButton>
+                </Box>
+            ) : (
+                // Đăng nhập
+                <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '20px' } }}>
+                    <RouterLink to={routes.login} style={{ textDecoration: 'none' }}>
+                        <Typography
+                            sx={{
+                                marginRight: { md: '100px' },
+                                color: colors.color1,
+                                position: 'relative',
+                                '&::after': {
+                                    content: '""',
+                                    position: 'absolute',
+                                    left: '50%',
+                                    right: '50%',
+                                    bottom: 0,
+                                    height: '1px',
+                                    backgroundColor: colors.color3,
+                                    transition: 'left 0.3s, right 0.3s'
+                                },
+                                '&:hover': {
+                                    color: colors.color3,
+                                    '&::after': {
+                                        left: 0,
+                                        right: 0,
+                                    }
+                                }
+                            }}
+                        >
+                            Đăng nhập
+                        </Typography>
+                    </RouterLink>
+                </Box>
+            )}
         </Box >
     );
 };
