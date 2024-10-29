@@ -6,8 +6,10 @@ import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const News = () => {
+    const isLogin = useSelector((state) => state.auth.isLogin);
     const [selectedMenu, setSelectedMenu] = useState('Môi trường');
     const menuItems = ['Tin tức', 'Biến đổi khí hậu', 'Khoa học và Công nghệ', 'Chất thải', 'Môi trường'];
     const [visibleRows, setVisibleRows] = useState(2);
@@ -138,7 +140,7 @@ const News = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 />
+            <Header1 isLogin={isLogin}/>
 
             {/* Background image */}
             <Box

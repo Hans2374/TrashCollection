@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { Header0 } from './Header0';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
@@ -14,7 +13,7 @@ const Homepage = () => {
   return (
     <>
       <ScrollToTop />
-      {!isLogin ? <Header0 /> : <Header1 />}
+      <Header1 isLogin={isLogin} />
       {/* Background image */}
       <Box
         sx={{

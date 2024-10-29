@@ -4,7 +4,7 @@ import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import colors from '../colors';
 import { Link as RouterLink } from 'react-router-dom';
 import { routes } from '../routes/routes';
@@ -12,8 +12,7 @@ import { KeyboardArrowDown as KeyboardArrowDownIcon } from '@mui/icons-material'
 import SearchIcon from '@mui/icons-material/Search';
 
 const Classify = () => {
-    // const isLogin = useSelector((state) => state.auth.isLogin);
-    const isLogin = true;
+    const isLogin = useSelector((state) => state.auth.isLogin);
     const [dropdown1, setDropdown1] = useState('');
     const [dropdown2, setDropdown2] = useState('');
     const [dropdown3, setDropdown3] = useState('');
@@ -25,7 +24,7 @@ const Classify = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 />
+            <Header1 isLogin={isLogin}/>
 
             {/* Background image */}
             <Box

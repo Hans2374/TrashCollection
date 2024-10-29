@@ -12,8 +12,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import colors from '../colors';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
+import { Link as RouterLink } from 'react-router-dom';
+import { routes } from '../routes/routes';
 
-export const Header1 = () => {
+export const Header1 = ({ isLogin }) => {
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const dispatch = useDispatch();
@@ -108,38 +110,72 @@ export const Header1 = () => {
                 </Typography>
             </Box>
 
-            {/* Icon Buttons */}
-            <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '80px' } }}>
-                <IconButton
-                    sx={{ color: colors.color1 }}
-                    onMouseEnter={() => handleMouseEnter('meetingRoom')}
-                    onMouseLeave={handleMouseLeave}
-                    onClick={handleLogout}
-                >
-                    {hoveredIcon === 'meetingRoom' ? <MeetingRoomOutlinedIcon /> : <MeetingRoomIcon />}
-                </IconButton>
-                <IconButton
-                    sx={{ color: colors.color1 }}
-                    onMouseEnter={() => handleMouseEnter('inventory')}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
-                </IconButton>
-                <IconButton
-                    sx={{ color: colors.color1 }}
-                    onMouseEnter={() => handleMouseEnter('shoppingCart')}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
-                </IconButton>
-                <IconButton
-                    sx={{ color: colors.color1 }}
-                    onMouseEnter={() => handleMouseEnter('accountCircle')}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
-                </IconButton>
-            </Box>
+            {isLogin ? (
+                // Icon Buttons
+                <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '80px' } }}>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('meetingRoom')}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={handleLogout}
+                    >
+                        {hoveredIcon === 'meetingRoom' ? <MeetingRoomOutlinedIcon /> : <MeetingRoomIcon />}
+                    </IconButton>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('inventory')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
+                    </IconButton>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('shoppingCart')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
+                    </IconButton>
+                    <IconButton
+                        sx={{ color: colors.color1 }}
+                        onMouseEnter={() => handleMouseEnter('accountCircle')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
+                    </IconButton>
+                </Box>
+            ) : (
+                // Đăng nhập
+                <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '20px' } }}>
+                    <RouterLink to={routes.login} style={{ textDecoration: 'none' }}>
+                        <Typography
+                            sx={{
+                                marginRight: { md: '100px' },
+                                color: colors.color1,
+                                position: 'relative',
+                                '&::after': {
+                                    content: '""',
+                                    position: 'absolute',
+                                    left: '50%',
+                                    right: '50%',
+                                    bottom: 0,
+                                    height: '1px',
+                                    backgroundColor: colors.color3,
+                                    transition: 'left 0.3s, right 0.3s'
+                                },
+                                '&:hover': {
+                                    color: colors.color3,
+                                    '&::after': {
+                                        left: 0,
+                                        right: 0,
+                                    }
+                                }
+                            }}
+                        >
+                            Đăng nhập
+                        </Typography>
+                    </RouterLink>
+                </Box>
+            )}
         </Box >
     );
 };
