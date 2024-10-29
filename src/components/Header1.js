@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Header1 = () => {
 
@@ -38,26 +39,26 @@ export const Header1 = () => {
                 alignItems: 'center',
                 padding: '0 16px',
                 transition: 'transform 0.3s ease-in-out',
-                transform: visible ? 'translateY(0)' : 'translateY(-100%)', 
+                transform: visible ? 'translateY(0)' : 'translateY(-100%)',
             }}
         >
             {/* Số điện thoại */}
-            <Box 
-                sx={{ 
+            <Box
+                sx={{
                     fontFamily: 'KoHo',
-                    marginLeft: {md:'100px'},
-                    display: 'flex', 
+                    marginLeft: { md: '100px' },
+                    display: 'flex',
                     alignItems: 'center',
                     '&:hover': {
-                        color: '#F8F3E7', 
+                        color: '#F8F3E7',
                         '& .MuiSvgIcon-root': {
-                            color: '#F8F3E7', 
+                            color: '#F8F3E7',
                         },
                     },
                 }}
             >
-                <PhoneIcon 
-                    sx={{ marginRight: '8px', color: '#FCF9F3' }} 
+                <PhoneIcon
+                    sx={{ marginRight: '8px', color: '#FCF9F3' }}
                 />
                 <Typography
                     sx={{
@@ -84,28 +85,34 @@ export const Header1 = () => {
             </Box>
 
             {/* Đăng nhập */}
-            <Typography 
-                sx={{
-                    marginRight: {md:'100px'},
-                    color: '#FCF9F3',
-                    position: 'relative',
-                    '&:hover': {
-                        color: '#F8F3E7', 
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+                <Typography
+                    sx={{
+                        marginRight: { md: '100px' },
+                        color: '#FCF9F3',
+                        position: 'relative',
                         '&::after': {
                             content: '""',
                             position: 'absolute',
-                            left: 0,
-                            right: 0,
+                            left: '50%',
+                            right: '50%',
                             bottom: 0,
-                            height: '1px', 
-                            backgroundColor: '#F8F3E7', 
-                            transition: '0.3s' 
+                            height: '1px',
+                            backgroundColor: '#F8F3E7',
+                            transition: 'left 0.3s, right 0.3s' 
+                        },
+                        '&:hover': {
+                            color: '#F8F3E7',
+                            '&::after': {
+                                left: 0,
+                                right: 0,
+                            }
                         }
-                    }
-                }}
-            >
-                Đăng nhập
-            </Typography>
-        </Box>
+                    }}
+                >
+                    Đăng nhập
+                </Typography>
+            </Link>
+        </Box >
     );
 };
