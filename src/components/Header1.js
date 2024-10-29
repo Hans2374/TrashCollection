@@ -10,10 +10,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import colors from '../colors';
+import { useDispatch } from 'react-redux';
+import { logout } from '../store/authSlice';
 
 export const Header1 = () => {
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const dispatch = useDispatch();
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
@@ -33,6 +36,20 @@ export const Header1 = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    const [hoveredIcon, setHoveredIcon] = useState(null);
+
+    const handleMouseEnter = (icon) => {
+        setHoveredIcon(icon);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredIcon(null);
+    };
+
+    const handleLogout = () => {
+        dispatch(logout());
+    };
 
     return (
         <Box position='sticky' top={0}
@@ -92,26 +109,35 @@ export const Header1 = () => {
             </Box>
 
             {/* Icon Buttons */}
-            <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '100px' } }}>
+            <Box sx={{ display: 'flex', gap: 2, marginRight: { md: '80px' } }}>
                 <IconButton
                     sx={{ color: colors.color1 }}
+                    onMouseEnter={() => handleMouseEnter('meetingRoom')}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={handleLogout}
                 >
-                    <MeetingRoomIcon />
+                    {hoveredIcon === 'meetingRoom' ? <MeetingRoomOutlinedIcon /> : <MeetingRoomIcon />}
                 </IconButton>
                 <IconButton
                     sx={{ color: colors.color1 }}
+                    onMouseEnter={() => handleMouseEnter('inventory')}
+                    onMouseLeave={handleMouseLeave}
                 >
-                    <Inventory2Icon />
+                    {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
                 </IconButton>
                 <IconButton
                     sx={{ color: colors.color1 }}
+                    onMouseEnter={() => handleMouseEnter('shoppingCart')}
+                    onMouseLeave={handleMouseLeave}
                 >
-                    <ShoppingCartIcon />
+                    {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
                 </IconButton>
                 <IconButton
                     sx={{ color: colors.color1 }}
+                    onMouseEnter={() => handleMouseEnter('accountCircle')}
+                    onMouseLeave={handleMouseLeave}
                 >
-                    <AccountCircleIcon />
+                    {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
                 </IconButton>
             </Box>
         </Box >
