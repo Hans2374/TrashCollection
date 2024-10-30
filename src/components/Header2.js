@@ -120,7 +120,7 @@ export const Header2 = () => {
                 </>
             ) : (
                 <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '200px' } }}>
-                    <Typography sx={menuItemStyle}>Sản phẩm</Typography>
+                    <Link to={routes.product} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Sản phẩm</Typography></Link>
                     <Link to={routes.classify} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Thu mua</Typography></Link>
                     <Link to={routes.news} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Tin tức</Typography></Link>
                     <Link to={routes.regulation} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Quy định</Typography></Link>
