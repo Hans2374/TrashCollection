@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Icon, Select, MenuItem } from '@mui/material';
+import { Box, Typography, Icon, Select, MenuItem, Grid } from '@mui/material';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
@@ -10,6 +10,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { routes } from '../routes/routes';
 import { KeyboardArrowDown as KeyboardArrowDownIcon } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
+import styles from './Classify.module.css';
 
 const Classify = () => {
     const isLogin = useSelector((state) => state.auth.isLogin);
@@ -21,10 +22,85 @@ const Classify = () => {
         setDropdown(event.target.value);
     };
 
+    const cardData = [
+        {
+            id: 1,
+            title: "Nhựa",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card1.png`,
+        },
+        {
+            id: 2,
+            title: "Cao su",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card2.png`,
+        },
+        {
+            id: 3,
+            title: "Giấy",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card3.png`,
+        },
+        {
+            id: 4,
+            title: "Thuỷ tinh",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card4.png`,
+        },
+        {
+            id: 5,
+            title: "Kim loại",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card5.png`,
+        },
+        {
+            id: 6,
+            title: "Nilon",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card6.png`,
+        },
+        {
+            id: 7,
+            title: "Đồ điện",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card7.png`,
+        },
+        {
+            id: 8,
+            title: "Vải",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card8.png`,
+        },
+        {
+            id: 9,
+            title: "Củi khô",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card9.png`,
+        },
+        {
+            id: 10,
+            title: "Cát sỏi",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card10.png`,
+        },
+        {
+            id: 11,
+            title: "Rác hữu cơ",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card11.png`,
+        },
+        {
+            id: 12,
+            title: "Rác vô cơ tổng hợp",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card12.png`,
+        },
+    ];
+
     return (
         <>
             <ScrollToTop />
-            <Header1 isLogin={isLogin}/>
+            <Header1 isLogin={isLogin} />
 
             {/* Background image */}
             <Box
@@ -97,114 +173,144 @@ const Classify = () => {
                     }}
                 >
                     <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>Chào mừng đối tác của TÊN!</Typography>
-                    <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>Hãy chắc rằng bạn đã nắm rõ và đồng ý với <RouterLink to={routes.login} style={{ textDecoration: 'underline', color: colors.color2, fontWeight: 600 }}>quy định</RouterLink> của chúng tôi!</Typography>
-                    <Box sx={{ marginTop: '30px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 1 }}>
+                    <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>Hãy chắc rằng bạn đã nắm rõ và đồng ý với <RouterLink to={routes.regulation} style={{ textDecoration: 'underline', color: colors.color2, fontWeight: 600 }}>quy định</RouterLink> của chúng tôi!</Typography>
+
+                    {/* Search box and filters */}
+                    <Box sx={{ marginTop: '60px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 1, height: '29px' }}>
                         <Box sx={{
-                            border: '1px solid #214738',
-                            borderRadius: '5px',
-                            width: '426px',
-                            height: '29px',
+                            position: 'relative'
                         }}>
                             <input
                                 type="text"
                                 placeholder="Bạn đang có gì?"
                                 style={{
-                                    border: 'none',
+                                    border: '2px solid #214738',
+                                    width: '426px',
+                                    borderRadius: '5px',
+                                    fontFamily: 'KoHo',
                                     fontSize: '20px',
                                     fontFamily: 'KoHo',
                                     fontWeight: 400,
                                     lineHeight: '26px',
                                     outline: 'none',
+                                    padding: 0,
+                                    paddingLeft: '40px',
                                 }}
                             />
-                            <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
+                            <Icon sx={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }}>
                                 <SearchIcon />
                             </Icon>
                         </Box>
-                        <Select
-                            color='inherit'
-                            value={dropdown1}
-                            onChange={(event) => handleDropdownChange(event, setDropdown1)}
-                            displayEmpty
-                            sx={{
-                                width: 100,
-                                borderRadius: 3,
-                                marginRight: 3,
-                                height: 40,
-                                backgroundColor: 'white',
-                                '& .MuiOutlinedInput-notchedOutline': { border: 'none' },
-                                boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
-                                transition: 'all 0.3s ease',
-                                '&:hover': {
-                                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                                    backgroundColor: '#f5f5f5',
-                                },
-                                fontSize: '16px',
-                            }}
-                            IconComponent={KeyboardArrowDownIcon}
-                            renderValue={(selected) => selected || 'Giá'}
-                        >
-                            <MenuItem value=""><em>Giá</em></MenuItem>
-                            <MenuItem value={10}>Dưới 50.000đ</MenuItem>
-                            <MenuItem value={20}>Từ 50.000đ đến 100.000đ</MenuItem>
-                            <MenuItem value={30}>Trên 100.00đ</MenuItem>
-                        </Select>
-                        <Select
-                            color='inherit'
-                            value={dropdown2}
-                            onChange={(event) => handleDropdownChange(event, setDropdown2)}
-                            displayEmpty
-                            sx={{
-                                width: 100,
-                                borderRadius: 3,
-                                marginRight: 3,
-                                height: 40,
-                                backgroundColor: 'white',
-                                '& .MuiOutlinedInput-notchedOutline': { border: 'none' },
-                                boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
-                                transition: 'all 0.3s ease',
-                                '&:hover': {
-                                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                                    backgroundColor: '#f5f5f5',
-                                },
-                                fontSize: '16px',
-                            }}
-                            IconComponent={KeyboardArrowDownIcon}
-                            renderValue={(selected) => selected || 'A-Z'}
-                        >
-                            <MenuItem value=""><em>A-Z</em></MenuItem>
-                            <MenuItem value={10}>A-Z</MenuItem>
-                            <MenuItem value={20}>Z-A</MenuItem>
-                        </Select>
-                        <Select
-                            color='inherit'
-                            value={dropdown3}
-                            onChange={(event) => handleDropdownChange(event, setDropdown3)}
-                            displayEmpty
-                            sx={{
-                                width: 100,
-                                borderRadius: 3,
-                                marginRight: 3,
-                                height: 40,
-                                backgroundColor: 'white',
-                                '& .MuiOutlinedInput-notchedOutline': { border: 'none' },
-                                boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
-                                transition: 'all 0.3s ease',
-                                '&:hover': {
-                                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                                    backgroundColor: '#f5f5f5',
-                                },
-                                fontSize: '16px',
-                            }}
-                            IconComponent={KeyboardArrowDownIcon}
-                            renderValue={(selected) => selected || 'Phân loại'}
-                        >
-                            <MenuItem value=""><em>None</em></MenuItem>
-                            <MenuItem value={10}>Hữu cơ</MenuItem>
-                            <MenuItem value={20}>Vô cơ</MenuItem>
-                            <MenuItem value={30}>Giấy</MenuItem>
-                        </Select>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+                            <Select
+                                color='inherit'
+                                value={dropdown1}
+                                onChange={(event) => handleDropdownChange(event, setDropdown1)}
+                                displayEmpty
+                                sx={{
+                                    border: '2px solid #214738',
+                                    maxWidth: '300px',
+                                    borderRadius: '5px',
+                                    fontFamily: 'KoHo',
+                                    marginRight: 3,
+                                    backgroundColor: 'white',
+                                    '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none', outline: 'none', },
+                                    boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
+                                    transition: 'all 0.3s ease',
+                                    '&:hover': {
+                                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                                        backgroundColor: '#f5f5f5',
+                                    },
+                                    fontSize: '20px',
+                                    lineHeight: '26px',
+                                }}
+                                IconComponent={KeyboardArrowDownIcon}
+                                renderValue={(selected) => selected || 'Giá'}
+                            >
+                                <MenuItem value=""><em>Hủy</em></MenuItem>
+                                <MenuItem value={"Dưới 50.000đ"}>Dưới 50.000đ</MenuItem>
+                                <MenuItem value={'Từ 50.000đ đến 100.000đ'}>Từ 50.000đ đến 100.000đ</MenuItem>
+                                <MenuItem value={'Trên 100.00đ'}>Trên 100.00đ</MenuItem>
+                            </Select>
+                            <Select
+                                color='inherit'
+                                value={dropdown2}
+                                onChange={(event) => handleDropdownChange(event, setDropdown2)}
+                                displayEmpty
+                                sx={{
+                                    border: '2px solid #214738',
+                                    maxWidth: '110px',
+                                    borderRadius: '5px',
+                                    fontFamily: 'KoHo',
+                                    marginRight: 3,
+                                    backgroundColor: 'white',
+                                    '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
+                                    boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
+                                    transition: 'all 0.3s ease',
+                                    '&:hover': {
+                                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                                        backgroundColor: '#f5f5f5',
+                                    },
+                                    fontSize: '20px',
+                                    lineHeight: '26px',
+                                }}
+                                IconComponent={KeyboardArrowDownIcon}
+                                renderValue={(selected) => selected || 'Thứ tự'}
+                            >
+                                <MenuItem value=""><em>Hủy</em></MenuItem>
+                                <MenuItem value={"A-Z"}>A-Z</MenuItem>
+                                <MenuItem value={"Z-A"}>Z-A</MenuItem>
+                            </Select>
+                            <Select
+                                color='inherit'
+                                value={dropdown3}
+                                onChange={(event) => handleDropdownChange(event, setDropdown3)}
+                                displayEmpty
+                                sx={{
+                                    border: '2px solid #214738',
+                                    maxWidth: '150px',
+                                    borderRadius: '5px',
+                                    fontFamily: 'KoHo',
+                                    marginRight: 3,
+                                    backgroundColor: 'white',
+                                    '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
+                                    boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
+                                    transition: 'all 0.3s ease',
+                                    '&:hover': {
+                                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+                                        backgroundColor: '#f5f5f5',
+                                    },
+                                    fontSize: '20px',
+                                    lineHeight: '26px',
+                                }}
+                                IconComponent={KeyboardArrowDownIcon}
+                                renderValue={(selected) => selected || 'Phân loại'}
+                            >
+                                <MenuItem value=""><em>Hủy</em></MenuItem>
+                                <MenuItem value={'Hữu cơ'}>Hữu cơ</MenuItem>
+                                <MenuItem value={'Vô cơ'}>Vô cơ</MenuItem>
+                                <MenuItem value={'Tái chế'}>Tái chế</MenuItem>
+                            </Select>
+                        </Box>
                     </Box>
+
+                    {/* Card display */}
+                    <Grid container spacing={2} sx={{marginTop: '30px'}}>
+                        {cardData.map((card) => (
+                            <Grid item xs={12} sm={6} md={3} key={card.id}>
+                                <Box className={styles.card}>
+                                <Box>
+                                        <img src={card.image} style={{ width: '80%', height: '100px', borderRadius: '8px' }} />
+                                </Box>
+                                <Box>
+                                    <div className={styles.cardTitle}>{card.title}</div>
+                                    <div className={styles.cardBody}>{card.description}</div>
+                                    <span>Xem chi tiết</span>
+                                </Box>
+                                </Box>
+                            </Grid>
+                        ))}
+                    </Grid>
                 </Box>
             ) : (
                 <Box
