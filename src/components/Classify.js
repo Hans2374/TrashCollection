@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Icon, Select, MenuItem, useMediaQuery } from '@mui/material';
+import { Box, Typography, Icon, Select, MenuItem, useMediaQuery, Pagination } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
@@ -22,7 +22,7 @@ const Classify = () => {
     const [dropdown1, setDropdown1] = useState('');
     const [dropdown2, setDropdown2] = useState('');
     const [dropdown3, setDropdown3] = useState('');
-    const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
+    const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('lg'));
 
     const handleDropdownChange = (event, setDropdown) => {
         setDropdown(event.target.value);
@@ -101,7 +101,33 @@ const Classify = () => {
             description: "60.000đ / 1kg",
             image: `${process.env.PUBLIC_URL}/images/card12.png`,
         },
+        {
+            id: 13,
+            title: "Cát sỏi",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card10.png`,
+        },
+        {
+            id: 14,
+            title: "Rác hữu cơ",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card11.png`,
+        },
+        {
+            id: 15,
+            title: "Rác vô cơ tổng hợp",
+            description: "60.000đ / 1kg",
+            image: `${process.env.PUBLIC_URL}/images/card12.png`,
+        },
     ];
+
+    const [page, setPage] = useState(1);
+    const itemsPerPage = isSmallScreen ? 6 : 8;
+    const handleChangePage = (event, value) => {
+        setPage(value);
+    };
+
+    const paginatedData = cardData.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
     return (
         <>
@@ -324,9 +350,9 @@ const Classify = () => {
 
                     {/* Card display */}
                     <Box display='flex' justifyContent='center'>
-                        <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={1} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
-                            {cardData.map((card) => (
-                                <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 2 }} key={card.id} display='flex' justifyContent='center'>
+                        <Grid className={styles.cardContainer} container rowSpacing={7} columnSpacing={4} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
+                            {paginatedData.map((card) => (
+                                <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={card.id} display='flex' justifyContent='center'>
                                     <Box className={styles.card}>
                                         <div>
                                             <img src={card.image} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
@@ -340,6 +366,15 @@ const Classify = () => {
                                 </Grid>
                             ))}
                         </Grid>
+                    </Box>
+                    {/* Pagination */}
+                    <Box display="flex" justifyContent="center" mb={2} mt={1}>
+                        <Pagination
+                            count={Math.ceil(cardData.length / itemsPerPage)}
+                            page={page}
+                            onChange={handleChangePage}
+                            color='success'
+                        />
                     </Box>
                 </Box>
             ) : (
