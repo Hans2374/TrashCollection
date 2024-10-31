@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, } from 'react';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import { useSelector } from 'react-redux';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import colors from '../colors';
 
 const Regulation = () => {
@@ -295,22 +295,234 @@ const Regulation = () => {
                 </Box>
 
                 {/* Section 3 */}
-                <Box sx={{
-                    textAlign: 'center',
-                    backgroundColor: colors.color3,
-                    paddingBottom: '50px'
-                }}>
+                <Box
+                    sx={{
+                        textAlign: 'center',
+                        backgroundColor: colors.color3,
+                        paddingBottom: '50px'
+                    }}
+                >
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            color: colors.color2,
+                            fontFamily: 'KoHo',
+                            fontWeight: '700',
+                            paddingTop: '70px',
+                        }}
+                    >
+                        Lưu Ý Khi Xử Lí Các Loại Rác Thải Điện Tử
+                    </Typography>
+
+                    <Grid
+                        container
+                        justifyContent="center"
+                        alignItems="center"
+                        sx={{
+                            maxWidth: '1700px',
+                            margin: '0 auto',
+                        }}
+                    >
+                        {/* c1 */}
+                        <Grid item >
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '50px 15px 0 15px' }}>
+                                <Box
+                                    component="img"
+                                    src="\images\regulation6.png"
+                                    alt="Image6"
+                                    sx={{ width: '250px', height: '280px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                />
+                                <Box
+                                    component="img"
+                                    src="\images\regulation7.png"
+                                    alt="Image7"
+                                    sx={{ width: '250px', height: '120px', border: `2px solid ${colors.color2}`, borderRadius: '20px' }}
+                                />
+                            </Box>
+                        </Grid>
+
+                        {/* c2 */}
+                        <Grid item>
+                            <Box
+                                component="img"
+                                src="\images\regulation8.png"
+                                alt="Image8"
+                                sx={{ margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                            />
+                        </Grid>
+
+                        {/* c3 */}
+                        <Grid item>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '50px 15px 0 15px' }}>
+                                <Box
+                                    component="img"
+                                    src="\images\regulation9.png"
+                                    alt="Image9"
+                                    sx={{ width: '250px', height: '150px', border: `2px solid ${colors.color2}`, borderRadius: '50px' }}
+                                />
+                                <Box
+                                    component="img"
+                                    src="\images\regulation11.png"
+                                    alt="Image11"
+                                    sx={{ width: '250px', height: '250px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                />
+                            </Box>
+                        </Grid>
+
+                        {/* c4 */}
+                        <Grid item>
+                            <Box
+                                component="img"
+                                src="\images\regulation10.png"
+                                alt="Image10"
+                                sx={{ margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                            />
+                        </Grid>
+                        <Typography sx={{ textAlign: 'left', maxWidth: '1100px', paddingTop: '30px' }}>
+                            <Typography variant="h5"
+                                sx={{
+                                    fontFamily: 'KoHo',
+                                    color: colors.color2,
+                                    fontWeight: '600',
+                                    display: 'inline'
+                                }}>
+                                Bảo vệ thông tin cá nhân:
+                            </Typography>
+                            <Typography sx={{
+                                fontFamily: 'KoHo',
+                                fontSize: '18px',
+                                color: 'black',
+                                fontWeight: 'normal',
+                                display: 'inline',
+                                marginLeft: '8px'
+                            }}>
+                                Trước khi bỏ đi các thiết bị điện tử như máy tính hoặc điện thoại, cần đảm bảo đã xóa sạch dữ liệu cá nhân. Sử dụng phần mềm chuyên dụng để xóa hoàn toàn dữ liệu nếu cần.<br /><br />
+                            </Typography>
+                            <Typography variant="h5"
+                                sx={{
+                                    fontFamily: 'KoHo',
+                                    color: colors.color2,
+                                    fontWeight: '600',
+                                    display: 'inline'
+                                }}>
+                                Tách biệt pin:
+                            </Typography>
+                            <Typography sx={{
+                                fontFamily: 'KoHo',
+                                fontSize: '18px',
+                                color: 'black',
+                                fontWeight: 'normal',
+                                display: 'inline',
+                                marginLeft: '8px'
+                            }}>
+                                Pin và các thiết bị có chứa các kim loại nặng (như thủy ngân, chì, cadmium) nên được tách riêng để xử lý đặc biệt. <br /><br />
+                            </Typography>
+                            <Typography variant="h5"
+                                sx={{
+                                    fontFamily: 'KoHo',
+                                    color: colors.color2,
+                                    fontWeight: '600',
+                                    display: 'inline'
+                                }}>
+                                Không tự ý phá hủy:
+                            </Typography>
+                            <Typography sx={{
+                                fontFamily: 'KoHo',
+                                fontSize: '18px',
+                                color: 'black',
+                                fontWeight: 'normal',
+                                display: 'inline',
+                                marginLeft: '8px'
+                            }}>
+                                Việc phá dỡ hoặc tự xử lý rác điện tử mà không có chuyên môn có thể gây ra ô nhiễm môi trường hoặc nguy hiểm cho sức khỏe.
+                            </Typography>
+                        </Typography>
+                    </Grid>
+                </Box>
+
+                {/* section 4 */}
+                <Box
+                    sx={{
+                        textAlign: 'center',
+                        backgroundColor: colors.color1,
+                        paddingBottom: '50px'
+                    }}
+                >
+                    {/* title */}
                     <Typography variant="h4"
                         sx={{
                             color: `${colors.color2}`,
                             fontFamily: 'KoHo',
                             fontWeight: '700',
-                            marginBottom: '15px',
                             paddingTop: '70px',
                         }}
                     >
-                        Lưu ý trước khi xử lí các loại rác điện tử
+                        Điều Kiện Xử Lí Miễn Phí
                     </Typography>
+                    <Typography variant='h6'
+                        sx={{
+                            color: `${colors.color2}`,
+                            fontFamily: 'KoHo',
+                            marginBottom: '15px',
+                        }}
+                    >
+                        Chúng tôi sẽ giúp bạn xử lí các loại rác thải miễn phí nếu thỏa mãn những điều kiện dưới đây
+                    </Typography>
+
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                            gap: '20px',
+                            paddingTop: '40px',
+                        }}
+                    >
+                        <Box sx={{ width: '400px', textAlign: 'center', mb: 2 }}>
+                            <img
+                                src="/images/typ2.png"
+                                alt="Icon"
+                                style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
+                            />
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    fontFamily: 'KoHo',
+                                    marginBottom: '10px',
+                                }}
+                            >
+                                Là đối tác của <Box component="span" sx={{ fontWeight: 'bold', color: colors.color2 }}>TÊN</Box>
+                            </Typography>
+                        </Box>
+
+                        <Box sx={{ width: '400px', textAlign: 'center', mb: 2 }}>
+                            <img
+                                src="/images/recycle2.png"
+                                alt="Icon"
+                                style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
+                            />
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    fontFamily: 'KoHo',
+                                    marginBottom: '10px',
+                                }}
+                            >
+                                Có tối thiểu 100kg rác thải điện tử hoặc 20kg các loại rác khác
+                            </Typography>
+                        </Box>
+                    </Box>
+
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            fontFamily: 'KoHo',
+                            marginTop: '60px',
+                        }}
+                    >
+                        Gọi <Box component="span" sx={{ fontWeight: 'bold', color: colors.color2 }}>0123456789</Box> để được tư vấn chi tiết
+                    </Typography>
+
                 </Box>
 
             </Box>

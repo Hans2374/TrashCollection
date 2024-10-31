@@ -5,4 +5,5 @@ export const routes = {
   newsDetail: "/news-detail",
   classify: "/classify",
   regulation: "/regulation",
+  product: "/product",
 };

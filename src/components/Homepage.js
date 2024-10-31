@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Grid } from '@mui/material';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
@@ -64,7 +64,7 @@ const Homepage = () => {
       {/* Background image */}
       <Box
         sx={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/newMain.png)`,
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/main.png)`,
           height: '421px',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -81,7 +81,7 @@ const Homepage = () => {
             backgroundColor: 'rgba(252, 249, 243, 0.6)',
             position: 'absolute',
             top: '50%',
-            left: '50%',
+            left: { xs: '50%', sm: '50%', md: '20%' },
             transform: 'translate(-50%, -50%)',
             borderRadius: '8px',
             boxShadow: '4px 4px 4px 0px rgba(0, 0, 0, 0.25)',
@@ -117,43 +117,6 @@ const Homepage = () => {
           >
             Giảm lượng rác thải chôn lấp và ô nhiễm, tiết kiệm tài nguyên thiên nhiên, giảm lượng khí thải nhà kính
           </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' }, // Đổi chiều cho màn hình nhỏ
-              justifyContent: 'space-between',
-              fontFamily: 'KoHo',
-              padding: { xs: '0 20px', md: '0 70px' }, // Điều chỉnh padding cho màn hình nhỏ
-              gap: { xs: '10px', md: '20px' }, 
-            }}
-          >
-            <Button
-              sx={{
-                color: `${colors.color2}`,
-                backgroundColor: `${colors.color3}`,
-                width: { xs: '100%' }, 
-                '&:hover': {
-                  color: `${colors.color3}`,
-                  backgroundColor: `${colors.color2}`,
-                },
-              }}
-            >
-              Mua ngay
-            </Button>
-            <Button
-              sx={{
-                color: `${colors.color3}`,
-                backgroundColor: `${colors.color2}`,
-                width: { xs: '100%' }, // Đặt chiều rộng 100% cho màn hình nhỏ
-                '&:hover': {
-                  color: `${colors.color2}`,
-                  backgroundColor: `${colors.color3}`,
-                },
-              }}
-            >
-              Bán ngay
-            </Button>
-          </Box>
         </Box>
       </Box>
 
@@ -327,107 +290,100 @@ const Homepage = () => {
         </Box>
       </Box>
 
-      {/* Section 3 */}
       <Box
         sx={{
           textAlign: 'center',
           backgroundColor: colors.color3,
           padding: '50px 100px',
-          display: 'flex',
-          alignItems: 'flex-start',
-          flexWrap: 'wrap',
-          gap: '20px',
         }}
         className="section-container"
       >
-        <Typography
-          variant="h1"
-          className="section-title"
-          sx={{
-            fontWeight: 'bold',
-            fontFamily: 'KoHo',
-            color: '#295C2C',
-            marginBottom: '16px',
-            width: { xs: '100%', md: 'calc(100% - 300px)' }, // Giữ nguyên bố cục cho màn hình lớn
-            textAlign: 'left',
-          }}
-        >
-          Sản phẩm xanh
-        </Typography>
+        <Grid container spacing={4} alignItems="flex-start">
 
-        <Typography
-          variant="body1"
-          className="section-content"
-          sx={{
-            fontFamily: 'KoHo',
-            fontSize: '29px',
-            color: '#333',
-            maxWidth: '400px',
-            margin: '30px auto',
-            lineHeight: '1.6',
-            marginBottom: '40px',
-            width: { xs: '100%', md: 'calc(100% - 300px)' }, // Giữ nguyên bố cục cho màn hình lớn
-            textAlign: 'left',
-          }}
-        >
-          "Chúng tôi cung cấp các sản phẩm tái chế như đồ gia dụng, thời trang, phụ kiện, và đồ trang trí làm từ nguyên liệu tái chế.
-          Khi mua sắm tại đây, bạn không chỉ nhận được những sản phẩm độc đáo, bền vững mà còn được tham gia chương trình <b>tích điểm đổi quà"</b>.
-        </Typography>
+          {/* Phần bên trái: Tiêu đề và giới thiệu */}
+          <Grid item xs={12} md={6}>
+            <Typography
+              variant="h3"
+              className="section-title"
+              sx={{ fontWeight: 'bold', fontFamily: 'KoHo', color: `${colors.color2}`, marginBottom: '70px', marginTop: '20px' }}
+            >
+              Sản phẩm xanh
+            </Typography>
 
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: { xs: '100%', md: '600px' }, // Đổi chiều cho màn hình nhỏ
-            gap: '20px',
-          }}
-          className="section-content"
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '100%',
-              gap: '20px',
-              flexDirection: { xs: 'column', md: 'row' }, // Đổi chiều cho màn hình nhỏ
-            }}
-          >
-            <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/sec4.png`}
-                alt="Product 1"
-                className="product-image"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </Box>
-            <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/sec2.png`}
-                alt="Product 2"
-                className="product-image"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </Box>
-            <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/sec3.png`}
-                alt="Product 3"
-                className="product-image"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </Box>
-          </Box>
+            <Typography
+              className="section-content"
+              sx={{
+                fontFamily: 'KoHo',
+                fontSize: '28px',
+                color: '#333',
+                maxWidth: '600px',
+                lineHeight: '1.6',
+                marginBottom: '40px',
+                marginLeft: '20px',
+                textAlign: 'left',
+              }}
+            >
+              Chúng tôi cung cấp các sản phẩm tái chế như đồ gia dụng, thời trang, phụ kiện, và đồ trang trí làm từ nguyên liệu tái chế.
+              Khi mua sắm tại đây, bạn không chỉ nhận được những sản phẩm độc đáo, bền vững mà còn được tham gia chương trình <b>tích điểm đổi quà</b>.
+            </Typography>
+          </Grid>
 
-          <Box sx={{ width: '100%', height: '300px', borderRadius: '8px', overflow: 'hidden' }}>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/sec1.png`}
-              alt="Product 4"
-              className="product-image"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </Box>
-        </Box>
+          {/* Phần bên phải: Hình ảnh sản phẩm */}
+          <Grid item xs={12} md={6}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '20px',
+              }}
+            >
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  gap: '20px',
+                  flexDirection: { xs: 'column', md: 'row' },
+                }}
+              >
+                <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/sec4.png`}
+                    alt="Product 1"
+                    className="product-image"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </Box>
+                <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/sec2.png`}
+                    alt="Product 2"
+                    className="product-image"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </Box>
+                <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/sec3.png`}
+                    alt="Product 3"
+                    className="product-image"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </Box>
+              </Box>
+
+              <Box sx={{ width: '100%', height: '300px', borderRadius: '8px', overflow: 'hidden' }}>
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/sec1.png`}
+                  alt="Product 4"
+                  className="product-image"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
       </Box>
+
 
 
 
@@ -454,7 +410,7 @@ const Homepage = () => {
         <Typography variant="h3" className="section-title" sx={{ color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', marginBottom: '32px', fontSize: '32px' }}>
           LOGO/TÊN
         </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '1000px', gap: '32px' }} className="section-content">
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '1000px', gap: '40px' }} className="section-content">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
             <Typography variant="h5" className="section-content" sx={{ color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
               Tái chế vì tương lai

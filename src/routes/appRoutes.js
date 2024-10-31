@@ -6,7 +6,8 @@ import Login from "../pages/login";
 import News from "../pages/news";
 import NewsDetail from "../pages/newsDetail";
 import Classify from "../pages/classify";
-import Regulation from "../components/Regulation";
+import Regulation from "../pages/regulation";
+import Product from "../components/Product";
 
 export default function AppRoute() {
 
@@ -19,6 +20,7 @@ export default function AppRoute() {
         <Route path={routes.newsDetail} element={<NewsDetail />} />
         <Route path={routes.classify} element={<Classify />} />
         <Route path={routes.regulation} element={<Regulation />} />
+        <Route path={routes.product} element={<Product />} />
       </Routes>
     </>
   );

@@ -281,7 +281,7 @@ const NewsDetail = () => {
                             src={articles[0].image}
                             alt={articles[0].title}
                             sx={{
-                                width: '100%', height: '100%', borderRadius: '9px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out',
+                                width: '100%', height: '100%', borderRadius: '9px', transition: 'transform 0.3s ease-in-out',
                             }}
                         />
                         <Typography
@@ -374,7 +374,6 @@ const NewsDetail = () => {
                                             width: '100%',
                                             height: '70%',
                                             borderRadius: '8px',
-                                            cursor: 'pointer',
                                             transition: 'transform 0.3s ease-in-out',
                                             '&:hover': {
                                                 transform: 'scale(1.02)',
@@ -386,7 +385,6 @@ const NewsDetail = () => {
                                             color: 'black',
                                             fontFamily: 'KoHo',
                                             fontSize: '16px',
-                                            cursor: 'pointer',
                                             fontWeight: 600,
                                             '&:hover': { color: `${colors.color2}` },
                                         }}
@@ -438,7 +436,6 @@ const NewsDetail = () => {
                                         width: '100%',
                                         borderRadius: '9px',
                                         height: '180px',
-                                        cursor: 'pointer',
                                         transition: 'transform 0.3s ease-in-out',
                                         '&:hover': {
                                             transform: 'scale(1.05)',
@@ -447,7 +444,6 @@ const NewsDetail = () => {
                                 />
                                 <Typography
                                     sx={{
-                                        cursor: 'pointer',
                                         color: 'black',
                                         fontFamily: 'KoHo',
                                         fontSize: '16px',
