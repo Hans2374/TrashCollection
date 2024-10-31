@@ -59,13 +59,25 @@
     background: var(--hover-bg);
 }
 
-.card:hover>div,
-.card:hover>strong {
+.card:hover>div {
     opacity: 0;
 }
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
+    .card:hover span {
+        top: initial;
+        font-size: initial;
+    }
+    
+    .card:hover {
+        background: initial;
+    }
+    
+    .card:hover>div {
+        opacity: initial;
+    }
+
     .searchIcon{
         left: 7% !important;
     }

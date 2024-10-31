@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Icon, Select, MenuItem, useMediaQuery, Pagination } from '@mui/material';
+import { Box, Typography, Icon, Select, MenuItem, useMediaQuery, Pagination, PaginationItem } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
@@ -227,7 +227,7 @@ const Classify = () => {
                             flexWrap: { xs: 'wrap', sm: 'wrap', md: 'wrap' },
                         }}
                     >
-                        <Box sx={{ position: 'relative' }}>
+                        <Box sx={{ position: 'relative', marginTop: isSmallScreen ? 1 : 0, }}>
                             <input
                                 className={styles.searchBox}
                                 type="text"
@@ -374,6 +374,29 @@ const Classify = () => {
                             page={page}
                             onChange={handleChangePage}
                             color='success'
+                            sx={{
+                                '& .MuiPaginationItem-root': {
+                                    border: '2px solid #214738', // Add border
+                                    color: colors.color2, // Change text color
+                                    '&.Mui-selected': {
+                                        backgroundColor: colors.color2, // Change background color of selected item
+                                        color: colors.color1, // Change text color of selected item
+                                    },
+                                    '&:hover': {
+                                        backgroundColor: '#46cf99', // Change background color on hover
+                                    },
+                                },
+                            }}
+                            renderItem={(item) => (
+                                <PaginationItem
+                                    {...item}
+                                    sx={{
+                                        '&.Mui-selected': {
+                                            borderColor: colors.color2, // Change border color of selected item
+                                        },
+                                    }}
+                                />
+                            )}
                         />
                     </Box>
                 </Box>
