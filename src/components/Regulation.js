@@ -92,13 +92,15 @@ const Regulation = () => {
                     }}
                 >
                     {/* title */}
-                    <Typography variant="h4"
+                    <Typography
                         sx={{
+                            fontSize: { xs: '25px', md: '34px' },
                             color: `${colors.color2}`,
                             fontFamily: 'KoHo',
                             fontWeight: '700',
                             marginBottom: '15px',
                             paddingTop: '70px',
+                            padding: { xs: '70px 20px 0 20px', md: '70px 0 0 0' },
                         }}
                     >
                         <span style={{ textDecoration: 'underline' }}>KHÔNG</span> Thu Mua Các Loại Rác Hữu Cơ
@@ -129,8 +131,9 @@ const Regulation = () => {
                     }}
                 >
                     {/* title */}
-                    <Typography variant="h4"
+                    <Typography
                         sx={{
+                            fontSize: { xs: '25px', md: '34px' },
                             color: `${colors.color2}`,
                             fontFamily: 'KoHo',
                             fontWeight: '700',
@@ -155,10 +158,11 @@ const Regulation = () => {
                         <Box sx={{
                             maxWidth: '450px'
                         }}>
-                            <Typography variant="h5"
+                            <Typography 
                                 sx={{
+                                    marginLeft: {xs: '20px', md: '0'},
+                                    fontSize: { xs: '20px', md: '24px' },
                                     paddingBottom: '10px',
-                                    paddingLeft: '18px',
                                     color: colors.color2,
                                     fontFamily: 'KoHo',
                                     fontWeight: '600',
@@ -166,24 +170,24 @@ const Regulation = () => {
                                 }}>
                                 Ủ phân hữu cơ
                             </Typography>
-                            <Typography component="ul"
+                            <Typography 
                                 sx={{
                                     listStyleType: 'disc',
-                                    paddingLeft: '18px',
                                     marginTop: '8px',
                                     fontSize: '18px',
-                                    textAlign: 'left'
+                                    textAlign: 'left',
+                                    marginLeft: {xs: '20px', md: '0'}
                                 }}>
-                                <Typography component="li" sx={{ fontSize: '18px', fontFamily: 'KoHo' }}>
+                                <Typography  sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Chuẩn bị một khu vực hoặc thùng chứa phân hữu cơ.
                                 </Typography>
-                                <Typography component="li" sx={{ fontSize: '18px', fontFamily: 'KoHo' }}>
+                                <Typography  sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Phân loại rác hữu cơ từ nhà bếp, không bao gồm các sản phẩm từ thịt, sữa.
                                 </Typography>
-                                <Typography component="li" sx={{ fontSize: '18px', fontFamily: 'KoHo' }}>
+                                <Typography  sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Đảo trộn thường xuyên để cung cấp oxy và giữ độ ẩm vừa phải.
                                 </Typography>
-                                <Typography component="li" sx={{ fontSize: '18px', fontFamily: 'KoHo' }}>
+                                <Typography  sx={{fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Sau khoảng 2-3 tháng (tùy điều kiện), sẽ có phân hữu cơ để bón cho cây trồng.
                                 </Typography>
                             </Typography>
@@ -194,7 +198,7 @@ const Regulation = () => {
                             src="\images\regulation4.png"
                             alt="Hình ảnh ủ phân hữu cơ"
                             sx={{
-                                width: '450px',
+                                width: {xs: '350px', md: '450px'},
                                 height: '250px',
                                 borderRadius: '10px',
                                 border: `3px solid ${colors.color2}`
@@ -216,7 +220,7 @@ const Regulation = () => {
                             src="\images\regulation5.png"
                             alt="Hình ảnh ủ phân hữu cơ"
                             sx={{
-                                width: '450px',
+                                width: {xs: '350px', md: '450px'},
                                 height: '250px',
                                 borderRadius: '10px',
                                 border: `3px solid ${colors.color2}`
@@ -226,32 +230,33 @@ const Regulation = () => {
                         <Box sx={{
                             maxWidth: '450px'
                         }}>
-                            <Typography variant="h5"
+                            <Typography 
                                 sx={{
+                                    fontSize: { xs: '20px', md: '24px' },
                                     paddingBottom: '10px',
-                                    paddingLeft: '16px',
                                     color: colors.color2,
                                     fontFamily: 'KoHo',
                                     fontWeight: '600',
-                                    textAlign: 'left'
+                                    textAlign: 'left',
+                                    marginLeft: {xs: '20px', md: '0'}
                                 }}>
                                 Sử dụng máy xử lý rác hữu cơ
                             </Typography>
-                            <Typography component="ul"
+                            <Typography 
                                 sx={{
                                     listStyleType: 'disc',
-                                    paddingLeft: '16px',
                                     marginTop: '8px',
                                     fontSize: '18px',
-                                    textAlign: 'left'
+                                    textAlign: 'left',
+                                    marginLeft: {xs: '20px', md: '0'}
                                 }}>
-                                <Typography component="li" sx={{ fontSize: '18px', fontFamily: 'KoHo' }}>
+                                <Typography sx={{fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Có nhiều loại máy xử lý rác hữu cơ gia đình giúp biến rác hữu cơ thành phân bón trong thời gian ngắn (khoảng 24 giờ).
                                 </Typography>
-                                <Typography component="li" sx={{ fontSize: '18px', fontFamily: 'KoHo' }}>
+                                <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Được thiết kế để hoạt động trong nhà, hạn chế mùi và sự phát sinh của côn trùng, giúp giữ môi trường sống sạch sẽ, gọn gàng hơn.
                                 </Typography>
-                                <Typography component="li" sx={{ fontSize: '18px', fontFamily: 'KoHo' }}>
+                                <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Có thể mua trực tiếp hoặc trực tuyến tại các cửa hàng điện máy lớn trên toàn quốc.
                                 </Typography>
                             </Typography>
@@ -271,8 +276,9 @@ const Regulation = () => {
                             maxWidth: '1000px'
                         }}>
                             <Typography sx={{ textAlign: 'left', paddingLeft: '18px' }}>
-                                <Typography variant="h5"
+                                <Typography 
                                     sx={{
+                                        fontSize: { xs: '20px', md: '24px' },
                                         fontFamily: 'KoHo',
                                         color: colors.color2,
                                         fontWeight: '600',
@@ -282,7 +288,7 @@ const Regulation = () => {
                                 </Typography>
                                 <Typography sx={{
                                     fontFamily: 'KoHo',
-                                    fontSize: '18px',
+                                    fontSize: { xs: '16px', md: '18px' },
                                     color: 'black',
                                     fontWeight: 'normal',
                                     display: 'inline',
@@ -303,12 +309,12 @@ const Regulation = () => {
                     }}
                 >
                     <Typography
-                        variant="h4"
                         sx={{
+                            fontSize: { xs: '25px', md: '34px' },
                             color: colors.color2,
                             fontFamily: 'KoHo',
                             fontWeight: '700',
-                            paddingTop: '70px',
+                            padding: { xs: '70px 20px 0 20px', md: '70px 0 0 0' },
                         }}
                     >
                         Lưu Ý Khi Xử Lí Các Loại Rác Thải Điện Tử
@@ -330,7 +336,7 @@ const Regulation = () => {
                                     component="img"
                                     src="\images\regulation6.png"
                                     alt="Image6"
-                                    sx={{ width: '250px', height: '280px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                    sx={{ display: { xs: 'none', md: 'block' }, width: '250px', height: '280px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
                                 />
                                 <Box
                                     component="img"
@@ -347,7 +353,7 @@ const Regulation = () => {
                                 component="img"
                                 src="\images\regulation8.png"
                                 alt="Image8"
-                                sx={{ margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                sx={{ display: { xs: 'none', md: 'block' }, margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
                             />
                         </Grid>
 
@@ -364,7 +370,7 @@ const Regulation = () => {
                                     component="img"
                                     src="\images\regulation11.png"
                                     alt="Image11"
-                                    sx={{ width: '250px', height: '250px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                    sx={{ display: { xs: 'none', md: 'block' }, width: '250px', height: '250px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
                                 />
                             </Box>
                         </Grid>
@@ -375,12 +381,13 @@ const Regulation = () => {
                                 component="img"
                                 src="\images\regulation10.png"
                                 alt="Image10"
-                                sx={{ margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                sx={{ display: { xs: 'none', md: 'block' }, margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
                             />
                         </Grid>
-                        <Typography sx={{ textAlign: 'left', maxWidth: '1100px', paddingTop: '30px' }}>
-                            <Typography variant="h5"
+                        <Typography sx={{ textAlign: 'left', maxWidth: '1100px', paddingTop: '30px',marginLeft: {xs: '20px', md: '0'}, }}>
+                            <Typography
                                 sx={{
+                                    fontSize: { xs: '20px', md: '24px' },
                                     fontFamily: 'KoHo',
                                     color: colors.color2,
                                     fontWeight: '600',
@@ -390,7 +397,7 @@ const Regulation = () => {
                             </Typography>
                             <Typography sx={{
                                 fontFamily: 'KoHo',
-                                fontSize: '18px',
+                                fontSize: { xs: '16px', md: '18px' },
                                 color: 'black',
                                 fontWeight: 'normal',
                                 display: 'inline',
@@ -398,8 +405,9 @@ const Regulation = () => {
                             }}>
                                 Trước khi bỏ đi các thiết bị điện tử như máy tính hoặc điện thoại, cần đảm bảo đã xóa sạch dữ liệu cá nhân. Sử dụng phần mềm chuyên dụng để xóa hoàn toàn dữ liệu nếu cần.<br /><br />
                             </Typography>
-                            <Typography variant="h5"
+                            <Typography
                                 sx={{
+                                    fontSize: { xs: '20px', md: '24px' },
                                     fontFamily: 'KoHo',
                                     color: colors.color2,
                                     fontWeight: '600',
@@ -409,7 +417,7 @@ const Regulation = () => {
                             </Typography>
                             <Typography sx={{
                                 fontFamily: 'KoHo',
-                                fontSize: '18px',
+                                fontSize: { xs: '16px', md: '18px' },
                                 color: 'black',
                                 fontWeight: 'normal',
                                 display: 'inline',
@@ -417,8 +425,9 @@ const Regulation = () => {
                             }}>
                                 Pin và các thiết bị có chứa các kim loại nặng (như thủy ngân, chì, cadmium) nên được tách riêng để xử lý đặc biệt. <br /><br />
                             </Typography>
-                            <Typography variant="h5"
+                            <Typography
                                 sx={{
+                                    fontSize: { xs: '20px', md: '24px' },
                                     fontFamily: 'KoHo',
                                     color: colors.color2,
                                     fontWeight: '600',
@@ -428,7 +437,7 @@ const Regulation = () => {
                             </Typography>
                             <Typography sx={{
                                 fontFamily: 'KoHo',
-                                fontSize: '18px',
+                                fontSize: { xs: '16px', md: '18px' },
                                 color: 'black',
                                 fontWeight: 'normal',
                                 display: 'inline',
@@ -449,8 +458,9 @@ const Regulation = () => {
                     }}
                 >
                     {/* title */}
-                    <Typography variant="h4"
+                    <Typography
                         sx={{
+                            fontSize: { xs: '25px', md: '34px' },
                             color: `${colors.color2}`,
                             fontFamily: 'KoHo',
                             fontWeight: '700',
@@ -459,8 +469,9 @@ const Regulation = () => {
                     >
                         Điều Kiện Xử Lí Miễn Phí
                     </Typography>
-                    <Typography variant='h6'
+                    <Typography 
                         sx={{
+                            fontSize: { xs: '16px', md: '22px' },
                             color: `${colors.color2}`,
                             fontFamily: 'KoHo',
                             marginBottom: '15px',
@@ -478,15 +489,15 @@ const Regulation = () => {
                             paddingTop: '40px',
                         }}
                     >
-                        <Box sx={{ width: '400px', textAlign: 'center', mb: 2 }}>
+                        <Box sx={{ width: { xs: '250px', md: '400px' }, textAlign: 'center', mb: 2 }}>
                             <img
                                 src="/images/typ2.png"
                                 alt="Icon"
                                 style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
                             />
                             <Typography
-                                variant="h6"
                                 sx={{
+                                    fontSize: { xs: '16px', md: '18px' },
                                     fontFamily: 'KoHo',
                                     marginBottom: '10px',
                                 }}
@@ -495,15 +506,15 @@ const Regulation = () => {
                             </Typography>
                         </Box>
 
-                        <Box sx={{ width: '400px', textAlign: 'center', mb: 2 }}>
+                        <Box sx={{ width: { xs: '250px', md: '400px' }, textAlign: 'center', mb: 2 }}>
                             <img
                                 src="/images/recycle2.png"
                                 alt="Icon"
                                 style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
                             />
                             <Typography
-                                variant="h6"
                                 sx={{
+                                    fontSize: { xs: '16px', md: '18px' },
                                     fontFamily: 'KoHo',
                                     marginBottom: '10px',
                                 }}
@@ -514,8 +525,8 @@ const Regulation = () => {
                     </Box>
 
                     <Typography
-                        variant="h6"
                         sx={{
+                            fontSize: { xs: '16px', md: '18px' },
                             fontFamily: 'KoHo',
                             marginTop: '60px',
                         }}
