@@ -244,6 +244,7 @@ const Classify = () => {
                                     outline: 'none',
                                     padding: 0,
                                     paddingLeft: '40px',
+                                    paddingBottom: isSmallScreen ? '2px' : '0px',
                                 }}
                             />
                             <Icon className={styles.searchIcon} sx={{ position: 'absolute', left: '3%', top: '50%', transform: 'translateY(-50%)' }}>
