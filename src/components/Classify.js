@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Typography, Icon, Select, MenuItem, Grid } from '@mui/material';
+import { Box, Typography, Icon, Select, MenuItem, useMediaQuery } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
@@ -11,12 +12,17 @@ import { routes } from '../routes/routes';
 import { KeyboardArrowDown as KeyboardArrowDownIcon } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import styles from './Classify.module.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const theme = createTheme();
 
 const Classify = () => {
     const isLogin = useSelector((state) => state.auth.isLogin);
     const [dropdown1, setDropdown1] = useState('');
     const [dropdown2, setDropdown2] = useState('');
     const [dropdown3, setDropdown3] = useState('');
+    const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
     const handleDropdownChange = (event, setDropdown) => {
         setDropdown(event.target.value);
@@ -99,7 +105,7 @@ const Classify = () => {
 
     return (
         <>
-            <ScrollToTop />
+            {!isSmallScreen && <ScrollToTop />}
             <Header1 isLogin={isLogin} />
 
             {/* Background image */}
@@ -168,24 +174,41 @@ const Classify = () => {
             {/* Nội dung */}
             {isLogin ? (
                 <Box
+                    className={styles.container}
                     sx={{
                         display: 'flex', flexDirection: 'column', p: 10, gap: 2, backgroundColor: colors.color1
                     }}
                 >
-                    <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>Chào mừng đối tác của TÊN!</Typography>
-                    <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>Hãy chắc rằng bạn đã nắm rõ và đồng ý với <RouterLink to={routes.regulation} style={{ textDecoration: 'underline', color: colors.color2, fontWeight: 600 }}>quy định</RouterLink> của chúng tôi!</Typography>
+                    <div className={styles.welcome}>
+                        <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>
+                            Chào mừng đối tác của TÊN!
+                        </Typography>
+                        <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>
+                            Hãy chắc rằng bạn đã nắm rõ và đồng ý với <RouterLink to={routes.regulation} style={{ textDecoration: 'underline', color: colors.color2, fontWeight: 600 }}>quy định</RouterLink> của chúng tôi!
+                        </Typography>
+                    </div>
 
                     {/* Search box and filters */}
-                    <Box sx={{ marginTop: '60px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 1, height: '29px' }}>
-                        <Box sx={{
-                            position: 'relative'
-                        }}>
+                    <Box
+                        className={styles.filterSearch}
+                        sx={{
+                            marginTop: '60px',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            gap: 1,
+                            height: '29px',
+                            flexWrap: { xs: 'wrap', sm: 'wrap', md: 'wrap' },
+                        }}
+                    >
+                        <Box sx={{ position: 'relative' }}>
                             <input
+                                className={styles.searchBox}
                                 type="text"
                                 placeholder="Bạn đang có gì?"
                                 style={{
                                     border: '2px solid #214738',
-                                    width: '426px',
+                                    width: '500px',
                                     borderRadius: '5px',
                                     fontFamily: 'KoHo',
                                     fontSize: '20px',
@@ -197,11 +220,11 @@ const Classify = () => {
                                     paddingLeft: '40px',
                                 }}
                             />
-                            <Icon sx={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)' }}>
+                            <Icon className={styles.searchIcon} sx={{ position: 'absolute', left: '3%', top: '50%', transform: 'translateY(-50%)' }}>
                                 <SearchIcon />
                             </Icon>
                         </Box>
-                        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+                        <Box className={styles.filterContainer} sx={{ display: 'flex', flexDirection: 'row' }}>
                             <Select
                                 color='inherit'
                                 value={dropdown1}
@@ -210,11 +233,13 @@ const Classify = () => {
                                 sx={{
                                     border: '2px solid #214738',
                                     maxWidth: '300px',
+                                    marginTop: isSmallScreen ? 1 : 0,
+                                    height: '29px',
                                     borderRadius: '5px',
                                     fontFamily: 'KoHo',
                                     marginRight: 3,
                                     backgroundColor: 'white',
-                                    '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none', outline: 'none', },
+                                    '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none', outline: 'none' },
                                     boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
                                     transition: 'all 0.3s ease',
                                     '&:hover': {
@@ -228,9 +253,9 @@ const Classify = () => {
                                 renderValue={(selected) => selected || 'Giá'}
                             >
                                 <MenuItem value=""><em>Hủy</em></MenuItem>
-                                <MenuItem value={"Dưới 50.000đ"}>Dưới 50.000đ</MenuItem>
-                                <MenuItem value={'Từ 50.000đ đến 100.000đ'}>Từ 50.000đ đến 100.000đ</MenuItem>
-                                <MenuItem value={'Trên 100.00đ'}>Trên 100.00đ</MenuItem>
+                                <MenuItem value={"< 50.000đ"}>Dưới 50.000đ</MenuItem>
+                                <MenuItem value={'50.000đ - 100.000đ'}>Từ 50.000đ đến 100.000đ</MenuItem>
+                                <MenuItem value={'> 100.00đ'}>Trên 100.00đ</MenuItem>
                             </Select>
                             <Select
                                 color='inherit'
@@ -240,6 +265,8 @@ const Classify = () => {
                                 sx={{
                                     border: '2px solid #214738',
                                     maxWidth: '110px',
+                                    height: '29px',
+                                    marginTop: isSmallScreen ? 1 : 0,
                                     borderRadius: '5px',
                                     fontFamily: 'KoHo',
                                     marginRight: 3,
@@ -269,9 +296,10 @@ const Classify = () => {
                                 sx={{
                                     border: '2px solid #214738',
                                     maxWidth: '150px',
+                                    height: '29px',
+                                    marginTop: isSmallScreen ? 1 : 0,
                                     borderRadius: '5px',
                                     fontFamily: 'KoHo',
-                                    marginRight: 3,
                                     backgroundColor: 'white',
                                     '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
                                     boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
@@ -295,22 +323,24 @@ const Classify = () => {
                     </Box>
 
                     {/* Card display */}
-                    <Grid container spacing={2} sx={{marginTop: '30px'}}>
-                        {cardData.map((card) => (
-                            <Grid item xs={12} sm={6} md={3} key={card.id}>
-                                <Box className={styles.card}>
-                                <Box>
-                                        <img src={card.image} style={{ width: '80%', height: '100px', borderRadius: '8px' }} />
-                                </Box>
-                                <Box>
-                                    <div className={styles.cardTitle}>{card.title}</div>
-                                    <div className={styles.cardBody}>{card.description}</div>
-                                    <span>Xem chi tiết</span>
-                                </Box>
-                                </Box>
-                            </Grid>
-                        ))}
-                    </Grid>
+                    <Box display='flex' justifyContent='center'>
+                        <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={1} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
+                            {cardData.map((card) => (
+                                <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 2 }} key={card.id} display='flex' justifyContent='center'>
+                                    <Box className={styles.card}>
+                                        <div>
+                                            <img src={card.image} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                                        </div>
+                                        <div style={{ marginBottom: 5, marginTop: -7, borderTop: '3px solid var(--color2)' }}>
+                                            <div className={styles.cardTitle}>{card.title}</div>
+                                            <div className={styles.cardBody}>{card.description}</div>
+                                        </div>
+                                        <span>Xem chi tiết</span>
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
                 </Box>
             ) : (
                 <Box
@@ -332,4 +362,11 @@ const Classify = () => {
     );
 };
 
-export default Classify;
+const App = () => (
+    <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Classify />
+    </ThemeProvider>
+);
+
+export default App;
