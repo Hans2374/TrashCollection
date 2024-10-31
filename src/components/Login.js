@@ -35,7 +35,6 @@ const Login = () => {
 
     useEffect(() => {
         if (isLogin) {
-            console.log('Navigating to home page');
             navigate(routes.homePage);
         }
     }, [isLogin, navigate]);
