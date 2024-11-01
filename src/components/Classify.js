@@ -200,7 +200,6 @@ const Classify = () => {
             {/* Nội dung */}
             {isLogin ? (
                 <Box
-                    className={styles.container}
                     sx={{
                         display: 'flex', flexDirection: 'column', p: 10, gap: 2, backgroundColor: colors.color1
                     }}
@@ -351,7 +350,7 @@ const Classify = () => {
 
                     {/* Card display */}
                     <Box display='flex' justifyContent='center'>
-                        <Grid className={styles.cardContainer} container rowSpacing={7} columnSpacing={4} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
+                        <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={2} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
                             {paginatedData.map((card) => (
                                 <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={card.id} display='flex' justifyContent='center'>
                                     <Box className={styles.card}>

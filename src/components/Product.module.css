@@ -1,8 +1,6 @@
 /* From Uiverse.io by satyamchaudharydev */
 .card {
     --bg: var(--color3);
-    --hover-bg: rgba(2, 163, 99, 0.5);
-    --hover-text: var(--color2);
     border: 3px solid var(--color2);
     width: 100%;
     text-align: center;
@@ -50,45 +48,22 @@
     transition: all .3s cubic-bezier(.6, .4, 0, 1);
 }
 
-.card:hover span {
-    top: 0;
-    font-size: 1.2em;
-}
-
-.card:hover {
-    background: var(--hover-bg);
-}
-
-.card:hover>div {
-    opacity: 0;
-}
-
 /* Responsive styles */
 @media screen and (max-width: 768px) {
-    .card:hover span {
-        top: initial;
-        font-size: initial;
-    }
-    
-    .card:hover {
-        background: initial;
-    }
-    
-    .card:hover>div {
-        opacity: initial;
-    }
-
     .searchIcon{
         left: 7% !important;
     }
-    
+
+    .container {
+        padding: 0 !important;
+    }
+
     .welcome{
         display: none !important;
     }
 
     .filterSearch{
         justify-content: center !important;
-        margin-top: 30px !important;
     }
 
     .searchBox{
