@@ -14,8 +14,10 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
 import { Link as RouterLink } from 'react-router-dom';
 import { routes } from '../routes/routes';
+import { useSelector } from 'react-redux';
 
-export const Header1 = ({ isLogin }) => {
+export const Header1 = () => {
+    const isLogin = useSelector((state) => state.auth.isLogin);
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const dispatch = useDispatch();

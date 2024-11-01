@@ -48,6 +48,13 @@ export const Header2 = () => {
         },
     };
 
+    const menuItems = [
+        { text: 'Sản phẩm', route: routes.product },
+        { text: 'Thu mua', route: routes.classify },
+        { text: 'Tin tức', route: routes.news },
+        { text: 'Quy định', route: routes.regulation },
+    ];
+
     return (
         <Box
             sx={{
@@ -67,17 +74,17 @@ export const Header2 = () => {
         >
             {/* Logo/Tên */}
             <Link to={routes.homePage} style={{ textDecoration: 'none' }}>
-            <Typography
-                variant="h4"
-                sx={{
-                    fontFamily: 'KoHo',
-                    marginLeft: { md: '100px' },
-                    fontWeight: 'bold',
-                    color: '#214738',
-                }}
-            >
-                LOGO/TÊN
-            </Typography>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        fontFamily: 'KoHo',
+                        marginLeft: { md: '100px' },
+                        fontWeight: 'bold',
+                        color: '#214738',
+                    }}
+                >
+                    LOGO/TÊN
+                </Typography>
             </Link>
 
             {isMobile ? (
@@ -99,8 +106,8 @@ export const Header2 = () => {
                         }}
                     >
                         <List sx={{ width: 250 }}>
-                            {['Sản phẩm', 'Thu mua', 'Tin tức', 'Quy định'].map((text) => (
-                                <ListItem button key={text}>
+                            {menuItems.map((item) => (
+                                <ListItem button component={Link} to={item.route} key={item.text} onClick={toggleDrawer(false)}>
                                     <ListItemText
                                         sx={{
                                             justifyContent: 'center',
@@ -112,7 +119,7 @@ export const Header2 = () => {
                                                 fontWeight: 'bold',
                                                 textShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
                                             },
-                                        }} primary={text} />
+                                        }} primary={item.text} />
                                 </ListItem>
                             ))}
                         </List>
