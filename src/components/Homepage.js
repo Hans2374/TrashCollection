@@ -5,13 +5,11 @@ import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
-import { useSelector } from 'react-redux';
 import ScrollReveal from 'scrollreveal';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 const Homepage = () => {
-  const isLogin = useSelector((state) => state.auth.isLogin);
 
   // Kiểm tra kích thước màn hình
   const isSmallScreen = useMediaQuery('(max-width: 768px)');
@@ -59,7 +57,7 @@ const Homepage = () => {
   return (
     <>
       <ScrollToTop />
-      <Header1 isLogin={isLogin} />
+      <Header1 />
 
       {/* Background image */}
       <Box
