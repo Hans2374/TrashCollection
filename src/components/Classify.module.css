@@ -103,4 +103,8 @@
     .cardContainer{
         width: 80% !important;
     }
+
+    .content{
+        padding: 0 !important;
+    }
 }
