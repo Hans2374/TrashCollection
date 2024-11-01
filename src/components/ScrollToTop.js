@@ -1,11 +1,19 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import RecyclingIcon from '@mui/icons-material/Recycling';
+import { useTheme } from '@mui/material/styles';
 
 export const ScrollToTop = () => {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
     const handleScrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
+    if (isSmallScreen) {
+        return null; 
+    }
 
     return (
         <Box

@@ -131,7 +131,7 @@ const Classify = () => {
 
     return (
         <>
-            {!isSmallScreen && <ScrollToTop />}
+            <ScrollToTop />
             <Header1 isLogin={isLogin} />
 
             {/* Background image */}
