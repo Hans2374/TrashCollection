@@ -251,6 +251,8 @@ const Product = () => {
         <Box
           className={styles.filterSearch}
           sx={{
+            paddingTop: '20px',
+            paddingBottom: '20px',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -263,7 +265,7 @@ const Product = () => {
             <input
               className={styles.searchBox}
               type="text"
-              placeholder="Bạn đang có gì?"
+              placeholder="Bạn đang tìm gì?"
               style={{
                 border: '2px solid #214738',
                 width: '500px',
@@ -414,7 +416,7 @@ const Product = () => {
         </Box>
 
         {/* Card Display */}
-        <Box display='flex' justifyContent='center' marginTop={isSmallScreen ? '50px' : ''}>
+        <Box display='flex' justifyContent='center' paddingTop='30px' marginTop={isSmallScreen ? '50px' : ''}>
           <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={2} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
             {paginatedData.map((product) => (
               <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={product.id}>
@@ -437,23 +439,23 @@ const Product = () => {
                     alt={product.name}
                     sx={{ height: 180 }}
                   />
-                  <CardContent sx={{ padding: "18px", textAlign: "center", backgroundColor: `${colors.color1}` }}>
-                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                  <CardContent sx={{  textAlign: "center", backgroundColor: `${colors.color1}` }}>
+                    <Typography variant="body1" sx={{ marginBottom: '10px',fontFamily: 'KoHo', color: `${colors.color2}` }}>
                       {product.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography sx={{ fontWeight: '20px' ,fontFamily: 'KoHo', color: `${colors.color2}`, fontWeight: 'bold' }}>
                       {/* Kiểm tra các trường hợp */}
                       {product.price && product.points ? (
                         // Trường hợp hiển thị cả giá và điểm
                         <>
-                          Giá: {product.price} | Đổi bằng: {product.points} điểm
+                          {product.price}   |   {product.points} 
                         </>
                       ) : product.points ? (
                         // Trường hợp chỉ hiển thị điểm
-                        <span>Đổi bằng: {product.points} điểm</span>
+                        <span>{product.points} </span>
                       ) : product.price ? (
                         // Trường hợp chỉ hiển thị giá
-                        <span>Giá: {product.price}</span>
+                        <span>{product.price}</span>
                       ) : null}
 
                       {product.isEcoFriendly && (
