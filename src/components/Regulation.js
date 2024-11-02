@@ -198,7 +198,7 @@ const Regulation = () => {
                             src="\images\regulation4.png"
                             alt="Hình ảnh ủ phân hữu cơ"
                             sx={{
-                                width: {xs: '350px', md: '450px'},
+                                width: {xs: '350px', sm: '400px', md: '450px'},
                                 height: '250px',
                                 borderRadius: '10px',
                                 border: `3px solid ${colors.color2}`
@@ -220,7 +220,7 @@ const Regulation = () => {
                             src="\images\regulation5.png"
                             alt="Hình ảnh ủ phân hữu cơ"
                             sx={{
-                                width: {xs: '350px', md: '450px'},
+                                width: {xs: '350px', sm: '400px', md: '450px'},
                                 height: '250px',
                                 borderRadius: '10px',
                                 border: `3px solid ${colors.color2}`
@@ -273,7 +273,7 @@ const Regulation = () => {
                         paddingTop: '40px'
                     }}>
                         <Box sx={{
-                            maxWidth: '1000px'
+                            maxWidth: { xs: '450px', md: '1000px' },
                         }}>
                             <Typography sx={{ textAlign: 'left', paddingLeft: '18px' }}>
                                 <Typography 

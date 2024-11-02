@@ -74,8 +74,8 @@ const Homepage = () => {
         {/* Box info */}
         <Box
           sx={{
-            width: { xs: '90%', sm: '360px' }, // Đặt chiều rộng 90% cho màn hình nhỏ
-            height: { xs: 'auto', sm: '190px' }, // Chiều cao tự động cho màn hình nhỏ
+            width: { xs: '278px', sm: '360px' }, // Responsive width
+            height: { xs: '169px', sm: '190px' },  // Chiều cao tự động cho màn hình nhỏ
             backgroundColor: 'rgba(252, 249, 243, 0.6)',
             position: 'absolute',
             top: '50%',
@@ -244,10 +244,10 @@ const Homepage = () => {
 
       {/* Section 2 */}
       <Box sx={{ textAlign: 'center', backgroundColor: colors.color1, paddingBottom: '50px' }} className="section-container">
-        <Typography variant="h3" className="section-title" sx={{ fontWeight: 'bold', fontFamily: 'KoHo', color: `${colors.color2}`, paddingTop: '50px', marginBottom: '16px' }}>
+        <Typography className="section-title" sx={{ fontSize: { xs: '30px', md: '48px' },fontWeight: 'bold', fontFamily: 'KoHo', color: `${colors.color2}`, paddingTop: '50px', marginBottom: '16px' }}>
           Trở thành đối tác của TÊN
         </Typography>
-        <Typography variant="h5" className="section-content" sx={{ fontFamily: 'KoHo', marginBottom: '80px' }}>
+        <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },fontFamily: 'KoHo', marginBottom: '80px' }}>
           Kết nối vựa ve chai của bạn với chúng tôi để nhận được nhiều lợi ích!
         </Typography>
 
@@ -258,7 +258,7 @@ const Homepage = () => {
               alt="Icon"
               style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
             />
-            <Typography variant="h4" fontWeight="bold" sx={{ fontFamily: 'KoHo', marginBottom: '10px' }}>Đăng ký dễ dàng</Typography>
+            <Typography fontWeight="bold" sx={{ fontSize: { xs: '24px', md: '34px' }, fontFamily: 'KoHo', marginBottom: '10px' }}>Đăng ký dễ dàng</Typography>
             <Typography sx={{ fontSize: '20px', fontFamily: 'KoHo' }}>
               Hãy kết nối vựa ve chai của bạn với chúng tôi thông qua chức năng đăng kí hoàn toàn miễn phí!
             </Typography>
@@ -269,7 +269,7 @@ const Homepage = () => {
               alt="Icon"
               style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
             />
-            <Typography variant="h4" fontWeight="bold" sx={{ fontFamily: 'KoHo', marginBottom: '10px' }}>Giá cả hợp lý</Typography>
+            <Typography fontWeight="bold" sx={{ fontSize: { xs: '24px', md: '34px' },fontFamily: 'KoHo', marginBottom: '10px' }}>Giá cả hợp lý</Typography>
             <Typography sx={{ fontSize: '20px', fontFamily: 'KoHo' }}>
               Chúng tôi thu mua rác thải với giá cả theo phân loại hợp lí, minh bạch. Quản lí giao dịch và cập nhập giá cả nhanh chóng.
             </Typography>
@@ -280,7 +280,7 @@ const Homepage = () => {
               alt="Icon"
               style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
             />
-            <Typography variant="h4" fontWeight="bold" sx={{ fontFamily: 'KoHo', marginBottom: '10px' }}>Theo dõi doanh thu</Typography>
+            <Typography  fontWeight="bold" sx={{fontSize: { xs: '24px', md: '34px' }, fontFamily: 'KoHo', marginBottom: '10px' }}>Theo dõi doanh thu</Typography>
             <Typography sx={{ fontSize: '20px', fontFamily: 'KoHo' }}>
               Bảng thống kê giúp bạn quản lí nguồn thu từ TÊN, tiền lời và hiệu quả để mở rộng thu mua, tối ưu hóa quy trình kinh doanh.
             </Typography>
@@ -292,7 +292,7 @@ const Homepage = () => {
         sx={{
           textAlign: 'center',
           backgroundColor: colors.color3,
-          padding: '50px 100px',
+          padding: { xs: '30px', md: '50px 100px' }
         }}
         className="section-container"
       >
@@ -301,9 +301,8 @@ const Homepage = () => {
           {/* Phần bên trái: Tiêu đề và giới thiệu */}
           <Grid item xs={12} md={6}>
             <Typography
-              variant="h3"
               className="section-title"
-              sx={{ fontWeight: 'bold', fontFamily: 'KoHo', color: `${colors.color2}`, marginBottom: '70px', marginTop: '20px' }}
+              sx={{ fontSize: { xs: '30px', md: '48px' }, fontWeight: 'bold', fontFamily: 'KoHo', color: `${colors.color2}`, marginBottom: '70px', marginTop: '20px' }}
             >
               Sản phẩm xanh
             </Typography>
@@ -312,7 +311,7 @@ const Homepage = () => {
               className="section-content"
               sx={{
                 fontFamily: 'KoHo',
-                fontSize: '28px',
+                fontSize: { xs: '18px', md: '28px' },
                 color: '#333',
                 maxWidth: '600px',
                 lineHeight: '1.6',
@@ -388,10 +387,10 @@ const Homepage = () => {
 
       {/* Section 4 */}
       <Box sx={{ textAlign: 'center', backgroundColor: colors.color1, padding: '50px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="section-container">
-        <Typography variant="h2" className="section-title" sx={{ fontWeight: 'bold', fontFamily: 'KoHo', marginBottom: '16px', color: colors.color2 }}>
+        <Typography  className="section-title" sx={{ fontSize: { xs: '30px', md: '48px' },fontWeight: 'bold', fontFamily: 'KoHo', marginBottom: '16px', color: colors.color2 }}>
           Tích điểm đổi quà
         </Typography>
-        <Typography variant="body1" className="section-content" sx={{ color: colors.color2, fontSize: '23px', fontFamily: 'KoHo', marginBottom: '10px', maxWidth: '890px', textAlign: 'center' }}>
+        <Typography  className="section-content" sx={{ fontSize: { xs: '14px', md: '16px' }, color: colors.color2, fontSize: '23px', fontFamily: 'KoHo', marginBottom: '10px', maxWidth: '890px', textAlign: 'center' }}>
           Mỗi giao dịch mua hàng hoặc bán ve chai đều giúp bạn tích lũy điểm thưởng <span style={{ fontSize: '20px' }}>🌱</span>
         </Typography>
         <Box sx={{ marginTop: '30px', display: 'flex', alignItems: 'flex-start', width: '100%', maxWidth: '1000px', gap: '32px' }} className="section-content">
@@ -410,7 +409,7 @@ const Homepage = () => {
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '1000px', gap: '40px' }} className="section-content">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <Typography variant="h5" className="section-content" sx={{ color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
+            <Typography  className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
               Tái chế vì tương lai
             </Typography>
             <Typography variant="body1" className="section-content" sx={{ fontFamily: 'KoHo', textAlign: 'center' }}>
@@ -418,7 +417,7 @@ const Homepage = () => {
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <Typography variant="h5" className="section-content" sx={{ color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
+            <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
               Cùng hành động, cùng thay đổi
             </Typography>
             <Typography variant="body1" className="section-content" sx={{ fontFamily: 'KoHo', textAlign: 'center' }}>
@@ -426,7 +425,7 @@ const Homepage = () => {
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <Typography variant="h5" className="section-content" sx={{ color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
+            <Typography  className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
               Cộng đồng xanh
             </Typography>
             <Typography variant="body1" className="section-content" sx={{ fontFamily: 'KoHo', textAlign: 'center' }}>
