@@ -42,7 +42,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     color: var(--hover-text);
     border-radius: 5px;
     font-weight: bold;
@@ -69,42 +69,57 @@
         top: initial;
         font-size: initial;
     }
-    
+
     .card:hover {
         background: initial;
     }
-    
+
     .card:hover>div {
         opacity: initial;
     }
 
-    .searchIcon{
+    .searchIcon {
         left: 7% !important;
     }
-    
-    .welcome{
+
+    .welcome {
         display: none !important;
     }
 
-    .filterSearch{
+    .filterSearch {
         justify-content: center !important;
         margin-top: 30px !important;
     }
 
-    .searchBox{
+    .searchBox {
         width: 100% !important;
     }
 
-    .filterContainer{
+    .filterContainer {
         justify-content: center !important;
         flex-wrap: wrap !important;
     }
 
-    .cardContainer{
+    .cardContainer {
         width: 80% !important;
     }
 
-    .content{
+    .content {
         padding: 0 !important;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px) {
+    .card:hover span {
+        top: initial;
+        font-size: initial;
+    }
+
+    .card:hover {
+        background: initial;
+    }
+
+    .card:hover>div {
+        opacity: initial;
     }
 }
