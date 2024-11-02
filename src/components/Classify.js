@@ -132,7 +132,7 @@ const Classify = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 isLogin={isLogin} />
+            <Header1 />
 
             {/* Background image */}
             <Box
