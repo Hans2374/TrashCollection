@@ -2,6 +2,7 @@ import { Box, Typography, IconButton, Drawer, List, ListItem, ListItemText } fro
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const AdminHeader = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -90,10 +91,10 @@ export const AdminHeader = () => {
                 </>
             ) : (
                 <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '200px' } }}>
-                    <Typography sx={menuItemStyle}>Sản phẩm</Typography>
-                    <Typography sx={menuItemStyle}>Đơn hàng</Typography>
-                    <Typography sx={menuItemStyle}>Thống kê</Typography>
-                    <Typography sx={menuItemStyle}>Người dùng</Typography>
+                    <Link to="/admin-product" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Sản phẩm</Typography></Link>
+                    <Link to="/admin-order" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Đơn hàng</Typography></Link>
+                    <Link to="/admin-statistic" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Thống kê</Typography></Link>
+                    <Link to="/admin-user" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Người dùng</Typography></Link>
                 </Box>
             )}
         </Box>
