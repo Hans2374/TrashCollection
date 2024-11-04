@@ -1,19 +1,14 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
-import { Header1 } from "./Header1";
-import { AdminHeader } from "./AdminHeader";
 import AdminTable1 from "./Table/AdminTable1";
 import { useState } from "react";
 import styles from "./Admin.module.css";
-import FilterBar from "./AdminFilterBar";
+import FilterBar from "./AdminProductFilterBar";
 
-const Adminpage = () => {
+const AdminProductPage = () => {
   const [activeButton, setActiveButton] = useState("Sản phẩm");
   return (
     <>
-      <Header1 />
-      <AdminHeader />
-
       {/* Button Product/ Material */}
       <Box display="flex" gap={2} sx={{padding:"40px 20px 20px 20px"}}>
         <Button
@@ -47,4 +42,4 @@ const Adminpage = () => {
   );
 };
 
-export default Adminpage;
+export default AdminProductPage;
