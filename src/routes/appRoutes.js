@@ -9,6 +9,7 @@ import Classify from "../pages/classify";
 import Regulation from "../pages/regulation";
 import Product from "../pages/Product";
 import ClassifyDetail from "../pages/classifyDetail";
+import Sell from "../pages/sell";
 
 export default function AppRoute() {
 
@@ -23,6 +24,7 @@ export default function AppRoute() {
         <Route path={routes.classifyDetail} element={<ClassifyDetail />} />
         <Route path={routes.regulation} element={<Regulation />} />
         <Route path={routes.product} element={<Product />} />
+        <Route path={routes.sell} element={<Sell />} />
       </Routes>
     </>
   );

@@ -7,4 +7,5 @@ export const routes = {
   classifyDetail: "/classify-detail",
   regulation: "/regulation",
   product: "/product",
+  sell: '/sell',
 };
