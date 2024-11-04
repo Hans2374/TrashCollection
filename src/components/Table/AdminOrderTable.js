@@ -22,7 +22,7 @@ const data = [
   // Add more rows as needed
 ];
 
-export default function AdminProductTable() {
+export default function AdminOrderTable() {
   const [page, setPage] = React.useState(0);
   const rowsPerPage = 5;
 
