@@ -29,7 +29,8 @@ export const ScrollToTop = () => {
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', 
                 position: 'fixed', 
                 bottom: '20px', 
-                right: '20px', 
+                right: '20px',
+                zIndex: 1000, 
                 '&:hover': {
                     backgroundColor: '#2A3B32', 
                 },

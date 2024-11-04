@@ -55,7 +55,7 @@ const Homepage = () => {
 
 
   return (
-    <>
+    <Box sx={{ position: 'relative' }}>
       <ScrollToTop />
       <Header1 />
 
@@ -436,7 +436,7 @@ const Homepage = () => {
       </Box>
 
       <Footer />
-    </>
+    </Box>
   );
 };
 
