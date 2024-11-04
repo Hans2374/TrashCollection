@@ -7,22 +7,22 @@ import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import styles from './AdminTable1.module.css';
 
 const data = [
-  { id: 1, name: 'John Doe', phone: '1234567890', orders: 5, status: 'Active', address: '123 Street' },
-  { id: 2, name: 'Jane Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
-  { id: 3, name: 'Iron Mike', phone: '0987654321', orders: 3, status: 'Active', address: '21 Jump Street' },
-  { id: 4, name: 'Will Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
-  { id: 5, name: 'Jane Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
-  { id: 6, name: 'Jane Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
-  { id: 7, name: 'John Doe', phone: '1234567890', orders: 5, status: 'Active', address: '123 Street' },
-  { id: 8, name: 'Jane Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
-  { id: 9, name: 'Iron Mike', phone: '0987654321', orders: 3, status: 'Active', address: '21 Jump Street' },
-  { id: 10, name: 'Will Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
-  { id: 11, name: 'Jane Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
-  { id: 12, name: 'Jane Smith', phone: '0987654321', orders: 3, status: 'Inactive', address: '456 Avenue' },
+  { id: 1, name: 'John Doe',phone: '1234567890',total_order:"100",status: 'Hoạt động', address:"Ho Chi Minh City" },
+  { id: 2, name: 'Jane Smith',phone: '1234567890',total_order:"100", status: 'Không hoạt động', address:"Ho Chi Minh City"},
+  { id: 3, name: 'Iron Mike',phone: '1234567890',total_order:"100",status: 'Hoạt động', address:"Ho Chi Minh City"   },
+  { id: 4, name: 'Will Smith',phone: '1234567890',total_order:"100",status: 'Hoạt động',  address:"Ho Chi Minh City" },
+  { id: 5, name: 'LeBrone Jame',phone: '1234567890',total_order:"100", status: 'Hoạt động',  address:"Ho Chi Minh City" },
+  { id: 6, name: 'Jane Doe',phone: '1234567890',total_order:"100",status: 'Hoạt động' ,  address:"Ho Chi Minh City"},
+  { id: 7, name: 'John Byzantine',phone: '1234567890',total_order:"100", status: 'Hoạt động' ,  address:"Ho Chi Minh City"},
+  { id: 8, name: 'Jane Smith',phone: '1234567890',total_order:"100", status: 'Hoạt động' ,  address:"Ho Chi Minh City"},
+  { id: 9, name: 'Iron Mike',phone: '1234567890',total_order:"100", status: 'Hoạt động' ,  address:"Ho Chi Minh City"},
+  { id: 10, name: 'Will Smith',phone: '1234567890',total_order:"100",  status: 'Không hoạt động',  address:"Ho Chi Minh City"},
+  { id: 11, name: 'Jane Smith',phone: '1234567890',total_order:"100", status: 'Không hoạt động',  address:"Ho Chi Minh City"},
+  { id: 12, name: 'Jane Smith',phone: '1234567890',total_order:"100",  status: 'Không hoạt động',  address:"Ho Chi Minh City"},
   // Add more rows as needed
 ];
 
-export default function AdminTable1() {
+export default function AdminUserTable() {
   const [page, setPage] = React.useState(0);
   const rowsPerPage = 5;
 
@@ -51,7 +51,7 @@ export default function AdminTable1() {
                 <TableCell >{index + 1 + page * rowsPerPage}</TableCell>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.phone}</TableCell>
-                <TableCell>{row.orders}</TableCell>
+                <TableCell>{row.total_order}</TableCell>
                 <TableCell>{row.status}</TableCell>
                 <TableCell>{row.address}</TableCell>
               </TableRow>
