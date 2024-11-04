@@ -5,13 +5,20 @@ import { Header2 } from './Header2';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
+import { useSelector } from 'react-redux';
 
 const NewsDetail = () => {
+    const isLogin = useSelector((state) => state.auth.isLogin);
 
     const [visibleRows, setVisibleRows] = useState(2);
     const articlesPerRow = 4;
 
     const scrollContainerRef = useRef(null);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     useEffect(() => {
         const scrollInterval = setInterval(() => {
             if (scrollContainerRef.current) {
@@ -57,7 +64,7 @@ const NewsDetail = () => {
             title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
             image: "images/news6.png",
         },
-        
+
         {
             id: 7,
             title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
@@ -83,7 +90,7 @@ const NewsDetail = () => {
             title: "Bình Định: Nâng cao chất lượng tham vấn cộng đồng trong lập hồ sơ môi trường",
             image: "images/news6.png",
         },
-        
+
         {
             id: 12,
             title: "Dự báo thời tiết 19/10: Mưa rào và dông vài nơi, chuẩn bị đón không khí lạnh",
@@ -120,7 +127,7 @@ const NewsDetail = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 />
+            <Header1 isLogin={isLogin}/>
 
             {/* Background image */}
             <Box
@@ -274,7 +281,7 @@ const NewsDetail = () => {
                             src={articles[0].image}
                             alt={articles[0].title}
                             sx={{
-                                width: '100%', height: '100%', borderRadius: '9px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out',
+                                width: '100%', height: '100%', borderRadius: '9px', transition: 'transform 0.3s ease-in-out',
                             }}
                         />
                         <Typography
@@ -367,7 +374,6 @@ const NewsDetail = () => {
                                             width: '100%',
                                             height: '70%',
                                             borderRadius: '8px',
-                                            cursor: 'pointer',
                                             transition: 'transform 0.3s ease-in-out',
                                             '&:hover': {
                                                 transform: 'scale(1.02)',
@@ -379,7 +385,6 @@ const NewsDetail = () => {
                                             color: 'black',
                                             fontFamily: 'KoHo',
                                             fontSize: '16px',
-                                            cursor: 'pointer',
                                             fontWeight: 600,
                                             '&:hover': { color: `${colors.color2}` },
                                         }}
@@ -431,7 +436,6 @@ const NewsDetail = () => {
                                         width: '100%',
                                         borderRadius: '9px',
                                         height: '180px',
-                                        cursor: 'pointer',
                                         transition: 'transform 0.3s ease-in-out',
                                         '&:hover': {
                                             transform: 'scale(1.05)',
@@ -440,7 +444,6 @@ const NewsDetail = () => {
                                 />
                                 <Typography
                                     sx={{
-                                        cursor: 'pointer',
                                         color: 'black',
                                         fontFamily: 'KoHo',
                                         fontSize: '16px',

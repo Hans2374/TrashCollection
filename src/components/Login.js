@@ -7,6 +7,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PasswordIcon from '@mui/icons-material/Password';
+import { routes } from '../routes/routes';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/authSlice';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -25,6 +29,25 @@ const Login = () => {
     const [isResetPassword, setIsResetPassword] = useState(false);
     const [updateSuccessMessage, setUpdateSuccessMessage] = useState('');
     const [isYesNo, setIsYesNo] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const isLogin = useSelector((state) => state.auth.isLogin);
+
+    useEffect(() => {
+        if (isLogin) {
+            navigate(routes.homePage);
+        }
+    }, [isLogin, navigate]);
+
+    useEffect(() => {
+        // Hide scroll
+        document.body.style.overflow = 'hidden';
+
+        // Cleanup function to reset the overflow style
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, []);
 
     useEffect(() => {
         let timer;
@@ -72,9 +95,6 @@ const Login = () => {
             if (!username && !isForgotPassword && !isResetPassword) {
                 tempErrors.username = 'Tên username/email không được để trống';
                 isValid = false;
-            } else if (!/\S+@\S+\.\S+/.test(username) && !isForgotPassword && !isResetPassword) {
-                tempErrors.username = 'Email không đúng định dạng';
-                isValid = false;
             }
 
             if (!password) {
@@ -94,6 +114,7 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
         if (validate()) {
             if (isForgotPassword) {
                 // Simulate successful verification
@@ -126,8 +147,17 @@ const Login = () => {
                         setAnimate(false);
                     }, 300); // Duration of the animation
                 }, 5000); // Display success message for 5 seconds
-            } else {
+            } else if (!isRegister) {
                 // Handle successful validation for login or register
+                if (username === 'customer@gmail.com' && password === 'customer') {
+                    setErrors({ username: '', password: '' });
+                    dispatch(login());
+                } else {
+                    setErrors({ username: '', password: 'Email/Username hoặc mật khẩu không đúng!' });
+                }
+            } else {
+                setErrors({ username: '', password: '', confirmPassword: '' });
+                dispatch(login());
             }
         }
     };
@@ -226,19 +256,19 @@ const Login = () => {
                     alignItems="center"
                     sx={{ backgroundColor: 'transparent', width: '70%', height: '80%' }}
                 >
-                    <Typography className={styles.companyName} variant="h6" style={{ color: colors.color3, fontSize: '32px', fontWeight: 700, marginBottom: '40px', fontFamily: 'KoHo', }}>LOGO/TÊN</Typography>
+                    <Typography className={styles.companyName} variant="h6" sx={{ color: colors.color3, fontSize: '32px', fontWeight: 700, marginBottom: '40px', fontFamily: 'KoHo', }}>LOGO/TÊN</Typography>
                     <Box className={styles.slideText}>
-                        <Typography variant="h6" className={`${styles.welcome} ${isYesNo ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px', fontFamily: 'KoHo', }}>
+                        <Typography variant="h6" className={`${styles.welcome} ${isYesNo ? (animate ? styles.slideUp : styles.slideDown) : ''}`} sx={{ color: colors.color1, fontSize: '30px', fontWeight: 600, marginBottom: '10px', fontFamily: 'KoHo', }}>
                             {isRegister ? 'Chào mừng gia nhập!' : 'Chào mừng trở lại!'}
                         </Typography>
                     </Box>
-                    <Typography className={styles.leftDescription} variant="h6" style={{ color: colors.color1, fontSize: '20px', fontWeight: 400, marginBottom: '50px', fontFamily: 'KoHo', }}>Cùng chung tay bảo vệ môi trường với những sản phẩm tái chế và dịch vụ của chúng tôi. Hãy bắt đầu ngay để biến những điều cũ thành mới!</Typography>
+                    <Typography className={styles.leftDescription} variant="h6" sx={{ color: colors.color1, fontSize: '20px', fontWeight: 400, marginBottom: '50px', fontFamily: 'KoHo', }}>Cùng chung tay bảo vệ môi trường với những sản phẩm tái chế và dịch vụ của chúng tôi. Hãy bắt đầu ngay để biến những điều cũ thành mới!</Typography>
                     <Box className={styles.slideText}>
-                        <Typography variant="h6" className={`${isYesNo ? (animate ? styles.slideUp : styles.slideDown) : ''}`} style={{ color: colors.color1, fontSize: '15px', fontWeight: 400, fontFamily: 'KoHo', }}>
+                        <Typography variant="h6" className={`${isYesNo ? (animate ? styles.slideUp : styles.slideDown) : ''}`} sx={{ color: colors.color1, fontSize: '15px', fontWeight: 400, fontFamily: 'KoHo', }}>
                             {isRegister ? 'Đã có tài khoản?' : 'Chưa có tài khoản?'}
                         </Typography>
                     </Box>
-                    <Button className={styles.button} variant="contained" style={{ backgroundColor: colors.color1, color: colors.color2, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px', fontFamily: 'KoHo', }} onClick={handleToggle} >
+                    <Button className={styles.button} variant="contained" sx={{ backgroundColor: colors.color1, color: colors.color2, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px', fontFamily: 'KoHo', }} onClick={handleToggle} >
                         {isRegister ? 'Đăng nhập' : 'Đăng ký'}
                     </Button>
                 </Box>
@@ -263,7 +293,7 @@ const Login = () => {
                     {!isForgotPassword && !isResetPassword && (
                         <>
                             {/* Login or Register Form */}
-                            <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px', fontFamily: 'KoHo', }}>
+                            <Typography className={styles.formTitle} variant="h4" sx={{ color: colors.color2, marginBottom: '30px', fontFamily: 'KoHo', }}>
                                 {isRegister ? 'Đăng ký' : 'Đăng nhập'}
                             </Typography>
                             <Box sx={{
@@ -348,17 +378,17 @@ const Login = () => {
                                         style={{
                                             fontFamily: 'KoHo',
                                             backgroundColor: colors.color2,
-                                        opacity: 0.3,
-                                        color: colors.color1,
-                                        borderRadius: '20px',
-                                        border: 'none',
-                                        width: '80%',
-                                        height: '33px',
-                                        margin: 'normal',
-                                        padding: '10px 50px',
-                                        pl: '40px',
-                                        fontSize: '20px',
-                                        outline: 'none',
+                                            opacity: 0.3,
+                                            color: colors.color1,
+                                            borderRadius: '20px',
+                                            border: 'none',
+                                            width: '80%',
+                                            height: '33px',
+                                            margin: 'normal',
+                                            padding: '10px 50px',
+                                            pl: '40px',
+                                            fontSize: '20px',
+                                            outline: 'none',
                                         }}
                                     />
                                     <Icon sx={{ position: 'absolute', left: '18px', top: '50%', transform: 'translateY(-50%)', color: colors.color1 }}>
@@ -377,15 +407,23 @@ const Login = () => {
                             <Button
                                 variant="contained"
                                 className={styles.button}
-                                style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '100%', borderRadius: '20px', fontFamily: 'KoHo', }}
-                                sx={{ marginTop: '60px' }}
+                                sx={{
+                                    backgroundColor: colors.color2,
+                                    color: colors.color1,
+                                    fontSize: '20px',
+                                    fontWeight: 400,
+                                    width: '100%',
+                                    borderRadius: '20px',
+                                    fontFamily: 'KoHo',
+                                    marginTop: '60px'
+                                }}
                                 onClick={handleSubmit}
                             >
                                 {isRegister ? 'Đăng ký' : 'Đăng nhập'}
                             </Button>
                             {!isRegister && (
                                 <Box display="flex" justifyContent='space-between' mt={3}>
-                                    <Button style={{ color: colors.color2 }} onClick={handleForgotPassword}>Quên mật khẩu?</Button>
+                                    <Button sx={{ color: colors.color2 }} onClick={handleForgotPassword}>Quên mật khẩu?</Button>
                                     <Box>
                                         <IconButton>
                                             <img src={`${process.env.PUBLIC_URL}/images/facebook.png`} alt="Facebook" style={{ width: '24px', height: '24px' }} />
@@ -402,7 +440,7 @@ const Login = () => {
                     {isForgotPassword && (
                         <>
                             {/* Forgot Password Form */}
-                            <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '30px', fontFamily: 'KoHo', }}>
+                            <Typography className={styles.formTitle} variant="h4" sx={{ color: colors.color2, marginBottom: '30px', fontFamily: 'KoHo', }}>
                                 Quên mật khẩu
                             </Typography>
                             <Box sx={{
@@ -482,7 +520,7 @@ const Login = () => {
                                 <Button
                                     variant="contained"
                                     className={styles.button}
-                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    sx={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleCancelForgotPassword}
                                 >
                                     Hủy
@@ -490,7 +528,7 @@ const Login = () => {
                                 <Button
                                     variant="contained"
                                     className={styles.button}
-                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    sx={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleSubmit}
                                 >
                                     Xác minh
@@ -502,7 +540,7 @@ const Login = () => {
                     {isResetPassword && (
                         <>
                             {/* Reset Password Form */}
-                            <Typography className={styles.formTitle} variant="h4" style={{ color: colors.color2, marginBottom: '50px' }}>
+                            <Typography className={styles.formTitle} variant="h4" sx={{ color: colors.color2, marginBottom: '50px' }}>
                                 Đặt lại mật khẩu
                             </Typography>
                             <Box sx={{
@@ -586,7 +624,7 @@ const Login = () => {
                                 <Button
                                     variant="contained"
                                     className={styles.button}
-                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    sx={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleCancelResetPassword}
                                 >
                                     Hủy
@@ -594,7 +632,7 @@ const Login = () => {
                                 <Button
                                     variant="contained"
                                     className={styles.button}
-                                    style={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
+                                    sx={{ backgroundColor: colors.color2, color: colors.color1, fontSize: '20px', fontWeight: 400, width: '45%', borderRadius: '20px' }}
                                     onClick={handleSubmit}
                                 >
                                     Cập nhật

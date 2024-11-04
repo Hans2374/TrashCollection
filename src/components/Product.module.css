@@ -1,0 +1,31 @@
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .searchIcon{
+        left: 7% !important;
+    }
+
+    .container {
+        padding: 0 !important;
+    }
+
+    .welcome{
+        display: none !important;
+    }
+
+    .filterSearch{
+        justify-content: center !important;
+    }
+
+    .searchBox{
+        width: 100% !important;
+    }
+
+    .filterContainer{
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+
+    .cardContainer{
+        width: 80% !important;
+    }
+}

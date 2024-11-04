@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
@@ -6,8 +6,10 @@ import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const News = () => {
+    const isLogin = useSelector((state) => state.auth.isLogin);
     const [selectedMenu, setSelectedMenu] = useState('Môi trường');
     const menuItems = ['Tin tức', 'Biến đổi khí hậu', 'Khoa học và Công nghệ', 'Chất thải', 'Môi trường'];
     const [visibleRows, setVisibleRows] = useState(2);
@@ -22,6 +24,10 @@ const News = () => {
     const handleMenuItemClick = (item) => {
         setSelectedMenu(item);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const articles = [
         {
@@ -138,7 +144,7 @@ const News = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 />
+            <Header1 isLogin={isLogin}/>
 
             {/* Background image */}
             <Box
@@ -298,7 +304,7 @@ const News = () => {
                             src={articles[0].image}
                             alt={articles[0].title}
                             sx={{
-                                width: '100%', height: '100%', borderRadius: '9px', marginTop: '30px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out', // Smooth transition
+                                width: '100%', height: '100%', borderRadius: '9px', marginTop: '30px',  transition: 'transform 0.3s ease-in-out', // Smooth transition
                                 '&:hover': {
                                     transform: 'scale(1.02)',
                                 },
@@ -307,7 +313,6 @@ const News = () => {
                         <Typography
                             onClick={handleClick}
                             sx={{
-                                cursor: 'pointer',
                                 marginLeft: { xs: '4px', md: '0px' },
                                 marginRight: { xs: '15px', md: '0px' },
                                 marginTop: '10px',
@@ -358,7 +363,7 @@ const News = () => {
                                     src={article.image}
                                     alt={article.title}
                                     sx={{
-                                        width: '100%', height: '70%', borderRadius: '8px', cursor: 'pointer', transition: 'transform 0.3s ease-in-out', // Smooth transition
+                                        width: '100%', height: '70%', borderRadius: '8px', transition: 'transform 0.3s ease-in-out', // Smooth transition
                                         '&:hover': {
                                             transform: 'scale(1.02)',
                                         },
@@ -370,7 +375,6 @@ const News = () => {
                                         color: 'black',
                                         fontFamily: 'KoHo',
                                         fontSize: '16px',
-                                        cursor: 'pointer',
                                         fontWeight: 600,
                                         '&:hover': { color: `${colors.color2}` },
                                     }}
@@ -409,7 +413,6 @@ const News = () => {
                                         width: '100%',
                                         borderRadius: '9px',
                                         height: '180px',
-                                        cursor: 'pointer',
                                         transition: 'transform 0.3s ease-in-out',
                                         '&:hover': {
                                             transform: 'scale(1.05)',
@@ -419,7 +422,6 @@ const News = () => {
                                 <Typography
                                     onClick={handleClick}
                                     sx={{
-                                        cursor: 'pointer',
                                         color: 'black',
                                         fontFamily: 'KoHo',
                                         fontSize: '16px',

@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  cursor: url('../public/images/leaf.png'), auto;
+  overflow-x: hidden;
+}
+
+a, button, .clickable {
+  cursor: url('../public/images/leaf.png'), pointer !important; 
+}

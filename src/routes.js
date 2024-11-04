@@ -7,8 +7,7 @@ import AdminOrderPage from './pages/Admin/AdminOrderPage';
 import AdminProductPage from './pages/Admin/AdminProductPage';
 import AdminUserPage from './pages/Admin/AdminUserPage';
 import AdminStatisticPage from './pages/Admin/AdminStatisticPage';
-
-
+import RegulationPage from "./pages/regulation";
 
 const routes = [
   { path: '/', element: <HomePage /> }, 
@@ -20,6 +19,7 @@ const routes = [
   { path: '/admin-order', element: <AdminOrderPage /> },
   { path: '/admin-statistic', element: <AdminStatisticPage /> },
   { path: '/admin-user', element: <AdminUserPage /> },
+  { path: "/regulation", element: <RegulationPage /> },
 ];
 
 export default routes;
