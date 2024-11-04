@@ -2,10 +2,7 @@ import React from "react";
 import { Box, Button, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { Header1 } from "../../components/Header1";
 import { useState } from "react";
-import styles from "../../components/Admin.module.css";
 import { AdminHeader } from "../../components/AdminHeader";
-import AdminProductTable from "../../components/Table/AdminProductTable";
-import AdminProductFilterBar from "../../components/AdminProductFilterBar";
 import TotalOrderSection from "../../components/TotalOrderBox";
 
 const AdminStatisticPage = () => {

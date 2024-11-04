@@ -3,7 +3,6 @@ import { Box, Button } from "@mui/material";
 import { Header1 } from "../../components/Header1";
 import { useState } from "react";
 import styles from "../../components/Admin.module.css";
-import FilterBar from "../../components/AdminProductFilterBar";
 import { AdminHeader } from "../../components/AdminHeader";
 import AdminUserTable from "../../components/Table/AdminUserTable";
 import AdminUserFilterBar from "../../components/AdminUserFilterBar";
