@@ -3,11 +3,12 @@ import LoginPage from './pages/login';
 import NewsPage from './pages/news';
 import NewsDetailPage from './pages/newsDetail';
 import HomePage from './pages/homePage';
-import AdminOrderPage from './pages/Admin/AdminOrderPage';
-import AdminProductPage from './pages/Admin/AdminProductPage';
-import AdminUserPage from './pages/Admin/AdminUserPage';
-import AdminStatisticPage from './pages/Admin/AdminStatisticPage';
 import RegulationPage from "./pages/regulation";
+import AdminOrderPage from './pages/Admin/AdminOrderPage';
+import AdminStatisticPage from './pages/Admin/AdminStatisticPage';
+import AdminUserPage from './pages/Admin/AdminUserPage';
+import AdminProductPage from './pages/Admin/AdminProductPAge';
+
 
 const routes = [
   { path: '/', element: <HomePage /> }, 

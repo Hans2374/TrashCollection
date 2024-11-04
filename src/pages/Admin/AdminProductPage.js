@@ -7,7 +7,7 @@ import { AdminHeader } from "../../components/AdminHeader";
 import AdminProductTable from "../../components/Table/AdminProductTable";
 import AdminProductFilterBar from "../../components/AdminProductFilterBar";
 
-const AdminProduct = () => {
+const AdminProductPage = () => {
   const [activeButton, setActiveButton] = useState("Sản phẩm");
   return (
     <div>
@@ -49,4 +49,4 @@ const AdminProduct = () => {
   );
 };
 
-export default AdminProduct;
+export default AdminProductPage;

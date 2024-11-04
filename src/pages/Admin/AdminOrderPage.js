@@ -4,11 +4,11 @@ import { Header1 } from "../../components/Header1";
 
 import { useState } from "react";
 import styles from "../../components/Admin.module.css";
-import FilterBar from "../../components/AdminProductFilterBar";
+
 import { AdminHeader } from "../../components/AdminHeader";
 
-import AdminProductTable from "../../components/Table/AdminOrderTable";
 import AdminOrderFilterBar from "../../components/AdminOrderFilterBar";
+import AdminOrderTable from "../../components/Table/AdminOrderTable";
 
 const AdminOrderPage = () => {
   const [activeButton, setActiveButton] = useState("Sản phẩm");
@@ -45,7 +45,7 @@ const AdminOrderPage = () => {
         <AdminOrderFilterBar />
 
         <Box sx={{ padding: "20px 0 20px 0", fontFamily: "KoHo" }}>
-          <AdminProductTable />
+          <AdminOrderTable />
         </Box>
       </>
     </div>
