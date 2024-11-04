@@ -111,7 +111,94 @@
 }
 
 /* Responsive styles */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 576px) and (max-width: 1050px) {
+    .errorText {
+        font-size: 12px !important;
+    }
+
+    .successMessage {
+        font-size: 12px !important;
+        transform: translateY(100%) !important;
+        left: 19% !important;
+    }
+
+    .loginContainer {
+        flex-direction: column !important;
+    }
+
+    .leftBox {
+        width: 100% !important;
+        height: 35vh !important;
+        flex: none !important;
+        z-index: 2; 
+    }
+
+    .rightBox {
+        width: 100% !important;
+        height: 65vh !important;
+        flex: none !important;
+        padding: 0 !important;
+        z-index: 1; 
+    }
+
+    .logo {
+        display: block !important;
+    }
+
+    .companyName {
+        display: none !important;
+    }
+
+    .leftContent {
+        width: 80% !important;
+        height: auto !important;
+        padding: 10px !important;
+    }
+
+    .leftDescription {
+        font-size: 11px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .formContainer {
+        width: 80% !important;
+        height: auto !important;
+        min-height: 380px !important;
+        padding: 15px !important;
+    }
+
+    .customInput {
+        font-size: 14px !important;
+        padding: 5px !important;
+        padding-right: 10px !important;
+        padding-left: 50px !important;
+        width: 91% !important;
+    }
+
+    .slideText {
+        font-size: 5px !important;
+        height: auto !important;
+    }
+
+    .formSlideUp,
+    .formSlideDown {
+        animation-duration: 0.3s !important;
+    }
+
+    .formTitle {
+        font-size: 25px !important;
+    }
+
+    .welcome {
+        font-size: 20px !important;
+    }
+
+    .button {
+        font-size: 15px !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
     .errorText {
         font-size: 12px !important;
     }

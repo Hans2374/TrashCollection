@@ -131,8 +131,8 @@ const Classify = () => {
 
     return (
         <>
-            {!isSmallScreen && <ScrollToTop />}
-            <Header1 isLogin={isLogin} />
+            <ScrollToTop />
+            <Header1 />
 
             {/* Background image */}
             <Box
@@ -200,18 +200,19 @@ const Classify = () => {
             {/* Nội dung */}
             {isLogin ? (
                 <Box
+                    className={styles.content}
                     sx={{
-                        display: 'flex', flexDirection: 'column', p: 10, gap: 2, backgroundColor: colors.color1
+                        display: 'flex', flexDirection: 'column', backgroundColor: colors.color1, p: 10
                     }}
                 >
-                    <div className={styles.welcome}>
+                    <Box className={styles.welcome} sx={{ marginTop: 1 }}>
                         <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>
                             Chào mừng đối tác của TÊN!
                         </Typography>
                         <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>
                             Hãy chắc rằng bạn đã nắm rõ và đồng ý với <RouterLink to={routes.regulation} style={{ textDecoration: 'underline', color: colors.color2, fontWeight: 600 }}>quy định</RouterLink> của chúng tôi!
                         </Typography>
-                    </div>
+                    </Box>
 
                     {/* Search box and filters */}
                     <Box
@@ -350,19 +351,21 @@ const Classify = () => {
 
                     {/* Card display */}
                     <Box display='flex' justifyContent='center'>
-                        <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={2} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
+                        <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={2} sx={{ marginTop: { lg: '20px', sm: '70px', xs: '110px', md: '70px' } }}>
                             {paginatedData.map((card) => (
-                                <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={card.id} display='flex' justifyContent='center'>
-                                    <Box className={styles.card}>
-                                        <div>
-                                            <img src={card.image} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
-                                        </div>
-                                        <div style={{ marginBottom: 5, marginTop: -7, borderTop: '3px solid var(--color2)' }}>
-                                            <div className={styles.cardTitle}>{card.title}</div>
-                                            <div className={styles.cardBody}>{card.description}</div>
-                                        </div>
-                                        <span>Xem chi tiết</span>
-                                    </Box>
+                                <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={card.id} >
+                                    <RouterLink to={routes.classifyDetail} style={{ textDecoration: 'none' }}>
+                                        <Box className={styles.card} sx={{ width: '100%' }}>
+                                            <div>
+                                                <img src={card.image} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                                            </div>
+                                            <div style={{ marginBottom: 5, marginTop: -7, borderTop: '3px solid var(--color2)' }}>
+                                                <div className={styles.cardTitle}>{card.title}</div>
+                                                <div className={styles.cardBody}>{card.description}</div>
+                                            </div>
+                                            <span>Xem chi tiết</span>
+                                        </Box>
+                                    </RouterLink>
                                 </Grid>
                             ))}
                         </Grid>
@@ -404,7 +407,7 @@ const Classify = () => {
                 <Box
                     sx={{
                         display: 'flex', flexDirection: 'column',
-                        alignItems: 'center', gap: 2, height: '485px', justifyContent: 'center', backgroundColor: colors.color1
+                        alignItems: 'center', p: 6, gap: 2, height: '485px', justifyContent: 'center', backgroundColor: colors.color1
                     }}
                 >
                     <img src={`${process.env.PUBLIC_URL}/images/error404.png`} alt="Description" style={{ width: '100px', height: '100px' }} />

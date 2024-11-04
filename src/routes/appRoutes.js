@@ -7,7 +7,8 @@ import News from "../pages/news";
 import NewsDetail from "../pages/newsDetail";
 import Classify from "../pages/classify";
 import Regulation from "../pages/regulation";
-import Product from "../components/Product";
+import Product from "../pages/Product";
+import ClassifyDetail from "../pages/classifyDetail";
 
 export default function AppRoute() {
 
@@ -19,6 +20,7 @@ export default function AppRoute() {
         <Route path={routes.news} element={<News />} />
         <Route path={routes.newsDetail} element={<NewsDetail />} />
         <Route path={routes.classify} element={<Classify />} />
+        <Route path={routes.classifyDetail} element={<ClassifyDetail />} />
         <Route path={routes.regulation} element={<Regulation />} />
         <Route path={routes.product} element={<Product />} />
       </Routes>

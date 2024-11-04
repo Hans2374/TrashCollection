@@ -259,6 +259,7 @@ const Product = () => {
             gap: 1,
             height: '29px',
             flexWrap: { xs: 'wrap', sm: 'wrap', md: 'wrap' },
+            marginTop: {xs: '50px'}
           }}
         >
           <Box sx={{ position: 'relative', marginTop: isSmallScreen ? 1 : 0, }}>
