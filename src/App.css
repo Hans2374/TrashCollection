@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -42,6 +43,8 @@ body {
   overflow-x: hidden;
 }
 
-a, button, .clickable {
-  cursor: url('../public/images/leaf.png'), pointer !important; 
+a,
+button,
+.clickable {
+  cursor: url('../public/images/leaf.png'), pointer !important;
 }

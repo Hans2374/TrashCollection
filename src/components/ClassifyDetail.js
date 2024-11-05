@@ -144,6 +144,7 @@ const ClassifyDetail = () => {
                 <IconButton onClick={handleIncrement} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
                   <AddIcon />
                 </IconButton>
+                <Typography sx={{ ml: 0.5, fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>kg</Typography>
               </Box>
               <Button sx={{ color: colors.color1, fontFamily: 'KoHo', fontSize: '20px', lineHeight: '26px', align: 'center', fontWeight: 600, backgroundColor: colors.color2, width: '194px', height: '52px', borderRadius: '20px' }}>
                 Thêm vào bán
