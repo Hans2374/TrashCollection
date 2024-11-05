@@ -15,6 +15,7 @@ import { logout } from '../store/authSlice';
 import { Link as RouterLink } from 'react-router-dom';
 import { routes } from '../routes/routes';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export const Header1 = () => {
     const isLogin = useSelector((state) => state.auth.isLogin);
@@ -123,20 +124,24 @@ export const Header1 = () => {
                     >
                         {hoveredIcon === 'meetingRoom' ? <MeetingRoomOutlinedIcon /> : <MeetingRoomIcon />}
                     </IconButton>
-                    <IconButton
-                        sx={{ color: colors.color1 }}
-                        onMouseEnter={() => handleMouseEnter('inventory')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
-                    </IconButton>
-                    <IconButton
-                        sx={{ color: colors.color1 }}
-                        onMouseEnter={() => handleMouseEnter('shoppingCart')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
-                    </IconButton>
+                    <Link to={routes.sell}>
+                        <IconButton
+                            sx={{ color: colors.color1 }}
+                            onMouseEnter={() => handleMouseEnter('inventory')}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
+                        </IconButton>
+                    </Link>
+                    <Link to={routes.cart}>
+                        <IconButton
+                            sx={{ color: colors.color1 }}
+                            onMouseEnter={() => handleMouseEnter('shoppingCart')}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
+                        </IconButton>
+                    </Link>
                     <IconButton
                         sx={{ color: colors.color1 }}
                         onMouseEnter={() => handleMouseEnter('accountCircle')}

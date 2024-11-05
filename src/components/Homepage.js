@@ -15,6 +15,10 @@ const Homepage = () => {
   const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const reveal = ScrollReveal({
       origin: 'bottom',
       distance: '20px',

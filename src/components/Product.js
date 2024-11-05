@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -29,6 +29,9 @@ import Grid from '@mui/material/Grid2';
 const theme = createTheme();
 
 const Product = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [dropdown1, setDropdown1] = useState('');
   const [dropdown2, setDropdown2] = useState('');
   const [dropdown3, setDropdown3] = useState('');
@@ -215,10 +218,10 @@ const Product = () => {
             sx={{
               padding: "10px 20px 5px 20px",
               fontFamily: "KoHo",
-              fontSize: { xs: "24px", sm: "36px" },
+              fontSize: { xs: "24px", sm: "34px" },
               fontWeight: 700,
               color: colors.color2,
-              textAlign: "center",
+              textAlign: "left",
               marginBottom: "8px",
             }}
           >
@@ -231,7 +234,7 @@ const Product = () => {
               fontSize: { xs: "14px", sm: "16px" },
               fontWeight: 400,
               color: colors.color2,
-              textAlign: "center",
+              textAlign: "left",
             }}
           >
             Mỗi sản phẩm là một cách để bạn góp phần bảo vệ hành tinh, giảm
@@ -244,14 +247,13 @@ const Product = () => {
 
       <Box
         sx={{
-          display: 'flex', flexDirection: 'column', padding: {lg: 10, md: 10}, backgroundColor: colors.color1
+          display: 'flex', flexDirection: 'column', padding: { lg: 5, md: 10 }, backgroundColor: colors.color1
         }}
       >
         {/* Filter & Search */}
         <Box
           className={styles.filterSearch}
           sx={{
-            paddingTop: '20px',
             paddingBottom: '20px',
             display: 'flex',
             flexDirection: 'row',
@@ -259,7 +261,7 @@ const Product = () => {
             gap: 1,
             height: '29px',
             flexWrap: { xs: 'wrap', sm: 'wrap', md: 'wrap' },
-            marginTop: {xs: '50px'}
+            marginTop: { xs: '50px' }
           }}
         >
           <Box sx={{ position: 'relative', marginTop: isSmallScreen ? 1 : 0, }}>
@@ -268,6 +270,7 @@ const Product = () => {
               type="text"
               placeholder="Bạn đang tìm gì?"
               style={{
+                backgroundColor: `${colors.color1}`,
                 border: '2px solid #214738',
                 width: '500px',
                 borderRadius: '5px',
@@ -300,7 +303,7 @@ const Product = () => {
                 borderRadius: '5px',
                 fontFamily: 'KoHo',
                 marginRight: 3,
-                backgroundColor: 'white',
+                backgroundColor: `${colors.color1}`,
                 '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none', outline: 'none' },
                 boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease',
@@ -332,7 +335,7 @@ const Product = () => {
                 borderRadius: '5px',
                 fontFamily: 'KoHo',
                 marginRight: 3,
-                backgroundColor: 'white',
+                backgroundColor: `${colors.color1}`,
                 '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
                 boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease',
@@ -363,7 +366,7 @@ const Product = () => {
                 borderRadius: '5px',
                 fontFamily: 'KoHo',
                 marginRight: 3,
-                backgroundColor: 'white',
+                backgroundColor: `${colors.color1}`,
                 '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
                 boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease',
@@ -394,7 +397,7 @@ const Product = () => {
                 marginTop: isSmallScreen ? 1 : 0,
                 borderRadius: '5px',
                 fontFamily: 'KoHo',
-                backgroundColor: 'white',
+                backgroundColor: `${colors.color1}`,
                 '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
                 boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
                 transition: 'all 0.3s ease',
@@ -440,16 +443,16 @@ const Product = () => {
                     alt={product.name}
                     sx={{ height: 180 }}
                   />
-                  <CardContent sx={{  textAlign: "center", backgroundColor: `${colors.color1}` }}>
-                    <Typography variant="body1" sx={{ marginBottom: '10px',fontFamily: 'KoHo', color: `${colors.color2}` }}>
+                  <CardContent sx={{ textAlign: "center", backgroundColor: `${colors.color1}` }}>
+                    <Typography variant="body1" sx={{ marginBottom: '10px', fontFamily: 'KoHo', color: `${colors.color2}` }}>
                       {product.name}
                     </Typography>
-                    <Typography sx={{ fontWeight: '20px' ,fontFamily: 'KoHo', color: `${colors.color2}`, fontWeight: 'bold' }}>
+                    <Typography sx={{ fontWeight: '20px', fontFamily: 'KoHo', color: `${colors.color2}`, fontWeight: 'bold' }}>
                       {/* Kiểm tra các trường hợp */}
                       {product.price && product.points ? (
                         // Trường hợp hiển thị cả giá và điểm
                         <>
-                          {product.price}   |   {product.points} 
+                          {product.price}   |   {product.points}
                         </>
                       ) : product.points ? (
                         // Trường hợp chỉ hiển thị điểm

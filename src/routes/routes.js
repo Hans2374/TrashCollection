@@ -12,4 +12,5 @@ export const routes = {
   adminorder:"/admin-order",
   adminstatistic:"admin-statistic",
   adminuser:"admin-user",
+  cart:"/cart",
 };
