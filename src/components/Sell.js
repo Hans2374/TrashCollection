@@ -3,7 +3,7 @@ import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { ScrollToTop } from './ScrollToTop';
 import { Footer } from './Footer';
-import { Box, Typography, IconButton, TextField, Checkbox, FormControlLabel } from '@mui/material';
+import { Box, Typography, IconButton, TextField, Checkbox, FormControlLabel, Button } from '@mui/material';
 import colors from '../colors';
 import Grid from '@mui/material/Grid2';
 import AddIcon from '@mui/icons-material/Add';
@@ -23,91 +23,91 @@ const Sell = () => {
         {
             id: 1,
             title: "Nhựa",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card1.png`,
         },
         {
             id: 2,
             title: "Cao su",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card2.png`,
         },
         {
             id: 3,
             title: "Giấy",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card3.png`,
         },
         {
             id: 4,
             title: "Thuỷ tinh",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card4.png`,
         },
         {
             id: 5,
             title: "Kim loại",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card5.png`,
         },
         {
             id: 6,
             title: "Nilon",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card6.png`,
         },
         {
             id: 7,
             title: "Đồ điện",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card7.png`,
         },
         {
             id: 8,
             title: "Vải",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card8.png`,
         },
         {
             id: 9,
             title: "Củi khô",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card9.png`,
         },
         {
             id: 10,
             title: "Cát sỏi",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card10.png`,
         },
         {
             id: 11,
             title: "Rác hữu cơ",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card11.png`,
         },
         {
             id: 12,
             title: "Rác vô cơ tổng hợp",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card12.png`,
         },
         {
             id: 13,
             title: "Cát sỏi",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card10.png`,
         },
         {
             id: 14,
             title: "Rác hữu cơ",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card11.png`,
         },
         {
             id: 15,
             title: "Rác vô cơ tổng hợp",
-            price: "60.000đ / 1kg",
+            price: "60.000đ",
             image: `${process.env.PUBLIC_URL}/images/card12.png`,
         },
     ];
@@ -140,7 +140,7 @@ const Sell = () => {
                 <Typography sx={{ p: 10, pb: 0, fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>Bán</Typography>
 
                 {/* Card display */}
-                <Box sx={{ p: 10, pt: 5 }}>
+                <Box sx={{ p: 10, pt: 3, pb: 0 }}>
                     <Box sx={{ height: '500px', overflowY: 'auto', '&::-webkit-scrollbar': { width: '8px' }, '&::-webkit-scrollbar-thumb': { backgroundColor: '#214738', borderRadius: '10px' }, '&::-webkit-scrollbar-track': { backgroundColor: '#f1f1f1' } }}>
                         <Grid container spacing={2} >
                             {cardData.map((card, index) => (
@@ -169,45 +169,53 @@ const Sell = () => {
                                         <Box
                                             sx={{
                                                 display: 'flex',
-                                                flexDirection: 'column',
+                                                flexDirection: 'row',
                                                 justifyContent: 'space-between',
-                                                width: '200px',
-                                                padding: '10px',
+                                                width: '1000px',
+                                                pl: '10px',
                                                 boxSizing: 'border-box',
                                                 borderTop: '4px solid #214738',
                                                 borderRight: '4px solid #214738',
                                                 borderBottom: '4px solid #214738',
-                                                borderRadius: '0px 15px 15px 0px',
+                                                borderRadius: '0px 0px 15px 0px',
                                             }}>
-                                            <Box sx={{ ml: 4, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
                                                 <Typography sx={{ alignSelf: 'center', fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>{card.title}</Typography>
-                                                <Checkbox color='success' />
-                                            </Box>
-                                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <IconButton onClick={handleDecrement} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
-                                                    <RemoveIcon />
-                                                </IconButton>
-                                                <TextField
-                                                    value={quantity}
-                                                    onChange={handleChange}
-                                                    inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0, width: '40px' } }}
-                                                    sx={{
-                                                        border: '3px solid #214738',
-                                                        maxWidth: '40px',
-                                                        '& .MuiOutlinedInput-root': {
-                                                            '& fieldset': {
-                                                                border: 'none',
+                                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                    <IconButton onClick={handleDecrement} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+                                                        <RemoveIcon />
+                                                    </IconButton>
+                                                    <TextField
+                                                        value={quantity}
+                                                        onChange={handleChange}
+                                                        inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0, width: '40px' } }}
+                                                        sx={{
+                                                            border: '3px solid #214738',
+                                                            maxWidth: '40px',
+                                                            '& .MuiOutlinedInput-root': {
+                                                                '& fieldset': {
+                                                                    border: 'none',
+                                                                },
                                                             },
-                                                        },
-                                                    }}
-                                                />
-                                                <IconButton onClick={handleIncrement} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
-                                                    <AddIcon />
-                                                </IconButton>
-                                                <Typography sx={{ ml: 0.5, fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>kg</Typography>
-                                            </Box>
-                                            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                                        }}
+                                                    />
+                                                    <IconButton onClick={handleIncrement} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                                                        <AddIcon />
+                                                    </IconButton>
+                                                </Box>
                                                 <Typography sx={{ alignSelf: 'center', fontFamily: 'KoHo', fontWeight: 700, fontSize: '16px', lineHeight: '20.8px', color: colors.color2 }}>{card.price}</Typography>
+                                            </Box>
+                                            <Typography sx={{ ml: 0.5, alignSelf: 'center', fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>kg</Typography>
+                                            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                                <Checkbox sx={{
+                                                    color: colors.color2,
+                                                    '&.Mui-checked': {
+                                                        color: colors.color2,
+                                                    },
+                                                    '& .MuiSvgIcon-root': { fontSize: 40 },
+                                                    mr: -2.1,
+                                                    mt: -2.1
+                                                }} />
                                                 <IconButton sx={{ color: colors.color2 }}>
                                                     <DeleteIcon />
                                                 </IconButton>
@@ -221,12 +229,54 @@ const Sell = () => {
                 </Box>
 
                 {/* Form Section */}
-                <Box sx={{ mt: 0 }}>
+                <Box sx={{ pl: 10, pr: 10, pt: 3, mt: 0, display: 'flex', justifyContent: 'flex-start' }}>
                     <FormControlLabel
-                        control={<Checkbox checked={selectAll} onChange={handleSelectAllChange} />}
+                        control={<Checkbox checked={selectAll} onChange={handleSelectAllChange}
+                            sx={{
+                                color: colors.color2,
+                                '&.Mui-checked': {
+                                    color: colors.color2,
+                                },
+                            }} />}
                         label="Chọn tất cả"
-                        sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}
-                    />
+                        labelPlacement='start'
+                        sx={{
+                            fontFamily: 'KoHo',
+                            fontWeight: 400,
+                            fontSize: '15px',
+                            lineHeight: '19.5px',
+                            color: colors.color2,
+                        }} />
+                </Box>
+                <Box sx={{ pl: 10, pr: 10, pt: 1, pb: 5, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Typography
+                        sx={{
+                            fontFamily: 'KoHo',
+                            fontWeight: 700,
+                            fontSize: '24px',
+                            lineHeight: '31.2px',
+                            color: colors.color2,
+                            p: 1,
+                            border: '4px solid #214738',
+                            borderRadius: '10px',
+                        }}>
+                        Tổng: 240.000đ
+                    </Typography>
+                    <Button variant='contained'
+                        sx={{
+                            bgcolor: colors.color2,
+                            p: 1,
+                            pl: 5,
+                            pr: 5,
+                            borderRadius: '10px',
+                            color: colors.color1,
+                            fontFamily: 'KoHo',
+                            fontWeight: 700,
+                            fontSize: '24px',
+                            lineHeight: '31.2px',
+                        }}>
+                        Bán
+                    </Button>
                 </Box>
             </>
             <Footer />
