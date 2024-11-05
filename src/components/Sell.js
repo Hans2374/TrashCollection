@@ -126,8 +126,10 @@ const Sell = () => {
         return acc;
     }, {}));
     const [selectAll, setSelectAll] = useState(false);
-    const [open, setOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
+    const [open, setOpen] = useState(false); const [selectedCity, setSelectedCity] = useState('');
+    const [selectedDistrict, setSelectedDistrict] = useState('');
+    const [selectedWard, setSelectedWard] = useState('');
+    const [selectedTransportMethod, setSelectedTransportMethod] = useState('');
 
     const handleIncrement = (id) => {
         setQuantities(prevQuantities => ({
@@ -177,8 +179,20 @@ const Sell = () => {
         setOpen(false);
     };
 
-    const handleSelectChange = (event) => {
-        setSelectedOption(event.target.value);
+    const handleCityChange = (event) => {
+        setSelectedCity(event.target.value);
+    };
+
+    const handleDistrictChange = (event) => {
+        setSelectedDistrict(event.target.value);
+    };
+
+    const handleWardChange = (event) => {
+        setSelectedWard(event.target.value);
+    };
+
+    const handleTransportMethodChange = (event) => {
+        setSelectedTransportMethod(event.target.value);
     };
 
     return (
@@ -332,6 +346,7 @@ const Sell = () => {
                             fontWeight: 700,
                             fontSize: '24px',
                             lineHeight: '31.2px',
+                            width: '169px'
                         }}
                         onClick={handleClickOpen}
                     >
@@ -357,7 +372,7 @@ const Sell = () => {
                         <DialogContent>
                             {/* Add your form fields here */}
                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 5 }}>
-                                <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5}}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
                                     <TextField
                                         autoFocus
                                         margin="dense"
@@ -373,10 +388,10 @@ const Sell = () => {
                                         sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     />
                                 </Box>
-                                <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5}}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
                                     <Select
-                                        value={selectedOption}
-                                        onChange={handleSelectChange}
+                                        value={selectedCity}
+                                        onChange={handleCityChange}
                                         displayEmpty
                                         sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     >
@@ -388,8 +403,8 @@ const Sell = () => {
                                         <MenuItem value="option3">TP. Huế</MenuItem>
                                     </Select>
                                     <Select
-                                        value={selectedOption}
-                                        onChange={handleSelectChange}
+                                        value={selectedDistrict}
+                                        onChange={handleDistrictChange}
                                         displayEmpty
                                         sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     >
@@ -401,11 +416,11 @@ const Sell = () => {
                                         <MenuItem value="option3">Q2</MenuItem>
                                     </Select>
                                 </Box>
-                                <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5}}>
-                                    <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                         <Select
-                                            value={selectedOption}
-                                            onChange={handleSelectChange}
+                                            value={selectedWard}
+                                            onChange={handleWardChange}
                                             displayEmpty
                                             sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                         >
@@ -442,10 +457,10 @@ const Sell = () => {
                                         </Box>
                                     </Box>
                                 </Box>
-                                <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5}}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
                                     <Select
-                                        value={selectedOption}
-                                        onChange={handleSelectChange}
+                                        value={selectedTransportMethod}
+                                        onChange={handleTransportMethodChange}
                                         displayEmpty
                                         sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     >
