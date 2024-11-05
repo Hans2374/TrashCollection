@@ -10,121 +10,148 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+const cardData = [
+    {
+        id: 1,
+        title: "Nhựa",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card1.png`,
+    },
+    {
+        id: 2,
+        title: "Cao su",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card2.png`,
+    },
+    {
+        id: 3,
+        title: "Giấy",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card3.png`,
+    },
+    {
+        id: 4,
+        title: "Thuỷ tinh",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card4.png`,
+    },
+    {
+        id: 5,
+        title: "Kim loại",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card5.png`,
+    },
+    {
+        id: 6,
+        title: "Nilon",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card6.png`,
+    },
+    {
+        id: 7,
+        title: "Đồ điện",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card7.png`,
+    },
+    {
+        id: 8,
+        title: "Vải",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card8.png`,
+    },
+    {
+        id: 9,
+        title: "Củi khô",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card9.png`,
+    },
+    {
+        id: 10,
+        title: "Cát sỏi",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card10.png`,
+    },
+    {
+        id: 11,
+        title: "Rác hữu cơ",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card11.png`,
+    },
+    {
+        id: 12,
+        title: "Rác vô cơ tổng hợp",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card12.png`,
+    },
+    {
+        id: 13,
+        title: "Cát sỏi",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card10.png`,
+    },
+    {
+        id: 14,
+        title: "Rác hữu cơ",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card11.png`,
+    },
+    {
+        id: 15,
+        title: "Rác vô cơ tổng hợp",
+        price: "60.000đ",
+        image: `${process.env.PUBLIC_URL}/images/card12.png`,
+    },
+];
+
 const Sell = () => {
+    const [quantities, setQuantities] = useState(cardData.reduce((acc, card) => {
+        acc[card.id] = 1;
+        return acc;
+    }, {}));
+    const [selectedCards, setSelectedCards] = useState(cardData.reduce((acc, card) => {
+        acc[card.id] = false;
+        return acc;
+    }, {}));
     const [selectAll, setSelectAll] = useState(false);
-    const [quantity, setQuantity] = useState(1);
 
-    const handleSelectAllChange = (event) => {
-        setSelectAll(event.target.checked);
-        // Add logic to select/deselect all items if needed
+    const handleIncrement = (id) => {
+        setQuantities(prevQuantities => ({
+            ...prevQuantities,
+            [id]: prevQuantities[id] + 1,
+        }));
     };
 
-    const cardData = [
-        {
-            id: 1,
-            title: "Nhựa",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card1.png`,
-        },
-        {
-            id: 2,
-            title: "Cao su",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card2.png`,
-        },
-        {
-            id: 3,
-            title: "Giấy",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card3.png`,
-        },
-        {
-            id: 4,
-            title: "Thuỷ tinh",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card4.png`,
-        },
-        {
-            id: 5,
-            title: "Kim loại",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card5.png`,
-        },
-        {
-            id: 6,
-            title: "Nilon",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card6.png`,
-        },
-        {
-            id: 7,
-            title: "Đồ điện",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card7.png`,
-        },
-        {
-            id: 8,
-            title: "Vải",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card8.png`,
-        },
-        {
-            id: 9,
-            title: "Củi khô",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card9.png`,
-        },
-        {
-            id: 10,
-            title: "Cát sỏi",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card10.png`,
-        },
-        {
-            id: 11,
-            title: "Rác hữu cơ",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card11.png`,
-        },
-        {
-            id: 12,
-            title: "Rác vô cơ tổng hợp",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card12.png`,
-        },
-        {
-            id: 13,
-            title: "Cát sỏi",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card10.png`,
-        },
-        {
-            id: 14,
-            title: "Rác hữu cơ",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card11.png`,
-        },
-        {
-            id: 15,
-            title: "Rác vô cơ tổng hợp",
-            price: "60.000đ",
-            image: `${process.env.PUBLIC_URL}/images/card12.png`,
-        },
-    ];
-
-    const handleIncrement = () => {
-        setQuantity(prevQuantity => prevQuantity + 1);
+    const handleDecrement = (id) => {
+        setQuantities(prevQuantities => ({
+            ...prevQuantities,
+            [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1,
+        }));
     };
 
-    const handleDecrement = () => {
-        setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-    };
-
-    const handleChange = (event) => {
+    const handleChange = (id, event) => {
         const value = parseInt(event.target.value, 10);
         if (!isNaN(value) && value > 0) {
-            setQuantity(value);
+            setQuantities(prevQuantities => ({
+                ...prevQuantities,
+                [id]: value,
+            }));
         }
+    };
+
+    const handleSelectAllChange = (event) => {
+        const checked = event.target.checked;
+        setSelectAll(checked);
+        setSelectedCards(cardData.reduce((acc, card) => {
+            acc[card.id] = checked;
+            return acc;
+        }, {}));
+    };
+
+    const handleCheckboxChange = (id) => (event) => {
+        setSelectedCards(prevSelectedCards => ({
+            ...prevSelectedCards,
+            [id]: event.target.checked,
+        }));
     };
 
     return (
@@ -182,12 +209,12 @@ const Sell = () => {
                                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
                                                 <Typography sx={{ alignSelf: 'center', fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>{card.title}</Typography>
                                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                    <IconButton onClick={handleDecrement} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+                                                    <IconButton onClick={() => handleDecrement(card.id)} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
                                                         <RemoveIcon />
                                                     </IconButton>
                                                     <TextField
-                                                        value={quantity}
-                                                        onChange={handleChange}
+                                                        value={quantities[card.id]}
+                                                        onChange={(event) => handleChange(card.id, event)}
                                                         inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0, width: '40px' } }}
                                                         sx={{
                                                             border: '3px solid #214738',
@@ -199,7 +226,7 @@ const Sell = () => {
                                                             },
                                                         }}
                                                     />
-                                                    <IconButton onClick={handleIncrement} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                                                    <IconButton onClick={() => handleIncrement(card.id)} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
                                                         <AddIcon />
                                                     </IconButton>
                                                 </Box>
@@ -207,15 +234,18 @@ const Sell = () => {
                                             </Box>
                                             <Typography sx={{ ml: 0.5, alignSelf: 'center', fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>kg</Typography>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                                                <Checkbox sx={{
-                                                    color: colors.color2,
-                                                    '&.Mui-checked': {
+                                                <Checkbox
+                                                    checked={selectedCards[card.id]}
+                                                    onChange={handleCheckboxChange(card.id)}
+                                                    sx={{
                                                         color: colors.color2,
-                                                    },
-                                                    '& .MuiSvgIcon-root': { fontSize: 40 },
-                                                    mr: -2.1,
-                                                    mt: -2.1
-                                                }} />
+                                                        '&.Mui-checked': {
+                                                            color: colors.color2,
+                                                        },
+                                                        '& .MuiSvgIcon-root': { fontSize: 40 },
+                                                        mr: -2.1,
+                                                        mt: -2.1
+                                                    }} />
                                                 <IconButton sx={{ color: colors.color2 }}>
                                                     <DeleteIcon />
                                                 </IconButton>
