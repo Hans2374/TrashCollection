@@ -205,10 +205,10 @@ const Sell = () => {
 
             {/* Nội dung */}
             <>
-                <Typography sx={{ p: 10, pb: 0, fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>Bán</Typography>
+                <Typography sx={{ p: 5, pt: 10, fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>Bán</Typography>
 
                 {/* Card display */}
-                <Box sx={{ p: 10, pt: 3, pb: 0 }}>
+                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 0, md: 0, sm: 0, xs: 0 } }}>
                     <Box sx={{ height: '500px', overflowY: 'auto', '&::-webkit-scrollbar': { width: '8px' }, '&::-webkit-scrollbar-thumb': { backgroundColor: '#214738', borderRadius: '10px' }, '&::-webkit-scrollbar-track': { backgroundColor: '#f1f1f1' } }}>
                         <Grid container spacing={2} >
                             {cardData.map((card, index) => (
@@ -300,7 +300,7 @@ const Sell = () => {
                 </Box>
 
                 {/* Form Section */}
-                <Box sx={{ pl: 10, pr: 10, pt: 3, mt: 0, display: 'flex', justifyContent: 'flex-start' }}>
+                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 3, md: 3, sm: 3, xs: 3 }, pb: { lg: 0, md: 0, sm: 0, xs: 0 }, display: 'flex', justifyContent: 'flex-start' }}>
                     <FormControlLabel
                         control={<Checkbox checked={selectAll} onChange={handleSelectAllChange}
                             sx={{
@@ -320,7 +320,7 @@ const Sell = () => {
                             color: colors.color2,
                         }} />
                 </Box>
-                <Box sx={{ pl: 10, pr: 10, pt: 1, pb: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 10, md: 10, sm: 10, xs: 10 }, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Typography
                         sx={{
                             fontFamily: 'KoHo',
@@ -368,32 +368,45 @@ const Sell = () => {
                         }}>
                         THANH TOÁN
                     </DialogTitle>
-                    <Box sx={{ p: 5, pt: 0, border: '4px solid #214738' }}>
+                    <Box
+                        sx={{
+                            p: { lg: '5', md: '5', sm: '5', xs: '0' },
+                            pt: { lg: '0', md: '0', sm: '0', xs: '0' },
+                            border: '5px solid #214738',
+                            borderTop: 'none',
+                            overflowY: 'auto',
+                            '&::-webkit-scrollbar': {
+                                display: 'none',
+                            },
+                            '-ms-overflow-style': 'none',  // IE and Edge
+                            'scrollbar-width': 'none',  // Firefox
+                        }}
+                    >
                         <DialogContent>
                             {/* Add your form fields here */}
                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 5 }}>
-                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
+                                <Box sx={{ display: 'flex', flexDirection: { lg: 'row', md: 'row', sm: 'row', xs: 'column' }, justifyContent: 'space-between', gap: 4 }}>
                                     <TextField
                                         autoFocus
                                         margin="dense"
                                         label="Người bán"
                                         type="text"
-                                        sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
+                                        sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     />
                                     <TextField
                                         autoFocus
                                         margin="dense"
                                         label="Số điện thoại"
                                         type="text"
-                                        sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
+                                        sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     />
                                 </Box>
-                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
+                                <Box sx={{ display: 'flex', flexDirection: { lg: 'row', md: 'row', sm: 'row', xs: 'column' }, justifyContent: 'space-between', gap: 5 }}>
                                     <Select
                                         value={selectedCity}
                                         onChange={handleCityChange}
                                         displayEmpty
-                                        sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
+                                        sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     >
                                         <MenuItem value="" disabled>
                                             Tỉnh/Thành phố
@@ -406,7 +419,7 @@ const Sell = () => {
                                         value={selectedDistrict}
                                         onChange={handleDistrictChange}
                                         displayEmpty
-                                        sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
+                                        sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     >
                                         <MenuItem value="" disabled>
                                             Quận huyện
@@ -416,13 +429,13 @@ const Sell = () => {
                                         <MenuItem value="option3">Q2</MenuItem>
                                     </Select>
                                 </Box>
-                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
-                                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                <Box sx={{ display: 'flex', flexDirection: { lg: 'row', md: 'row', sm: 'row', xs: 'column' }, justifyContent: 'space-between', gap: 5 }}>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 4, width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' } }}>
                                         <Select
                                             value={selectedWard}
                                             onChange={handleWardChange}
                                             displayEmpty
-                                            sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
+                                            sx={{ width: { lg: '324px', md: '324px', sm: '100%', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                         >
                                             <MenuItem value="" disabled>
                                                 Phường/Xã
@@ -435,39 +448,39 @@ const Sell = () => {
                                             margin="dense"
                                             label="Tên đường, số nhà"
                                             type="text"
-                                            sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
+                                            sx={{ width: { lg: '324px', md: '324px', sm: '100%', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                         />
                                     </Box>
-                                    <Box sx={{ width: '324px', height: '150px', border: '3px solid #214738', borderRadius: '5px', justifyContent: 'center', alignContent: 'center', p: 1 }}>
+                                    <Box sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: { lg: '150px', md: '150px', sm: '150px', xs: '100%' }, border: '3px solid #214738', borderRadius: '5px', justifyContent: 'center', alignContent: 'center', p: 1 }}>
                                         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', gap: 5, p: '0px 5px' }}>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}>Tiền hàng</Typography>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '20px', lineHeight: '26px', alignSelf: 'center' }}>60.000đ</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: { lg: '24px', md: '24px', sm: '24px', xs: '18px' }, lineHeight: '31.2px' }}>Tiền hàng</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: { lg: '20px', md: '20px', sm: '20px', xs: '14px' }, lineHeight: '26px', alignSelf: 'center' }}>60.000đ</Typography>
                                         </Box>
                                         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', gap: 5, p: '0px 5px' }}>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}>Vận chuyển</Typography>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '20px', lineHeight: '26px', alignSelf: 'center' }}>15.000đ</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: { lg: '24px', md: '24px', sm: '24px', xs: '18px' }, lineHeight: '31.2px' }}>Vận chuyển</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: { lg: '20px', md: '20px', sm: '20px', xs: '14px' }, lineHeight: '26px', alignSelf: 'center' }}>15.000đ</Typography>
                                         </Box>
                                         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', gap: 5, p: '0px 5px' }}>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '16px', lineHeight: '20.8px', alignSelf: 'flex-start' }}>Ước tính</Typography>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '16px', lineHeight: '20.8px', alignSelf: 'flex-start' }}>2-3 ngày</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: { lg: '16px', md: '16px', sm: '16px', xs: '12px' }, lineHeight: '20.8px', alignSelf: 'flex-start' }}>Ước tính</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: { lg: '16px', md: '16px', sm: '16px', xs: '12px' }, lineHeight: '20.8px', alignSelf: 'flex-start' }}>2-3 ngày</Typography>
                                         </Box>
                                         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', gap: 5, p: '0px 5px' }}>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}>Tổng nhận</Typography>
-                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '20px', lineHeight: '26px', alignSelf: 'center' }}>75.000đ</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: { lg: '24px', md: '24px', sm: '24px', xs: '18px' }, lineHeight: '31.2px' }}>Tổng nhận</Typography>
+                                            <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: { lg: '20px', md: '20px', sm: '20px', xs: '14px' }, lineHeight: '26px', alignSelf: 'center' }}>75.000đ</Typography>
                                         </Box>
                                     </Box>
                                 </Box>
-                                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 5 }}>
+                                <Box sx={{ display: 'flex', flexDirection: { lg: 'row', md: 'row', sm: 'row', xs: 'column' }, justifyContent: 'space-between', gap: 5 }}>
                                     <Select
                                         value={selectedTransportMethod}
                                         onChange={handleTransportMethodChange}
                                         displayEmpty
-                                        sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
+                                        sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                     >
                                         <MenuItem value="" disabled>
                                             Phương thức vận chuyển
                                         </MenuItem>
-                                        <MenuItem value="option1">TÊN Đến lấy</MenuItem>
+                                        <MenuItem value="option1">TÊN đến lấy</MenuItem>
                                         <MenuItem value="option2">Đem đến cho TÊN</MenuItem>
                                     </Select>
                                     <Button variant='contained' onClick={handleClose}
@@ -479,7 +492,7 @@ const Sell = () => {
                                             fontSize: '20px',
                                             lineHeight: '26px',
                                             height: '50px',
-                                            width: '324px',
+                                            width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }
                                         }}>
                                         Tạo đơn hàng
                                     </Button>
