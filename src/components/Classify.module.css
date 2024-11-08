@@ -63,7 +63,7 @@
 }
 
 /* Responsive styles */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .card:hover span {
         top: initial;
         font-size: initial;
@@ -100,15 +100,23 @@
     }
 
     .cardContainer {
-        width: 80% !important;
+        width: 100% !important;
     }
 
     .content {
         padding: 0 !important;
     }
+
+    .img{
+        height: 100px !important;
+    }
 }
 
-@media screen and (min-width: 769px) and (max-width: 991px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .img{
+        height: 200px !important;
+    }
+
     .card:hover span {
         top: initial;
         font-size: initial;
