@@ -377,7 +377,8 @@ const Classify = () => {
                                             position: "relative",
                                             width: "100%",
                                             height: "100%",
-                                            border: `2px solid ${colors.color2}`,
+                                            border: `3px solid ${colors.color2}`,
+                                            borderRadius: "10px",
                                             boxShadow: "none",
                                             "&:hover": {
                                                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -390,7 +391,7 @@ const Classify = () => {
                                                 <div>
                                                     <img src={card.image} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                                                 </div>
-                                                <div style={{ marginBottom: 5, marginTop: -7, borderTop: '3px solid var(--color2)' }}>
+                                                <div style={{ marginTop: -10 }}>
                                                     <div className={styles.cardTitle} style={{ color: `${colors.color2}`, paddingTop: '10px' }} >{card.title}</div>
                                                     <div className={styles.cardBody} style={{ color: `${colors.color2}`, paddingTop: '8px', paddingBottom: '10px' }}>{card.description}</div>
                                                 </div>
