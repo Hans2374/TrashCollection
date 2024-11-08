@@ -366,7 +366,7 @@ const Sell = () => {
                             color: colors.color1,
                             fontFamily: 'KoHo',
                             fontWeight: 700,
-                            fontSize: '24px',
+                            fontSize: { lg: 24, md: 24, sm: 24, xs: 18 },
                             lineHeight: '31.2px',
                             width: '169px'
                         }}
