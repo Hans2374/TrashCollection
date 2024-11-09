@@ -16,6 +16,8 @@ import {
     DialogContent,
     Select,
     MenuItem,
+    useMediaQuery,
+    useTheme,
 } from '@mui/material';
 import colors from '../colors';
 import Grid from '@mui/material/Grid2';
@@ -124,6 +126,8 @@ const cardData = [
 ];
 
 const Cart = () => {
+    const theme = useTheme();
+    const isLgOrLarger = useMediaQuery(theme.breakpoints.up('lg'));
     const [isUsingPoints, setIsUsingPoints] = useState({});
 
     const togglePriceDisplay = (cardId) => {
@@ -225,39 +229,37 @@ const Cart = () => {
                     paddingBottom: '50px'
                 }}
             >
-                <Typography
-                    sx={{
-                        p: 10, pb: 0,
-                        fontFamily: 'KoHo',
-                        fontWeight: 700,
-                        fontSize: '30px',
-                        lineHeight: '39px',
-                        color: colors.color2
-                    }}
-                >
+                <Typography sx={{ p: 5, pt: 10, fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>
                     GIỎ HÀNG
                 </Typography>
 
                 {/* Card display */}
-                <Box sx={{ p: 10, pt: 3, pb: 0 }}>
+                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 0, md: 0, sm: 0, xs: 0 } }}>
                     <Box
                         sx={{
                             height: '500px',
-                            overflowY: 'auto',
-                            '&::-webkit-scrollbar': { width: '8px' },
+                            overflowX: 'hidden',
+                            overflowY: 'auto', // Always allow vertical scrolling
+                            '&::-webkit-scrollbar': {
+                                width: isLgOrLarger ? '8px' : '0px', // Hide scrollbar for smaller screens
+                            },
                             '&::-webkit-scrollbar-thumb': {
                                 backgroundColor: '#214738',
-                                borderRadius: '10px'
+                                borderRadius: '10px',
                             },
-                            '&::-webkit-scrollbar-track': { backgroundColor: '#f1f1f1' }
+                            '&::-webkit-scrollbar-track': {
+                                backgroundColor: '#f1f1f1',
+                            },
+                            '-ms-overflow-style': isLgOrLarger ? 'auto' : 'none',  // IE and Edge
+                            'scrollbar-width': isLgOrLarger ? 'auto' : 'none',  // Firefox
                         }}
                     >
                         <Grid container spacing={2} >
                             {cardData.map((card, index) => (
-                                <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4, xl: 4 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 4 }} sx={{ display: 'flex', justifyContent: 'center' }}>
                                     <Box
                                         sx={{
-                                            width: '200px',
+                                            width: { lg: 170, md: 170, sm: 160, xs: 150 },
                                             height: '200px',
                                             boxSizing: 'border-box',
                                             display: 'flex',
@@ -385,7 +387,7 @@ const Cart = () => {
                 </Box>
 
                 {/* Form Section */}
-                <Box sx={{ pl: 13, pr: 10, pt: 5, mt: 0, display: 'flex', justifyContent: 'flex-start' }}>
+                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 3, md: 3, sm: 3, xs: 3 }, pb: { lg: 0, md: 0, sm: 0, xs: 0 }, display: 'flex', justifyContent: 'flex-start' }}>
                     <FormControlLabel
                         control={<Checkbox checked={selectAll} onChange={handleSelectAllChange}
                             sx={{
@@ -405,12 +407,12 @@ const Cart = () => {
                             color: colors.color2,
                         }} />
                 </Box>
-                <Box sx={{ pl: 14, pr: 15, pt: 1, pb: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 10, md: 10, sm: 10, xs: 10 }, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
                     <Typography
                         sx={{
                             fontFamily: 'KoHo',
                             fontWeight: 700,
-                            fontSize: '24px',
+                            fontSize: { lg: 24, md: 24, sm: 24, xs: 18 },
                             lineHeight: '31.2px',
                             color: colors.color2,
                             p: 1,
@@ -434,7 +436,7 @@ const Cart = () => {
                             color: colors.color1,
                             fontFamily: 'KoHo',
                             fontWeight: 700,
-                            fontSize: '24px',
+                            fontSize: { lg: 24, md: 24, sm: 24, xs: 18 },
                             lineHeight: '31.2px',
                             width: '169px'
                         }}

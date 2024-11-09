@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Box, 
-    Typography, 
-    Icon, 
-    Select, 
-    MenuItem, 
-    useMediaQuery, 
-    Pagination, 
-    PaginationItem, 
+import {
+    Box,
+    Typography,
+    Icon,
+    Select,
+    MenuItem,
+    useMediaQuery,
+    Pagination,
+    PaginationItem,
     Card,
     CardMedia,
-    CardContent, } from '@mui/material';
+    CardContent,
+} from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
@@ -31,7 +33,7 @@ const Classify = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
+    }, []);
 
     const isLogin = useSelector((state) => state.auth.isLogin);
     const [dropdown1, setDropdown1] = useState('');
@@ -240,7 +242,7 @@ const Classify = () => {
                             justifyContent: 'space-between',
                             gap: 1,
                             height: '29px',
-                            flexWrap: { xs: 'wrap', sm: 'wrap', md: 'wrap' },                         
+                            flexWrap: { xs: 'wrap', sm: 'wrap', md: 'wrap' },
                         }}
                     >
                         <Box sx={{ position: 'relative', marginTop: isSmallScreen ? 1 : 0, }}>
@@ -367,8 +369,16 @@ const Classify = () => {
                     </Box>
 
                     {/* Card display */}
-                    <Box display='flex' justifyContent='center'>
-                        <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={2} sx={{ marginTop: { lg: '20px', sm: '70px', xs: '110px', md: '70px' } }}>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center'}}>
+                        <Grid
+                            className={styles.cardContainer}
+                            container
+                            rowSpacing={3}
+                            columnSpacing={2}
+                            sx={{
+                                marginTop: { lg: '20px', sm: '70px', xs: '110px', md: '70px' },
+                            }}
+                        >
                             {paginatedData.map((card) => (
                                 <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={card.id} >
                                     <Card
@@ -377,7 +387,8 @@ const Classify = () => {
                                             position: "relative",
                                             width: "100%",
                                             height: "100%",
-                                            border: `2px solid ${colors.color2}`,
+                                            border: `3px solid ${colors.color2}`,
+                                            borderRadius: "10px",
                                             boxShadow: "none",
                                             "&:hover": {
                                                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -388,13 +399,13 @@ const Classify = () => {
                                         <RouterLink to={routes.classifyDetail} style={{ textDecoration: 'none' }}>
                                             <Box className={styles.card} sx={{ width: '100%' }}>
                                                 <div>
-                                                    <img src={card.image} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                                                    <img className={styles.img} src={card.image} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                                                 </div>
-                                                <div style={{ marginBottom: 5, marginTop: -7, borderTop: '3px solid var(--color2)' }}>
+                                                <div style={{ marginTop: -10 }}>
                                                     <div className={styles.cardTitle} style={{ color: `${colors.color2}`, paddingTop: '10px' }} >{card.title}</div>
                                                     <div className={styles.cardBody} style={{ color: `${colors.color2}`, paddingTop: '8px', paddingBottom: '10px' }}>{card.description}</div>
                                                 </div>
-                                                <span style={{ color: `${colors.color2}`}}>Xem chi tiết</span>
+                                                <span style={{ color: `${colors.color2}` }}>Xem chi tiết</span>
                                             </Box>
                                         </RouterLink>
                                     </Card>
@@ -402,6 +413,7 @@ const Classify = () => {
                             ))}
                         </Grid>
                     </Box>
+
                     {/* Pagination */}
                     <Box display="flex" justifyContent="center" mb={2} mt={1} marginTop={5}>
                         <Pagination

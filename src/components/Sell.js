@@ -16,6 +16,8 @@ import {
     DialogContent,
     Select,
     MenuItem,
+    useMediaQuery,
+    useTheme,
 } from '@mui/material';
 import colors from '../colors';
 import Grid from '@mui/material/Grid2';
@@ -117,6 +119,8 @@ const cardData = [
 ];
 
 const Sell = () => {
+    const theme = useTheme();
+    const isLgOrLarger = useMediaQuery(theme.breakpoints.up('lg'));
     const [quantities, setQuantities] = useState(cardData.reduce((acc, card) => {
         acc[card.id] = 1;
         return acc;
@@ -209,13 +213,31 @@ const Sell = () => {
 
                 {/* Card display */}
                 <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 0, md: 0, sm: 0, xs: 0 } }}>
-                    <Box sx={{ height: '500px', overflowY: 'auto', '&::-webkit-scrollbar': { width: '8px' }, '&::-webkit-scrollbar-thumb': { backgroundColor: '#214738', borderRadius: '10px' }, '&::-webkit-scrollbar-track': { backgroundColor: '#f1f1f1' } }}>
+                    <Box
+                        sx={{
+                            height: '500px',
+                            overflowX: 'hidden',
+                            overflowY: 'auto', // Always allow vertical scrolling
+                            '&::-webkit-scrollbar': {
+                                width: isLgOrLarger ? '8px' : '0px', // Hide scrollbar for smaller screens
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                                backgroundColor: '#214738',
+                                borderRadius: '10px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                                backgroundColor: '#f1f1f1',
+                            },
+                            '-ms-overflow-style': isLgOrLarger ? 'auto' : 'none',  // IE and Edge
+                            'scrollbar-width': isLgOrLarger ? 'auto' : 'none',  // Firefox
+                        }}
+                    >
                         <Grid container spacing={2} >
                             {cardData.map((card, index) => (
-                                <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4, xl: 4 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4, xl: 4 }} sx={{ display: 'flex', justifyContent: 'center' }}>
                                     <Box
                                         sx={{
-                                            width: '200px',
+                                            width: { lg: 170, md: 170, sm: 160, xs: 150 },
                                             height: '200px',
                                             boxSizing: 'border-box',
                                             display: 'flex',
@@ -320,16 +342,16 @@ const Sell = () => {
                             color: colors.color2,
                         }} />
                 </Box>
-                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 10, md: 10, sm: 10, xs: 10 }, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 10, md: 10, sm: 10, xs: 10 }, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
                     <Typography
                         sx={{
                             fontFamily: 'KoHo',
                             fontWeight: 700,
-                            fontSize: '24px',
+                            fontSize: { lg: 24, md: 24, sm: 24, xs: 18 },
                             lineHeight: '31.2px',
                             color: colors.color2,
                             p: 1,
-                            border: '4px solid #214738',
+                            border: '3px solid #214738',
                             borderRadius: '10px',
                         }}>
                         Tổng: 240.000đ
@@ -344,7 +366,7 @@ const Sell = () => {
                             color: colors.color1,
                             fontFamily: 'KoHo',
                             fontWeight: 700,
-                            fontSize: '24px',
+                            fontSize: { lg: 24, md: 24, sm: 24, xs: 18 },
                             lineHeight: '31.2px',
                             width: '169px'
                         }}

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Box, Typography, Button, Grid } from '@mui/material';
+import React, { useEffect, useMemo } from 'react';
+import { Box, Typography, Grid } from '@mui/material';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
 import { Footer } from './Footer';
@@ -18,14 +18,16 @@ const Homepage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const revealConfig = useMemo(() => ({
+    origin: 'bottom',
+    distance: '20px',
+    duration: 1000,
+    delay: 200,
+    reset: false, // Set to false if you don't need repeated animations
+  }), []);
+
   useEffect(() => {
-    const reveal = ScrollReveal({
-      origin: 'bottom',
-      distance: '20px',
-      duration: 1000,
-      delay: 200,
-      reset: true,
-    });
+    const reveal = ScrollReveal(revealConfig);
 
     // Hiệu ứng cho toàn bộ section:
     reveal.reveal('.section-container', {
@@ -55,7 +57,7 @@ const Homepage = () => {
     });
 
     return () => reveal.destroy();
-  }, []);
+  }, [revealConfig]);
 
 
   return (
@@ -135,7 +137,7 @@ const Homepage = () => {
           backgroundColor: colors.color3,
           alignItems: 'stretch'
         }}
-        className="section-container-1"
+        className="section-container"
       >
         {/* Box chứa hình ảnh */}
         {!isSmallScreen && (
@@ -384,10 +386,6 @@ const Homepage = () => {
           </Grid>
         </Grid>
       </Box>
-
-
-
-
 
       {/* Section 4 */}
       <Box sx={{ textAlign: 'center', backgroundColor: colors.color1, padding: '50px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="section-container">
