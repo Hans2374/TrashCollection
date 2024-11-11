@@ -250,10 +250,10 @@ const Homepage = () => {
 
       {/* Section 2 */}
       <Box sx={{ textAlign: 'center', backgroundColor: colors.color1, paddingBottom: '50px' }} className="section-container">
-        <Typography className="section-title" sx={{ fontSize: { xs: '30px', md: '48px' },fontWeight: 'bold', fontFamily: 'KoHo', color: `${colors.color2}`, paddingTop: '50px', marginBottom: '16px' }}>
+        <Typography className="section-title" sx={{ fontSize: { xs: '30px', md: '48px' }, fontWeight: 'bold', fontFamily: 'KoHo', color: `${colors.color2}`, paddingTop: '50px', marginBottom: '16px' }}>
           Trở thành đối tác của TÊN
         </Typography>
-        <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },fontFamily: 'KoHo', marginBottom: '80px' }}>
+        <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' }, fontFamily: 'KoHo', marginBottom: '80px' }}>
           Kết nối vựa ve chai của bạn với chúng tôi để nhận được nhiều lợi ích!
         </Typography>
 
@@ -275,7 +275,7 @@ const Homepage = () => {
               alt="Icon"
               style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
             />
-            <Typography fontWeight="bold" sx={{ fontSize: { xs: '24px', md: '34px' },fontFamily: 'KoHo', marginBottom: '10px' }}>Giá cả hợp lý</Typography>
+            <Typography fontWeight="bold" sx={{ fontSize: { xs: '24px', md: '34px' }, fontFamily: 'KoHo', marginBottom: '10px' }}>Giá cả hợp lý</Typography>
             <Typography sx={{ fontSize: '20px', fontFamily: 'KoHo' }}>
               Chúng tôi thu mua rác thải với giá cả theo phân loại hợp lí, minh bạch. Quản lí giao dịch và cập nhập giá cả nhanh chóng.
             </Typography>
@@ -286,7 +286,7 @@ const Homepage = () => {
               alt="Icon"
               style={{ width: '70px', height: '65px', margin: '0 auto', mb: 1 }}
             />
-            <Typography  fontWeight="bold" sx={{fontSize: { xs: '24px', md: '34px' }, fontFamily: 'KoHo', marginBottom: '10px' }}>Theo dõi doanh thu</Typography>
+            <Typography fontWeight="bold" sx={{ fontSize: { xs: '24px', md: '34px' }, fontFamily: 'KoHo', marginBottom: '10px' }}>Theo dõi doanh thu</Typography>
             <Typography sx={{ fontSize: '20px', fontFamily: 'KoHo' }}>
               Bảng thống kê giúp bạn quản lí nguồn thu từ TÊN, tiền lời và hiệu quả để mở rộng thu mua, tối ưu hóa quy trình kinh doanh.
             </Typography>
@@ -348,40 +348,102 @@ const Homepage = () => {
                   flexDirection: { xs: 'column', md: 'row' },
                 }}
               >
-                <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: '150px',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    },
+                  }}
+                >
                   <img
                     src={`${process.env.PUBLIC_URL}/images/sec4.png`}
                     alt="Product 1"
                     className="product-image"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
                   />
                 </Box>
-                <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: '150px',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    },
+                  }}
+                >
                   <img
                     src={`${process.env.PUBLIC_URL}/images/sec2.png`}
                     alt="Product 2"
                     className="product-image"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
                   />
                 </Box>
-                <Box sx={{ width: '100%', height: '150px', borderRadius: '8px', overflow: 'hidden' }}>
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: '150px',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    },
+                  }}
+                >
                   <img
                     src={`${process.env.PUBLIC_URL}/images/sec3.png`}
                     alt="Product 3"
                     className="product-image"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
                   />
                 </Box>
+
               </Box>
 
-              <Box sx={{ width: '100%', height: '300px', borderRadius: '8px', overflow: 'hidden' }}>
+              <Box
+                sx={{
+                  width: '100%',
+                  height: '300px',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  transition: 'transform 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)', // Phóng to nhẹ khi hover
+                  },
+                }}
+              >
                 <img
                   src={`${process.env.PUBLIC_URL}/images/sec1.png`}
                   alt="Product 4"
                   className="product-image"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }}
                 />
               </Box>
+
             </Box>
           </Grid>
         </Grid>
@@ -389,10 +451,10 @@ const Homepage = () => {
 
       {/* Section 4 */}
       <Box sx={{ textAlign: 'center', backgroundColor: colors.color1, padding: '50px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="section-container">
-        <Typography  className="section-title" sx={{ fontSize: { xs: '30px', md: '48px' },fontWeight: 'bold', fontFamily: 'KoHo', marginBottom: '16px', color: colors.color2 }}>
+        <Typography className="section-title" sx={{ fontSize: { xs: '30px', md: '48px' }, fontWeight: 'bold', fontFamily: 'KoHo', marginBottom: '16px', color: colors.color2 }}>
           Tích điểm đổi quà
         </Typography>
-        <Typography  className="section-content" sx={{ fontSize: { xs: '14px', md: '16px' }, color: colors.color2, fontSize: '23px', fontFamily: 'KoHo', marginBottom: '10px', maxWidth: '890px', textAlign: 'center' }}>
+        <Typography className="section-content" sx={{ fontSize: { xs: '14px', md: '16px' }, color: colors.color2, fontSize: '23px', fontFamily: 'KoHo', marginBottom: '10px', maxWidth: '890px', textAlign: 'center' }}>
           Mỗi giao dịch mua hàng hoặc bán ve chai đều giúp bạn tích lũy điểm thưởng <span style={{ fontSize: '20px' }}>🌱</span>
         </Typography>
         <Box sx={{ marginTop: '30px', display: 'flex', alignItems: 'flex-start', width: '100%', maxWidth: '1000px', gap: '32px' }} className="section-content">
@@ -411,7 +473,7 @@ const Homepage = () => {
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', maxWidth: '1000px', gap: '40px' }} className="section-content">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <Typography  className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
+            <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' }, color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
               Tái chế vì tương lai
             </Typography>
             <Typography variant="body1" className="section-content" sx={{ fontFamily: 'KoHo', textAlign: 'center' }}>
@@ -419,15 +481,15 @@ const Homepage = () => {
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
-              Cùng hành động, cùng thay đổi
+            <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' }, color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
+              Cùng hành động để thay đổi
             </Typography>
             <Typography variant="body1" className="section-content" sx={{ fontFamily: 'KoHo', textAlign: 'center' }}>
               Khuyến khích hành động chung để tạo ra thay đổi tích cực
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <Typography  className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' },color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
+            <Typography className="section-content" sx={{ fontSize: { xs: '18px', md: '24px' }, color: colors.color2, fontWeight: 'bold', fontFamily: 'KoHo', textAlign: 'center' }}>
               Cộng đồng xanh
             </Typography>
             <Typography variant="body1" className="section-content" sx={{ fontFamily: 'KoHo', textAlign: 'center' }}>
