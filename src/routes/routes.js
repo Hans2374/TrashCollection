@@ -6,4 +6,5 @@ export const routes = {
   classify: "/classify",
   regulation: "/regulation",
   product: "/product",
+  productdetail: "/productdetail",
 };
