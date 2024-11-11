@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 import { TextField, Rating, Avatar, Pagination } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { routes } from "../routes/routes";
+import colors from "../colors";
 
 const ProductDetail = () => {
   const isLogin = useSelector((state) => state.auth.isLogin);
@@ -454,7 +455,7 @@ const ProductDetail = () => {
                       "&:hover": { opacity: 1 },
                     }}
                   >
-                    <IconButton color="primary" sx={{ color: "#214738" }}>
+                    <IconButton color="primary" sx={{ color: colors.color2 }}>
                       <ShoppingCartIcon />
                     </IconButton>
                   </Box>
