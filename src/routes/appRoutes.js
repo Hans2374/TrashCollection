@@ -8,6 +8,7 @@ import NewsDetail from "../pages/newsDetail";
 import Classify from "../pages/classify";
 import Regulation from "../pages/regulation";
 import Product from "../pages/Product";
+import ProductDetail from "../pages/ProductDetail";
 import ClassifyDetail from "../pages/classifyDetail";
 import Sell from "../pages/sell";
 import AdminProductPage from "../pages/Admin/AdminProductPage";
@@ -17,7 +18,6 @@ import AdminUserPage from "../pages/Admin/AdminUserPage";
 import Cart from "../components/Cart";
 
 export default function AppRoute() {
-
   return (
     <>
       <Routes>
@@ -29,6 +29,7 @@ export default function AppRoute() {
         <Route path={routes.classifyDetail} element={<ClassifyDetail />} />
         <Route path={routes.regulation} element={<Regulation />} />
         <Route path={routes.product} element={<Product />} />
+        <Route path="/product/:slug" element={<ProductDetail />} />
         <Route path={routes.sell} element={<Sell />} />
         <Route path={routes.adminproduct} element={<AdminProductPage />} />
         <Route path={routes.adminorder} element={<AdminOrderPage />} />
@@ -39,4 +40,3 @@ export default function AppRoute() {
     </>
   );
 }
-
