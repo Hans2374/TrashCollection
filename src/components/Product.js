@@ -492,6 +492,7 @@ const Product = () => {
             rowSpacing={3}
             columnSpacing={2}
             sx={{
+              width: "100%",
               marginTop: { lg: "20px", sm: "50px", xs: "90px", md: "50px" },
             }}
           >
@@ -506,6 +507,7 @@ const Product = () => {
                     width: "100%",
                     height: "100%",
                     border: `2px solid ${colors.color2}`,
+                    objectFit: "cover",
                     boxShadow: "none",
                     "&:hover": {
                       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -518,7 +520,7 @@ const Product = () => {
                     component="img"
                     image={product.img}
                     alt={product.name}
-                    sx={{ height: 180 }}
+                    sx={{ height: 180, width: "100%", objectFit: "cover" }}
                   />
                   <CardContent
                     sx={{
