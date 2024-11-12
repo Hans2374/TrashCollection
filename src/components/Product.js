@@ -18,13 +18,14 @@ import { Header2 } from "./Header2";
 import { Footer } from "./Footer";
 import { ScrollToTop } from "./ScrollToTop";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import colors from '../colors';
-import styles from './Product.module.css';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import SearchIcon from '@mui/icons-material/Search';
-import { KeyboardArrowDown as KeyboardArrowDownIcon } from '@mui/icons-material';
-import Grid from '@mui/material/Grid2';
+import colors from "../colors";
+import styles from "./Product.module.css";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import SearchIcon from "@mui/icons-material/Search";
+import { KeyboardArrowDown as KeyboardArrowDownIcon } from "@mui/icons-material";
+import Grid from "@mui/material/Grid2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -32,15 +33,27 @@ const Product = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const [dropdown1, setDropdown1] = useState('');
-  const [dropdown2, setDropdown2] = useState('');
-  const [dropdown3, setDropdown3] = useState('');
-  const [dropdown4, setDropdown4] = useState('');
-  const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('lg'));
-
+  const [dropdown1, setDropdown1] = useState("");
+  const [dropdown2, setDropdown2] = useState("");
+  const [dropdown3, setDropdown3] = useState("");
+  const [dropdown4, setDropdown4] = useState("");
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("lg"));
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleDropdownChange = (event, setDropdown) => {
     setDropdown(event.target.value);
   };
+
+  const createSlug = (string) => {
+    return string
+      .toLowerCase()
+      .replace(/\s+/g, "-") // Thay thế khoảng trắng bằng dấu -
+      .replace(/[^\w\-]+/g, "") // Xóa tất cả các ký tự không phải chữ, số hoặc dấu -
+      .replace(/\-\-+/g, "-") // Thay thế nhiều dấu - bằng một dấu -
+      .trim(); // Xóa dấu - ở đầu và cuối
+  };
+  const queryParams = new URLSearchParams(location.search);
+  const pageFromUrl = Number(queryParams.get("page")) || 1;
 
   const products = [
     {
@@ -174,15 +187,29 @@ const Product = () => {
       price: "60,000₫",
       img: `${process.env.PUBLIC_URL}/images/product3.png`,
     },
-  ];
+  ].map((product) => ({
+    ...product,
+    slug: createSlug(product.name), // Thêm thuộc tính slug
+  }));
 
-  const [page, setPage] = useState(1);
+  const handleProductClick = (productSlug) => {
+    navigate(`/product/${productSlug}`);
+  };
+  const [page, setPage] = useState(pageFromUrl);
   const itemsPerPage = isSmallScreen ? 6 : 8;
   const handleChangePage = (event, value) => {
     setPage(value);
+    navigate(`/product?page=${value}`);
   };
+  useEffect(() => {
+    // Cập nhật số trang khi có thay đổi từ URL
+    setPage(pageFromUrl);
+  }, [pageFromUrl]);
 
-  const paginatedData = products.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  const paginatedData = products.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
 
   return (
     <>
@@ -201,7 +228,7 @@ const Product = () => {
           sx={{
             width: { xs: "278px", sm: "360px" },
             height: { xs: "169px", sm: "190px" },
-            backgroundColor: 'rgba(252, 249, 243, 0.6)',
+            backgroundColor: "rgba(252, 249, 243, 0.6)",
             position: "absolute",
             top: "50%",
             left: "50%",
@@ -247,61 +274,75 @@ const Product = () => {
 
       <Box
         sx={{
-          display: 'flex', flexDirection: 'column', padding: { lg: 5, md: 10 }, backgroundColor: colors.color1
+          display: "flex",
+          flexDirection: "column",
+          padding: { lg: 10, md: 10 },
+          backgroundColor: colors.color1,
         }}
       >
         {/* Filter & Search */}
         <Box
           className={styles.filterSearch}
           sx={{
-            paddingBottom: '20px',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            paddingTop: "20px",
+            paddingBottom: "20px",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
             gap: 1,
-            height: '29px',
-            flexWrap: { xs: 'wrap', sm: 'wrap', md: 'wrap' },
-            marginTop: { xs: '50px' }
+            height: "29px",
+            flexWrap: { xs: "wrap", sm: "wrap", md: "wrap" },
           }}
         >
-          <Box sx={{ position: 'relative', marginTop: isSmallScreen ? 1 : 0, }}>
+          <Box sx={{ position: "relative", marginTop: isSmallScreen ? 1 : 0 }}>
             <input
               className={styles.searchBox}
               type="text"
               placeholder="Bạn đang tìm gì?"
               style={{
                 backgroundColor: `${colors.color1}`,
-                border: '2px solid #214738',
-                width: '500px',
-                borderRadius: '5px',
-                fontFamily: 'KoHo',
-                fontSize: '20px',
-                fontFamily: 'KoHo',
+                border: "2px solid #214738",
+                width: "500px",
+                borderRadius: "5px",
+                fontFamily: "KoHo",
+                fontSize: "20px",
+                fontFamily: "KoHo",
                 fontWeight: 400,
-                lineHeight: '26px',
-                outline: 'none',
+                lineHeight: "26px",
+                outline: "none",
                 padding: 0,
-                paddingLeft: '40px',
-                paddingBottom: isSmallScreen ? '2px' : '0px',
+                paddingLeft: "40px",
+                paddingBottom: isSmallScreen ? "2px" : "0px",
               }}
             />
-            <Icon className={styles.searchIcon} sx={{ position: 'absolute', left: '3%', top: '50%', transform: 'translateY(-50%)' }}>
+            <Icon
+              className={styles.searchIcon}
+              sx={{
+                position: "absolute",
+                left: "3%",
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
+            >
               <SearchIcon />
             </Icon>
           </Box>
-          <Box className={styles.filterContainer} sx={{ display: 'flex', flexDirection: 'row' }}>
+          <Box
+            className={styles.filterContainer}
+            sx={{ display: "flex", flexDirection: "row" }}
+          >
             <Select
-              color='inherit'
+              color="inherit"
               value={dropdown1}
               onChange={(event) => handleDropdownChange(event, setDropdown1)}
               displayEmpty
               sx={{
-                border: '2px solid #214738',
-                maxWidth: '300px',
+                border: "2px solid #214738",
+                maxWidth: "300px",
                 marginTop: isSmallScreen ? 1 : 0,
-                height: '29px',
-                borderRadius: '5px',
-                fontFamily: 'KoHo',
+                height: "29px",
+                borderRadius: "5px",
+                fontFamily: "KoHo",
                 marginRight: 3,
                 backgroundColor: `${colors.color1}`,
                 '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none', outline: 'none' },
@@ -311,29 +352,33 @@ const Product = () => {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
                   backgroundColor: '#f5f5f5',
                 },
-                fontSize: '20px',
-                lineHeight: '26px',
+                fontSize: "20px",
+                lineHeight: "26px",
               }}
               IconComponent={KeyboardArrowDownIcon}
-              renderValue={(selected) => selected || 'Giá'}
+              renderValue={(selected) => selected || "Giá"}
             >
-              <MenuItem value=""><em>Hủy</em></MenuItem>
+              <MenuItem value="">
+                <em>Hủy</em>
+              </MenuItem>
               <MenuItem value={"< 50.000đ"}>Dưới 50.000đ</MenuItem>
-              <MenuItem value={'50.000đ - 100.000đ'}>Từ 50.000đ đến 100.000đ</MenuItem>
-              <MenuItem value={'> 100.00đ'}>Trên 100.00đ</MenuItem>
+              <MenuItem value={"50.000đ - 100.000đ"}>
+                Từ 50.000đ đến 100.000đ
+              </MenuItem>
+              <MenuItem value={"> 100.00đ"}>Trên 100.00đ</MenuItem>
             </Select>
             <Select
-              color='inherit'
+              color="inherit"
               value={dropdown2}
               onChange={(event) => handleDropdownChange(event, setDropdown2)}
               displayEmpty
               sx={{
-                border: '2px solid #214738',
-                maxWidth: '110px',
-                height: '29px',
+                border: "2px solid #214738",
+                maxWidth: "110px",
+                height: "29px",
                 marginTop: isSmallScreen ? 1 : 0,
-                borderRadius: '5px',
-                fontFamily: 'KoHo',
+                borderRadius: "5px",
+                fontFamily: "KoHo",
                 marginRight: 3,
                 backgroundColor: `${colors.color1}`,
                 '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
@@ -343,28 +388,30 @@ const Product = () => {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
                   backgroundColor: '#f5f5f5',
                 },
-                fontSize: '20px',
-                lineHeight: '26px',
+                fontSize: "20px",
+                lineHeight: "26px",
               }}
               IconComponent={KeyboardArrowDownIcon}
-              renderValue={(selected) => selected || 'Thứ tự'}
+              renderValue={(selected) => selected || "Thứ tự"}
             >
-              <MenuItem value=""><em>Hủy</em></MenuItem>
+              <MenuItem value="">
+                <em>Hủy</em>
+              </MenuItem>
               <MenuItem value={"A-Z"}>A-Z</MenuItem>
               <MenuItem value={"Z-A"}>Z-A</MenuItem>
             </Select>
             <Select
-              color='inherit'
+              color="inherit"
               value={dropdown3}
               onChange={(event) => handleDropdownChange(event, setDropdown3)}
               displayEmpty
               sx={{
-                border: '2px solid #214738',
-                maxWidth: '150px',
-                height: '29px',
+                border: "2px solid #214738",
+                maxWidth: "150px",
+                height: "29px",
                 marginTop: isSmallScreen ? 1 : 0,
-                borderRadius: '5px',
-                fontFamily: 'KoHo',
+                borderRadius: "5px",
+                fontFamily: "KoHo",
                 marginRight: 3,
                 backgroundColor: `${colors.color1}`,
                 '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
@@ -374,26 +421,28 @@ const Product = () => {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
                   backgroundColor: '#f5f5f5',
                 },
-                fontSize: '20px',
-                lineHeight: '26px',
+                fontSize: "20px",
+                lineHeight: "26px",
               }}
               IconComponent={KeyboardArrowDownIcon}
-              renderValue={(selected) => selected || 'Chất liệu'}
+              renderValue={(selected) => selected || "Chất liệu"}
             >
-              <MenuItem value=""><em>Hủy</em></MenuItem>
-              <MenuItem value={'Giấy'}>Giấy</MenuItem>
-              <MenuItem value={'Nhựa'}>Nhựa</MenuItem>
-              <MenuItem value={'Tổng hợp'}>Tổng hợp</MenuItem>
+              <MenuItem value="">
+                <em>Hủy</em>
+              </MenuItem>
+              <MenuItem value={"Giấy"}>Giấy</MenuItem>
+              <MenuItem value={"Nhựa"}>Nhựa</MenuItem>
+              <MenuItem value={"Tổng hợp"}>Tổng hợp</MenuItem>
             </Select>
             <Select
-              color='inherit'
+              color="inherit"
               value={dropdown4}
               onChange={(event) => handleDropdownChange(event, setDropdown4)}
               displayEmpty
               sx={{
-                border: '2px solid #214738',
-                maxWidth: '150px',
-                height: '29px',
+                border: "2px solid #214738",
+                maxWidth: "150px",
+                height: "29px",
                 marginTop: isSmallScreen ? 1 : 0,
                 borderRadius: '5px',
                 fontFamily: 'KoHo',
@@ -405,49 +454,89 @@ const Product = () => {
                   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
                   backgroundColor: '#f5f5f5',
                 },
-                fontSize: '20px',
-                lineHeight: '26px',
+                fontSize: "20px",
+                lineHeight: "26px",
               }}
               IconComponent={KeyboardArrowDownIcon}
-              renderValue={(selected) => selected || 'Phân loại'}
+              renderValue={(selected) => selected || "Phân loại"}
             >
-              <MenuItem value=""><em>Hủy</em></MenuItem>
-              <MenuItem value={'Hữu cơ'}>Hữu cơ</MenuItem>
-              <MenuItem value={'Vô cơ'}>Vô cơ</MenuItem>
-              <MenuItem value={'Tái chế'}>Tái chế</MenuItem>
+              <MenuItem value="">
+                <em>Hủy</em>
+              </MenuItem>
+              <MenuItem value={"Hữu cơ"}>Hữu cơ</MenuItem>
+              <MenuItem value={"Vô cơ"}>Vô cơ</MenuItem>
+              <MenuItem value={"Tái chế"}>Tái chế</MenuItem>
             </Select>
           </Box>
         </Box>
 
         {/* Card Display */}
-        <Box display='flex' justifyContent='center' paddingTop='30px' marginTop={isSmallScreen ? '50px' : ''}>
-          <Grid className={styles.cardContainer} container rowSpacing={3} columnSpacing={2} sx={{ marginTop: { lg: '20px', sm: '50px', xs: '90px', md: '50px' } }}>
+        <Box
+          display="flex"
+          justifyContent="center"
+          paddingTop="30px"
+          marginTop={isSmallScreen ? "50px" : ""}
+        >
+          <Grid
+            className={styles.cardContainer}
+            container
+            rowSpacing={3}
+            columnSpacing={2}
+            sx={{
+              width: "100%",
+              marginTop: { lg: "20px", sm: "50px", xs: "90px", md: "50px" },
+            }}
+          >
             {paginatedData.map((product) => (
-              <Grid size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }} key={product.id}>
+              <Grid
+                size={{ xs: 6, sm: 6, md: 4, lg: 3, xl: 3 }}
+                key={product.id}
+              >
                 <Card
                   sx={{
                     position: "relative",
                     width: "100%",
                     height: "100%",
                     border: `2px solid ${colors.color2}`,
+                    objectFit: "cover",
                     boxShadow: "none",
                     "&:hover": {
                       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
                     },
                     "&:hover .hoverActions": { opacity: 1 },
                   }}
+                  onClick={() => handleProductClick(product.slug)}
                 >
                   <CardMedia
                     component="img"
                     image={product.img}
                     alt={product.name}
-                    sx={{ height: 180 }}
+                    sx={{ height: 180, width: "100%", objectFit: "cover" }}
                   />
-                  <CardContent sx={{ textAlign: "center", backgroundColor: `${colors.color1}` }}>
-                    <Typography variant="body1" sx={{ marginBottom: '10px', fontFamily: 'KoHo', color: `${colors.color2}` }}>
+                  <CardContent
+                    sx={{
+                      textAlign: "center",
+                      backgroundColor: `${colors.color1}`,
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        marginBottom: "10px",
+                        fontFamily: "KoHo",
+                        color: `${colors.color2}`,
+                      }}
+                    >
                       {product.name}
                     </Typography>
-                    <Typography sx={{ fontWeight: '20px', fontFamily: 'KoHo', color: `${colors.color2}`, fontWeight: 'bold' }}>
+                    <Typography
+                      sx={{
+                        fontWeight: "20px",
+                        fontFamily: "KoHo",
+                        color: `${colors.color2}`,
+                        fontWeight: "bold",
+                      }}
+                    >
                       {/* Kiểm tra các trường hợp */}
                       {product.price && product.points ? (
                         // Trường hợp hiển thị cả giá và điểm
@@ -507,17 +596,17 @@ const Product = () => {
             count={Math.ceil(products.length / itemsPerPage)}
             page={page}
             onChange={handleChangePage}
-            color='success'
+            color={`${colors.color2}`}
             sx={{
-              '& .MuiPaginationItem-root': {
-                border: '2px solid #214738', // Add border
+              "& .MuiPaginationItem-root": {
+                border: "2px solid #214738", // Add border
                 color: colors.color2, // Change text color
-                '&.Mui-selected': {
+                "&.Mui-selected": {
                   backgroundColor: colors.color2, // Change background color of selected item
                   color: colors.color1, // Change text color of selected item
                 },
-                '&:hover': {
-                  backgroundColor: '#46cf99', // Change background color on hover
+                "&:hover": {
+                  backgroundColor: "#46cf99", // Change background color on hover
                 },
               },
             }}
@@ -525,7 +614,7 @@ const Product = () => {
               <PaginationItem
                 {...item}
                 sx={{
-                  '&.Mui-selected': {
+                  "&.Mui-selected": {
                     borderColor: colors.color2, // Change border color of selected item
                   },
                 }}
