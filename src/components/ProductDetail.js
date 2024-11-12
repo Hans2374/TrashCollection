@@ -9,6 +9,8 @@ import {
   Grid,
   Divider,
   IconButton,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -23,10 +25,14 @@ import { routes } from "../routes/routes";
 import colors from "../colors";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const ProductDetail = () => {
   const isLogin = useSelector((state) => state.auth.isLogin);
-
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const [quantity, setQuantity] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [images] = useState([
@@ -137,16 +143,22 @@ const ProductDetail = () => {
     }
   };
 
-  const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
 
-  const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   return (
@@ -164,93 +176,113 @@ const ProductDetail = () => {
       </Box>
       <Box sx={{ maxWidth: 1200, mx: "auto", mt: 4, px: 2 }}>
         <Grid container spacing={4}>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            sx={{ maxWidth: 500, position: "relative" }}
-          >
+          <Grid item xs={12} md={6} sx={{ width: '100%', position: "relative" }}>
             <Box sx={{ position: "relative", overflow: "hidden" }}>
-              <CardMedia
-                component="img"
-                image={images[currentImageIndex]}
-                alt="Sản phẩm chính"
-                sx={{
-                  width: "100%",
-                  height: "400px",
-                  borderRadius: "8px",
-                  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
-                }}
-              />
-              <Button
-                onClick={handlePrevImage}
-                sx={{
-                  position: "absolute",
-                  left: 10,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 10,
-                  color: "#214738",
-                  width: 30,
-                  height: 30,
-                  minWidth: 30,
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ffffffa0",
-                  "&:hover": { backgroundColor: "#ffffff" },
-                }}
-              >
-                &lt;
-              </Button>
-              <Button
-                onClick={handleNextImage}
-                sx={{
-                  position: "absolute",
-                  right: 10,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  zIndex: 10,
-                  color: "#214738",
-                  width: 30,
-                  height: 30,
-                  minWidth: 30,
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ffffffa0",
-                  "&:hover": { backgroundColor: "#ffffff" },
-                }}
-              >
-                &gt;
-              </Button>
+              {isSmallScreen ? (
+                <Slider {...settings}>
+                  {images.map((img, index) => (
+                    <Box key={index} sx={{ position: "relative", width: '100%' }}>
+                      <CardMedia
+                        component="img"
+                        image={img}
+                        alt={`Sản phẩm ${index + 1}`}
+                        sx={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: "8px",
+                          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </Box>
+                  ))}
+                </Slider>
+              ) : (
+                <>
+                  <CardMedia
+                    component="img"
+                    image={images[currentImageIndex]}
+                    alt="Sản phẩm chính"
+                    sx={{
+                      width: '100%',
+                      height: '400px',
+                      borderRadius: "8px",
+                      boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
+                    }}
+                  />
+                  <Button
+                    onClick={handlePrevImage}
+                    sx={{
+                      position: "absolute",
+                      left: 10,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      zIndex: 10,
+                      color: colors.color2,
+                      width: 30,
+                      height: 30,
+                      minWidth: 30,
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      backgroundColor: "#ffffffa0",
+                      "&:hover": { backgroundColor: "#ffffff" },
+                    }}
+                  >
+                    &lt;
+                  </Button>
+                  <Button
+                    onClick={handleNextImage}
+                    sx={{
+                      position: "absolute",
+                      right: 10,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      zIndex: 10,
+                      color: colors.color2,
+                      width: 30,
+                      height: 30,
+                      minWidth: 30,
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      backgroundColor: "#ffffffa0",
+                      "&:hover": { backgroundColor: "#ffffff" },
+                    }}
+                  >
+                    &gt;
+                  </Button>
+                </>
+              )}
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-              {images.map((img, index) => (
-                <CardMedia
-                  key={index}
-                  component="img"
-                  image={img}
-                  alt={`Sản phẩm phụ ${index + 1}`}
-                  onClick={() => setCurrentImageIndex(index)}
-                  sx={{
-                    width: "96px",
-                    height: "96px",
-                    mx: 2,
-                    cursor: "pointer",
-                    borderRadius: "8px",
-                    border:
-                      currentImageIndex === index
-                        ? "2px solid #214738"
-                        : "1px solid #ddd",
-                    transition: "transform 0.3s ease",
-                    "&:hover": { transform: "scale(1.1)" },
-                  }}
-                />
-              ))}
-            </Box>
+            {!isSmallScreen && (
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+                {images.map((img, index) => (
+                  <CardMedia
+                    key={index}
+                    component="img"
+                    image={img}
+                    alt={`Sản phẩm phụ ${index + 1}`}
+                    onClick={() => setCurrentImageIndex(index)}
+                    sx={{
+                      width: { xs: "80px", sm: "90px", md: "96px", lg: "96px" },
+                      height: { xs: "80px", sm: "90px", md: "96px", lg: "96px" },
+                      mx: 2,
+                      cursor: "pointer",
+                      borderRadius: "8px",
+                      border:
+                        currentImageIndex === index
+                          ? `2px solid ${colors.color2}`
+                          : "1px solid #ddd",
+                      transition: "transform 0.3s ease",
+                      "&:hover": { transform: "scale(1.1)" },
+                    }}
+                  />
+                ))}
+              </Box>
+            )}
           </Grid>
 
           <Grid item xs={12} md={6} sx={{ maxWidth: 500 }}>
@@ -331,7 +363,7 @@ const ProductDetail = () => {
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", mt: 3 }}>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <IconButton onClick={handleDecrement} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+                <IconButton onClick={handleDecrement} sx={{ border: `3px solid ${colors.color2}`, borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
                   <RemoveIcon />
                 </IconButton>
                 <TextField
@@ -339,7 +371,7 @@ const ProductDetail = () => {
                   onChange={handleChange}
                   inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0 } }}
                   sx={{
-                    border: '3px solid #214738',
+                    border: `3px solid ${colors.color2}`,
                     maxWidth: '40px',
                     '& .MuiOutlinedInput-root': {
                       '& fieldset': {
@@ -348,7 +380,7 @@ const ProductDetail = () => {
                     },
                   }}
                 />
-                <IconButton onClick={handleIncrement} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                <IconButton onClick={handleIncrement} sx={{ border: `3px solid ${colors.color2}`, borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
                   <AddIcon />
                 </IconButton>
               </Box>
@@ -356,13 +388,14 @@ const ProductDetail = () => {
                 variant="contained"
                 sx={{
                   fontFamily: "KoHo",
+                  fontSize: { xs: "12px", sm: "13px", md: "20px", lg: "24px" },
+                  lineHeight: '31.2px',
                   borderRadius: 20,
                   ml: 2,
-                  backgroundColor: "#214738",
+                  backgroundColor: colors.color2,
                   color: "#fff",
                   "&:hover": { backgroundColor: "#183026" },
                   padding: "8px 20px",
-                  fontSize: "1.1rem",
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                   transition: "background-color 0.3s ease",
                 }}
@@ -380,7 +413,7 @@ const ProductDetail = () => {
           align="center"
           sx={{
             fontFamily: "KoHo",
-            color: "#214738",
+            color: colors.color2,
             fontWeight: "bold",
             fontSize: "1.5rem",
             mb: "-22px",
@@ -404,7 +437,7 @@ const ProductDetail = () => {
                     position: "relative",
                     width: "100%",
                     height: "100%",
-                    border: "2px solid #214738",
+                    border: `2px solid ${colors.color2}`,
                     boxShadow: "none",
                     "&:hover": {
                       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -428,7 +461,7 @@ const ProductDetail = () => {
                       variant="body1"
                       sx={{
                         fontFamily: "KoHo",
-                        color: "#214738",
+                        color: colors.color2,
                         marginBottom: "10px",
                       }}
                     >
@@ -438,7 +471,7 @@ const ProductDetail = () => {
                       sx={{
                         fontFamily: "KoHo",
                         fontWeight: "bold",
-                        color: "#214738",
+                        color: colors.color2,
                         fontSize: "1.1rem",
                       }}
                     >
@@ -542,7 +575,7 @@ const ProductDetail = () => {
                 onClick={handleAddReview}
                 sx={{
                   fontFamily: "KoHo",
-                  backgroundColor: "#214738",
+                  backgroundColor: colors.color2,
                   color: "#FFFFFF",
                   width: "100%",
                   py: 1.5,
@@ -588,7 +621,7 @@ const ProductDetail = () => {
                   <Avatar sx={{ bgcolor: colors.color2, color: "#fff", mr: 2 }}>
                     {rev.user.charAt(0)}
                   </Avatar>
-                  <Box sx={{ flex: 1 }}>
+                  <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                     <Typography
                       variant="body1"
                       sx={{
@@ -651,7 +684,7 @@ const ProductDetail = () => {
                 <Typography
                   component="span"
                   sx={{
-                    color: "#214738",
+                    color: colors.color2,
                     fontWeight: "bold",
                     position: "relative",
                     "&::after": {
@@ -661,11 +694,11 @@ const ProductDetail = () => {
                       right: "50%",
                       bottom: 0,
                       height: "1px",
-                      backgroundColor: "#214738",
+                      backgroundColor: colors.color2,
                       transition: "left 0.3s, right 0.3s",
                     },
                     "&:hover": {
-                      color: "#214738",
+                      color: colors.color2,
                       "&::after": {
                         left: 0,
                         right: 0,
