@@ -28,6 +28,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
 
 const ProductDetail = () => {
   const isLogin = useSelector((state) => state.auth.isLogin);
@@ -35,6 +37,8 @@ const ProductDetail = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const [quantity, setQuantity] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const commentsPerPage = 3;
   const [images] = useState([
     `${process.env.PUBLIC_URL}/images/ProDetail.png`,
     `${process.env.PUBLIC_URL}/images/ProDetail1.png`,
@@ -69,29 +73,18 @@ const ProductDetail = () => {
       date: "09/11/2024",
       rating: 4,
       content: "Vẫn là nhận xét của người mua nhưng lần này có kèm ảnh",
-      image: "/path/to/image1.jpg",
+      image: `${process.env.PUBLIC_URL}/images/sec1.png`,
     },
     {
       user: "User005",
       date: "10/11/2024",
       rating: 5,
       content: "Vẫn là nhận xét của người mua nhưng lần này có kèm ảnh",
-      image: "/path/to/image2.jpg",
+      image: `${process.env.PUBLIC_URL}/images/sec2.png`,
     },
   ]);
-  const handleAddReview = () => {
-    if (review) {
-      const newReview = {
-        user: "User mới",
-        date: new Date().toLocaleDateString(),
-        rating,
-        content: review,
-      };
-      setReviews([newReview, ...reviews]);
-      setReview("");
-      setRating(0);
-    }
-  };
+
+  const totalPages = Math.ceil(reviews.length / commentsPerPage);
 
   const relatedProducts = [
     {
@@ -160,6 +153,15 @@ const ProductDetail = () => {
     autoplay: true,
     autoplaySpeed: 3000,
   };
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
+  const currentComments = reviews.slice(
+    (currentPage - 1) * commentsPerPage,
+    currentPage * commentsPerPage
+  );
 
   return (
     <Box
@@ -570,23 +572,14 @@ const ProductDetail = () => {
                   mb: 2,
                 }}
               />
-              <Button
-                variant="contained"
-                onClick={handleAddReview}
-                sx={{
-                  fontFamily: "KoHo",
-                  backgroundColor: colors.color2,
-                  color: "#FFFFFF",
-                  width: "100%",
-                  py: 1.5,
-                  fontWeight: "bold",
-                  textTransform: "uppercase",
-                  fontSize: "0.9rem",
-                  "&:hover": { backgroundColor: "#183026" },
-                }}
-              >
-                Gửi nhận xét
-              </Button>
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                <IconButton>
+                  <AddPhotoAlternateOutlinedIcon sx={{ color: colors.color2 }} />
+                </IconButton>
+                <IconButton>
+                  <SendRoundedIcon sx={{ color: colors.color2 }} />
+                </IconButton>
+              </Box>
 
               <Divider sx={{ my: 4 }} />
 
@@ -604,7 +597,7 @@ const ProductDetail = () => {
               >
                 Đánh giá của người mua: 5⭐ (102 lượt đánh giá)
               </Typography>
-              {reviews.slice(0, 3).map((rev, index) => (
+              {currentComments.map((rev, index) => (
                 <Box
                   key={index}
                   sx={{
@@ -663,9 +656,26 @@ const ProductDetail = () => {
                 </Box>
               ))}
               <Pagination
-                count={4}
-                color="primary"
-                sx={{ display: "flex", justifyContent: "center", mt: 2 }}
+                color={`${colors.color2}`}
+                count={totalPages}
+                page={currentPage}
+                onChange={handlePageChange}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  mt: 2,
+                  '& .MuiPaginationItem-root': {
+                    border: '2px solid #214738', // Add border
+                    color: colors.color2, // Change text color
+                    '&.Mui-selected': {
+                      backgroundColor: colors.color2, // Change background color of selected item
+                      color: colors.color1, // Change text color of selected item
+                    },
+                    '&:hover': {
+                      backgroundColor: '#46cf99', // Change background color on hover
+                    },
+                  },
+                }}
               />
             </>
           ) : (

@@ -596,7 +596,7 @@ const Product = () => {
             count={Math.ceil(products.length / itemsPerPage)}
             page={page}
             onChange={handleChangePage}
-            color="success"
+            color={`${colors.color2}`}
             sx={{
               "& .MuiPaginationItem-root": {
                 border: "2px solid #214738", // Add border
