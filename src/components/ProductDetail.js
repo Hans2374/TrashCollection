@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -21,6 +21,8 @@ import { TextField, Rating, Avatar, Pagination } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { routes } from "../routes/routes";
 import colors from "../colors";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const ProductDetail = () => {
   const isLogin = useSelector((state) => state.auth.isLogin);
@@ -120,8 +122,19 @@ const ProductDetail = () => {
     },
   ];
 
-  const handleQuantityChange = (increment) => {
-    setQuantity((prev) => Math.max(1, prev + increment));
+  const handleIncrement = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  };
+
+  const handleChange = (event) => {
+    const value = parseInt(event.target.value, 10);
+    if (!isNaN(value) && value > 0) {
+      setQuantity(value);
+    }
   };
 
   const handleNextImage = () => {
@@ -244,10 +257,12 @@ const ProductDetail = () => {
             <Typography
               variant="h5"
               sx={{
-                fontWeight: "bold",
-                color: "#214738",
+                fontFamily: "KoHo",
+                fontWeight: 500,
+                fontSize: "24px",
+                lineHeight: "31.2px",
+                color: colors.color2,
                 textAlign: "left",
-                fontSize: "1.8rem",
               }}
             >
               Hộp cắm viết bằng giấy (243 lượt mua)
@@ -255,10 +270,13 @@ const ProductDetail = () => {
             <Typography
               variant="h6"
               sx={{
-                color: "#60A000",
+                fontFamily: "KoHo",
+                fontWeight: 700,
+                fontSize: "24px",
+                lineHeight: "31.2px",
+                color: colors.color2,
                 mt: 1,
                 textAlign: "left",
-                fontSize: "1.5rem",
               }}
             >
               60.000đ
@@ -266,36 +284,45 @@ const ProductDetail = () => {
             <Typography
               variant="subtitle1"
               sx={{
+                fontFamily: "KoHo",
+                fontWeight: 600,
+                fontSize: "24px",
+                lineHeight: "31.2px",
                 mt: 1,
-                color: "#333",
+                color: "#000000",
                 textAlign: "left",
-                fontSize: "1rem",
-                lineHeight: "1.6",
               }}
             >
-              <strong>Chất liệu:</strong> Giấy
+              Chất liệu: <Typography component="span" sx={{ fontWeight: 400, fontFamily: 'KoHo', fontSize: '24px', lineHeight: '31.2px' }}>
+                Giấy
+              </Typography>
             </Typography>
             <Typography
               variant="subtitle1"
               sx={{
+                fontFamily: "KoHo",
+                fontWeight: 600,
+                fontSize: "24px",
+                lineHeight: "31.2px",
                 mt: 1,
-                color: "#333",
+                color: "#000000",
                 textAlign: "left",
-                fontSize: "1rem",
-                lineHeight: "1.6",
               }}
             >
-              <strong>Kích thước:</strong> Vừa phải, phù hợp để đặt trên bàn làm
-              việc.
+              Kích thước: <Typography component="span" sx={{ fontWeight: 400, fontFamily: 'KoHo', fontSize: '24px', lineHeight: '31.2px' }}>
+                Vừa phải, phù hợp để đặt trên bàn làm việc.
+              </Typography>
             </Typography>
             <Typography
               variant="body2"
               sx={{
+                fontFamily: "KoHo",
+                fontWeight: 400,
+                fontSize: "24px",
+                lineHeight: "31.2px",
                 mt: 2,
-                color: "#555",
+                color: "#000000",
                 textAlign: "left",
-                fontSize: "0.95rem",
-                lineHeight: "1.6",
               }}
             >
               Sản phẩm thân thiện với môi trường, giá thành rẻ, dễ dàng tùy biến
@@ -303,40 +330,33 @@ const ProductDetail = () => {
               làm quà tặng nhỏ.
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", mt: 3 }}>
-              <Button
-                variant="outlined"
-                onClick={() => handleQuantityChange(-1)}
-                sx={{
-                  minWidth: "36px",
-                  height: "36px",
-                  color: "#214738",
-                  borderColor: "#214738",
-                  fontSize: "1.2rem",
-                  "&:hover": { backgroundColor: "#f2f2f2" },
-                }}
-              >
-                -
-              </Button>
-              <Typography variant="body1" sx={{ mx: 2, fontSize: "1.2rem" }}>
-                {quantity}
-              </Typography>
-              <Button
-                variant="outlined"
-                onClick={() => handleQuantityChange(1)}
-                sx={{
-                  minWidth: "36px",
-                  height: "36px",
-                  color: "#214738",
-                  borderColor: "#214738",
-                  fontSize: "1.2rem",
-                  "&:hover": { backgroundColor: "#f2f2f2" },
-                }}
-              >
-                +
-              </Button>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <IconButton onClick={handleDecrement} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+                  <RemoveIcon />
+                </IconButton>
+                <TextField
+                  value={quantity}
+                  onChange={handleChange}
+                  inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0 } }}
+                  sx={{
+                    border: '3px solid #214738',
+                    maxWidth: '40px',
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        border: 'none',
+                      },
+                    },
+                  }}
+                />
+                <IconButton onClick={handleIncrement} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                  <AddIcon />
+                </IconButton>
+              </Box>
               <Button
                 variant="contained"
                 sx={{
+                  fontFamily: "KoHo",
+                  borderRadius: 20,
                   ml: 2,
                   backgroundColor: "#214738",
                   color: "#fff",
@@ -359,6 +379,7 @@ const ProductDetail = () => {
           variant="h6"
           align="center"
           sx={{
+            fontFamily: "KoHo",
             color: "#214738",
             fontWeight: "bold",
             fontSize: "1.5rem",
@@ -415,6 +436,7 @@ const ProductDetail = () => {
                     </Typography>
                     <Typography
                       sx={{
+                        fontFamily: "KoHo",
                         fontWeight: "bold",
                         color: "#214738",
                         fontSize: "1.1rem",
@@ -482,6 +504,7 @@ const ProductDetail = () => {
               <Typography
                 variant="h6"
                 sx={{
+                  fontFamily: "KoHo",
                   fontWeight: "bold",
                   color: "#333333", // Màu tiêu đề
                   mb: 2,
@@ -506,6 +529,7 @@ const ProductDetail = () => {
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
                 sx={{
+                  fontFamily: "KoHo",
                   backgroundColor: "#FFFFFF",
                   borderRadius: "8px",
                   "& .MuiOutlinedInput-root": { borderRadius: "8px" },
@@ -517,6 +541,7 @@ const ProductDetail = () => {
                 variant="contained"
                 onClick={handleAddReview}
                 sx={{
+                  fontFamily: "KoHo",
                   backgroundColor: "#214738",
                   color: "#FFFFFF",
                   width: "100%",
@@ -536,6 +561,7 @@ const ProductDetail = () => {
               <Typography
                 variant="h6"
                 sx={{
+                  fontFamily: "KoHo",
                   fontWeight: "bold",
                   color: "#333333",
                   mb: 2,
@@ -559,19 +585,22 @@ const ProductDetail = () => {
                     alignItems: "flex-start",
                   }}
                 >
-                  <Avatar sx={{ bgcolor: "#214738", color: "#fff", mr: 2 }}>
+                  <Avatar sx={{ bgcolor: colors.color2, color: "#fff", mr: 2 }}>
                     {rev.user.charAt(0)}
                   </Avatar>
                   <Box sx={{ flex: 1 }}>
                     <Typography
                       variant="body1"
                       sx={{
-                        fontWeight: "bold",
-                        color: "#214738",
+                        fontFamily: "KoHo",
+                        fontWeight: 500,
+                        fontSize: "24px",
+                        lineHeight: "31.2px",
+                        color: colors.color2,
                         textAlign: "left",
                       }}
                     >
-                      {rev.user} - {rev.date}
+                      {rev.user} <Typography component="span" sx={{ fontFamily: "KoHo", fontWeight: 300, fontSize: '13px', lineHeight: "16.9px", }}>{rev.date}</Typography>
                     </Typography>
                     <Rating
                       value={rev.rating}
