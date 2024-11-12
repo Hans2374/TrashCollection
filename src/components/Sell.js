@@ -208,8 +208,13 @@ const Sell = () => {
             </Box>
 
             {/* Nội dung */}
-            <>
-                <Typography sx={{ p: 5, pt: 10, fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>Bán</Typography>
+            <Box
+                sx={{
+                    backgroundColor: `${colors.color1}`,
+                    paddingBottom: '50px'
+                }}
+            >
+                <Typography sx={{ p: 5, pt: 10, fontFamily: 'KoHo', fontWeight: 700, fontSize: '30px', lineHeight: '39px', color: colors.color2 }}>BÁN</Typography>
 
                 {/* Card display */}
                 <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 0, md: 0, sm: 0, xs: 0 } }}>
@@ -523,7 +528,7 @@ const Sell = () => {
                         </DialogContent>
                     </Box>
                 </Dialog>
-            </>
+            </Box>
             <Footer />
         </>
     )

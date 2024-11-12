@@ -409,7 +409,7 @@ const Cart = () => {
                 </Box>
                 <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 10, md: 10, sm: 10, xs: 10 }, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
                     <Typography
-                        sx={{
+                        sx={{                       
                             fontFamily: 'KoHo',
                             fontWeight: 700,
                             fontSize: { lg: 24, md: 24, sm: 24, xs: 18 },

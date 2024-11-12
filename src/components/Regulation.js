@@ -108,18 +108,30 @@ const Regulation = () => {
 
                     {/* img */}
                     <Box sx={{ marginTop: '30px', width: '100%' }}>
-                        <Box >
+                        <Box
+                            sx={{
+                                width: '70%',
+                                margin: '0 auto',
+                                borderRadius: '8px',
+                                border: `4px solid ${colors.color2}`,
+                                overflow: 'hidden',
+                                transition: 'transform 0.3s ease',
+                                '&:hover': {
+                                    transform: 'scale(1.1)',
+                                },
+                            }}
+                        >
                             <img
-                                src="/images/regulation1.png" alt="img1"
+                                src="/images/regulation1.png"
+                                alt="img1"
                                 style={{
-                                    width: '70%',
+                                    width: '100%',
                                     height: 'auto',
-                                    borderRadius: '8px',
-                                    border: `4px solid ${colors.color2}`
                                 }}
                             />
                         </Box>
                     </Box>
+
                 </Box>
 
                 {/* Section 2 */}
@@ -158,9 +170,9 @@ const Regulation = () => {
                         <Box sx={{
                             maxWidth: '450px'
                         }}>
-                            <Typography 
+                            <Typography
                                 sx={{
-                                    marginLeft: {xs: '20px', md: '0'},
+                                    marginLeft: { xs: '20px', md: '0' },
                                     fontSize: { xs: '20px', md: '24px' },
                                     paddingBottom: '10px',
                                     color: colors.color2,
@@ -170,24 +182,24 @@ const Regulation = () => {
                                 }}>
                                 Ủ phân hữu cơ
                             </Typography>
-                            <Typography 
+                            <Typography
                                 sx={{
                                     listStyleType: 'disc',
                                     marginTop: '8px',
                                     fontSize: '18px',
                                     textAlign: 'left',
-                                    marginLeft: {xs: '20px', md: '0'}
+                                    marginLeft: { xs: '20px', md: '0' }
                                 }}>
-                                <Typography  sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
+                                <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Chuẩn bị một khu vực hoặc thùng chứa phân hữu cơ.
                                 </Typography>
-                                <Typography  sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
+                                <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Phân loại rác hữu cơ từ nhà bếp, không bao gồm các sản phẩm từ thịt, sữa.
                                 </Typography>
-                                <Typography  sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
+                                <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Đảo trộn thường xuyên để cung cấp oxy và giữ độ ẩm vừa phải.
                                 </Typography>
-                                <Typography  sx={{fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
+                                <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Sau khoảng 2-3 tháng (tùy điều kiện), sẽ có phân hữu cơ để bón cho cây trồng.
                                 </Typography>
                             </Typography>
@@ -198,7 +210,7 @@ const Regulation = () => {
                             src="\images\regulation4.png"
                             alt="Hình ảnh ủ phân hữu cơ"
                             sx={{
-                                width: {xs: '350px', sm: '400px', md: '450px'},
+                                width: { xs: '350px', sm: '400px', md: '450px' },
                                 height: '250px',
                                 borderRadius: '10px',
                                 border: `3px solid ${colors.color2}`
@@ -220,7 +232,7 @@ const Regulation = () => {
                             src="\images\regulation5.png"
                             alt="Hình ảnh ủ phân hữu cơ"
                             sx={{
-                                width: {xs: '350px', sm: '400px', md: '450px'},
+                                width: { xs: '350px', sm: '400px', md: '450px' },
                                 height: '250px',
                                 borderRadius: '10px',
                                 border: `3px solid ${colors.color2}`
@@ -230,7 +242,7 @@ const Regulation = () => {
                         <Box sx={{
                             maxWidth: '450px'
                         }}>
-                            <Typography 
+                            <Typography
                                 sx={{
                                     fontSize: { xs: '20px', md: '24px' },
                                     paddingBottom: '10px',
@@ -238,19 +250,19 @@ const Regulation = () => {
                                     fontFamily: 'KoHo',
                                     fontWeight: '600',
                                     textAlign: 'left',
-                                    marginLeft: {xs: '20px', md: '0'}
+                                    marginLeft: { xs: '20px', md: '0' }
                                 }}>
                                 Sử dụng máy xử lý rác hữu cơ
                             </Typography>
-                            <Typography 
+                            <Typography
                                 sx={{
                                     listStyleType: 'disc',
                                     marginTop: '8px',
                                     fontSize: '18px',
                                     textAlign: 'left',
-                                    marginLeft: {xs: '20px', md: '0'}
+                                    marginLeft: { xs: '20px', md: '0' }
                                 }}>
-                                <Typography sx={{fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
+                                <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
                                     Có nhiều loại máy xử lý rác hữu cơ gia đình giúp biến rác hữu cơ thành phân bón trong thời gian ngắn (khoảng 24 giờ).
                                 </Typography>
                                 <Typography sx={{ fontSize: { xs: '16px', md: '18px' }, fontFamily: 'KoHo' }}>
@@ -276,7 +288,7 @@ const Regulation = () => {
                             maxWidth: { xs: '450px', md: '1000px' },
                         }}>
                             <Typography sx={{ textAlign: 'left', paddingLeft: '18px' }}>
-                                <Typography 
+                                <Typography
                                     sx={{
                                         fontSize: { xs: '20px', md: '24px' },
                                         fontFamily: 'KoHo',
@@ -336,13 +348,31 @@ const Regulation = () => {
                                     component="img"
                                     src="\images\regulation6.png"
                                     alt="Image6"
-                                    sx={{ display: { xs: 'none', md: 'block' }, width: '250px', height: '280px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                    sx={{
+                                        display: { xs: 'none', md: 'block' },
+                                        width: '250px', height: '280px',
+                                        border: `2px solid ${colors.color2}`,
+                                        borderRadius: '10px',
+                                        transition: 'transform 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'scale(1.1)',
+                                        },
+                                    }}
                                 />
                                 <Box
                                     component="img"
                                     src="\images\regulation7.png"
                                     alt="Image7"
-                                    sx={{ width: '250px', height: '120px', border: `2px solid ${colors.color2}`, borderRadius: '20px' }}
+                                    sx={{
+                                        width: '250px',
+                                        height: '120px',
+                                        border: `2px solid ${colors.color2}`,
+                                        borderRadius: '20px',
+                                        transition: 'transform 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'scale(1.1)',
+                                        },
+                                    }}
                                 />
                             </Box>
                         </Grid>
@@ -353,7 +383,18 @@ const Regulation = () => {
                                 component="img"
                                 src="\images\regulation8.png"
                                 alt="Image8"
-                                sx={{ display: { xs: 'none', md: 'block' }, margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                sx={{
+                                    display: { xs: 'none', md: 'block' },
+                                    margin: '50px 15px 0 15px',
+                                    width: '250px',
+                                    height: '420px',
+                                    border: `2px solid ${colors.color2}`,
+                                    borderRadius: '10px',
+                                    transition: 'transform 0.3s ease',
+                                    '&:hover': {
+                                        transform: 'scale(1.1)',
+                                    },
+                                }}
                             />
                         </Grid>
 
@@ -364,13 +405,31 @@ const Regulation = () => {
                                     component="img"
                                     src="\images\regulation9.png"
                                     alt="Image9"
-                                    sx={{ width: '250px', height: '150px', border: `2px solid ${colors.color2}`, borderRadius: '50px' }}
+                                    sx={{
+                                        width: '250px',
+                                        height: '150px',
+                                        border: `2px solid ${colors.color2}`,
+                                        borderRadius: '50px',
+                                        transition: 'transform 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'scale(1.1)',
+                                        },
+                                    }}
                                 />
                                 <Box
                                     component="img"
                                     src="\images\regulation11.png"
                                     alt="Image11"
-                                    sx={{ display: { xs: 'none', md: 'block' }, width: '250px', height: '250px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                    sx={{
+                                        display: { xs: 'none', md: 'block' },
+                                        width: '250px', height: '250px',
+                                        border: `2px solid ${colors.color2}`,
+                                        borderRadius: '10px',
+                                        transition: 'transform 0.3s ease',
+                                        '&:hover': {
+                                            transform: 'scale(1.1)',
+                                        },
+                                    }}
                                 />
                             </Box>
                         </Grid>
@@ -381,10 +440,21 @@ const Regulation = () => {
                                 component="img"
                                 src="\images\regulation10.png"
                                 alt="Image10"
-                                sx={{ display: { xs: 'none', md: 'block' }, margin: '50px 15px 0 15px', width: '250px', height: '420px', border: `2px solid ${colors.color2}`, borderRadius: '10px' }}
+                                sx={{
+                                    display: { xs: 'none', md: 'block' },
+                                    margin: '50px 15px 0 15px',
+                                    width: '250px',
+                                    height: '420px',
+                                    border: `2px solid ${colors.color2}`,
+                                    borderRadius: '10px',
+                                    transition: 'transform 0.3s ease',
+                                    '&:hover': {
+                                        transform: 'scale(1.1)',
+                                    },
+                                }}
                             />
                         </Grid>
-                        <Typography sx={{ textAlign: 'left', maxWidth: '1100px', paddingTop: '30px',marginLeft: {xs: '20px', md: '0'}, }}>
+                        <Typography sx={{ textAlign: 'left', maxWidth: '1100px', paddingTop: '30px', marginLeft: { xs: '20px', md: '0' }, }}>
                             <Typography
                                 sx={{
                                     fontSize: { xs: '20px', md: '24px' },
@@ -469,7 +539,7 @@ const Regulation = () => {
                     >
                         Điều Kiện Xử Lí Miễn Phí
                     </Typography>
-                    <Typography 
+                    <Typography
                         sx={{
                             fontSize: { xs: '16px', md: '22px' },
                             color: `${colors.color2}`,
