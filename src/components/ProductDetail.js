@@ -683,47 +683,63 @@ const ProductDetail = () => {
             </>
           ) : (
             // Hiển thị khi chưa đăng nhập
-            <Typography
-              variant="body1"
+            <Box
               sx={{
-                color: "#888",
-                textAlign: "center",
-                fontStyle: "italic",
-                mt: 2,
+                display: 'flex', flexDirection: 'column',
+                alignItems: 'center', p: 2, gap: 2, height: '485px', justifyContent: 'center', backgroundColor: colors.color1
               }}
             >
-              Vui lòng{" "}
-              <RouterLink to={routes.login} style={{ textDecoration: "none" }}>
-                <Typography
-                  component="span"
-                  sx={{
-                    color: colors.color2,
-                    fontWeight: "bold",
-                    position: "relative",
-                    "&::after": {
-                      content: '""',
-                      position: "absolute",
-                      left: "50%",
-                      right: "50%",
-                      bottom: 0,
-                      height: "1px",
-                      backgroundColor: colors.color2,
-                      transition: "left 0.3s, right 0.3s",
-                    },
-                    "&:hover": {
+              <img src={`${process.env.PUBLIC_URL}/images/error404.png`} alt="Description" style={{ width: '100px', height: '100px' }} />
+              <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>Rất tiết!</Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  fontFamily: "KoHo",
+                  fontWeight: 400,
+                  fontSize: "24px",
+                  lineHeight: "31.2px",
+                  color: "#888",
+                  textAlign: "center",
+                  fontStyle: "italic",
+                  mt: 2,
+                }}
+              >
+                Vui lòng{" "}
+                <RouterLink to={routes.login} style={{ textDecoration: "none" }}>
+                  <Typography
+                    component="span"
+                    sx={{
+                      fontFamily: "KoHo",
+                      fontSize: "24px",
+                      lineHeight: "31.2px",
                       color: colors.color2,
+                      fontWeight: "bold",
+                      position: "relative",
                       "&::after": {
-                        left: 0,
-                        right: 0,
+                        content: '""',
+                        position: "absolute",
+                        left: "50%",
+                        right: "50%",
+                        bottom: 0,
+                        height: "1px",
+                        backgroundColor: colors.color2,
+                        transition: "left 0.3s, right 0.3s",
                       },
-                    },
-                  }}
-                >
-                  đăng nhập
-                </Typography>
-              </RouterLink>{" "}
-              để xem và gửi đánh giá của bạn.
-            </Typography>
+                      "&:hover": {
+                        color: colors.color2,
+                        "&::after": {
+                          left: 0,
+                          right: 0,
+                        },
+                      },
+                    }}
+                  >
+                    đăng nhập
+                  </Typography>
+                </RouterLink>{" "}
+                để xem và gửi đánh giá của bạn.
+              </Typography>
+            </Box>
           )}
         </Box>
       </Box>
