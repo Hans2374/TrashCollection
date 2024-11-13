@@ -605,9 +605,11 @@ const Product = () => {
                   backgroundColor: colors.color2, // Change background color of selected item
                   color: colors.color1, // Change text color of selected item
                 },
-                "&:hover": {
-                  backgroundColor: "#46cf99", // Change background color on hover
-                },
+                ...(isSmallScreen ? {} : {
+                  "&:hover": {
+                    backgroundColor: "#46cf99", // Change background color on hover
+                  },
+                }),
               },
             }}
             renderItem={(item) => (

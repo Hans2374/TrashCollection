@@ -390,7 +390,7 @@ const ProductDetail = () => {
                 variant="contained"
                 sx={{
                   fontFamily: "KoHo",
-                  fontSize: { xs: "12px", sm: "13px", md: "20px", lg: "24px" },
+                  fontSize: { xs: "12px", sm: "13px", md: "18px", lg: "18px" },
                   lineHeight: '31.2px',
                   borderRadius: 20,
                   ml: 2,
@@ -664,16 +664,18 @@ const ProductDetail = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   mt: 2,
-                  '& .MuiPaginationItem-root': {
-                    border: '2px solid #214738', // Add border
+                  "& .MuiPaginationItem-root": {
+                    border: "2px solid #214738", // Add border
                     color: colors.color2, // Change text color
-                    '&.Mui-selected': {
+                    "&.Mui-selected": {
                       backgroundColor: colors.color2, // Change background color of selected item
                       color: colors.color1, // Change text color of selected item
                     },
-                    '&:hover': {
-                      backgroundColor: '#46cf99', // Change background color on hover
-                    },
+                    ...(isSmallScreen ? {} : {
+                      "&:hover": {
+                        backgroundColor: "#46cf99", // Change background color on hover
+                      },
+                    }),
                   },
                 }}
               />

@@ -118,9 +118,76 @@ const ClassifyDetail = () => {
               </Typography> chai lọ, ly, ống hút, hộp đựng thức ăn, đồ chơi, các vật liệu xây dựng (PVC, ống nước nhựa,...),...
             </Typography>
             <Typography align='start' sx={{ pb: 2, fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}>
-              Hãy chắc rằng bạn đã nắm rõ và đồng ý với <RouterLink to={routes.regulation} style={{ fontFamily: 'KoHo', fontWeight: 600, fontSize: '24px', lineHeight: '31.2px', color: colors.color2, textDecoration: 'underline' }}>quy định</RouterLink> của chúng tôi!</Typography>
+              Hãy chắc rằng bạn đã nắm rõ và đồng ý với{" "}
+              <RouterLink to={routes.regulation} style={{ textDecoration: "none" }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    color: colors.color2,
+                    fontWeight: 600,
+                    fontFamily: 'KoHo',
+                    fontSize: '24px',
+                    lineHeight: '31.2px',
+                    position: "relative",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      left: "50%",
+                      right: "50%",
+                      bottom: 0,
+                      height: "2px",
+                      backgroundColor: colors.color2,
+                      transition: "left 0.3s, right 0.3s",
+                    },
+                    "&:hover": {
+                      color: colors.color2,
+                      "&::after": {
+                        left: 0,
+                        right: 0,
+                      },
+                    },
+                  }}
+                >
+                  quy định
+                </Typography>
+              </RouterLink>
+              {" "}của chúng tôi!
+            </Typography>
             <Typography align='start' sx={{ pb: 2, fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}>
-              Gọi <Typography component='span' sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '24px', lineHeight: '31.2px', color: colors.color2, textDecoration: 'underline' }}>0123456789</Typography> để được tư vấn chi tiết
+              Gọi{" "}
+              <RouterLink to={routes.classifyDetail} style={{ textDecoration: "none" }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    color: colors.color2,
+                    fontWeight: 600,
+                    fontFamily: 'KoHo',
+                    fontSize: '24px',
+                    lineHeight: '31.2px',
+                    position: "relative",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      left: "50%",
+                      right: "50%",
+                      bottom: 0,
+                      height: "2px",
+                      backgroundColor: colors.color2,
+                      transition: "left 0.3s, right 0.3s",
+                    },
+                    "&:hover": {
+                      color: colors.color2,
+                      "&::after": {
+                        left: 0,
+                        right: 0,
+                      },
+                    },
+                  }}
+                >
+                  0123456789
+                </Typography>
+              </RouterLink>
+              {" "}để được tư vấn chi tiết
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: 3 }}>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
