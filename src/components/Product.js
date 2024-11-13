@@ -599,7 +599,7 @@ const Product = () => {
             color={`${colors.color2}`}
             sx={{
               "& .MuiPaginationItem-root": {
-                border: "2px solid #214738", // Add border
+                border: `2px solid ${colors.color2}`, // Add border
                 color: colors.color2, // Change text color
                 "&.Mui-selected": {
                   backgroundColor: colors.color2, // Change background color of selected item

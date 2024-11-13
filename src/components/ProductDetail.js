@@ -35,6 +35,7 @@ const ProductDetail = () => {
   const isLogin = useSelector((state) => state.auth.isLogin);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isResponsive = useMediaQuery(theme.breakpoints.down('lg'));
   const [quantity, setQuantity] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -665,13 +666,13 @@ const ProductDetail = () => {
                   justifyContent: 'center',
                   mt: 2,
                   "& .MuiPaginationItem-root": {
-                    border: "2px solid #214738", // Add border
+                    border: `2px solid ${colors.color2}`, // Add border
                     color: colors.color2, // Change text color
                     "&.Mui-selected": {
                       backgroundColor: colors.color2, // Change background color of selected item
                       color: colors.color1, // Change text color of selected item
                     },
-                    ...(isSmallScreen ? {} : {
+                    ...(isResponsive ? {} : {
                       "&:hover": {
                         backgroundColor: "#46cf99", // Change background color on hover
                       },
