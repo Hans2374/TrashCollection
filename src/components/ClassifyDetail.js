@@ -67,7 +67,9 @@ const ClassifyDetail = () => {
   ];
 
   return (
-    <Box sx={{ overflowX: 'hidden' }}>
+    <Box sx={{ overflowX: 'hidden',
+      backgroundColor: "#FCF9F3",
+     }}>
       <ScrollToTop />
       <Header1 />
       <Box>

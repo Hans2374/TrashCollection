@@ -177,10 +177,10 @@ const ProductDetail = () => {
         <Header1 isLogin={isLogin} />
         <Header2 />
       </Box>
-      <Box sx={{ maxWidth: 1200, mx: "auto", mt: 4, px: 2 }}>
+      <Box sx={{ maxWidth: 1200, mx: "auto", mt: 4, px: 2, marginBottom: '40px', marginTop: '70px' }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6} sx={{ width: '100%', position: "relative" }}>
-            <Box sx={{ position: "relative", overflow: "hidden" }}>
+            <Box sx={{ position: "relative", overflow: "hidden", border: `2px solid ${colors.color2}`,borderRadius: "8px", }}>
               {isSmallScreen ? (
                 <Slider {...settings}>
                   {images.map((img, index) => (
@@ -364,7 +364,7 @@ const ProductDetail = () => {
               hoặc trang trí. Thích hợp cho không gian học tập, làm việc hoặc
               làm quà tặng nhỏ.
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", mt: 3 }}>
+            <Box sx={{ display: "flex", alignItems: "center", mt: 8, justifyContent: 'space-between' }}>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <IconButton onClick={handleDecrement} sx={{ border: `3px solid ${colors.color2}`, borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
                   <RemoveIcon />
@@ -437,6 +437,7 @@ const ProductDetail = () => {
               <Grid item xs={6} sm={6} md={4} lg={3} key={product.id}>
                 <Card
                   sx={{
+                    backgroundColor: "#FCF9F3",
                     position: "relative",
                     width: "100%",
                     height: "100%",
@@ -458,7 +459,7 @@ const ProductDetail = () => {
 
                   {/* Product Details */}
                   <CardContent
-                    sx={{ textAlign: "center", backgroundColor: "#FFF" }}
+                    sx={{ textAlign: "center", backgroundColor: "#FCF9F3", }}
                   >
                     <Typography
                       variant="body1"
