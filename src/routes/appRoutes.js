@@ -15,7 +15,7 @@ import AdminOrderPage from "../pages/Admin/AdminOrderPage";
 import AdminStatisticPage from "../pages/Admin/AdminStatisticPage";
 import AdminUserPage from "../pages/Admin/AdminUserPage";
 import Cart from "../components/Cart";
-
+import ProfilePage from "../components/Profilepage";
 export default function AppRoute() {
   return (
     <>
@@ -33,6 +33,7 @@ export default function AppRoute() {
         <Route path={routes.adminstatistic} element={<AdminStatisticPage />} />
         <Route path={routes.adminuser} element={<AdminUserPage />} />
         <Route path={routes.cart} element={<Cart />} />
+        <Route path={routes.profile} element={<ProfilePage />} />
       </Routes>
     </>
   );

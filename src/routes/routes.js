@@ -12,4 +12,5 @@ export const routes = {
   adminstatistic: "admin-statistic",
   adminuser: "admin-user",
   cart: "/cart",
+  profile: "/profile",
 };
