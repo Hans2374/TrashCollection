@@ -173,7 +173,7 @@ const Profilepage = () => {
                 {/* Avatar and User Info on the left */}
                 <Box textAlign="center">
                     <Avatar
-                        sx={{ width: 80, height: 80, bgcolor: "darkgreen" }}
+                        sx={{ width: 80, height: 80, bgcolor: "#214738" }}
                     />
                     <Typography variant="h6" fontWeight="bold" mt={1}>
                         USER001
@@ -186,7 +186,7 @@ const Profilepage = () => {
                 {/* Container for Personal Info Card and Action Icons */}
                 <Box display="flex" flexDirection="column" alignItems="flex-end">
                     {/* Personal Info Card */}
-                    <Card sx={{ maxWidth: 400, borderRadius: 2, border: '3px solid darkgreen' }}>
+                    <Card sx={{ maxWidth: 400, borderRadius: 2, border: '3px solid #214738' }}>
                         <CardContent>
                             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
                                 <Typography variant="h6" fontWeight="bold" color="darkgreen">
@@ -243,7 +243,7 @@ const Profilepage = () => {
                     fontWeight: 'bold',
                     textAlign: 'center',
                     marginTop: 6, // Space between vector and title
-                    color: colors.color2 || 'black', // Customize the color here
+                    color: '#214738', // Customize the color here
                     fontFamily: 'KoHo',
                     fontSize: '24px',
                 }}
@@ -255,9 +255,10 @@ const Profilepage = () => {
                 display="flex"
                 alignItems="center"
                 sx={{
-                    width: '30%', // Set the width of the search bar
-                    border: '1px solid #4C6A58', // Customize border color here
-                    borderRadius: '10px',
+                    width: '426px', // Set the width of the search bar
+                    height: '29px',
+                    border: '1.5px solid #214738', // Customize border color here
+                    borderRadius: '5px',
                     padding: '4px 8px',
                     margin: '0 auto',
                     marginX: '20%',
@@ -265,7 +266,7 @@ const Profilepage = () => {
                     justifyContent: 'flex-start', // Control the alignment: 'flex-start', 'center', or 'flex-end'
                 }}
             >
-                <IconButton size="small" sx={{ color: '#4C6A58' }}>
+                <IconButton size="small" sx={{ color: '#214738', marginLeft: '1px', }}>
                     <Search />
                 </IconButton>
                 <InputBase
@@ -273,8 +274,11 @@ const Profilepage = () => {
                     sx={{
                         ml: 1,
                         flex: 1,
-                        color: '#4C6A58', // Customize text color here
-                        fontFamily: 'inherit',
+                        color: '#214738', // Customize text color here
+                        fontFamily: 'KoHo',
+                        fontWeight: '400',
+                        fontSize: '20px',
+                        lineHeight: '26px',
                     }}
                 />
             </Box>
