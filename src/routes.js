@@ -7,7 +7,7 @@ import RegulationPage from "./pages/regulation";
 import AdminOrderPage from './pages/Admin/AdminOrderPage';
 import AdminStatisticPage from './pages/Admin/AdminStatisticPage';
 import AdminUserPage from './pages/Admin/AdminUserPage';
-import AdminProductPage from './pages/Admin/AdminProductPAge';
+import AdminProductPage from './pages/Admin/AdminProductPage';
 import Profilepage from './components/Profilepage';
 
 const routes = [

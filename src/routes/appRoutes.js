@@ -7,7 +7,7 @@ import News from "../pages/news";
 import NewsDetail from "../pages/newsDetail";
 import Classify from "../pages/classify";
 import Regulation from "../pages/regulation";
-import Product from "../components/Product";
+import Product from "../pages/Product";
 import ProductDetail from "../pages/ProductDetail";
 import Profile from "../components/Profilepage";
 import Sell from "../pages/sell";
