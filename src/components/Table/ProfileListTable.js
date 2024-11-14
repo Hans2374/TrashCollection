@@ -148,7 +148,7 @@ const ProfileListTable = () => {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
-                                        {formatCurrency(order.itemPrice - order.discount + order.shippingFee)}
+                                        {formatCurrency(order.itemPrice - order.discount + order.shippingFee)} <span>| {order.bonusPoint}🌱 </span>
                                     </Typography>
                                 </Grid>
 
