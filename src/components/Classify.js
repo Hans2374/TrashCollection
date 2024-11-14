@@ -227,7 +227,40 @@ const Classify = () => {
                             Chào mừng đối tác của TÊN!
                         </Typography>
                         <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>
-                            Hãy chắc rằng bạn đã nắm rõ và đồng ý với <RouterLink to={routes.regulation} style={{ textDecoration: 'underline', color: colors.color2, fontWeight: 600 }}>quy định</RouterLink> của chúng tôi!
+                            Hãy chắc rằng bạn đã nắm rõ và đồng ý với{" "}
+                            <RouterLink to={routes.login} style={{ textDecoration: "none" }}>
+                                <Typography
+                                    component="span"
+                                    sx={{
+                                        color: colors.color2,
+                                        fontWeight: 600,
+                                        fontFamily: "KoHo",
+                                        fontSize: "24px",
+                                        lineHeight: "31.2px",
+                                        position: "relative",
+                                        "&::after": {
+                                            content: '""',
+                                            position: "absolute",
+                                            left: "50%",
+                                            right: "50%",
+                                            bottom: 0,
+                                            height: "2px",
+                                            backgroundColor: colors.color2,
+                                            transition: "left 0.3s, right 0.3s",
+                                        },
+                                        "&:hover": {
+                                            color: colors.color2,
+                                            "&::after": {
+                                                left: 0,
+                                                right: 0,
+                                            },
+                                        },
+                                    }}
+                                >
+                                    quy định
+                                </Typography>
+                            </RouterLink>
+                            {" "}của chúng tôi!
                         </Typography>
                     </Box>
 
@@ -369,7 +402,7 @@ const Classify = () => {
                     </Box>
 
                     {/* Card display */}
-                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center'}}>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <Grid
                             className={styles.cardContainer}
                             container
@@ -420,18 +453,20 @@ const Classify = () => {
                             count={Math.ceil(cardData.length / itemsPerPage)}
                             page={page}
                             onChange={handleChangePage}
-                            color='success'
+                            color={`${colors.color2}`}
                             sx={{
-                                '& .MuiPaginationItem-root': {
-                                    border: '2px solid #214738', // Add border
+                                "& .MuiPaginationItem-root": {
+                                    border: `2px solid ${colors.color2}`, // Add border
                                     color: colors.color2, // Change text color
-                                    '&.Mui-selected': {
+                                    "&.Mui-selected": {
                                         backgroundColor: colors.color2, // Change background color of selected item
                                         color: colors.color1, // Change text color of selected item
                                     },
-                                    '&:hover': {
-                                        backgroundColor: '#46cf99', // Change background color on hover
-                                    },
+                                    ...(isSmallScreen ? {} : {
+                                        "&:hover": {
+                                            backgroundColor: "#46cf99", // Change background color on hover
+                                        },
+                                    }),
                                 },
                             }}
                             renderItem={(item) => (
@@ -458,7 +493,42 @@ const Classify = () => {
                     <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>Rất tiết!</Typography>
                     <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>Bạn không thể sử dụng dịch vụ này nếu không phải là đối tác của <span style={{ fontWeight: 600 }}>TÊN</span>.</Typography>
                     <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>
-                        Trở thành đối tác của <span style={{ fontWeight: 600 }}>TÊN</span> <RouterLink to={routes.login} style={{ textDecoration: 'underline', color: colors.color2, fontWeight: 600 }}>ngay bây giờ!</RouterLink>
+                        Trở thành đối tác của{" "}
+                        <Typography component="span" style={{ fontFamily: 'KoHo', fontWeight: 600, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>
+                            TÊN
+                        </Typography>{" "}
+                        <RouterLink to={routes.login} style={{ textDecoration: "none" }}>
+                            <Typography
+                                component="span"
+                                sx={{
+                                    color: colors.color2,
+                                    fontFamily: "KoHo",
+                                    fontSize: "24px",
+                                    lineHeight: "31.2px",
+                                    fontWeight: 600,
+                                    position: "relative",
+                                    "&::after": {
+                                        content: '""',
+                                        position: "absolute",
+                                        left: "50%",
+                                        right: "50%",
+                                        bottom: 0,
+                                        height: "3px",
+                                        backgroundColor: colors.color2,
+                                        transition: "left 0.3s, right 0.3s",
+                                    },
+                                    "&:hover": {
+                                        color: colors.color2,
+                                        "&::after": {
+                                            left: 0,
+                                            right: 0,
+                                        },
+                                    },
+                                }}
+                            >
+                                ngay bây giờ!
+                            </Typography>
+                        </RouterLink>
                     </Typography>
                 </Box>
             )}

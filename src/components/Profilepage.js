@@ -7,7 +7,7 @@ import { ScrollToTop } from './ScrollToTop';
 import colors from '../colors';
 import { useSelector } from 'react-redux';
 import ProfileList from './Table/ProfileListTable';
-
+import { Footer } from './Footer';
 const orders = [
     {
         ID: "DH001",
@@ -279,6 +279,7 @@ const Profilepage = () => {
                 />
             </Box>
             <ProfileList />
+            <Footer />
         </>
     );
 }
