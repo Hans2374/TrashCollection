@@ -18,6 +18,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export const Header1 = () => {
+    const role = useSelector((state) => state.auth.role);
     const isLogin = useSelector((state) => state.auth.isLogin);
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -143,13 +144,15 @@ export const Header1 = () => {
                             {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
                         </IconButton>
                     </Link>
-                    <IconButton
-                        sx={{ color: colors.color1 }}
-                        onMouseEnter={() => handleMouseEnter('accountCircle')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
-                    </IconButton>
+                    <Link to={role === 'customer' ? routes.profile : routes.adminproduct} style={{ textDecoration: 'none' }}>
+                        <IconButton
+                            sx={{ color: colors.color1 }}
+                            onMouseEnter={() => handleMouseEnter('accountCircle')}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
+                        </IconButton>
+                    </Link>
                 </Box>
             ) : (
                 // Đăng nhập

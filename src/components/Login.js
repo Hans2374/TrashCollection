@@ -151,13 +151,16 @@ const Login = () => {
                 // Handle successful validation for login or register
                 if (username === 'customer@gmail.com' && password === 'customer') {
                     setErrors({ username: '', password: '' });
-                    dispatch(login());
+                    dispatch(login('customer'));
+                } else if (username === 'admin@gmail.com' && password === 'admin') {
+                    setErrors({ username: '', password: '' });
+                    dispatch(login('admin'));
                 } else {
                     setErrors({ username: '', password: 'Email/Username hoặc mật khẩu không đúng!' });
                 }
             } else {
                 setErrors({ username: '', password: '', confirmPassword: '' });
-                dispatch(login());
+                dispatch(login('customer'));
             }
         }
     };
