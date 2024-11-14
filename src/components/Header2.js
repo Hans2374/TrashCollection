@@ -60,6 +60,7 @@ export const Header2 = () => {
             sx={{
                 zIndex: 10,
                 position: 'sticky',
+                top: '40px', //test cho trang profile
                 top: visible ? (lastScrollY > 0 ? '40px' : '461px') : '-100px', // Adjust top based on scroll position
                 height: '100px',
                 backgroundColor: '#F8F3E7',

@@ -1,8 +1,9 @@
 import { Box, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { routes } from "../routes/routes";
 
 export const AdminHeader = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -39,17 +40,19 @@ export const AdminHeader = () => {
             }}
         >
             {/* Logo/Tên */}
-            <Typography
-                variant="h4"
-                sx={{
-                    fontFamily: 'KoHo',
-                    marginLeft: { md: '100px' },
-                    fontWeight: 'bold',
-                    color: '#214738',
-                }}
-            >
-                LOGO/TÊN
-            </Typography>
+            <Link to={routes.homePage} style={{ textDecoration: 'none' }}>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        fontFamily: 'KoHo',
+                        marginLeft: { md: '100px' },
+                        fontWeight: 'bold',
+                        color: '#214738',
+                    }}
+                >
+                    LOGO/TÊN
+                </Typography>
+            </Link>
 
             {isMobile ? (
                 <>

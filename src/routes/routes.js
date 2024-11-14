@@ -7,11 +7,11 @@ export const routes = {
   classifyDetail: "/classify-detail",
   regulation: "/regulation",
   product: "/product",
-  productdetail: "/productdetail",
   sell: '/sell',
   adminproduct:"/admin-product",
   adminorder:"/admin-order",
   adminstatistic:"admin-statistic",
   adminuser:"admin-user",
   cart:"/cart",
+  profile: "/profile",
 };

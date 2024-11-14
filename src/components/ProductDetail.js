@@ -722,7 +722,7 @@ const ProductDetail = () => {
                         left: "50%",
                         right: "50%",
                         bottom: 0,
-                        height: "1px",
+                        height: "2px",
                         backgroundColor: colors.color2,
                         transition: "left 0.3s, right 0.3s",
                       },
