@@ -4,7 +4,6 @@ export const routes = {
   news: "/news",
   newsDetail: "/news-detail",
   classify: "/classify",
-  classifyDetail: "/classify-detail",
   regulation: "/regulation",
   product: "/product",
   productdetail: "/productdetail",
@@ -14,4 +13,5 @@ export const routes = {
   adminstatistic:"admin-statistic",
   adminuser:"admin-user",
   cart:"/cart",
+  profile: "/profile",
 };

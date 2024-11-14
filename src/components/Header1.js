@@ -61,6 +61,7 @@ export const Header1 = () => {
             sx={{
                 zIndex: 10,
                 height: '40px',
+                marginBottom: 0, //test cho trang profile
                 backgroundColor: '#214738',
                 fontFamily: 'KoHo',
                 display: 'flex',
