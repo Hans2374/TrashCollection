@@ -228,7 +228,7 @@ const Classify = () => {
                         </Typography>
                         <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>
                             Hãy chắc rằng bạn đã nắm rõ và đồng ý với{" "}
-                            <RouterLink to={routes.login} style={{ textDecoration: "none" }}>
+                            <RouterLink to={routes.regulation} style={{ textDecoration: "none" }}>
                                 <Typography
                                     component="span"
                                     sx={{
