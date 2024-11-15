@@ -12,22 +12,14 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import { Add } from "@mui/icons-material";
 import { useState } from "react";
 
 export default function AdminUserFilterBar() {
-  const [status, setStatus] = React.useState("");
-  const [price, setPrice] = React.useState("");
   const [sort, setSort] = React.useState("");
-  const [material, setMaterial] = React.useState("");
   const [category, setCategory] = React.useState("");
 
   const [open, setOpen] = useState(false);
   const [imageFile, setImageFile] = useState(null);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -108,7 +100,7 @@ export default function AdminUserFilterBar() {
         >
           Thêm Hàng Mới
         </DialogTitle>
-        <DialogContent sx={{m:"20px 0 0 0"}}>
+        <DialogContent sx={{ m: "20px 0 0 0" }}>
           <TextField
             autoFocus
             margin="dense"

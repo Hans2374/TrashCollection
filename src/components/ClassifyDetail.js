@@ -67,9 +67,10 @@ const ClassifyDetail = () => {
   ];
 
   return (
-    <Box sx={{ overflowX: 'hidden',
-      backgroundColor: "#FCF9F3",
-     }}>
+    <Box sx={{
+      overflowX: 'hidden',
+      backgroundColor: colors.color1,
+    }}>
       <ScrollToTop />
       <Header1 />
       <Box>
@@ -93,7 +94,7 @@ const ClassifyDetail = () => {
                 height: '100%',
                 objectFit: 'cover',
                 borderRadius: '15px',
-                border: '4px solid #214738',
+                border: `4px solid ${colors.color2}`,
                 boxSizing: 'border-box',
               }}
             />
@@ -193,7 +194,7 @@ const ClassifyDetail = () => {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: 3 }}>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <IconButton onClick={handleDecrement} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+                <IconButton onClick={handleDecrement} sx={{ border: `3px solid ${colors.color2}`, borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
                   <RemoveIcon />
                 </IconButton>
                 <TextField
@@ -201,7 +202,7 @@ const ClassifyDetail = () => {
                   onChange={handleChange}
                   inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0 } }}
                   sx={{
-                    border: '3px solid #214738',
+                    border: `3px solid ${colors.color2}`,
                     maxWidth: '40px',
                     '& .MuiOutlinedInput-root': {
                       '& fieldset': {
@@ -210,7 +211,7 @@ const ClassifyDetail = () => {
                     },
                   }}
                 />
-                <IconButton onClick={handleIncrement} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                <IconButton onClick={handleIncrement} sx={{ border: `3px solid ${colors.color2}`, borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
                   <AddIcon />
                 </IconButton>
                 <Typography sx={{ ml: 0.5, fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>kg</Typography>

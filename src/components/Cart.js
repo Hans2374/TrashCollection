@@ -244,7 +244,7 @@ const Cart = () => {
                                 width: isLgOrLarger ? '8px' : '0px', // Hide scrollbar for smaller screens
                             },
                             '&::-webkit-scrollbar-thumb': {
-                                backgroundColor: '#214738',
+                                backgroundColor: colors.color2,
                                 borderRadius: '10px',
                             },
                             '&::-webkit-scrollbar-track': {
@@ -274,7 +274,7 @@ const Cart = () => {
                                                 height: '100%',
                                                 objectFit: 'cover',
                                                 boxSizing: 'border-box',
-                                                border: '4px solid #214738',
+                                                border: `4px solid ${colors.color2}`,
                                                 borderRadius: '15px 0px 0px 15px',
                                             }}
                                         />
@@ -286,9 +286,9 @@ const Cart = () => {
                                                 width: '1000px',
                                                 pl: '10px',
                                                 boxSizing: 'border-box',
-                                                borderTop: '4px solid #214738',
-                                                borderRight: '4px solid #214738',
-                                                borderBottom: '4px solid #214738',
+                                                borderTop: `4px solid ${colors.color2}`,
+                                                borderRight: `4px solid ${colors.color2}`,
+                                                borderBottom: `4px solid ${colors.color2}`,
                                                 borderRadius: '0px 0px 15px 0px',
                                             }}>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
@@ -305,7 +305,7 @@ const Cart = () => {
                                                     {card.title}
                                                 </Typography>
                                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                    <IconButton onClick={() => handleDecrement(card.id)} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+                                                    <IconButton onClick={() => handleDecrement(card.id)} sx={{ border: `3px solid ${colors.color2}`, borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
                                                         <RemoveIcon />
                                                     </IconButton>
                                                     <TextField
@@ -313,7 +313,7 @@ const Cart = () => {
                                                         onChange={(event) => handleChange(card.id, event)}
                                                         inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0, width: '40px' } }}
                                                         sx={{
-                                                            border: '3px solid #214738',
+                                                            border: `3px solid ${colors.color2}`,
                                                             maxWidth: '40px',
                                                             '& .MuiOutlinedInput-root': {
                                                                 '& fieldset': {
@@ -322,7 +322,7 @@ const Cart = () => {
                                                             },
                                                         }}
                                                     />
-                                                    <IconButton onClick={() => handleIncrement(card.id)} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                                                    <IconButton onClick={() => handleIncrement(card.id)} sx={{ border: `3px solid ${colors.color2}`, borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
                                                         <AddIcon />
                                                     </IconButton>
                                                 </Box>
@@ -409,14 +409,14 @@ const Cart = () => {
                 </Box>
                 <Box sx={{ p: { lg: 10, md: 10, sm: 0, xs: 0 }, pt: { lg: 0, md: 0, sm: 0, xs: 0 }, pb: { lg: 10, md: 10, sm: 10, xs: 10 }, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
                     <Typography
-                        sx={{                       
+                        sx={{
                             fontFamily: 'KoHo',
                             fontWeight: 700,
                             fontSize: { lg: 24, md: 24, sm: 24, xs: 18 },
                             lineHeight: '31.2px',
                             color: colors.color2,
                             p: 1,
-                            border: '4px solid #214738',
+                            border: `4px solid ${colors.color2}`,
                             borderRadius: '10px',
                         }}
                     >
@@ -460,7 +460,7 @@ const Cart = () => {
                         }}>
                         THANH TOÁN
                     </DialogTitle>
-                    <Box sx={{ p: 5, pt: 0, border: '4px solid #214738' }}>
+                    <Box sx={{ p: 5, pt: 0, border: `4px solid ${colors.color2}` }}>
                         <DialogContent>
                             {/* Add your form fields here */}
                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 5 }}>
@@ -530,7 +530,7 @@ const Cart = () => {
                                             sx={{ width: '324px', height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                         />
                                     </Box>
-                                    <Box sx={{ width: '324px', height: '150px', border: '3px solid #214738', borderRadius: '5px', justifyContent: 'center', alignContent: 'center', p: 1 }}>
+                                    <Box sx={{ width: '324px', height: '150px', border: `3px solid ${colors.color2}`, borderRadius: '5px', justifyContent: 'center', alignContent: 'center', p: 1 }}>
                                         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', gap: 5, p: '0px 5px', marginBottom: '10px' }}>
                                             <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}>Tiền hàng</Typography>
                                             <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '20px', lineHeight: '26px', alignSelf: 'center' }}>60.000đ</Typography>

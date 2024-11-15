@@ -107,13 +107,13 @@
         padding: 0 !important;
     }
 
-    .img{
+    .img {
         height: 100px !important;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-    .img{
+    .img {
         height: 200px !important;
     }
 

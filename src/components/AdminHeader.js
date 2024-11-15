@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { routes } from "../routes/routes";
+import colors from '../colors';
 
 export const AdminHeader = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -15,7 +16,7 @@ export const AdminHeader = () => {
 
     const menuItemStyle = {
         fontFamily: 'KoHo',
-        color: '#214738',
+        color: colors.color2,
         fontSize: '20px',
         transition: 'font-weight 0.2s, text-shadow 0.2s',
         '&:hover': {
@@ -47,7 +48,7 @@ export const AdminHeader = () => {
                         fontFamily: 'KoHo',
                         marginLeft: { md: '100px' },
                         fontWeight: 'bold',
-                        color: '#214738',
+                        color: colors.color2,
                     }}
                 >
                     LOGO/TÊN
@@ -58,7 +59,7 @@ export const AdminHeader = () => {
                 <>
                     {/* Icon drawer */}
                     <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
-                        <MenuIcon sx={{ color: '#214738' }} />
+                        <MenuIcon sx={{ color: colors.color2 }} />
                     </IconButton>
 
                     {/* menu */}
@@ -68,7 +69,7 @@ export const AdminHeader = () => {
                         onClose={toggleDrawer(false)}
                         PaperProps={{
                             sx: {
-                                backgroundColor: '#FCF9F3',
+                                backgroundColor: colors.color1,
                             },
                         }}
                     >
@@ -80,7 +81,7 @@ export const AdminHeader = () => {
                                             justifyContent: 'center',
                                             textAlign: 'center',
                                             fontFamily: 'KoHo',
-                                            color: '#214738',
+                                            color: colors.color2,
                                             transition: 'font-weight 0.2s, text-shadow 0.2s',
                                             '&:hover': {
                                                 fontWeight: 'bold',

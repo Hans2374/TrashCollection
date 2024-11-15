@@ -63,7 +63,7 @@ export const Header1 = () => {
                 zIndex: 10,
                 height: '40px',
                 marginBottom: 0, //test cho trang profile
-                backgroundColor: '#214738',
+                backgroundColor: colors.color2,
                 fontFamily: 'KoHo',
                 display: 'flex',
                 justifyContent: 'space-between',
