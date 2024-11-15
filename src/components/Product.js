@@ -301,7 +301,7 @@ const Product = () => {
               placeholder="Bạn đang tìm gì?"
               style={{
                 backgroundColor: `${colors.color1}`,
-                border: "2px solid #214738",
+                border: `2px solid ${colors.color2}`,
                 width: "500px",
                 borderRadius: "5px",
                 fontFamily: "KoHo",
@@ -337,7 +337,7 @@ const Product = () => {
               onChange={(event) => handleDropdownChange(event, setDropdown1)}
               displayEmpty
               sx={{
-                border: "2px solid #214738",
+                border: `2px solid ${colors.color2}`,
                 maxWidth: "300px",
                 marginTop: isSmallScreen ? 1 : 0,
                 height: "29px",
@@ -373,7 +373,7 @@ const Product = () => {
               onChange={(event) => handleDropdownChange(event, setDropdown2)}
               displayEmpty
               sx={{
-                border: "2px solid #214738",
+                border: `2px solid ${colors.color2}`,
                 maxWidth: "110px",
                 height: "29px",
                 marginTop: isSmallScreen ? 1 : 0,
@@ -406,7 +406,7 @@ const Product = () => {
               onChange={(event) => handleDropdownChange(event, setDropdown3)}
               displayEmpty
               sx={{
-                border: "2px solid #214738",
+                border: `2px solid ${colors.color2}`,
                 maxWidth: "150px",
                 height: "29px",
                 marginTop: isSmallScreen ? 1 : 0,
@@ -440,7 +440,7 @@ const Product = () => {
               onChange={(event) => handleDropdownChange(event, setDropdown4)}
               displayEmpty
               sx={{
-                border: "2px solid #214738",
+                border: `2px solid ${colors.color2}`,
                 maxWidth: "150px",
                 height: "29px",
                 marginTop: isSmallScreen ? 1 : 0,

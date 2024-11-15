@@ -164,7 +164,7 @@ export default function AdminProductFilterBar() {
         >
           Thêm Hàng Mới
         </DialogTitle>
-        <DialogContent sx={{m:"20px 0 0 0"}}>
+        <DialogContent sx={{ m: "20px 0 0 0" }}>
           <TextField
             autoFocus
             margin="dense"

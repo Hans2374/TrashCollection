@@ -189,7 +189,7 @@ const Classify = () => {
                             fontSize: { xs: '24px', sm: '36px' }, // Responsive font size
                             fontWeight: 700,
                             lineHeight: { xs: '30px', sm: '46.8px' }, // Responsive line height
-                            color: '#214738',
+                            color: colors.color2,
                             textAlign: 'left',
                             marginBottom: '8px',
                         }}
@@ -205,7 +205,7 @@ const Classify = () => {
                             fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
                             fontWeight: 400,
                             lineHeight: '20.8px',
-                            color: '#214738',
+                            color: colors.color2,
                             textAlign: 'left',
                         }}
                     >
@@ -285,7 +285,7 @@ const Classify = () => {
                                 placeholder="Bạn đang có gì?"
                                 style={{
                                     backgroundColor: `${colors.color1}`,
-                                    border: '2px solid #214738',
+                                    border: `2px solid ${colors.color2}`,
                                     width: '500px',
                                     borderRadius: '5px',
                                     fontFamily: 'KoHo',
@@ -310,7 +310,7 @@ const Classify = () => {
                                 onChange={(event) => handleDropdownChange(event, setDropdown1)}
                                 displayEmpty
                                 sx={{
-                                    border: '2px solid #214738',
+                                    border: `2px solid ${colors.color2}`,
                                     maxWidth: '300px',
                                     marginTop: isSmallScreen ? 1 : 0,
                                     height: '29px',
@@ -342,7 +342,7 @@ const Classify = () => {
                                 onChange={(event) => handleDropdownChange(event, setDropdown2)}
                                 displayEmpty
                                 sx={{
-                                    border: '2px solid #214738',
+                                    border: `2px solid ${colors.color2}`,
                                     maxWidth: '110px',
                                     height: '29px',
                                     marginTop: isSmallScreen ? 1 : 0,
@@ -373,7 +373,7 @@ const Classify = () => {
                                 onChange={(event) => handleDropdownChange(event, setDropdown3)}
                                 displayEmpty
                                 sx={{
-                                    border: '2px solid #214738',
+                                    border: `2px solid ${colors.color2}`,
                                     maxWidth: '150px',
                                     height: '29px',
                                     marginTop: isSmallScreen ? 1 : 0,

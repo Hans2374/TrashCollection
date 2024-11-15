@@ -7,18 +7,18 @@ import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import styles from './AdminTable1.module.css';
 
 const data = [
-  { id: 1, name: 'John Doe', image: 'https://via.placeholder.com/50x50',  price: 199000,stock: 100, material: 'Giấy',  category: 'Đã gia dụng', info: 'Chi tiết ->' },
-  { id: 2, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Nhựa',  category: 'Thời trang', info: 'Chi tiết ->' },
-  { id: 3, name: 'Iron Mike', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Tổng hợp',  category: 'Đã gia dụng', info: 'Chi tiết ->' },
-  { id: 4, name: 'Will Smith', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Nhựa',  category: 'Thời trang', info: 'Chi tiết ->' },
-  { id: 5, name: 'LeBrone Jame', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Nhựa',  category: 'Đã gia dụng', info: 'Chi tiết ->' },
-  { id: 6, name: 'Jane Doe', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Nhựa',  category: 'Đã gia dụng', info: 'Chi tiết ->' },
-  { id: 7, name: 'John Byzantine', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Giấy',  category: 'Thời trang', info: 'Chi tiết ->' },
-  { id: 8, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100,material: 'Giấy', category: 'Đã gia dụng', info: 'Chi tiết ->' },
-  { id: 9, name: 'Iron Mike', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Giấy',  category: 'Đã gia dụng', info: 'Chi tiết ->' },
-  { id: 10, name: 'Will Smith', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Tổng hợp', category: 'Thời trang', info: 'Chi tiết ->' },
-  { id: 11, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100,material: 'Tổng hợp', category: 'Thời trang', info: 'Chi tiết ->' },
-  { id: 12, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000,stock: 100, material: 'Tổng hợp',  category: 'Đã gia dụng', info: 'Chi tiết ->' },
+  { id: 1, name: 'John Doe', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Giấy', category: 'Đã gia dụng', info: 'Chi tiết ->' },
+  { id: 2, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Nhựa', category: 'Thời trang', info: 'Chi tiết ->' },
+  { id: 3, name: 'Iron Mike', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Tổng hợp', category: 'Đã gia dụng', info: 'Chi tiết ->' },
+  { id: 4, name: 'Will Smith', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Nhựa', category: 'Thời trang', info: 'Chi tiết ->' },
+  { id: 5, name: 'LeBrone Jame', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Nhựa', category: 'Đã gia dụng', info: 'Chi tiết ->' },
+  { id: 6, name: 'Jane Doe', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Nhựa', category: 'Đã gia dụng', info: 'Chi tiết ->' },
+  { id: 7, name: 'John Byzantine', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Giấy', category: 'Thời trang', info: 'Chi tiết ->' },
+  { id: 8, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Giấy', category: 'Đã gia dụng', info: 'Chi tiết ->' },
+  { id: 9, name: 'Iron Mike', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Giấy', category: 'Đã gia dụng', info: 'Chi tiết ->' },
+  { id: 10, name: 'Will Smith', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Tổng hợp', category: 'Thời trang', info: 'Chi tiết ->' },
+  { id: 11, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Tổng hợp', category: 'Thời trang', info: 'Chi tiết ->' },
+  { id: 12, name: 'Jane Smith', image: 'https://via.placeholder.com/50x50', price: 199000, stock: 100, material: 'Tổng hợp', category: 'Đã gia dụng', info: 'Chi tiết ->' },
   // Add more rows as needed
 ];
 
@@ -59,7 +59,7 @@ export default function AdminProductTable() {
                 <TableCell>{row.category}</TableCell>
                 <TableCell>{row.info}</TableCell>
               </TableRow>
-          ))}
+            ))}
         </TableBody>
       </Table>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>

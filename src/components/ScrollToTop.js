@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, useMediaQuery } from '@mui/material';
 import RecyclingIcon from '@mui/icons-material/Recycling';
 import { useTheme } from '@mui/material/styles';
+import colors from '../colors';
 
 export const ScrollToTop = () => {
     const theme = useTheme();
@@ -12,31 +13,31 @@ export const ScrollToTop = () => {
     };
 
     if (isSmallScreen) {
-        return null; 
+        return null;
     }
 
     return (
         <Box
             onClick={handleScrollToTop}
             sx={{
-                width: '50px',  
+                width: '50px',
                 height: '50px',
-                backgroundColor: '#214738',
-                borderRadius: '5px', 
+                backgroundColor: colors.color2,
+                borderRadius: '5px',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', 
-                position: 'fixed', 
-                bottom: '20px', 
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+                position: 'fixed',
+                bottom: '20px',
                 right: '20px',
-                zIndex: 1000, 
+                zIndex: 1000,
                 '&:hover': {
-                    backgroundColor: '#2A3B32', 
+                    backgroundColor: '#2A3B32',
                 },
             }}
         >
-            <RecyclingIcon  sx={{ color: '#FCF9F3' }} />
+            <RecyclingIcon sx={{ color: colors.color1 }} />
         </Box>
     );
 };

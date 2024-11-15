@@ -1,6 +1,6 @@
 /* Responsive styles */
 @media screen and (max-width: 768px) {
-    .searchIcon{
+    .searchIcon {
         left: 7% !important;
     }
 
@@ -8,24 +8,24 @@
         padding: 0 !important;
     }
 
-    .welcome{
+    .welcome {
         display: none !important;
     }
 
-    .filterSearch{
+    .filterSearch {
         justify-content: center !important;
     }
 
-    .searchBox{
+    .searchBox {
         width: 100% !important;
     }
 
-    .filterContainer{
+    .filterContainer {
         justify-content: center !important;
         flex-wrap: wrap !important;
     }
 
-    .cardContainer{
+    .cardContainer {
         width: 80% !important;
     }
 }

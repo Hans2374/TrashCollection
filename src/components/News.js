@@ -144,7 +144,7 @@ const News = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 isLogin={isLogin}/>
+            <Header1 isLogin={isLogin} />
 
             {/* Background image */}
             <Box
@@ -304,7 +304,7 @@ const News = () => {
                             src={articles[0].image}
                             alt={articles[0].title}
                             sx={{
-                                width: '100%', height: '100%', borderRadius: '9px', marginTop: '30px',  transition: 'transform 0.3s ease-in-out', // Smooth transition
+                                width: '100%', height: '100%', borderRadius: '9px', marginTop: '30px', transition: 'transform 0.3s ease-in-out', // Smooth transition
                                 '&:hover': {
                                     transform: 'scale(1.02)',
                                 },

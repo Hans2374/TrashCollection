@@ -7,18 +7,18 @@ import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import styles from './AdminTable1.module.css';
 
 const data = [
-  { id: 1, productid:'DH001' , name: 'John Doe', phone: '1234567890',value:'100.000VND', pay:'100.000VND' , status: 'Hoạt động',info: 'Chi tiết ->'},
-  { id: 2, productid: 'DH002',name: 'Jane Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Không hoạt động',info: 'Chi tiết ->'},
-  { id: 3, productid:'DH003', name: 'Iron Mike', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Hoạt động',info: 'Chi tiết ->'},
-  { id: 4, productid:'DH004', name: 'Will Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Không hoạt động',info: 'Chi tiết ->'},
-  { id: 5, productid:'DH005', name: 'Jane Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Không hoạt động',info: 'Chi tiết ->'},
-  { id: 6, productid:'DH006',name: 'Jane Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Không hoạt động',info: 'Chi tiết ->'},
-  { id: 7, productid:'DH007', name: 'John Doe', phone: '1234567890',value:'100.000VND',pay:'100.000VND' , status: 'Hoạt động',info: 'Chi tiết ->'},
-  { id: 8, productid:'DH008', name: 'Jane Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Không hoạt động',info: 'Chi tiết ->' },
-  { id: 9, productid:'DH009', name: 'Iron Mike', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Hoạt động',info: 'Chi tiết ->'},
-  { id: 10, productid:'DH010', name: 'Will Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Không hoạt động',info: 'Chi tiết ->'},
-  { id: 11, productid:'DH011', name: 'Jane Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' ,  status: 'Không hoạt động',info: 'Chi tiết ->'},
-  { id: 12, productid:'DH012', name: 'Jane Smith', phone: '0987654321',value:'100.000VND',pay:'100.000VND' , status: 'Không hoạt động',info: 'Chi tiết ->'},
+  { id: 1, productid: 'DH001', name: 'John Doe', phone: '1234567890', value: '100.000VND', pay: '100.000VND', status: 'Hoạt động', info: 'Chi tiết ->' },
+  { id: 2, productid: 'DH002', name: 'Jane Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
+  { id: 3, productid: 'DH003', name: 'Iron Mike', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Hoạt động', info: 'Chi tiết ->' },
+  { id: 4, productid: 'DH004', name: 'Will Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
+  { id: 5, productid: 'DH005', name: 'Jane Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
+  { id: 6, productid: 'DH006', name: 'Jane Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
+  { id: 7, productid: 'DH007', name: 'John Doe', phone: '1234567890', value: '100.000VND', pay: '100.000VND', status: 'Hoạt động', info: 'Chi tiết ->' },
+  { id: 8, productid: 'DH008', name: 'Jane Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
+  { id: 9, productid: 'DH009', name: 'Iron Mike', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Hoạt động', info: 'Chi tiết ->' },
+  { id: 10, productid: 'DH010', name: 'Will Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
+  { id: 11, productid: 'DH011', name: 'Jane Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
+  { id: 12, productid: 'DH012', name: 'Jane Smith', phone: '0987654321', value: '100.000VND', pay: '100.000VND', status: 'Không hoạt động', info: 'Chi tiết ->' },
   // Add more rows as needed
 ];
 
@@ -59,7 +59,7 @@ export default function AdminOrderTable() {
                 <TableCell>{row.status}</TableCell>
                 <TableCell>{row.info}</TableCell>
               </TableRow>
-          ))}
+            ))}
         </TableBody>
       </Table>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>

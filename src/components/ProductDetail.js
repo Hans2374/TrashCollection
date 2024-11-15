@@ -167,7 +167,7 @@ const ProductDetail = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#FCF9F3",
+        backgroundColor: colors.color1,
         minHeight: "100vh",
         width: "100vw",
       }}
@@ -180,7 +180,7 @@ const ProductDetail = () => {
       <Box sx={{ maxWidth: 1200, mx: "auto", mt: 4, px: 2, marginBottom: '40px', marginTop: '70px' }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6} sx={{ width: '100%', position: "relative" }}>
-            <Box sx={{ position: "relative", overflow: "hidden", border: `2px solid ${colors.color2}`,borderRadius: "8px", }}>
+            <Box sx={{ position: "relative", overflow: "hidden", border: `2px solid ${colors.color2}`, borderRadius: "8px", }}>
               {isSmallScreen ? (
                 <Slider {...settings}>
                   {images.map((img, index) => (
@@ -437,7 +437,7 @@ const ProductDetail = () => {
               <Grid item xs={6} sm={6} md={4} lg={3} key={product.id}>
                 <Card
                   sx={{
-                    backgroundColor: "#FCF9F3",
+                    backgroundColor: colors.color1,
                     position: "relative",
                     width: "100%",
                     height: "100%",
@@ -459,7 +459,7 @@ const ProductDetail = () => {
 
                   {/* Product Details */}
                   <CardContent
-                    sx={{ textAlign: "center", backgroundColor: "#FCF9F3", }}
+                    sx={{ textAlign: "center", backgroundColor: colors.color1, }}
                   >
                     <Typography
                       variant="body1"

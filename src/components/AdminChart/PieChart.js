@@ -12,7 +12,7 @@ const data = [
 const COLORS = ["#FBD178", "#F06562", "#66BB6A", "#72B0E0"];
 
 const BasicPie = () => {
-  const handleClick = () => {};
+  const handleClick = () => { };
 
   return (
     <Box sx={{ width: "100%", height: "500px", m: "20px 0 0 0" }}>
@@ -35,7 +35,7 @@ const BasicPie = () => {
               />
             ))}
           </Pie>
-          
+
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>

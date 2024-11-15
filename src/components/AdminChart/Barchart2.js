@@ -18,12 +18,12 @@ export default function BarChart2() {
   const [isHidden, setIsHidden] = React.useState(true);
   return (
     <BarChart
-    sx={{textAlign:'left'}}
+      sx={{ textAlign: 'left' }}
       dataset={data}
-      yAxis={[{ scaleType: 'band', dataKey: 'name'}]}
-      series={[{ dataKey: 'value', label: 'đơn vị' , color: '#9CCAE0'}]}
+      yAxis={[{ scaleType: 'band', dataKey: 'name' }]}
+      series={[{ dataKey: 'value', label: 'đơn vị', color: '#9CCAE0' }]}
       layout="horizontal"
-      
+
       slotProps={{ legend: { hidden: isHidden } }}
       {...chartSetting}
     />

@@ -227,7 +227,7 @@ const Sell = () => {
                                 width: isLgOrLarger ? '8px' : '0px', // Hide scrollbar for smaller screens
                             },
                             '&::-webkit-scrollbar-thumb': {
-                                backgroundColor: '#214738',
+                                backgroundColor: colors.color2,
                                 borderRadius: '10px',
                             },
                             '&::-webkit-scrollbar-track': {
@@ -257,7 +257,7 @@ const Sell = () => {
                                                 height: '100%',
                                                 objectFit: 'cover',
                                                 boxSizing: 'border-box',
-                                                border: '4px solid #214738',
+                                                border: `4px solid ${colors.color2}`,
                                                 borderRadius: '15px 0px 0px 15px',
                                             }}
                                         />
@@ -269,15 +269,15 @@ const Sell = () => {
                                                 width: '1000px',
                                                 pl: '10px',
                                                 boxSizing: 'border-box',
-                                                borderTop: '4px solid #214738',
-                                                borderRight: '4px solid #214738',
-                                                borderBottom: '4px solid #214738',
+                                                borderTop: `4px solid ${colors.color2}`,
+                                                borderRight: `4px solid ${colors.color2}`,
+                                                borderBottom: `4px solid ${colors.color2}`,
                                                 borderRadius: '0px 0px 15px 0px',
                                             }}>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
                                                 <Typography sx={{ alignSelf: 'center', fontFamily: 'KoHo', fontWeight: 400, fontSize: '15px', lineHeight: '19.5px', color: colors.color2 }}>{card.title}</Typography>
                                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                    <IconButton onClick={() => handleDecrement(card.id)} sx={{ border: '3px solid #214738', borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+                                                    <IconButton onClick={() => handleDecrement(card.id)} sx={{ border: `3px solid ${colors.color2}`, borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
                                                         <RemoveIcon />
                                                     </IconButton>
                                                     <TextField
@@ -285,7 +285,7 @@ const Sell = () => {
                                                         onChange={(event) => handleChange(card.id, event)}
                                                         inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0, width: '40px' } }}
                                                         sx={{
-                                                            border: '3px solid #214738',
+                                                            border: `3px solid ${colors.color2}`,
                                                             maxWidth: '40px',
                                                             '& .MuiOutlinedInput-root': {
                                                                 '& fieldset': {
@@ -294,7 +294,7 @@ const Sell = () => {
                                                             },
                                                         }}
                                                     />
-                                                    <IconButton onClick={() => handleIncrement(card.id)} sx={{ border: '3px solid #214738', borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                                                    <IconButton onClick={() => handleIncrement(card.id)} sx={{ border: `3px solid ${colors.color2}`, borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
                                                         <AddIcon />
                                                     </IconButton>
                                                 </Box>
@@ -356,7 +356,7 @@ const Sell = () => {
                             lineHeight: '31.2px',
                             color: colors.color2,
                             p: 1,
-                            border: '3px solid #214738',
+                            border: `3px solid ${colors.color2}`,
                             borderRadius: '10px',
                         }}>
                         Tổng: 240.000đ
@@ -399,7 +399,7 @@ const Sell = () => {
                         sx={{
                             p: { lg: '5', md: '5', sm: '5', xs: '0' },
                             pt: { lg: '0', md: '0', sm: '0', xs: '0' },
-                            border: '5px solid #214738',
+                            border: `5px solid ${colors.color2}`,
                             borderTop: 'none',
                             overflowY: 'auto',
                             '&::-webkit-scrollbar': {
@@ -478,7 +478,7 @@ const Sell = () => {
                                             sx={{ width: { lg: '324px', md: '324px', sm: '100%', xs: '100%' }, height: '50px', fontFamily: 'KoHo', fontWeight: 400, fontSize: '24px', lineHeight: '31.2px' }}
                                         />
                                     </Box>
-                                    <Box sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: { lg: '150px', md: '150px', sm: '150px', xs: '100%' }, border: '3px solid #214738', borderRadius: '5px', justifyContent: 'center', alignContent: 'center', p: 1 }}>
+                                    <Box sx={{ width: { lg: '324px', md: '324px', sm: '324px', xs: '100%' }, height: { lg: '150px', md: '150px', sm: '150px', xs: '100%' }, border: `3px solid ${colors.color2}`, borderRadius: '5px', justifyContent: 'center', alignContent: 'center', p: 1 }}>
                                         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', gap: 5, p: '0px 5px' }}>
                                             <Typography sx={{ fontFamily: 'KoHo', fontWeight: 400, fontSize: { lg: '24px', md: '24px', sm: '24px', xs: '18px' }, lineHeight: '31.2px' }}>Tiền hàng</Typography>
                                             <Typography sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: { lg: '20px', md: '20px', sm: '20px', xs: '14px' }, lineHeight: '26px', alignSelf: 'center' }}>60.000đ</Typography>
