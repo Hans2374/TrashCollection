@@ -149,7 +149,7 @@ const ProfileListTable = () => {
                     {/* Main content box */}
                     <Box
                         sx={{
-                            border: '5px solid #214738',
+                            border: `5px solid ${colors.color2}`,
                             borderRadius: '20px',
                             padding: '16px',
                             display: 'flex',
@@ -165,10 +165,10 @@ const ProfileListTable = () => {
                             sx={{
                                 width: 212,
                                 height: 198,
-                                borderLeft: '4px solid #214738',  // Border only on the left side
-                                borderRight: '4px solid #214738',
-                                borderTop: '4px solid #214738',
-                                borderBottom: '4px solid #214738',
+                                borderLeft: `4px solid ${colors.color2}`,
+                                borderRight: `4px solid ${colors.color2}`,
+                                borderTop: `4px solid ${colors.color2}`,
+                                borderBottom: `4px solid ${colors.color2}`,
                                 borderTopLeftRadius: '20px',       // Rounded corner on top-left
                                 borderBottomLeftRadius: '20px',    // Rounded corner on bottom-left
                                 borderTopRightRadius: '3px',       // No rounded corner on top-right
@@ -181,45 +181,45 @@ const ProfileListTable = () => {
                         <Box sx={{ flexGrow: 1 }}>
                             <Grid container spacing={2} sx={{ marginTop: '1px', marginBottom: '1px' }}>
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         Số lượng sản phẩm:
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         {order.productQuantity}
                                     </Typography>
                                 </Grid>
 
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         Tổng:
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         {formatCurrency(order.itemPrice - order.discount + order.shippingFee)} <span>| {order.bonusPoint}🌱 </span>
                                     </Typography>
                                 </Grid>
 
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         Địa chỉ:
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         {order.address}
                                     </Typography>
                                 </Grid>
 
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'left', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         Tình trạng:
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: '#214738' }}>
+                                    <Typography variant="body2" sx={{ textAlign: 'right', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', color: colors.color2 }}>
                                         {order.status}
                                     </Typography>
                                 </Grid>

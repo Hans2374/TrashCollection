@@ -18,7 +18,7 @@ const NewsDetail = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    
+
     useEffect(() => {
         const scrollInterval = setInterval(() => {
             if (scrollContainerRef.current) {
@@ -127,7 +127,7 @@ const NewsDetail = () => {
     return (
         <>
             <ScrollToTop />
-            <Header1 isLogin={isLogin}/>
+            <Header1 isLogin={isLogin} />
 
             {/* Background image */}
             <Box
