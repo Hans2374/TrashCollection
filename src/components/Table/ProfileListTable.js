@@ -1,5 +1,7 @@
-import React from 'react';
-import { Box, Grid, Typography, Divider } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Grid, Typography, Divider, Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 
 const orders = [
     {
@@ -64,6 +66,24 @@ const orders = [
     }
 ];
 
+const CustomButton = styled(Button)({
+    color: '#214738', // Màu chữ
+    border: '2px solid #214738',
+    borderRadius: '10px',
+    textTransform: 'capitalize', // Không viết hoa chữ
+    fontSize: 16, // Cỡ chữ
+    fontWeight: 400, // Độ đậm chữ
+    fontFamily: 'KoHo',
+    width: '176px',
+    height: '44px',
+    padding: '6px 12px', // Khoảng cách nội dung
+    '&:hover': {
+        borderColor: '#214738',
+        backgroundColor: '#214738', // Màu nền khi hover
+        color: 'white',
+    },
+});
+
 const formatTimeToAMPM = (time24) => {
     const [hours, minutes] = time24.split(':').map(Number);
     const ampm = hours >= 12 ? 'PM' : 'AM';
@@ -76,11 +96,39 @@ const formatCurrency = (value) => {
     return value.toLocaleString('vi-VN') + 'đ';
 }
 
+
 const ProfileListTable = () => {
+
+    const [visibleOrders, setVisibleOrders] = useState(3);
+    const [showMore, setShowMore] = useState(true);
+    const [open, setOpen] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+
+
+    const handleShowMore = () => {
+        setVisibleOrders(orders.length);
+        setShowMore(false);
+    };
+
+
+    const handleHideOrders = () => {
+        setVisibleOrders(3);
+        setShowMore(true);
+    };
+
+    const handleDialogOpen = (order) => {
+        setSelectedOrder(order);
+        setOpen(true);
+    };
+
+    const handleDialogClose = () => {
+        setOpen(false);
+        setSelectedOrder(null);
+    };
     return (
         <Box sx={{ marginTop: '1%', marginX: { xs: '5%', sm: '10%', md: '15%', lg: '20%' }, marginBottom: '50px' }}>
             {/* Lặp qua mảng orders và hiển thị thông tin cho mỗi đơn hàng */}
-            {orders.map((order, index) => (
+            {orders.slice(0, visibleOrders).map((order, index) => (
                 <Box key={order.ID} sx={{ marginBottom: '20px' }}>
                     {/* Header row with date on the left and "Chi tiết" on the right, aligned to the right */}
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1px' }}>
@@ -91,6 +139,8 @@ const ProfileListTable = () => {
                             variant="body2"
                             color="primary"
                             sx={{ cursor: 'pointer', marginRight: '16px', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', lineHeight: '26px', color: '#214738' }}
+                            onClick={() => handleDialogOpen(order)}
+
                         >
                             Chi tiết
                         </Typography>
@@ -178,7 +228,72 @@ const ProfileListTable = () => {
                     </Box>
                 </Box>
             ))}
+
+            {showMore ? (
+                <Box sx={{ textAlign: 'center', marginTop: '15px' }}>
+                    <CustomButton onClick={handleShowMore}>Xem thêm</CustomButton>
+                </Box>
+            ) : (
+                <Box sx={{ textAlign: 'center', marginTop: '15px' }}>
+                    <CustomButton onClick={handleHideOrders}>Ẩn</CustomButton>
+                </Box>
+            )}
+
+            <div>
+
+
+                <Dialog
+                    open={open}
+                    onClose={handleDialogClose}
+                    maxWidth="sm"
+                    fullWidth
+                    PaperProps={{
+                        sx: {
+                            border: '10px solid #214738',
+                            borderRadius: '15px',
+
+                            backgroundColor: '#214738', // Màu nền xanh đậm
+                        },
+                    }}
+                >
+                    <DialogTitle sx={{ textAlign: 'center', color: '#ffffff', fontWeight: 'bold' }}>
+                        CHI TIẾT ĐƠN
+                    </DialogTitle>
+                    <DialogContent sx={{ backgroundColor: '#FCF9F3', paddingBottom: 'auto' }}>
+                        {selectedOrder && (
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Typography sx={{ fontWeight: 'bold', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', lineHeight: '26px', color: '#214738' }}>Mã đơn hàng:</Typography>
+                                    <Typography sx={{ fontWeight: 'normal', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '400', lineHeight: '26px', color: '#214738' }}>{selectedOrder.ID}</Typography>
+                                </Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Typography sx={{ fontWeight: 'bold', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', lineHeight: '26px', color: '#214738' }}>Người nhận:</Typography>
+                                    <Typography sx={{ fontWeight: 'normal', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '400', lineHeight: '26px', color: '#214738' }}>{selectedOrder.recipient}</Typography>
+                                </Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Typography sx={{ fontWeight: 'bold', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', lineHeight: '26px', color: '#214738' }}>Số điện thoại:</Typography>
+                                    <Typography sx={{ fontWeight: 'normal', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '400', lineHeight: '26px', color: '#214738' }}>{selectedOrder.phoneNumber}</Typography>
+                                </Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Typography sx={{ fontWeight: 'bold', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', lineHeight: '26px', color: '#214738' }}>Địa chỉ:</Typography>
+                                    <Typography sx={{ fontWeight: 'normal', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '400', lineHeight: '26px', color: '#214738' }}>{selectedOrder.address}</Typography>
+                                </Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Typography sx={{ fontWeight: 'bold', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', lineHeight: '26px', color: '#214738' }}>Tình trạng:</Typography>
+                                    <Typography sx={{ fontWeight: 'normal', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '400', lineHeight: '26px', color: '#214738' }}>{selectedOrder.status}</Typography>
+                                </Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <Typography sx={{ fontWeight: 'bold', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '600', lineHeight: '26px', color: '#214738' }}>Sản phẩm:</Typography>
+                                    <Typography sx={{ fontWeight: 'normal', fontSize: '20px', fontFamily: 'KoHo', fontWeight: '400', lineHeight: '26px', color: '#214738' }}>{selectedOrder.productQuantity}</Typography>
+                                </Box>
+                            </Box>
+                        )}
+                    </DialogContent>
+                </Dialog>
+            </div>
         </Box>
+
+
     );
 };
 
