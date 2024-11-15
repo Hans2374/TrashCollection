@@ -30,7 +30,7 @@ export const AdminHeader = () => {
             sx={{
                 zIndex: 10,
                 height: '100px',
-                backgroundColor: '#F8F3E7',
+                backgroundColor: colors.color3,
                 fontFamily: 'KoHo',
                 display: 'flex',
                 justifyContent: 'space-between',

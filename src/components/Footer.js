@@ -10,7 +10,7 @@ export const Footer = () => {
                 fontFamily: 'KoHo',
                 height: 'auto',
                 backgroundColor: colors.color2,
-                color: '#F8F3E7',
+                color: colors.color3,
                 fontFamily: 'KoHo, sans-serif',
                 padding: '0 16px',
                 display: 'flex',
@@ -32,7 +32,7 @@ export const Footer = () => {
                                 width: '8px',
                                 height: '8px',
                                 borderRadius: '50%',
-                                backgroundColor: '#F8F3E7',
+                                backgroundColor: colors.color3,
                                 marginRight: '10px'
                             }}
                         />
@@ -44,7 +44,7 @@ export const Footer = () => {
                     sx={{
                         fontFamily: 'KoHo',
                         marginLeft: { md: '150px' },
-                        color: '#F8F3E7',
+                        color: colors.color3,
                         textDecoration: 'none',
                         '&:hover': { textDecoration: 'underline' },
                         marginBottom: '10px',
@@ -58,10 +58,10 @@ export const Footer = () => {
                 </Typography>
 
                 <Box sx={{ fontFamily: 'KoHo', display: 'flex', gap: '20px', marginTop: '20px', marginBottom: '50px', marginLeft: { md: '150px' }, }}>
-                    <Facebook sx={{ color: '#F8F3E7', '&:hover': { color: '#1877F2' } }} />
-                    <YouTube sx={{ color: '#F8F3E7', '&:hover': { color: '#FF0000' } }} />
-                    <Instagram sx={{ color: '#F8F3E7', '&:hover': { color: '#E1306C' } }} />
-                    <Twitter sx={{ color: '#F8F3E7', '&:hover': { color: '#1DA1F2' } }} />
+                    <Facebook sx={{ color: colors.color3, '&:hover': { color: '#1877F2' } }} />
+                    <YouTube sx={{ color: colors.color3, '&:hover': { color: '#FF0000' } }} />
+                    <Instagram sx={{ color: colors.color3, '&:hover': { color: '#E1306C' } }} />
+                    <Twitter sx={{ color: colors.color3, '&:hover': { color: '#1DA1F2' } }} />
                 </Box>
             </Box>
 

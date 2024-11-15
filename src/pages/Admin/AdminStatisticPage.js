@@ -33,7 +33,7 @@ const AdminStatisticPage = () => {
           </FormControl>
         </Box>
 
-        <Box sx={{ bgcolor: "#F8F3E7", height: "270px", }}>
+        <Box sx={{ bgcolor: colors.color3, height: "270px", }}>
           <Typography sx={{ fontSize: "25px", padding: "20px", color: "#2F4F4F", textAlign: "left", marginLeft: "95px", fontFamily: "KoHo", fontWeight: "bold" }}>Tổng quan</Typography>
           <TotalOrderSection />
         </Box>
@@ -43,7 +43,7 @@ const AdminStatisticPage = () => {
           <MyChart />
         </Box>
 
-        <Box sx={{ bgcolor: "#F8F3E7", height: "750px", alignContent: "center", alignItems: "center" }}>
+        <Box sx={{ bgcolor: colors.color3, height: "750px", alignContent: "center", alignItems: "center" }}>
           <Typography sx={{ fontSize: "25px", color: "#2F4F4F", textAlign: "left", marginLeft: "115px", fontFamily: "KoHo", fontWeight: "bold" }}>Doanh số theo hàng hóa</Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <BasicPie />
