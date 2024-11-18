@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import ProfileList from './Table/ProfileListTable';
 import { Footer } from './Footer';
 
+
 const Profilepage = () => {
     const isLogin = useSelector((state) => state.auth.isLogin);
 
@@ -17,11 +18,24 @@ const Profilepage = () => {
 
     const scrollContainerRef = useRef(null);
 
-    const [selectedOption, setSelectedOption] = useState('Cá nhân'); // Default to "Cá nhân"
+    const [selected, setSelected] = useState("personal");
 
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
+    const data = {
+        personal: {
+            phone: "0123455678",
+            address: "HCM, Q.Bình Thạnh, P.13, Đ.ABC, số 67/12",
+            email: "Example@gmail.com",
+        },
+        owner: {
+            phone: "0000000000",
+            address: "HN, Q.Hoàn Kiếm, P.4, Đ.ABC, số 67/12",
+            email: "Example@gmail.com",
+        },
     };
+
+    const currentData = data[selected];
+
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -127,29 +141,57 @@ const Profilepage = () => {
                 {/* Container for Personal Info Card and Action Icons */}
                 <Box display="flex" flexDirection="column" alignItems="flex-end">
                     {/* Personal Info Card */}
-                    <Card sx={{ maxWidth: 400, borderRadius: 2, border: '3px solid #214738' }}>
+                    <Card sx={{ maxWidth: 400, borderRadius: 2, border: "3px solid #214738" }}>
                         <CardContent>
-                            <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                                <Typography variant="h6" fontWeight="bold" color="darkgreen">
+                            {/* Header */}
+                            <Box display="flex" justifyContent="center" alignItems="center" mb={1} position="relative">
+                                {/* Cá nhân */}
+                                <Typography
+                                    variant="h6"
+                                    fontWeight="bold"
+                                    sx={{
+                                        cursor: "pointer",
+                                        color: selected === "personal" ? "#214738" : "gray",
+                                        paddingBottom: selected === "personal" ? "4px" : "0",
+                                        borderBottom: selected === "personal" ? "2px solid #214738" : "none",
+                                        marginRight: "16px",
+                                        fontFamily: 'KoHo',
+                                        fontWeight: '700',
+                                        fontSize: '24px',
+                                    }}
+                                    onClick={() => setSelected("personal")}
+                                >
                                     Cá nhân
                                 </Typography>
-                                <Typography variant="body2" color="gray">
+                                {/* Chủ vựa */}
+                                <Typography
+                                    variant="h6"
+                                    fontWeight="bold"
+                                    sx={{
+                                        cursor: "pointer",
+                                        color: selected === "owner" ? "#214738" : "gray",
+                                        paddingBottom: selected === "owner" ? "4px" : "0",
+                                        borderBottom: selected === "owner" ? "2px solid #214738" : "none",
+                                    }}
+                                    onClick={() => setSelected("owner")}
+                                >
                                     Chủ vựa
                                 </Typography>
                             </Box>
-                            <Divider sx={{ borderColor: 'darkgreen' }} />
+                            <Divider sx={{ borderColor: "darkgreen" }} />
+                            {/* Nội dung */}
                             <Box mt={2}>
                                 <Box display="flex" alignItems="center" gap={1} mb={1}>
                                     <Phone color="action" />
-                                    <Typography>0123455678</Typography>
+                                    <Typography>{currentData.phone}</Typography>
                                 </Box>
                                 <Box display="flex" alignItems="center" gap={1} mb={1}>
                                     <LocationOn color="action" />
-                                    <Typography>HCM, Q.Bình Thạnh, P.13, Đ.ABC, số 67/12</Typography>
+                                    <Typography>{currentData.address}</Typography>
                                 </Box>
                                 <Box display="flex" alignItems="center" gap={1}>
                                     <Email color="action" />
-                                    <Typography>Example@gmail.com</Typography>
+                                    <Typography>{currentData.email}</Typography>
                                 </Box>
                             </Box>
                         </CardContent>
