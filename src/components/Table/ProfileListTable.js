@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Grid, Typography, Divider, Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Box, Grid, Typography, Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import colors from '../../colors';
 
 
 const orders = [
