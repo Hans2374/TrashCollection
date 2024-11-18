@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { routes } from "../routes/routes";
-import colors from '../colors';
 
 export const Header2 = () => {
     const [visible, setVisible] = useState(true);
@@ -40,7 +39,7 @@ export const Header2 = () => {
 
     const menuItemStyle = {
         fontFamily: 'KoHo',
-        color: colors.color2,
+        color: '#214738',
         fontSize: '20px',
         transition: 'font-weight 0.2s, text-shadow 0.2s',
         '&:hover': {
@@ -61,10 +60,10 @@ export const Header2 = () => {
             sx={{
                 zIndex: 10,
                 position: 'sticky',
-                top: '40px', //test cho trang profile
+                //top: '40px', //test cho trang profile
                 top: visible ? (lastScrollY > 0 ? '40px' : '461px') : '-100px', // Adjust top based on scroll position
                 height: '100px',
-                backgroundColor: colors.color3,
+                backgroundColor: '#F8F3E7',
                 fontFamily: 'KoHo',
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -82,7 +81,7 @@ export const Header2 = () => {
                         fontFamily: 'KoHo',
                         marginLeft: { md: '100px' },
                         fontWeight: 'bold',
-                        color: colors.color2,
+                        color: '#214738',
                     }}
                 >
                     LOGO/TÊN
@@ -93,7 +92,7 @@ export const Header2 = () => {
                 <>
                     {/* Icon drawer */}
                     <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
-                        <MenuIcon sx={{ color: colors.color2 }} />
+                        <MenuIcon sx={{ color: '#214738' }} />
                     </IconButton>
 
                     {/* menu */}
@@ -103,7 +102,7 @@ export const Header2 = () => {
                         onClose={toggleDrawer(false)}
                         PaperProps={{
                             sx: {
-                                backgroundColor: colors.color1,
+                                backgroundColor: '#FCF9F3',
                             },
                         }}
                     >
@@ -115,7 +114,7 @@ export const Header2 = () => {
                                             justifyContent: 'center',
                                             textAlign: 'center',
                                             fontFamily: 'KoHo',
-                                            color: colors.color2,
+                                            color: '#214738',
                                             transition: 'font-weight 0.2s, text-shadow 0.2s',
                                             '&:hover': {
                                                 fontWeight: 'bold',

@@ -8,65 +8,6 @@ import colors from '../colors';
 import { useSelector } from 'react-redux';
 import ProfileList from './Table/ProfileListTable';
 import { Footer } from './Footer';
-const orders = [
-    {
-        ID: "DH001",
-        orderTime: "10:30",
-        orderDate: "13/11/2024",
-        productQuantity: 5,
-        address: "123 Đường A, Quận 1, TP. HCM",
-        status: "Đã giao",
-        recipient: "Nguyễn Văn A",
-        phoneNumber: "0901234567",
-        itemPrice: 500000,
-        shippingFee: 20000,
-        discount: 50000,
-        img: "sec1.png"
-    },
-    {
-        ID: "DH002",
-        orderTime: "14:15",
-        orderDate: "12/11/2024",
-        productQuantity: 2,
-        address: "456 Đường B, Quận 3, TP. HCM",
-        status: "Đang xử lý",
-        recipient: "Trần Thị B",
-        phoneNumber: "0902345678",
-        itemPrice: 300000,
-        shippingFee: 15000,
-        discount: 20000,
-        img: "sec2.png"
-    },
-    {
-        ID: "DH003",
-        orderTime: "09:45",
-        orderDate: "11/11/2024",
-        productQuantity: 3,
-        address: "789 Đường C, Quận 5, TP. HCM",
-        status: "Chưa giao",
-        recipient: "Lê Văn C",
-        phoneNumber: "0903456789",
-        itemPrice: 450000,
-        shippingFee: 25000,
-        discount: 30000,
-        img: "sec3.png"
-    },
-    {
-        ID: "DH004",
-        orderTime: "16:00",
-        orderDate: "10/11/2024",
-        productQuantity: 1,
-        address: "101 Đường D, Quận 7, TP. HCM",
-        status: "Đã hủy",
-        recipient: "Phạm Thị D",
-        phoneNumber: "0904567890",
-        itemPrice: 200000,
-        shippingFee: 10000,
-        discount: 0,
-        img: "sec4.png"
-    }
-];
-
 
 const Profilepage = () => {
     const isLogin = useSelector((state) => state.auth.isLogin);
@@ -173,7 +114,7 @@ const Profilepage = () => {
                 {/* Avatar and User Info on the left */}
                 <Box textAlign="center">
                     <Avatar
-                        sx={{ width: 80, height: 80, bgcolor: colors.color2 }}
+                        sx={{ width: 80, height: 80, bgcolor: "#214738" }}
                     />
                     <Typography variant="h6" fontWeight="bold" mt={1}>
                         USER001
@@ -186,7 +127,7 @@ const Profilepage = () => {
                 {/* Container for Personal Info Card and Action Icons */}
                 <Box display="flex" flexDirection="column" alignItems="flex-end">
                     {/* Personal Info Card */}
-                    <Card sx={{ maxWidth: 400, borderRadius: 2, border: `3px solid ${colors.color2}` }}>
+                    <Card sx={{ maxWidth: 400, borderRadius: 2, border: '3px solid #214738' }}>
                         <CardContent>
                             <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
                                 <Typography variant="h6" fontWeight="bold" color="darkgreen">
@@ -243,7 +184,7 @@ const Profilepage = () => {
                     fontWeight: 'bold',
                     textAlign: 'center',
                     marginTop: 6, // Space between vector and title
-                    color: colors.color2, // Customize the color here
+                    color: '#214738', // Customize the color here
                     fontFamily: 'KoHo',
                     fontSize: '24px',
                 }}
@@ -257,7 +198,7 @@ const Profilepage = () => {
                 sx={{
                     width: '426px', // Set the width of the search bar
                     height: '29px',
-                    border: `1.5px solid ${colors.color2}`, // Customize border color here
+                    border: '1.5px solid #214738', // Customize border color here
                     borderRadius: '5px',
                     padding: '4px 8px',
                     margin: '0 auto',
@@ -266,7 +207,7 @@ const Profilepage = () => {
                     justifyContent: 'flex-start', // Control the alignment: 'flex-start', 'center', or 'flex-end'
                 }}
             >
-                <IconButton size="small" sx={{ color: colors.color2, marginLeft: '1px', }}>
+                <IconButton size="small" sx={{ color: '#214738', marginLeft: '1px', }}>
                     <Search />
                 </IconButton>
                 <InputBase
@@ -274,7 +215,7 @@ const Profilepage = () => {
                     sx={{
                         ml: 1,
                         flex: 1,
-                        color: colors.color2, // Customize text color here
+                        color: '#214738', // Customize text color here
                         fontFamily: 'KoHo',
                         fontWeight: '400',
                         fontSize: '20px',
