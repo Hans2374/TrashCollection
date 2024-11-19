@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Avatar, Box, Card, CardContent, Typography, Divider, IconButton, InputBase } from '@mui/material';
+import { Button, Avatar, Box, Card, CardContent, Typography, Divider, IconButton, InputBase } from '@mui/material';
 import { Email, LocationOn, Phone, Settings, Lock, Edit, Search } from '@mui/icons-material';
 import { Header1 } from './Header1';
 import { Header2 } from './Header2';
@@ -8,7 +8,18 @@ import colors from '../colors';
 import { useSelector } from 'react-redux';
 import ProfileList from './Table/ProfileListTable';
 import { Footer } from './Footer';
-
+import {
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    Grid,
+    TextField
+} from '@mui/material';
 
 const Profilepage = () => {
     const isLogin = useSelector((state) => state.auth.isLogin);
@@ -19,6 +30,11 @@ const Profilepage = () => {
     const scrollContainerRef = useRef(null);
 
     const [selected, setSelected] = useState("personal");
+
+    const [openDialog, setOpenDialog] = useState(false);
+    const [city, setCity] = useState('');
+    const [district, setDistrict] = useState('');
+    const [ward, setWard] = useState('');
 
     const data = {
         personal: {
@@ -35,7 +51,25 @@ const Profilepage = () => {
 
     const currentData = data[selected];
 
+    const handleDialogOpen = () => {
+        setOpenDialog(true);
+    };
 
+    const handleDialogClose = () => {
+        setOpenDialog(false);
+    };
+
+    const handleCityChange = (event) => {
+        setCity(event.target.value);
+    };
+
+    const handleDistrictChange = (event) => {
+        setDistrict(event.target.value);
+    };
+
+    const handleWardChange = (event) => {
+        setWard(event.target.value);
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -53,8 +87,6 @@ const Profilepage = () => {
 
         return () => clearInterval(scrollInterval);
     }, []);
-
-
 
     return (
         <>
@@ -141,7 +173,7 @@ const Profilepage = () => {
                 {/* Container for Personal Info Card and Action Icons */}
                 <Box display="flex" flexDirection="column" alignItems="flex-end">
                     {/* Personal Info Card */}
-                    <Card sx={{ maxWidth: 400, borderRadius: 2, border: "3px solid #214738" }}>
+                    <Card sx={{ maxWidth: 487, borderRadius: 2, border: "3px solid #214738", height: '197px' }}>
                         <CardContent>
                             {/* Header */}
                             <Box display="flex" justifyContent="center" alignItems="center" mb={1} position="relative">
@@ -179,25 +211,54 @@ const Profilepage = () => {
                                 </Typography>
                             </Box>
                             <Divider sx={{ borderColor: "darkgreen" }} />
-                            {/* Nội dung */}
-                            <Box mt={2}>
-                                <Box display="flex" alignItems="center" gap={1} mb={1}>
-                                    <Phone color="action" />
-                                    <Typography>{currentData.phone}</Typography>
+
+                            {/* Nội dung phụ thuộc vào tab */}
+                            {selected === "personal" ? (
+                                <Box mt={2}>
+                                    <Box display="flex" alignItems="center" gap={1} mb={1}>
+                                        <Phone color="action" />
+                                        <Typography sx={{ fontFamily: 'KoHo', fontWeight: '400', fontSize: '20px', lineHeight: '26px' }}>{currentData.phone}</Typography>
+                                    </Box>
+                                    <Box display="flex" alignItems="center" gap={1} mb={1}>
+                                        <LocationOn color="action" />
+                                        <Typography sx={{ fontFamily: 'KoHo', fontWeight: '400', fontSize: '20px', lineHeight: '26px' }}>{currentData.address}</Typography>
+                                    </Box>
+                                    <Box display="flex" alignItems="center" gap={1}>
+                                        <Email color="action" />
+                                        <Typography sx={{ fontFamily: 'KoHo', fontWeight: '400', fontSize: '20px', lineHeight: '26px', textDecoration: 'Underline' }}>{currentData.email}</Typography>
+                                    </Box>
                                 </Box>
-                                <Box display="flex" alignItems="center" gap={1} mb={1}>
-                                    <LocationOn color="action" />
-                                    <Typography>{currentData.address}</Typography>
+                            ) : (
+                                <Box mt={2} textAlign="center">
+                                    <Typography
+                                        variant="body1"
+                                        fontWeight="bold"
+                                        color="gray"
+                                        sx={{ fontFamily: 'KoHo', fontSize: '24px', marginBottom: '18px', marginTop: '10px', lineHeight: '31.2px', textAlign: 'center', color: '#214738', fontWeight: 'normal' }}
+                                    >
+                                        Bạn chưa phải là đối tác của chúng tôi
+                                    </Typography>
+                                    <Typography
+                                        variant="body1"
+                                        color="#214738"
+                                        sx={{
+                                            textDecoration: 'underline',
+                                            fontFamily: 'KoHo',
+                                            fontSize: '26px',
+                                            cursor: 'pointer',
+                                            fontWeight: '600',
+                                            lineHeight: '34px',
+                                        }}
+                                        onClick={handleDialogOpen}
+                                    >
+                                        Đăng ký ngay
+                                    </Typography>
                                 </Box>
-                                <Box display="flex" alignItems="center" gap={1}>
-                                    <Email color="action" />
-                                    <Typography>{currentData.email}</Typography>
-                                </Box>
-                            </Box>
+                            )}
                         </CardContent>
                     </Card>
 
-                    {/* Action Icons below the info card, aligned to the right */}
+                    {/* Edit Profile Icon */}
                     <Box display="flex" gap={2} mt={1}>
                         <IconButton>
                             <Settings sx={{ color: 'darkgreen' }} />
@@ -205,70 +266,141 @@ const Profilepage = () => {
                         <IconButton>
                             <Lock sx={{ color: 'darkgreen' }} />
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={handleDialogOpen}>
                             <Edit sx={{ color: 'darkgreen' }} />
                         </IconButton>
                     </Box>
                 </Box>
             </Box>
-            <Box
-                sx={{
-                    // Adjustable border thickness and color
-                    borderBottom: `4px solid ${colors.primary || 'grey'}`, // Customize color and thickness here
-                    width: '70%',
-                    margin: '0 auto',
-                    //marginY: 2, // Optional: adds vertical spacing around the border
-                }}
-            />
-            <Typography
-                variant="h5"
-                sx={{
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    marginTop: 6, // Space between vector and title
-                    color: '#214738', // Customize the color here
-                    fontFamily: 'KoHo',
-                    fontSize: '24px',
-                }}
-            >
-                Lịch sử giao dịch
-            </Typography>
 
-            <Box
-                display="flex"
-                alignItems="center"
-                sx={{
-                    width: '426px', // Set the width of the search bar
-                    height: '29px',
-                    border: '1.5px solid #214738', // Customize border color here
-                    borderRadius: '5px',
-                    padding: '4px 8px',
-                    margin: '0 auto',
-                    marginX: '20%',
-                    marginTop: 6,
-                    justifyContent: 'flex-start', // Control the alignment: 'flex-start', 'center', or 'flex-end'
-                }}
-            >
-                <IconButton size="small" sx={{ color: '#214738', marginLeft: '1px', }}>
-                    <Search />
-                </IconButton>
-                <InputBase
-                    placeholder="Mã đơn hàng"
-                    sx={{
-                        ml: 1,
-                        flex: 1,
-                        color: '#214738', // Customize text color here
-                        fontFamily: 'KoHo',
-                        fontWeight: '400',
-                        fontSize: '20px',
-                        lineHeight: '26px',
-                    }}
-                />
-            </Box>
+            {/* Dialog for Edit Profile */}
+            <Dialog open={openDialog} onClose={handleDialogClose}
+                maxWidth
+                fullWidth
+                PaperProps={{
+                    sx: {
+                        border: "10px solid #214738",
+                        borderRadius: "15px",
+                        backgroundColor: "#FCF9F3",
+                        width: '915px',
+                        height: '418px',
+                    },
+                }}>
+                <DialogTitle sx={{
+                    textAlign: 'center',
+                    backgroundColor: "#214738",
+                    border: 'none'
+
+                }}>Chỉnh sửa thông tin</DialogTitle>
+                <DialogContent >
+                    <Box>
+                        <Grid container spacing={2} sx={{ marginTop: '5px', justifyContent: 'center' }}>
+                            {/* First Row */}
+                            <Grid item xs={6}>
+                                {/* City Dropdown */}
+                                <FormControl fullWidth sx={{ display: 'flex', justifyContent: 'center' }}>
+                                    <InputLabel>Chọn Thành Phố</InputLabel>
+                                    <Select value="HCM" sx={{ marginTop: '5px', width: '100%', height: '49px' }}>
+                                        <MenuItem value="HCM">HCM</MenuItem>
+                                        <MenuItem value="HN">HN</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                {/* District Dropdown */}
+                                <FormControl fullWidth sx={{ display: 'flex', justifyContent: 'center' }}>
+                                    <InputLabel>Chọn Quận</InputLabel>
+                                    <Select value="Bình Thạnh" sx={{ marginTop: '5px', width: '100%', height: '49px' }}>
+                                        <MenuItem value="Bình Thạnh">Bình Thạnh</MenuItem>
+                                        <MenuItem value="Hoàn Kiếm">Hoàn Kiếm</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+
+                            {/* Second Row */}
+                            <Grid item xs={6}>
+                                {/* Ward Dropdown */}
+                                <FormControl fullWidth sx={{ display: 'flex', justifyContent: 'center' }}>
+                                    <InputLabel>Chọn Phường</InputLabel>
+                                    <Select value="P.13" sx={{ marginTop: '5px', width: '100%', height: '49px' }}>
+                                        <MenuItem value="P.13">P.13</MenuItem>
+                                        <MenuItem value="P.4">P.4</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={6}>
+                                {/* First Text Field */}
+                                <TextField
+                                    sx={{ marginTop: '5px', width: '100%', height: '49px' }}
+                                    label="Số điện thoại"
+                                    fullWidth
+                                    value="0123456789"
+                                />
+                            </Grid>
+
+                            {/* Third Row */}
+                            <Grid item xs={6}>
+                                {/* Second Text Field */}
+                                <TextField
+                                    sx={{ marginTop: '5px', width: '100%', height: '49px' }}
+                                    label="Địa chỉ"
+                                    fullWidth
+                                    value="123 ABC Street"
+                                />
+                            </Grid>
+                            <Grid item xs={6}>
+                                {/* Third Text Field */}
+                                <TextField
+                                    sx={{ marginTop: '5px', width: '100%', height: '49px' }}
+                                    label="Ghi chú"
+                                    fullWidth
+                                    value="Some notes"
+                                />
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        onClick={handleDialogClose}
+                        sx={{
+                            border: '1px solid #214738',
+                            fontFamily: 'KoHo',
+                            fontSize: '16px',
+                            color: '#214738',
+                            transition: 'all 0.3s ease-in-out', // Tạo hiệu ứng mượt mà
+                            '&:hover': {
+                                backgroundColor: '#214738', // Màu nền khi hover
+                                color: '#ffffff', // Màu chữ khi hover
+                                borderColor: '#214738', // Màu viền khi hover
+                            },
+                        }}
+                    >
+                        Hủy
+                    </Button>
+                    <Button
+                        onClick={handleDialogClose}
+                        sx={{
+                            border: '1px solid #214738',
+                            fontFamily: 'KoHo',
+                            fontSize: '16px',
+                            color: '#214738',
+                            transition: 'all 0.3s ease-in-out', // Tạo hiệu ứng mượt mà
+                            '&:hover': {
+                                backgroundColor: '#214738', // Màu nền khi hover
+                                color: '#ffffff', // Màu chữ khi hover
+                                borderColor: '#214738', // Màu viền khi hover
+                            },
+                        }}
+                    >
+                        Lưu
+                    </Button>
+                </DialogActions>
+            </Dialog >
             <ProfileList />
             <Footer />
         </>
     );
-}
+};
 
 export default Profilepage;
