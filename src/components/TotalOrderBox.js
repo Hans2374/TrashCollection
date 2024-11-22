@@ -17,7 +17,7 @@ const TotalOrderBox = ({ title, value, percentage, isIncreasing }) => {
         padding: 3,
         borderRadius: 2,
         height: "100%",
-        width: "440px"
+        width: "400px"
       }}
     >
       <Typography variant="h9">
@@ -27,7 +27,7 @@ const TotalOrderBox = ({ title, value, percentage, isIncreasing }) => {
         <Typography variant="h4" sx={{ fontWeight: "bold", fontFamily: "KoHo", marginTop: "20px", letterSpacing: "2px" }}>
           {value}
         </Typography>
-        <Box sx={{ position: "absolute", marginLeft: "300px" }}>
+        <Box sx={{ position: "absolute", marginLeft: "270px" }}>
           <Typography
             variant="h5"
             color="#fff"

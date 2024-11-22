@@ -48,7 +48,7 @@ export default function AdminProductFilterBar() {
         variant="outlined"
         placeholder="Tìm kiếm"
         size="small"
-        sx={{ backgroundColor: "white", borderRadius: 2, minWidth: 400 }}
+        sx={{ backgroundColor: "#FCF9F3", borderRadius: 2, minWidth: 400 }}
       />
 
       {/* Status Dropdown */}

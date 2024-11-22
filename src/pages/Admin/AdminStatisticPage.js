@@ -11,13 +11,14 @@ import colors from "../../colors";
 const AdminStatisticPage = () => {
   return (
     <div>
-      <>
+     <Box
+        sx={{ backgroundColor: "#FCF9F3" }}>
         <Header1 />
         <AdminHeader />
-        <Box sx={{ height: "100px", }}>
+        <Box sx={{ height: "100px" }}>
           <FormControl
             size="small"
-            sx={{ minWidth: 140, margin: "5px", borderRadius: 2, color: "#2F4F4F", top: "25px", right: "665px" }}
+            sx={{ minWidth: 140, marginLeft: "170px", borderRadius: 2, color: "#2F4F4F", top: "30px", right: "665px", backgroundColor: "#FCF9F3" }}
           >
             <InputLabel>2024</InputLabel>
             <Select
@@ -56,7 +57,7 @@ const AdminStatisticPage = () => {
             <BarChart2 />
           </Box>
         </Box>
-      </>
+      </Box>
     </div>
   );
 };

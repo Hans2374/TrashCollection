@@ -11,7 +11,8 @@ const AdminProductPage = () => {
   const [activeButton, setActiveButton] = useState("Sản phẩm");
   return (
     <div>
-      <>
+      <Box
+        sx={{ backgroundColor: "#FCF9F3" }}>
         <Header1 />
         <AdminHeader />
 
@@ -44,7 +45,7 @@ const AdminProductPage = () => {
         <Box sx={{ padding: "20px 0 20px 0", fontFamily: "KoHo" }}>
           <AdminProductTable />
         </Box>
-      </>
+      </Box>
     </div>
   );
 };

@@ -43,7 +43,7 @@ export default function AdminUserTable() {
             <TableCell className={styles.tablecell}>Địa chỉ</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody sx={{backgroundColor: "#FCF9F3"}}>
           {data
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row, index) => (
@@ -58,7 +58,7 @@ export default function AdminUserTable() {
             ))}
         </TableBody>
       </Table>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', backgroundColor: "#FCF9F3" }}>
         <IconButton
           onClick={() => handleChangePage(null, page - 1)}
           disabled={page === 0}

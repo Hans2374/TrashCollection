@@ -11,7 +11,8 @@ const AdminUserPage = () => {
   const [activeButton, setActiveButton] = useState("Người mua");
   return (
     <div>
-      <>
+      <Box
+        sx={{ backgroundColor: "#FCF9F3" }}>
         <Header1 />
         <AdminHeader />
 
@@ -44,7 +45,7 @@ const AdminUserPage = () => {
         <Box sx={{ padding: "20px 0 20px 0", fontFamily: "KoHo" }}>
           <AdminUserTable />
         </Box>
-      </>
+      </Box>
     </div>
   );
 };

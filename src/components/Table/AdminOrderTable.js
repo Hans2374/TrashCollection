@@ -45,7 +45,7 @@ export default function AdminOrderTable() {
             <TableCell className={styles.tablecell}>Chỉnh sửa</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody sx={{backgroundColor: "#FCF9F3"}}>
           {data
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row, index) => (
@@ -62,7 +62,7 @@ export default function AdminOrderTable() {
             ))}
         </TableBody>
       </Table>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', backgroundColor: "#FCF9F3" }}>
         <IconButton
           onClick={() => handleChangePage(null, page - 1)}
           disabled={page === 0}

@@ -40,7 +40,7 @@ export default function AdminUserFilterBar() {
         variant="outlined"
         placeholder="Tìm kiếm"
         size="small"
-        sx={{ backgroundColor: "white", borderRadius: 2, minWidth: 400 }}
+        sx={{ backgroundColor: "#FCF9F3", borderRadius: 2, minWidth: 400 }}
       />
       {/* Sort Dropdown */}
       <FormControl

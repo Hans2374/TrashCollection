@@ -14,12 +14,13 @@ const AdminOrderPage = () => {
   const [activeButton, setActiveButton] = useState("Sản phẩm");
   return (
     <div>
-      <>
+      <Box
+        sx={{ backgroundColor: "#FCF9F3" }}>
         <Header1 />
         <AdminHeader />
 
         {/* Button Product/ Material */}
-        <Box display="flex" gap={2} sx={{ padding: "40px 20px 20px 20px" }}>
+        <Box display="flex" gap={2} sx={{ padding: "40px 20px 20px 20px", }}>
           <Button
             onClick={() => setActiveButton("Sản phẩm")}
             className={
@@ -47,7 +48,7 @@ const AdminOrderPage = () => {
         <Box sx={{ padding: "20px 0 20px 0", fontFamily: "KoHo" }}>
           <AdminOrderTable />
         </Box>
-      </>
+      </Box>
     </div>
   );
 };
