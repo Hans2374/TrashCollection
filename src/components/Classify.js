@@ -190,7 +190,7 @@ const Classify = () => {
                             fontWeight: 700,
                             lineHeight: { xs: '30px', sm: '46.8px' }, // Responsive line height
                             color: colors.color2,
-                            textAlign: 'left',
+                            textAlign: 'center',
                             marginBottom: '8px',
                         }}
                     >

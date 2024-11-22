@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Box, Grid, Typography, Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Box, Grid, Typography, Button, Dialog, DialogContent, DialogTitle, Icon, Divider, } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import colors from '../../colors';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 const orders = [
@@ -173,8 +174,8 @@ const products = [
 
 
 const CustomButton = styled(Button)({
-    color: '#214738', // Màu chữ
-    border: '2px solid #214738',
+    color: `${colors.color2}`, // Màu chữ
+    border: `2px solid ${colors.color2}`,
     borderRadius: '10px',
     textTransform: 'capitalize', // Không viết hoa chữ
     fontSize: 16, // Cỡ chữ
@@ -184,8 +185,8 @@ const CustomButton = styled(Button)({
     height: '44px',
     padding: '6px 12px', // Khoảng cách nội dung
     '&:hover': {
-        borderColor: '#214738',
-        backgroundColor: '#214738', // Màu nền khi hover
+        borderColor: `${colors.color2}`,
+        backgroundColor: `${colors.color2}`, // Màu nền khi hover
         color: 'white',
     },
 });
@@ -250,6 +251,49 @@ const ProfileListTable = () => {
 
     return (
         <Box sx={{ marginTop: '1%', marginX: { xs: '5%', sm: '10%', md: '15%', lg: '20%' }, marginBottom: '50px' }}>
+            <Divider sx={{ my: 4, marginBottom: '50px' }} />
+            <Typography
+                sx={{
+                    fontFamily: 'KoHo',
+                    fontSize: { xs: '24px', sm: '32px' }, 
+                    fontWeight: 600,
+                    lineHeight: { xs: '30px', sm: '46.8px' }, 
+                    color: colors.color2,
+                    textAlign: 'center',
+                    marginBottom: '50px',
+                }}
+            >
+                Lịch sử giao dịch
+            </Typography>
+            <Box sx={{ position: "relative", width: "500px", marginBottom: "30px" }}>
+                <input
+                    type="text"
+                    placeholder="Tìm kiếm đơn hàng?"
+                    style={{
+                        backgroundColor: colors.color1,
+                        border: `2px solid ${colors.color2}`,
+                        width: "100%",
+                        borderRadius: "5px",
+                        fontFamily: "KoHo",
+                        fontSize: "20px",
+                        fontWeight: 400,
+                        lineHeight: "26px",
+                        outline: "none",
+                        padding: "10px 40px",
+                    }}
+                />
+                <Icon
+                    sx={{
+                        position: "absolute",
+                        left: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        color: "#888",
+                    }}
+                >
+                    <SearchIcon />
+                </Icon>
+            </Box>
             {/* Lặp qua mảng orders và hiển thị thông tin cho mỗi đơn hàng */}
             {orders.slice(0, visibleOrders).map((order, index) => (
                 <Box key={order.ID} sx={{ marginBottom: '20px' }}>
@@ -372,9 +416,9 @@ const ProfileListTable = () => {
                     fullWidth
                     PaperProps={{
                         sx: {
-                            border: "10px solid #214738",
+                            border: `10px solid ${colors.color2}`,
                             borderRadius: "15px",
-                            backgroundColor: "#214738",
+                            backgroundColor: `${colors.color2}`,
                         },
                     }}
                 >
@@ -389,7 +433,7 @@ const ProfileListTable = () => {
                     </DialogTitle>
                     <DialogContent
                         sx={{
-                            backgroundColor: "#FCF9F3",
+                            backgroundColor: `${colors.color1}`,
                             paddingBottom: "16px",
                         }}
                     >

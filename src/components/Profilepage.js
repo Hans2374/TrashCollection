@@ -125,17 +125,31 @@ const Profilepage = () => {
   const handlePasswordDialogClose = () => {
     setPasswordDialogOpen(false);
     setPasswordError("");
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
   };
 
   const handlePasswordChange = () => {
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      setPasswordError("Vui lòng điền đầy đủ thông tin.");
+      return;
+    }
+
+    if (newPassword.length < 8) {
+      setPasswordError("Mật khẩu mới phải có ít nhất 8 ký tự.");
+      return;
+    }
+
     if (newPassword !== confirmPassword) {
       setPasswordError(
         "Mật khẩu mới và xác nhận mật khẩu không khớp. Vui lòng thử lại."
       );
-    } else {
-      console.log("Password changed successfully");
-      handlePasswordDialogClose();
+      return;
     }
+
+    console.log("Password changed successfully");
+    handlePasswordDialogClose();
   };
 
   const toggleShowCurrentPassword = () => {
@@ -151,7 +165,11 @@ const Profilepage = () => {
   };
 
   return (
-    <>
+    <Box
+      sx={{
+        backgroundColor: `${colors.color1}`,
+      }}
+    >
       <ScrollToTop />
       <Header1 isLogin={isLogin} />
       <Box
@@ -194,7 +212,7 @@ const Profilepage = () => {
               marginBottom: "8px",
             }}
           >
-            LỊCH SỬ GIAO DỊCH
+            HỒ SƠ
           </Typography>
           <Typography
             sx={{
@@ -214,6 +232,8 @@ const Profilepage = () => {
       <Header2 />
 
       <Box
+        marginBottom="30px"
+        marginTop="50px"
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -221,7 +241,7 @@ const Profilepage = () => {
         gap={4}
       >
         <Box textAlign="center">
-          <Avatar sx={{ width: 80, height: 80, bgcolor: "#214738" }} />
+          <Avatar sx={{ width: 90, height: 90, bgcolor: "#214738" }} />
           <Typography variant="h6" fontWeight="bold" mt={1}>
             USER001
           </Typography>
@@ -230,6 +250,7 @@ const Profilepage = () => {
         <Box display="flex" flexDirection="column" alignItems="flex-end">
           <Card
             sx={{
+              backgroundColor: `${colors.color1}`,
               maxWidth: 487,
               borderRadius: 2,
               border: "3px solid #214738",
@@ -387,7 +408,7 @@ const Profilepage = () => {
           sx: {
             border: "10px solid #214738",
             borderRadius: "15px",
-            backgroundColor: "#FCF9F3",
+            backgroundColor: `${colors.color1}`,
             width: "915px",
             height: "418px",
           },
@@ -396,7 +417,7 @@ const Profilepage = () => {
         <DialogTitle
           sx={{
             textAlign: "center",
-            backgroundColor: "#214738",
+            backgroundColor: `${colors.color2}`,
             color: "white",
             border: "none",
           }}
@@ -503,7 +524,7 @@ const Profilepage = () => {
               color: "#214738",
               transition: "all 0.3s ease-in-out", // Tạo hiệu ứng mượt mà
               "&:hover": {
-                backgroundColor: "#214738", // Màu nền khi hover
+                backgroundColor: `${colors.color2}`, // Màu nền khi hover
                 color: "#ffffff", // Màu chữ khi hover
                 borderColor: "#214738", // Màu viền khi hover
               },
@@ -520,7 +541,7 @@ const Profilepage = () => {
               color: "#214738",
               transition: "all 0.3s ease-in-out", // Tạo hiệu ứng mượt mà
               "&:hover": {
-                backgroundColor: "#214738", // Màu nền khi hover
+                backgroundColor: `${colors.color2}`, // Màu nền khi hover
                 color: "#ffffff", // Màu chữ khi hover
                 borderColor: "#214738", // Màu viền khi hover
               },
@@ -539,7 +560,7 @@ const Profilepage = () => {
           sx: {
             border: "10px solid #214738",
             borderRadius: "15px",
-            backgroundColor: "#FCF9F3",
+            backgroundColor: `${colors.color1}`,
             width: "600px",
             height: "400px",
           },
@@ -549,7 +570,7 @@ const Profilepage = () => {
           sx={{
             textAlign: "center",
             color: "white",
-            backgroundColor: "#214738",
+            backgroundColor: `${colors.color2}`,
             border: "none",
           }}
         >
@@ -562,6 +583,15 @@ const Profilepage = () => {
               borderRadius: "15px",
             }}
           >
+            {passwordError && (
+              <Typography
+                color="error"
+                textAlign="center"
+                sx={{ marginBottom: 2 }}
+              >
+                {passwordError}
+              </Typography>
+            )}
             <Grid
               container
               spacing={2}
@@ -618,7 +648,7 @@ const Profilepage = () => {
                   type={showNewPassword ? "text" : "password"}
                   fullWidth
                   value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
+                  onChange={(e) => setNewPassword(e.target.value)} // Cập nhật state newPassword
                   InputLabelProps={{ style: { color: "#214738" } }}
                   InputProps={{
                     style: { color: "#214738" },
@@ -652,20 +682,15 @@ const Profilepage = () => {
                   label="Xác nhận mật khẩu mới"
                   type={showConfirmPassword ? "text" : "password"}
                   fullWidth
-                  variant="outlined"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
+                  value={confirmPassword} // Liên kết state confirmPassword
+                  onChange={(e) => setConfirmPassword(e.target.value)} // Cập nhật state confirmPassword
                   InputLabelProps={{ style: { color: "#214738" } }}
                   InputProps={{
                     style: { color: "#214738" },
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton onClick={toggleShowConfirmPassword}>
-                          {showConfirmPassword ? (
-                            <VisibilityOff />
-                          ) : (
-                            <Visibility />
-                          )}
+                          {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -698,7 +723,7 @@ const Profilepage = () => {
               color: "#214738",
               transition: "all 0.3s ease-in-out", // Tạo hiệu ứng mượt mà
               "&:hover": {
-                backgroundColor: "#214738", // Màu nền khi hover
+                backgroundColor: `${colors.color2}`, // Màu nền khi hover
                 color: "#ffffff", // Màu chữ khi hover
                 borderColor: "#214738", // Màu viền khi hover
               },
@@ -715,7 +740,7 @@ const Profilepage = () => {
               color: "#214738",
               transition: "all 0.3s ease-in-out", // Tạo hiệu ứng mượt mà
               "&:hover": {
-                backgroundColor: "#214738", // Màu nền khi hover
+                backgroundColor: `${colors.color2}`, // Màu nền khi hover
                 color: "#ffffff", // Màu chữ khi hover
                 borderColor: "#214738", // Màu viền khi hover
               },
@@ -727,7 +752,7 @@ const Profilepage = () => {
       </Dialog>
       <ProfileList />
       <Footer />
-    </>
+    </Box>
   );
 };
 

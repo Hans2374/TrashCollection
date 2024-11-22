@@ -195,12 +195,12 @@ const News = () => {
                     {/* Description */}
                     <Typography
                         sx={{
-                            padding: '10px 20px 5px 20px',
+                            padding: '5px 20px 5px 20px',
                             fontFamily: 'KoHo',
                             fontSize: { xs: '14px', sm: '16px', md: '17px' },
                             fontWeight: 400,
                             color: `${colors.color2}`,
-                            textAlign: 'center',
+                            textAlign: 'left',
                         }}
                     >
                         Cung cấp những bài viết, cập nhật mới nhất về các chính sách bảo vệ môi trường và những sáng kiến xanh trên toàn thế giới.
