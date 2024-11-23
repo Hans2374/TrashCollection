@@ -77,6 +77,7 @@ const Product = () => {
       name: "Tên sản phẩm",
       points: "60",
       img: `${process.env.PUBLIC_URL}/images/sec3.png`,
+      isEcoFriendly: true,
     },
     {
       id: 4,
@@ -179,7 +180,6 @@ const Product = () => {
       name: "Tên sản phẩm",
       price: "120,000₫",
       img: `${process.env.PUBLIC_URL}/images/product2.png`,
-      isEcoFriendly: true,
     },
     {
       id: 21,
@@ -345,12 +345,16 @@ const Product = () => {
                 fontFamily: "KoHo",
                 marginRight: 3,
                 backgroundColor: `${colors.color1}`,
-                '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none', outline: 'none' },
-                boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                  backgroundColor: '#f5f5f5',
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderRadius: "5px",
+                  border: "none",
+                  outline: "none",
+                },
+                boxShadow: "0px 3px 2px rgba(0, 0, 0, 0.1)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                  backgroundColor: "#f5f5f5",
                 },
                 fontSize: "20px",
                 lineHeight: "26px",
@@ -381,12 +385,15 @@ const Product = () => {
                 fontFamily: "KoHo",
                 marginRight: 3,
                 backgroundColor: `${colors.color1}`,
-                '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
-                boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                  backgroundColor: '#f5f5f5',
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderRadius: "5px",
+                  border: "none",
+                },
+                boxShadow: "0px 3px 2px rgba(0, 0, 0, 0.1)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                  backgroundColor: "#f5f5f5",
                 },
                 fontSize: "20px",
                 lineHeight: "26px",
@@ -414,12 +421,15 @@ const Product = () => {
                 fontFamily: "KoHo",
                 marginRight: 3,
                 backgroundColor: `${colors.color1}`,
-                '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
-                boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                  backgroundColor: '#f5f5f5',
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderRadius: "5px",
+                  border: "none",
+                },
+                boxShadow: "0px 3px 2px rgba(0, 0, 0, 0.1)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                  backgroundColor: "#f5f5f5",
                 },
                 fontSize: "20px",
                 lineHeight: "26px",
@@ -444,15 +454,18 @@ const Product = () => {
                 maxWidth: "150px",
                 height: "29px",
                 marginTop: isSmallScreen ? 1 : 0,
-                borderRadius: '5px',
-                fontFamily: 'KoHo',
+                borderRadius: "5px",
+                fontFamily: "KoHo",
                 backgroundColor: `${colors.color1}`,
-                '& .MuiOutlinedInput-notchedOutline': { borderRadius: '5px', border: 'none' },
-                boxShadow: '0px 3px 2px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                  backgroundColor: '#f5f5f5',
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderRadius: "5px",
+                  border: "none",
+                },
+                boxShadow: "0px 3px 2px rgba(0, 0, 0, 0.1)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+                  backgroundColor: "#f5f5f5",
                 },
                 fontSize: "20px",
                 lineHeight: "26px",
@@ -541,7 +554,7 @@ const Product = () => {
                       {product.price && product.points ? (
                         // Trường hợp hiển thị cả giá và điểm
                         <>
-                          {product.price}   |   {product.points}
+                          {product.price} | {product.points}
                         </>
                       ) : product.points ? (
                         // Trường hợp chỉ hiển thị điểm
@@ -605,11 +618,13 @@ const Product = () => {
                   backgroundColor: colors.color2, // Change background color of selected item
                   color: colors.color1, // Change text color of selected item
                 },
-                ...(isSmallScreen ? {} : {
-                  "&:hover": {
-                    backgroundColor: "#46cf99", // Change background color on hover
-                  },
-                }),
+                ...(isSmallScreen
+                  ? {}
+                  : {
+                      "&:hover": {
+                        backgroundColor: "#46cf99", // Change background color on hover
+                      },
+                    }),
               },
             }}
             renderItem={(item) => (

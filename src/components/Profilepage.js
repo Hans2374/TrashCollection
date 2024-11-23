@@ -364,15 +364,32 @@ const Profilepage = () => {
                     Bạn chưa phải là đối tác của chúng tôi
                   </Typography>
                   <Typography
-                    variant="body1"
+                    component="span"
                     color="#214738"
                     sx={{
-                      textDecoration: "underline",
                       fontFamily: "KoHo",
                       fontSize: "26px",
                       cursor: "pointer",
                       fontWeight: "600",
                       lineHeight: "34px",
+                      position: "relative",
+                      "&::after": {
+                        content: '""',
+                        left: "50%",
+                        right: "50%",
+                        position: "absolute",
+                        bottom: 0,
+                        height: "2px",
+                        backgroundColor: colors.color2,
+                        transition: "left 0.3s, right 0.3s",
+                      },
+                      "&:hover": {
+                        color: colors.color2,
+                        "&::after": {
+                          left: 0,
+                          right: 0,
+                        },
+                      },
                     }}
                     onClick={handleDialogOpen}
                   >
@@ -690,7 +707,11 @@ const Profilepage = () => {
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton onClick={toggleShowConfirmPassword}>
-                          {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                          {showConfirmPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     ),

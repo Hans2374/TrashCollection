@@ -23,19 +23,19 @@ import { TextField, Rating, Avatar, Pagination } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { routes } from "../routes/routes";
 import colors from "../colors";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
 const ProductDetail = () => {
   const isLogin = useSelector((state) => state.auth.isLogin);
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const isResponsive = useMediaQuery(theme.breakpoints.down('lg'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isResponsive = useMediaQuery(theme.breakpoints.down("lg"));
   const [quantity, setQuantity] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -102,7 +102,7 @@ const ProductDetail = () => {
       img: images[1],
       price: "70.000đ",
       points: "130",
-      isEcoFriendly: false,
+      isEcoFriendly: true,
     },
     {
       id: 3,
@@ -118,16 +118,16 @@ const ProductDetail = () => {
       img: images[0],
       price: "80.000đ",
       points: "140",
-      isEcoFriendly: false,
+      isEcoFriendly: true,
     },
   ];
 
   const handleIncrement = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   const handleDecrement = () => {
-    setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
 
   const handleChange = (event) => {
@@ -138,11 +138,15 @@ const ProductDetail = () => {
   };
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const settings = {
@@ -177,21 +181,45 @@ const ProductDetail = () => {
         <Header1 isLogin={isLogin} />
         <Header2 />
       </Box>
-      <Box sx={{ maxWidth: 1200, mx: "auto", mt: 4, px: 2, marginBottom: '40px', marginTop: '70px' }}>
+      <Box
+        sx={{
+          maxWidth: 1200,
+          mx: "auto",
+          mt: 4,
+          px: 2,
+          marginBottom: "40px",
+          marginTop: "70px",
+        }}
+      >
         <Grid container spacing={4}>
-          <Grid item xs={12} md={6} sx={{ width: '100%', position: "relative" }}>
-            <Box sx={{ position: "relative", overflow: "hidden", border: `2px solid ${colors.color2}`, borderRadius: "8px", }}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{ width: "100%", position: "relative" }}
+          >
+            <Box
+              sx={{
+                position: "relative",
+                overflow: "hidden",
+                border: `2px solid ${colors.color2}`,
+                borderRadius: "8px",
+              }}
+            >
               {isSmallScreen ? (
                 <Slider {...settings}>
                   {images.map((img, index) => (
-                    <Box key={index} sx={{ position: "relative", width: '100%' }}>
+                    <Box
+                      key={index}
+                      sx={{ position: "relative", width: "100%" }}
+                    >
                       <CardMedia
                         component="img"
                         image={img}
                         alt={`Sản phẩm ${index + 1}`}
                         sx={{
-                          width: '100%',
-                          height: '100%',
+                          width: "100%",
+                          height: "100%",
                           borderRadius: "8px",
                           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
                           objectFit: "cover",
@@ -207,8 +235,8 @@ const ProductDetail = () => {
                     image={images[currentImageIndex]}
                     alt="Sản phẩm chính"
                     sx={{
-                      width: '100%',
-                      height: '400px',
+                      width: "100%",
+                      height: "400px",
                       borderRadius: "8px",
                       boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
                     }}
@@ -271,7 +299,12 @@ const ProductDetail = () => {
                     onClick={() => setCurrentImageIndex(index)}
                     sx={{
                       width: { xs: "80px", sm: "90px", md: "96px", lg: "96px" },
-                      height: { xs: "80px", sm: "90px", md: "96px", lg: "96px" },
+                      height: {
+                        xs: "80px",
+                        sm: "90px",
+                        md: "96px",
+                        lg: "96px",
+                      },
                       mx: 2,
                       cursor: "pointer",
                       borderRadius: "8px",
@@ -328,7 +361,16 @@ const ProductDetail = () => {
                 textAlign: "left",
               }}
             >
-              Chất liệu: <Typography component="span" sx={{ fontWeight: 400, fontFamily: 'KoHo', fontSize: '24px', lineHeight: '31.2px' }}>
+              Chất liệu:{" "}
+              <Typography
+                component="span"
+                sx={{
+                  fontWeight: 400,
+                  fontFamily: "KoHo",
+                  fontSize: "24px",
+                  lineHeight: "31.2px",
+                }}
+              >
                 Giấy
               </Typography>
             </Typography>
@@ -344,7 +386,16 @@ const ProductDetail = () => {
                 textAlign: "left",
               }}
             >
-              Kích thước: <Typography component="span" sx={{ fontWeight: 400, fontFamily: 'KoHo', fontSize: '24px', lineHeight: '31.2px' }}>
+              Kích thước:{" "}
+              <Typography
+                component="span"
+                sx={{
+                  fontWeight: 400,
+                  fontFamily: "KoHo",
+                  fontSize: "24px",
+                  lineHeight: "31.2px",
+                }}
+              >
                 Vừa phải, phù hợp để đặt trên bàn làm việc.
               </Typography>
             </Typography>
@@ -364,26 +415,50 @@ const ProductDetail = () => {
               hoặc trang trí. Thích hợp cho không gian học tập, làm việc hoặc
               làm quà tặng nhỏ.
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", mt: 8, justifyContent: 'space-between' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <IconButton onClick={handleDecrement} sx={{ border: `3px solid ${colors.color2}`, borderRight: '0px', borderRadius: '20px 0px 0px 20px' }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                mt: 8,
+                justifyContent: "space-between",
+              }}
+            >
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <IconButton
+                  onClick={handleDecrement}
+                  sx={{
+                    border: `3px solid ${colors.color2}`,
+                    borderRight: "0px",
+                    borderRadius: "20px 0px 0px 20px",
+                  }}
+                >
                   <RemoveIcon />
                 </IconButton>
                 <TextField
                   value={quantity}
                   onChange={handleChange}
-                  inputProps={{ min: 1, style: { textAlign: 'center', height: '40px', padding: 0 } }}
+                  inputProps={{
+                    min: 1,
+                    style: { textAlign: "center", height: "40px", padding: 0 },
+                  }}
                   sx={{
                     border: `3px solid ${colors.color2}`,
-                    maxWidth: '40px',
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        border: 'none',
+                    maxWidth: "40px",
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        border: "none",
                       },
                     },
                   }}
                 />
-                <IconButton onClick={handleIncrement} sx={{ border: `3px solid ${colors.color2}`, borderLeft: '0px', borderRadius: '0px 20px 20px 0px' }}>
+                <IconButton
+                  onClick={handleIncrement}
+                  sx={{
+                    border: `3px solid ${colors.color2}`,
+                    borderLeft: "0px",
+                    borderRadius: "0px 20px 20px 0px",
+                  }}
+                >
                   <AddIcon />
                 </IconButton>
               </Box>
@@ -392,7 +467,7 @@ const ProductDetail = () => {
                 sx={{
                   fontFamily: "KoHo",
                   fontSize: { xs: "12px", sm: "13px", md: "18px", lg: "18px" },
-                  lineHeight: '31.2px',
+                  lineHeight: "31.2px",
                   borderRadius: 20,
                   ml: 2,
                   backgroundColor: colors.color2,
@@ -459,7 +534,7 @@ const ProductDetail = () => {
 
                   {/* Product Details */}
                   <CardContent
-                    sx={{ textAlign: "center", backgroundColor: colors.color1, }}
+                    sx={{ textAlign: "center", backgroundColor: colors.color1 }}
                   >
                     <Typography
                       variant="body1"
@@ -576,7 +651,9 @@ const ProductDetail = () => {
               />
               <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                 <IconButton>
-                  <AddPhotoAlternateOutlinedIcon sx={{ color: colors.color2 }} />
+                  <AddPhotoAlternateOutlinedIcon
+                    sx={{ color: colors.color2 }}
+                  />
                 </IconButton>
                 <IconButton>
                   <SendRoundedIcon sx={{ color: colors.color2 }} />
@@ -616,7 +693,14 @@ const ProductDetail = () => {
                   <Avatar sx={{ bgcolor: colors.color2, color: "#fff", mr: 2 }}>
                     {rev.user.charAt(0)}
                   </Avatar>
-                  <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                  <Box
+                    sx={{
+                      flex: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-start",
+                    }}
+                  >
                     <Typography
                       variant="body1"
                       sx={{
@@ -628,7 +712,18 @@ const ProductDetail = () => {
                         textAlign: "left",
                       }}
                     >
-                      {rev.user} <Typography component="span" sx={{ fontFamily: "KoHo", fontWeight: 300, fontSize: '13px', lineHeight: "16.9px", }}>{rev.date}</Typography>
+                      {rev.user}{" "}
+                      <Typography
+                        component="span"
+                        sx={{
+                          fontFamily: "KoHo",
+                          fontWeight: 300,
+                          fontSize: "13px",
+                          lineHeight: "16.9px",
+                        }}
+                      >
+                        {rev.date}
+                      </Typography>
                     </Typography>
                     <Rating
                       value={rev.rating}
@@ -663,8 +758,8 @@ const ProductDetail = () => {
                 page={currentPage}
                 onChange={handlePageChange}
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
+                  display: "flex",
+                  justifyContent: "center",
                   mt: 2,
                   "& .MuiPaginationItem-root": {
                     border: `2px solid ${colors.color2}`, // Add border
@@ -673,11 +768,13 @@ const ProductDetail = () => {
                       backgroundColor: colors.color2, // Change background color of selected item
                       color: colors.color1, // Change text color of selected item
                     },
-                    ...(isResponsive ? {} : {
-                      "&:hover": {
-                        backgroundColor: "#46cf99", // Change background color on hover
-                      },
-                    }),
+                    ...(isResponsive
+                      ? {}
+                      : {
+                          "&:hover": {
+                            backgroundColor: "#46cf99", // Change background color on hover
+                          },
+                        }),
                   },
                 }}
               />
@@ -686,12 +783,33 @@ const ProductDetail = () => {
             // Hiển thị khi chưa đăng nhập
             <Box
               sx={{
-                display: 'flex', flexDirection: 'column',
-                alignItems: 'center', p: 2, gap: 2, height: '485px', justifyContent: 'center', backgroundColor: colors.color1
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                p: 2,
+                gap: 2,
+                height: "485px",
+                justifyContent: "center",
+                backgroundColor: colors.color1,
               }}
             >
-              <img src={`${process.env.PUBLIC_URL}/images/error404.png`} alt="Description" style={{ width: '100px', height: '100px' }} />
-              <Typography variant="h6" sx={{ fontFamily: 'KoHo', fontWeight: 700, fontSize: '24px', lineHeight: '31.2px', color: colors.color2 }}>Rất tiết!</Typography>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/error404.png`}
+                alt="Description"
+                style={{ width: "100px", height: "100px" }}
+              />
+              <Typography
+                variant="h6"
+                sx={{
+                  fontFamily: "KoHo",
+                  fontWeight: 700,
+                  fontSize: "24px",
+                  lineHeight: "31.2px",
+                  color: colors.color2,
+                }}
+              >
+                Rất tiết!
+              </Typography>
               <Typography
                 variant="body1"
                 sx={{
@@ -706,7 +824,10 @@ const ProductDetail = () => {
                 }}
               >
                 Vui lòng{" "}
-                <RouterLink to={routes.login} style={{ textDecoration: "none" }}>
+                <RouterLink
+                  to={routes.login}
+                  style={{ textDecoration: "none" }}
+                >
                   <Typography
                     component="span"
                     sx={{
