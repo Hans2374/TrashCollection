@@ -48,11 +48,19 @@ export const Header2 = () => {
         },
     };
 
+    const menuItems = [
+        { text: 'Sản phẩm', route: routes.product },
+        { text: 'Thu mua', route: routes.classify },
+        { text: 'Tin tức', route: routes.news },
+        { text: 'Quy định', route: routes.regulation },
+    ];
+
     return (
         <Box
             sx={{
                 zIndex: 10,
                 position: 'sticky',
+                //top: '40px', //test cho trang profile
                 top: visible ? (lastScrollY > 0 ? '40px' : '461px') : '-100px', // Adjust top based on scroll position
                 height: '100px',
                 backgroundColor: '#F8F3E7',
@@ -67,17 +75,17 @@ export const Header2 = () => {
         >
             {/* Logo/Tên */}
             <Link to={routes.homePage} style={{ textDecoration: 'none' }}>
-            <Typography
-                variant="h4"
-                sx={{
-                    fontFamily: 'KoHo',
-                    marginLeft: { md: '100px' },
-                    fontWeight: 'bold',
-                    color: '#214738',
-                }}
-            >
-                LOGO/TÊN
-            </Typography>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        fontFamily: 'KoHo',
+                        marginLeft: { md: '100px' },
+                        fontWeight: 'bold',
+                        color: '#214738',
+                    }}
+                >
+                    LOGO/TÊN
+                </Typography>
             </Link>
 
             {isMobile ? (
@@ -99,8 +107,8 @@ export const Header2 = () => {
                         }}
                     >
                         <List sx={{ width: 250 }}>
-                            {['Sản phẩm', 'Thu mua', 'Tin tức', 'Quy định'].map((text) => (
-                                <ListItem button key={text}>
+                            {menuItems.map((item) => (
+                                <ListItem button component={Link} to={item.route} key={item.text} onClick={toggleDrawer(false)}>
                                     <ListItemText
                                         sx={{
                                             justifyContent: 'center',
@@ -112,7 +120,7 @@ export const Header2 = () => {
                                                 fontWeight: 'bold',
                                                 textShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
                                             },
-                                        }} primary={text} />
+                                        }} primary={item.text} />
                                 </ListItem>
                             ))}
                         </List>
@@ -120,7 +128,7 @@ export const Header2 = () => {
                 </>
             ) : (
                 <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '200px' } }}>
-                    <Typography sx={menuItemStyle}>Sản phẩm</Typography>
+                    <Link to={routes.product} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Sản phẩm</Typography></Link>
                     <Link to={routes.classify} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Thu mua</Typography></Link>
                     <Link to={routes.news} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Tin tức</Typography></Link>
                     <Link to={routes.regulation} style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Quy định</Typography></Link>

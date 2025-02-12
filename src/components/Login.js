@@ -35,7 +35,6 @@ const Login = () => {
 
     useEffect(() => {
         if (isLogin) {
-            console.log('Navigating to home page');
             navigate(routes.homePage);
         }
     }, [isLogin, navigate]);
@@ -152,13 +151,16 @@ const Login = () => {
                 // Handle successful validation for login or register
                 if (username === 'customer@gmail.com' && password === 'customer') {
                     setErrors({ username: '', password: '' });
-                    dispatch(login());
+                    dispatch(login('customer'));
+                } else if (username === 'admin@gmail.com' && password === 'admin') {
+                    setErrors({ username: '', password: '' });
+                    dispatch(login('admin'));
                 } else {
                     setErrors({ username: '', password: 'Email/Username hoặc mật khẩu không đúng!' });
                 }
             } else {
                 setErrors({ username: '', password: '', confirmPassword: '' });
-                dispatch(login());
+                dispatch(login('customer'));
             }
         }
     };
@@ -290,7 +292,7 @@ const Login = () => {
                     backgroundPosition: 'center',
                 }}
             >
-                <Box p={3} className={`${styles.formContainer} ${animate ? styles.slideUp : styles.slideDown}`} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '410px', position: 'relative' }}>
+                <Box p={3} className={`${styles.formContainer} ${animate ? styles.slideUp : styles.slideDown}`} sx={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px', width: '50%', height: '450px', position: 'relative' }}>
                     {!isForgotPassword && !isResetPassword && (
                         <>
                             {/* Login or Register Form */}
@@ -313,8 +315,8 @@ const Login = () => {
                                         color: colors.color1,
                                         borderRadius: '20px',
                                         border: 'none',
-                                        width: '80%',
-                                        height: '33px',
+                                        width: '100%',
+                                        height: '50px',
                                         margin: 'normal',
                                         padding: '10px 50px',
                                         pl: '40px',
@@ -344,8 +346,8 @@ const Login = () => {
                                         color: colors.color1,
                                         borderRadius: '20px',
                                         border: 'none',
-                                        width: '80%',
-                                        height: '33px',
+                                        width: '100%',
+                                        height: '50px',
                                         margin: 'normal',
                                         padding: '10px 50px',
                                         pl: '40px',
@@ -383,8 +385,8 @@ const Login = () => {
                                             color: colors.color1,
                                             borderRadius: '20px',
                                             border: 'none',
-                                            width: '80%',
-                                            height: '33px',
+                                            width: '100%',
+                                            height: '50px',
                                             margin: 'normal',
                                             padding: '10px 50px',
                                             pl: '40px',
@@ -423,7 +425,7 @@ const Login = () => {
                                 {isRegister ? 'Đăng ký' : 'Đăng nhập'}
                             </Button>
                             {!isRegister && (
-                                <Box display="flex" justifyContent='space-between' mt={3}>
+                                <Box display="flex" justifyContent='space-between' mt={5}>
                                     <Button sx={{ color: colors.color2 }} onClick={handleForgotPassword}>Quên mật khẩu?</Button>
                                     <Box>
                                         <IconButton>
@@ -459,8 +461,8 @@ const Login = () => {
                                         color: colors.color1,
                                         borderRadius: '20px',
                                         border: 'none',
-                                        width: '80%',
-                                        height: '33px',
+                                        width: '100%',
+                                        height: '50px',
                                         margin: 'normal',
                                         padding: '10px 50px',
                                         pl: '40px',
@@ -489,8 +491,8 @@ const Login = () => {
                                         color: colors.color1,
                                         borderRadius: '20px',
                                         border: 'none',
-                                        width: '80%',
-                                        height: '33px',
+                                        width: '100%',
+                                        height: '50px',
                                         margin: 'normal',
                                         padding: '10px 50px',
                                         pl: '40px',
@@ -559,8 +561,8 @@ const Login = () => {
                                         color: colors.color1,
                                         borderRadius: '20px',
                                         border: 'none',
-                                        width: '80%',
-                                        height: '33px',
+                                        width: '100%',
+                                        height: '50px',
                                         margin: 'normal',
                                         padding: '10px 50px',
                                         pl: '40px',
@@ -595,8 +597,8 @@ const Login = () => {
                                         color: colors.color1,
                                         borderRadius: '20px',
                                         border: 'none',
-                                        width: '80%',
-                                        height: '33px',
+                                        width: '100%',
+                                        height: '50px',
                                         margin: 'normal',
                                         padding: '10px 50px',
                                         pl: '40px',

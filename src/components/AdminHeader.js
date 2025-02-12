@@ -1,7 +1,10 @@
 import { Box, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { routes } from "../routes/routes";
+import colors from '../colors';
 
 export const AdminHeader = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -13,7 +16,7 @@ export const AdminHeader = () => {
 
     const menuItemStyle = {
         fontFamily: 'KoHo',
-        color: '#214738',
+        color: colors.color2,
         fontSize: '20px',
         transition: 'font-weight 0.2s, text-shadow 0.2s',
         '&:hover': {
@@ -27,7 +30,7 @@ export const AdminHeader = () => {
             sx={{
                 zIndex: 10,
                 height: '100px',
-                backgroundColor: '#F8F3E7',
+                backgroundColor: colors.color3,
                 fontFamily: 'KoHo',
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -38,23 +41,25 @@ export const AdminHeader = () => {
             }}
         >
             {/* Logo/Tên */}
-            <Typography
-                variant="h4"
-                sx={{
-                    fontFamily: 'KoHo',
-                    marginLeft: { md: '100px' },
-                    fontWeight: 'bold',
-                    color: '#214738',
-                }}
-            >
-                LOGO/TÊN
-            </Typography>
+            <Link to={routes.homePage} style={{ textDecoration: 'none' }}>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        fontFamily: 'KoHo',
+                        marginLeft: { md: '100px' },
+                        fontWeight: 'bold',
+                        color: colors.color2,
+                    }}
+                >
+                    LOGO/TÊN
+                </Typography>
+            </Link>
 
             {isMobile ? (
                 <>
                     {/* Icon drawer */}
                     <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
-                        <MenuIcon sx={{ color: '#214738' }} />
+                        <MenuIcon sx={{ color: colors.color2 }} />
                     </IconButton>
 
                     {/* menu */}
@@ -64,7 +69,7 @@ export const AdminHeader = () => {
                         onClose={toggleDrawer(false)}
                         PaperProps={{
                             sx: {
-                                backgroundColor: '#FCF9F3',
+                                backgroundColor: colors.color1,
                             },
                         }}
                     >
@@ -76,7 +81,7 @@ export const AdminHeader = () => {
                                             justifyContent: 'center',
                                             textAlign: 'center',
                                             fontFamily: 'KoHo',
-                                            color: '#214738',
+                                            color: colors.color2,
                                             transition: 'font-weight 0.2s, text-shadow 0.2s',
                                             '&:hover': {
                                                 fontWeight: 'bold',
@@ -90,10 +95,10 @@ export const AdminHeader = () => {
                 </>
             ) : (
                 <Box sx={{ display: 'flex', gap: '150px', marginRight: { md: '200px' } }}>
-                    <Typography sx={menuItemStyle}>Sản phẩm</Typography>
-                    <Typography sx={menuItemStyle}>Đơn hàng</Typography>
-                    <Typography sx={menuItemStyle}>Thống kê</Typography>
-                    <Typography sx={menuItemStyle}>Người dùng</Typography>
+                    <Link to="/admin-product" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Sản phẩm</Typography></Link>
+                    <Link to="/admin-order" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Đơn hàng</Typography></Link>
+                    <Link to="/admin-statistic" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Thống kê</Typography></Link>
+                    <Link to="/admin-user" style={{ textDecoration: 'none' }}><Typography sx={menuItemStyle}>Người dùng</Typography></Link>
                 </Box>
             )}
         </Box>

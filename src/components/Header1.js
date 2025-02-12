@@ -14,8 +14,12 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
 import { Link as RouterLink } from 'react-router-dom';
 import { routes } from '../routes/routes';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-export const Header1 = ({ isLogin }) => {
+export const Header1 = () => {
+    const role = useSelector((state) => state.auth.role);
+    const isLogin = useSelector((state) => state.auth.isLogin);
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const dispatch = useDispatch();
@@ -58,7 +62,8 @@ export const Header1 = ({ isLogin }) => {
             sx={{
                 zIndex: 10,
                 height: '40px',
-                backgroundColor: '#214738',
+                marginBottom: 0, //test cho trang profile
+                backgroundColor: colors.color2,
                 fontFamily: 'KoHo',
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -121,27 +126,33 @@ export const Header1 = ({ isLogin }) => {
                     >
                         {hoveredIcon === 'meetingRoom' ? <MeetingRoomOutlinedIcon /> : <MeetingRoomIcon />}
                     </IconButton>
-                    <IconButton
-                        sx={{ color: colors.color1 }}
-                        onMouseEnter={() => handleMouseEnter('inventory')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
-                    </IconButton>
-                    <IconButton
-                        sx={{ color: colors.color1 }}
-                        onMouseEnter={() => handleMouseEnter('shoppingCart')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
-                    </IconButton>
-                    <IconButton
-                        sx={{ color: colors.color1 }}
-                        onMouseEnter={() => handleMouseEnter('accountCircle')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
-                    </IconButton>
+                    <Link to={routes.sell}>
+                        <IconButton
+                            sx={{ color: colors.color1 }}
+                            onMouseEnter={() => handleMouseEnter('inventory')}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {hoveredIcon === 'inventory' ? <Inventory2OutlinedIcon /> : <Inventory2Icon />}
+                        </IconButton>
+                    </Link>
+                    <Link to={routes.cart}>
+                        <IconButton
+                            sx={{ color: colors.color1 }}
+                            onMouseEnter={() => handleMouseEnter('shoppingCart')}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {hoveredIcon === 'shoppingCart' ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />}
+                        </IconButton>
+                    </Link>
+                    <Link to={role === 'customer' ? routes.profile : routes.adminproduct} style={{ textDecoration: 'none' }}>
+                        <IconButton
+                            sx={{ color: colors.color1 }}
+                            onMouseEnter={() => handleMouseEnter('accountCircle')}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {hoveredIcon === 'accountCircle' ? <AccountCircleOutlinedIcon /> : <AccountCircleIcon />}
+                        </IconButton>
+                    </Link>
                 </Box>
             ) : (
                 // Đăng nhập
